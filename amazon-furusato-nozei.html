@@ -152,6 +152,35 @@
 @media (min-width:760px){.passo-seta{display:flex;align-items:center;justify-content:center;color:var(--color-border);font-size:1.6rem;padding-top:44px;}}
 
 .exemplos-titulo{margin:34px 0 6px;scroll-margin-top:20px;}
+
+.fluxo-diagrama{margin:26px 0 10px;}
+.fluxo-linha{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.fluxo-linha.inversa{flex-direction:row-reverse;}
+.fluxo-icone{flex:0 0 auto;width:54px;height:54px;display:flex;align-items:center;justify-content:center;}
+.fluxo-icone svg{width:100%;height:100%;}
+.fluxo-seta{flex:0 0 auto;color:var(--color-border);font-size:1.5rem;font-weight:700;}
+.fluxo-linha.inversa .fluxo-seta{transform:scaleX(-1);}
+.fluxo-caixa{flex:1 1 auto;background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;}
+.fluxo-caixa .badge-num{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--color-primary-dark);color:#fff;font-weight:800;font-size:.82rem;display:flex;align-items:center;justify-content:center;}
+.fluxo-caixa p{margin:0;font-size:.92rem;color:var(--color-text);}
+.fluxo-caixa strong{color:var(--color-primary-dark);}
+@media (max-width:640px){
+  .fluxo-linha,.fluxo-linha.inversa{flex-direction:column;text-align:center;}
+  .fluxo-seta{transform:rotate(90deg);}
+  .fluxo-linha.inversa .fluxo-seta{transform:rotate(90deg) scaleX(-1);}
+}
+
+.perfis{display:grid;grid-template-columns:1fr;gap:20px;margin:24px 0 8px;}
+@media (min-width:720px){.perfis{grid-template-columns:1fr 1fr 1fr;}}
+.perfil-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:20px;text-align:center;}
+.perfil-card .avatar-cluster{height:64px;margin:0 auto 14px;display:flex;align-items:flex-end;justify-content:center;}
+.perfil-card .avatar-cluster svg{height:64px;width:auto;}
+.perfil-card h3{margin:0 0 6px;font-size:1rem;color:var(--color-primary-dark);}
+.perfil-card .renda-exemplo{font-size:.82rem;color:var(--color-text-muted);margin-bottom:10px;}
+.perfil-card .limite-exemplo{font-size:1.3rem;font-weight:800;color:var(--color-accent-dark);}
+.perfil-card .limite-exemplo small{display:block;font-size:.7rem;font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.03em;}
+.perfis-nota{font-size:.82rem;color:var(--color-text-muted);margin:6px 0 22px;text-align:center;}
+.perfis-cta{text-align:center;margin:6px 0 8px;}
 .exemplos-reais{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 8px;}
 @media (min-width:640px){.exemplos-reais{grid-template-columns:1fr 1fr 1fr;}}
 .exemplo-real{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:14px 12px;text-align:center;}
@@ -244,6 +273,8 @@
       <strong>Nesta página:</strong>
       <ul>
         <li><a href="#motivos">3 motivos pra escolher a Amazon</a></li>
+        <li><a href="#como-funciona">Como funciona, passo a passo</a></li>
+        <li><a href="#calcule-limite">Quanto você pode doar</a></li>
         <li><a href="#passos">Furusato Nozei na Amazon em 3 passos</a></li>
         <li><a href="#exemplos">Exemplos reais de presentes</a></li>
         <li><a href="#one-stop">Resolvendo o One-Stop</a></li>
@@ -297,6 +328,156 @@
       </div>
     </div>
 
+    <div class="secao-banner" id="como-funciona">
+      <p class="secao-banner-sub">Do seu bolso pra prefeitura, e de volta pra você</p>
+      <h2>Como funciona o Furusato Nozei, passo a passo</h2>
+    </div>
+    <div class="conteudo">
+      <p>Usando o exemplo do João (solteiro, ¥3.500.000/ano, limite de ¥31.000) pra deixar concreto:</p>
+      <div class="fluxo-diagrama">
+        <div class="fluxo-linha">
+          <div class="fluxo-icone">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="50" cy="34" r="18" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.4"/>
+              <circle cx="43" cy="32" r="2" fill="#0b3d59"/><circle cx="57" cy="32" r="2" fill="#0b3d59"/>
+              <path d="M43 40 Q50 45 57 40" stroke="#0b3d59" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M20 92 Q20 62 50 62 Q80 62 80 92 Z" fill="#1f9d6b"/>
+            </svg>
+          </div>
+          <div class="fluxo-seta">→</div>
+          <div class="fluxo-caixa">
+            <span class="badge-num">1</span>
+            <p>João <strong>doa ¥31.000</strong> pra uma cidade em Miyazaki via Amazon Furusato.</p>
+          </div>
+          <div class="fluxo-seta">→</div>
+          <div class="fluxo-icone">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="30" width="16" height="26" fill="none" stroke="#0b3d59" stroke-width="2.2"/>
+              <rect x="26" y="16" width="18" height="40" fill="none" stroke="#1f9d6b" stroke-width="2.2"/>
+              <rect x="46" y="26" width="12" height="30" fill="none" stroke="#0b3d59" stroke-width="2.2"/>
+              <line x1="12" y1="36" x2="20" y2="36" stroke="#0b3d59" stroke-width="1.6"/>
+              <line x1="30" y1="24" x2="40" y2="24" stroke="#1f9d6b" stroke-width="1.6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fluxo-linha inversa">
+          <div class="fluxo-icone">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="50" cy="34" r="18" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.4"/>
+              <circle cx="43" cy="32" r="2" fill="#0b3d59"/><circle cx="57" cy="32" r="2" fill="#0b3d59"/>
+              <path d="M43 40 Q50 45 57 40" stroke="#0b3d59" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M20 92 Q20 62 50 62 Q80 62 80 92 Z" fill="#1f9d6b"/>
+            </svg>
+          </div>
+          <div class="fluxo-seta">→</div>
+          <div class="fluxo-caixa">
+            <span class="badge-num">2</span>
+            <p>A cidade manda pra ele <strong>presentes</strong> (carne, arroz, cerveja) pelo correio.</p>
+          </div>
+          <div class="fluxo-seta">→</div>
+          <div class="fluxo-icone">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16 24 L20 14 H44 L48 24 Z" fill="none" stroke="#0b3d59" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M14 24 H50 L47 54 H17 Z" fill="#e3f7ec" stroke="#0b3d59" stroke-width="2.4" stroke-linejoin="round"/>
+              <circle cx="24" cy="18" r="3" fill="#d97a5f"/>
+              <path d="M24 18 L20 12 M24 18 L28 12" stroke="#d97a5f" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fluxo-linha">
+          <div class="fluxo-icone">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="50" cy="34" r="18" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.4"/>
+              <circle cx="43" cy="32" r="2" fill="#0b3d59"/><circle cx="57" cy="32" r="2" fill="#0b3d59"/>
+              <path d="M43 40 Q50 45 57 40" stroke="#0b3d59" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M20 92 Q20 62 50 62 Q80 62 80 92 Z" fill="#1f9d6b"/>
+            </svg>
+          </div>
+          <div class="fluxo-seta">→</div>
+          <div class="fluxo-caixa">
+            <span class="badge-num">3</span>
+            <p>A partir de junho do ano seguinte, ele <strong>desconta ¥29.000</strong> (¥31.000 − ¥2.000 fixos) do imposto residencial, aos poucos, no holerite.</p>
+          </div>
+          <div class="fluxo-seta">→</div>
+          <div class="fluxo-icone">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="30" width="16" height="26" fill="none" stroke="#0b3d59" stroke-width="2.2"/>
+              <rect x="26" y="16" width="18" height="40" fill="none" stroke="#1f9d6b" stroke-width="2.2"/>
+              <rect x="46" y="26" width="12" height="30" fill="none" stroke="#0b3d59" stroke-width="2.2"/>
+              <line x1="12" y1="36" x2="20" y2="36" stroke="#0b3d59" stroke-width="1.6"/>
+              <line x1="30" y1="24" x2="40" y2="24" stroke="#1f9d6b" stroke-width="1.6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p class="exemplos-nota">No fim das contas, o único gasto real do João é ¥2.000 no ano — o resto volta pra ele, em forma de presente ou de desconto no imposto.</p>
+    </div>
+
+    <div class="secao-banner" id="calcule-limite">
+      <p class="secao-banner-sub">O limite muda pra cada pessoa</p>
+      <h2>Quanto você pode doar sem sair no prejuízo</h2>
+    </div>
+    <div class="conteudo">
+      <p>O limite depende da sua renda, se você tem cônjuge dependente e quantos dependentes você declara. Estes exemplos usam a mesma fórmula da nossa calculadora — o seu número real pode variar:</p>
+      <div class="perfis">
+        <div class="perfil-card">
+          <div class="avatar-cluster">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="50" cy="34" r="20" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.4"/>
+              <circle cx="42" cy="32" r="2.2" fill="#0b3d59"/><circle cx="58" cy="32" r="2.2" fill="#0b3d59"/>
+              <path d="M42 41 Q50 46 58 41" stroke="#0b3d59" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M18 94 Q18 64 50 64 Q82 64 82 94 Z" fill="#1f9d6b"/>
+            </svg>
+          </div>
+          <h3>Solteiro(a)</h3>
+          <p class="renda-exemplo">Renda anual ¥3.500.000, sem dependentes</p>
+          <div class="limite-exemplo"><small>Limite estimado</small>¥31.000</div>
+        </div>
+        <div class="perfil-card">
+          <div class="avatar-cluster">
+            <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="92" cy="36" r="18" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.2"/>
+              <circle cx="86" cy="34" r="2" fill="#0b3d59"/><circle cx="98" cy="34" r="2" fill="#0b3d59"/>
+              <path d="M86 42 Q92 46 98 42" stroke="#0b3d59" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M64 94 Q64 64 92 64 Q120 64 120 94 Z" fill="#0b3d59"/>
+              <circle cx="50" cy="38" r="20" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.4"/>
+              <circle cx="42" cy="36" r="2.2" fill="#0b3d59"/><circle cx="58" cy="36" r="2.2" fill="#0b3d59"/>
+              <path d="M42 45 Q50 50 58 45" stroke="#0b3d59" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M18 96 Q18 66 50 66 Q82 66 82 96 Z" fill="#1f9d6b"/>
+            </svg>
+          </div>
+          <h3>Casal (sem filhos)</h3>
+          <p class="renda-exemplo">Renda anual ¥5.000.000, com cônjuge dependente</p>
+          <div class="limite-exemplo"><small>Limite estimado</small>¥45.000</div>
+        </div>
+        <div class="perfil-card">
+          <div class="avatar-cluster">
+            <svg viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="132" cy="36" r="18" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.2"/>
+              <circle cx="126" cy="34" r="2" fill="#0b3d59"/><circle cx="138" cy="34" r="2" fill="#0b3d59"/>
+              <path d="M126 42 Q132 46 138 42" stroke="#0b3d59" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M104 96 Q104 66 132 66 Q160 66 160 96 Z" fill="#0b3d59"/>
+              <circle cx="72" cy="36" r="20" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.4"/>
+              <circle cx="64" cy="34" r="2.2" fill="#0b3d59"/><circle cx="80" cy="34" r="2.2" fill="#0b3d59"/>
+              <path d="M64 43 Q72 48 80 43" stroke="#0b3d59" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M40 96 Q40 66 72 66 Q104 66 104 96 Z" fill="#1f9d6b"/>
+              <circle cx="28" cy="56" r="13" fill="#f5ece0" stroke="#0b3d59" stroke-width="2.2"/>
+              <circle cx="23" cy="54" r="1.6" fill="#0b3d59"/><circle cx="33" cy="54" r="1.6" fill="#0b3d59"/>
+              <path d="M23 60 Q28 63 33 60" stroke="#0b3d59" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M10 96 Q10 76 28 76 Q46 76 46 96 Z" fill="#d97a5f"/>
+            </svg>
+          </div>
+          <h3>Família (2 filhos)</h3>
+          <p class="renda-exemplo">Renda anual ¥7.000.000, cônjuge + 2 dependentes</p>
+          <div class="limite-exemplo"><small>Limite estimado</small>¥63.000</div>
+        </div>
+      </div>
+      <p class="perfis-nota">Valores calculados com a mesma fórmula da nossa calculadora, revisada com base na tabela do Satofull — o seu número muda conforme sua renda e situação real.</p>
+      <div class="perfis-cta">
+        <a class="btn" href="furusato-nozei.html">Calcular o meu limite →</a>
+      </div>
+    </div>
+
     <div class="vantagens">
       <div class="vantagem">
         <span class="titulo">📮 Endereço flexível</span>
@@ -311,11 +492,6 @@
     <div class="callout">
       <h4>O valor doado e o desconto são iguais em qualquer site</h4>
       <p>Isso é regra do governo japonês, não muda pela plataforma. As vantagens da Amazon são conveniência e, às vezes, preço — mas o desconto no imposto é idêntico ao de doar por Rakuten, Satofull ou Furusato Choice.</p>
-    </div>
-
-    <div class="conteudo">
-      <h2>Antes de doar: calcule seu limite</h2>
-      <p>Assim como em qualquer site de Furusato Nozei, existe um limite anual de doação baseado na sua renda e situação familiar — passar dele significa perder dinheiro de verdade. Se ainda não calculou o seu, use a <a href="furusato-nozei.html">calculadora de limite do Finanças Japão</a> antes de continuar.</p>
     </div>
 
     <div class="secao-banner" id="passos">
@@ -340,7 +516,7 @@
               <circle cx="25" cy="48" r="2.6" fill="#fff"/>
               <rect x="30" y="45.4" width="14" height="5.2" rx="2.6" fill="#fff"/>
             </svg>
-            <p>Procure o ícone "Hometown Tax Program" (ふるさと納税) perto do preço de um produto elegível.</p>
+            <p>Procure o ícone "Hometown Tax Program" (ふるさと納税) perto do preço de um produto elegível. <a href="furusato-nozei.html">Calcule seu limite antes →</a></p>
           </div>
         </div>
         <div class="passo-seta">→</div>
