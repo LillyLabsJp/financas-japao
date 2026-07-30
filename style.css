@@ -121,8 +121,13 @@ p { margin: 0 0 1em; }
   font-size: 1.15rem;
   letter-spacing: -0.03em;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
 }
-.logo span { color: var(--color-accent-bright); }
+.logo-marca { width: 30px; height: 30px; flex-shrink: 0; }
+.logo .logo-texto { color: var(--color-primary-dark); }
+.logo .logo-texto span { color: var(--color-accent-bright); }
 
 .main-nav ul {
   list-style: none;
