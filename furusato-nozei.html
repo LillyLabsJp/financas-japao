@@ -169,9 +169,13 @@
 
 .faq-item .resposta{padding:0 0 16px;color:var(--color-text-muted);font-size:.93rem;margin:0;}
 
-.abas-calc{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;border-bottom:1px solid var(--color-border);}
-.aba{background:transparent;border:none;border-bottom:3px solid transparent;padding:10px 4px 12px;font-weight:700;font-size:.92rem;color:var(--color-text-muted);cursor:pointer;margin-right:14px;}
-.aba.ativa{color:var(--color-primary);border-bottom-color:var(--color-accent);}
+.abas-calc{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+.aba{background:var(--color-bg);border:1px solid var(--color-border);border-radius:8px;padding:10px 14px;font-weight:700;font-size:.88rem;color:var(--color-text-muted);cursor:pointer;}
+.aba.ativa{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
+.aba-detalhada{background:#e3f7ec;border-color:var(--color-accent);color:var(--color-accent-dark);}
+.aba-detalhada.ativa{background:var(--color-accent);border-color:var(--color-accent);color:#fff;}
+.aba-badge{display:inline-block;background:var(--color-accent);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.02em;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle;}
+.aba-detalhada.ativa .aba-badge{background:#fff;color:var(--color-accent-dark);}
 .painel-calc{display:none;}
 .painel-calc.ativo{display:block;}
 
@@ -251,7 +255,7 @@
     <div class="calculator">
       <div class="abas-calc">
         <button type="button" class="aba ativa" data-aba="simples">Simulação simples</button>
-        <button type="button" class="aba" data-aba="detalhada">Simulação detalhada (com gensen chōshūhyō)</button>
+        <button type="button" class="aba aba-detalhada" data-aba="detalhada">Simulação detalhada<span class="aba-badge">mais precisa</span></button>
       </div>
 
       <div class="painel-calc ativo" id="painel-simples">
@@ -461,7 +465,7 @@
     <div class="conteudo">
       <h2>Como usar (o passo a passo do One-Stop)</h2>
       <ol>
-        <li><strong>Escolha um site</strong> — Rakuten Furusato Nozei (se você já usa Rakuten, ganha pontos), Furunavi, Satofull ou Furusato Choice. Funciona como uma loja online normal.</li>
+        <li><strong>Escolha um site</strong> — Rakuten Furusato Nozei, <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="noopener">Amazon Furusato Nozei</a>, Furunavi, Satofull ou Furusato Choice. Funciona como uma loja online normal.</li>
         <li><strong>Escolha os presentes</strong> dentro do seu limite. Pode dividir entre produtos e cidades diferentes — mas para usar o One-Stop, doe para no máximo <strong>5 cidades</strong> no ano.</li>
         <li><strong>Marque a opção One-Stop</strong> (ワンストップ特例制度) na hora de doar.</li>
         <li><strong>Preencha e devolva o formulário</strong> que a cidade te envia pelo correio (ou faça online, se a cidade permitir), com cópia do My Number. Prazo: até 10 de janeiro do ano seguinte.</li>
