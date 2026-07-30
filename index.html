@@ -3,45 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finanças Japão — Calculadoras financeiras para brasileiros no Japão</title>
+<title>Finanças no Japão — Calculadoras financeiras para brasileiros no Japão</title>
 <meta name="description" content="Ferramentas gratuitas para brasileiros no Japão: comparador de remessa Japão-Brasil, simulador de nenkin (aposentadoria) e calculadora de imposto e Furusato Nozei. Dados reais, atualizados.">
-<link rel="canonical" href="https://financasjapao.com/">
+<link rel="canonical" href="https://financasnojapao.com/">
 <link rel="stylesheet" href="style.css">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Finanças Japão">
+<meta property="og:site_name" content="Finanças no Japão">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Finanças Japão — Calculadoras financeiras para brasileiros no Japão">
+<meta property="og:title" content="Finanças no Japão — Calculadoras financeiras para brasileiros no Japão">
 <meta property="og:description" content="Comparador de remessa, simulador de nenkin e calculadora de Furusato Nozei. Ferramentas gratuitas, feitas para brasileiros no Japão.">
-<meta property="og:url" content="https://financasjapao.com/">
-<meta property="og:image" content="https://financasjapao.com/og-image.png">
+<meta property="og:url" content="https://financasnojapao.com/">
+<meta property="og:image" content="https://financasnojapao.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Finanças Japão — Calculadoras financeiras para brasileiros no Japão">
+<meta name="twitter:title" content="Finanças no Japão — Calculadoras financeiras para brasileiros no Japão">
 <meta name="twitter:description" content="Comparador de remessa, simulador de nenkin e calculadora de Furusato Nozei. Feitas para brasileiros no Japão.">
-<meta name="twitter:image" content="https://financasjapao.com/og-image.png">
+<meta name="twitter:image" content="https://financasnojapao.com/og-image.png">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Finanças Japão",
-  "url": "https://financasjapao.com/",
+  "name": "Finanças no Japão",
+  "url": "https://financasnojapao.com/",
   "description": "Hub de calculadoras e conteúdo financeiro para brasileiros vivendo no Japão: remessas, aposentadoria (nenkin) e impostos (Furusato Nozei).",
   "inLanguage": "pt-BR",
   "publisher": {
     "@type": "Organization",
-    "name": "Finanças Japão"
+    "name": "Finanças no Japão"
   }
 }
 </script>
+
+<style>
+/* Bloco de autoridade da home */
+.autoridade-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center;}
+@media (max-width:860px){.autoridade-grid{grid-template-columns:1fr;gap:32px;}}
+.autoridade-pessoa{display:flex;align-items:center;gap:16px;}
+.autoridade-pessoa .avatar{width:72px;height:72px;border-radius:50%;background:var(--color-accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.6rem;flex-shrink:0;}
+.autoridade-pessoa .nome{font-weight:700;color:var(--color-primary-dark);font-size:1.05rem;}
+.autoridade-pessoa .cargo{font-size:.9375rem;color:var(--color-text-muted);}
+.autoridade-citacao{border-left:3px solid var(--color-accent-bright);padding-left:24px;}
+.autoridade-citacao p.frase{font-size:1.25rem;line-height:1.55;font-weight:500;color:var(--color-primary-dark);margin:0 0 20px;}
+.fontes-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+.fonte-chip{font-size:.8125rem;font-weight:600;color:var(--color-text-muted);background:var(--color-surface);border:1px solid var(--color-border);border-radius:999px;padding:5px 13px;}
+.texto-longo{max-width:62ch;color:var(--color-text-muted);font-size:1.09rem;}
+</style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="container">
-    <a href="index.html" class="logo">Finanças<span>Japão</span></a>
+    <a href="index.html" class="logo">Finanças<span>noJapão</span></a>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰ Menu</button>
     <nav class="main-nav" aria-label="Navegação principal">
       <ul>
@@ -52,53 +67,192 @@
         <li><a href="sobre.html">Sobre</a></li>
       </ul>
     </nav>
+    <a class="btn btn-sm header-cta" href="furusato-nozei.html">Calcular meu limite</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <span class="badge">Feito para brasileiros no Japão</span>
-    <h1>Calculadoras financeiras para quem vive no Japão</h1>
-    <p class="lead">Ferramentas gratuitas e conteúdo com dados reais para decidir com mais segurança: quanto custa mandar dinheiro pro Brasil, o que esperar do nenkin (aposentadoria japonesa) e como funciona o Furusato Nozei.</p>
+    <div class="hero-grid">
+      <div>
+        <span class="badge">Atualizado em julho de 2026</span>
+        <h1>Suas finanças no Japão,<br>em números claros.</h1>
+        <p class="lead">Calculadoras gratuitas e guias em português para quem vive no Japão: remessas, aposentadoria e impostos — com fontes citadas e contas que você pode conferir.</p>
+        <div class="hero-ctas">
+          <a class="btn" href="furusato-nozei.html">Calcular meu limite de Furusato</a>
+          <a class="btn-secondary" href="#ferramentas">Ver todas as ferramentas</a>
+        </div>
+        <div class="hero-trust">
+          <span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.4" stroke="currentColor" stroke-width="1.7"/><path d="M6.4 10.2l2.4 2.4 4.8-5.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Gratuito, sem cadastro
+          </span>
+          <span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.4" stroke="currentColor" stroke-width="1.7"/><path d="M6.4 10.2l2.4 2.4 4.8-5.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Fontes oficiais citadas
+          </span>
+          <span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.4" stroke="currentColor" stroke-width="1.7"/><path d="M6.4 10.2l2.4 2.4 4.8-5.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Revisado em julho/2026
+          </span>
+        </div>
+      </div>
+
+      <svg class="hero-mockup" viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maquete da calculadora de Furusato Nozei mostrando um limite de doação de 31.000 ienes">
+        <rect x="46" y="18" width="348" height="60" rx="14" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5" opacity=".55"/>
+        <rect x="28" y="36" width="384" height="60" rx="15" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5" opacity=".8"/>
+        <rect x="10" y="58" width="420" height="304" rx="18" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
+        <rect x="34" y="84" width="124" height="9" rx="4.5" fill="#0a2540" opacity=".8"/>
+        <rect x="34" y="102" width="76" height="8" rx="4" fill="#8fa3ad" opacity=".55"/>
+        <rect x="34" y="128" width="372" height="50" rx="10" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
+        <text x="52" y="159" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#8fa3ad">¥</text>
+        <text x="70" y="159" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#16232c">3.500.000</text>
+        <rect x="330" y="145" width="58" height="17" rx="8.5" fill="#e8f7f0"/>
+        <text x="359" y="157" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0b6344" text-anchor="middle">/ ano</text>
+        <rect x="34" y="190" width="104" height="34" rx="9" fill="#e8f7f0" stroke="#1f9d6b" stroke-width="1.5"/>
+        <text x="86" y="212" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#0b6344" text-anchor="middle">Solteiro</text>
+        <rect x="148" y="190" width="104" height="34" rx="9" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
+        <text x="200" y="212" font-family="Inter, sans-serif" font-size="12.5" font-weight="500" fill="#8fa3ad" text-anchor="middle">Casado</text>
+        <rect x="262" y="190" width="144" height="34" rx="9" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
+        <text x="334" y="212" font-family="Inter, sans-serif" font-size="12.5" font-weight="500" fill="#8fa3ad" text-anchor="middle">0 dependentes</text>
+        <rect x="34" y="242" width="372" height="96" rx="14" fill="#e8f7f0"/>
+        <text x="56" y="272" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#0b6344" letter-spacing="1.1">SEU LIMITE DE DOAÇÃO</text>
+        <text x="56" y="316" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="#0a2540" letter-spacing="-1.4">¥31.000</text>
+        <circle cx="366" cy="298" r="24" fill="#1f9d6b"/>
+        <path d="M355 298.5l7 7 14-15" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="trust-band">
+  <div class="container">
+    <div class="trust-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">calculadoras gratuitas</span>
+    </div>
+    <div class="trust-item">
+      <span class="stat-num">Julho 2026</span>
+      <span class="stat-label">última revisão</span>
+    </div>
+    <div class="trust-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">fontes citadas</span>
+    </div>
+    <div class="trust-item">
+      <span class="stat-num">¥</span>
+      <span class="stat-label">valores em iene real</span>
+    </div>
   </div>
 </section>
 
 <main>
-  <div class="container">
-    <section class="section">
-      <h2>Escolha uma calculadora</h2>
+  <section class="section" id="ferramentas">
+    <div class="container">
+      <span class="eyebrow">Ferramentas</span>
+      <h2 class="section-title">Calcule antes de decidir</h2>
       <div class="tool-grid">
         <a class="tool-card" href="remessa-japao-brasil.html">
-          <span class="status live">Disponível</span>
-          <h3>Comparador de remessa Japão → Brasil</h3>
-          <p>Compare o custo real de enviar dinheiro do Japão para o Brasil entre Wise, Brastel Remit, Remitly e banco tradicional, com cotação atualizada em tempo real.</p>
+          <span class="faixa"></span>
+          <span class="card-body">
+            <span class="card-icon">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="25" cy="34" r="14" fill="none" stroke="#0a2540" stroke-width="2.6"/>
+                <circle cx="41" cy="30" r="14" fill="none" stroke="#1f9d6b" stroke-width="2.6"/>
+                <text x="25" y="39" font-size="12" font-weight="700" fill="#0a2540" text-anchor="middle" font-family="sans-serif">¥</text>
+                <text x="41" y="35" font-size="11" font-weight="700" fill="#0b6344" text-anchor="middle" font-family="sans-serif">R$</text>
+              </svg>
+            </span>
+            <span class="status live">Disponível</span>
+            <h3>Comparador de remessa Japão → Brasil</h3>
+            <p>Compare o custo real de enviar dinheiro entre Wise, Brastel Remit, Remitly e banco tradicional, com cotação atualizada em tempo real.</p>
+            <span class="card-action">Calcular agora →</span>
+          </span>
         </a>
-        <a class="tool-card" href="aposentadoria-nenkin.html">
-          <span class="status soon">Em construção</span>
-          <h3>Simulador de aposentadoria (nenkin)</h3>
-          <p>Estimativa de quanto você pode receber do nenkin japonês e o que acontece se voltar para o Brasil antes da aposentadoria.</p>
+
+        <a class="tool-card is-soon" href="aposentadoria-nenkin.html">
+          <span class="faixa"></span>
+          <span class="card-body">
+            <span class="card-icon">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <ellipse cx="32" cy="38" rx="19" ry="14" fill="none" stroke="#5a6b74" stroke-width="2.6"/>
+                <circle cx="45" cy="31" r="3.4" fill="#5a6b74"/>
+                <rect x="27" y="19" width="4" height="8" rx="2" fill="#5a6b74"/>
+                <rect x="27" y="29" width="10" height="3.4" rx="1.7" fill="#5a6b74"/>
+                <circle cx="23" cy="50" r="3" fill="#5a6b74"/>
+                <circle cx="41" cy="50" r="3" fill="#5a6b74"/>
+              </svg>
+            </span>
+            <span class="status soon">Em construção</span>
+            <h3>Simulador de aposentadoria (nenkin)</h3>
+            <p>Estimativa de quanto você pode receber do nenkin japonês e o que acontece se voltar para o Brasil antes da aposentadoria.</p>
+            <span class="card-action">Em breve</span>
+          </span>
         </a>
+
         <a class="tool-card" href="furusato-nozei.html">
-          <span class="status live">Disponível</span>
-          <h3>Furusato Nozei: calculadora de limite de doação</h3>
-          <p>Quanto você pode doar via Furusato Nozei sem sair no prejuízo, considerando sua renda e situação familiar — com guia completo e passo a passo do One-Stop.</p>
+          <span class="faixa"></span>
+          <span class="card-body">
+            <span class="card-icon">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="14" y="26" width="36" height="26" rx="2.5" fill="none" stroke="#0a2540" stroke-width="2.6"/>
+                <line x1="14" y1="34" x2="50" y2="34" stroke="#0a2540" stroke-width="2.2"/>
+                <line x1="32" y1="26" x2="32" y2="52" stroke="#0a2540" stroke-width="2.2"/>
+                <path d="M32 26 Q26 14 20 20 Q18 26 26 26 Z" fill="none" stroke="#1f9d6b" stroke-width="2.4"/>
+                <path d="M32 26 Q38 14 44 20 Q46 26 38 26 Z" fill="none" stroke="#1f9d6b" stroke-width="2.4"/>
+              </svg>
+            </span>
+            <span class="status live">Disponível</span>
+            <h3>Furusato Nozei: limite de doação</h3>
+            <p>Quanto você pode doar via Furusato Nozei sem sair no prejuízo, considerando sua renda e situação familiar — com guia completo e passo a passo do One-Stop.</p>
+            <span class="card-action">Calcular agora →</span>
+          </span>
         </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section section-alt">
-      <h2>Por que este site existe</h2>
-      <p>Encontrar informação financeira confiável em português, específica para quem mora no Japão, ainda é raro. A maior parte do conteúdo disponível ou é genérico (feito para o Brasil) ou é traduzido sem considerar as regras, impostos e prazos que realmente valem para o brasileiro residente no Japão. Este hub reúne calculadoras e explicações com números reais, fontes citadas e datas de atualização visíveis — para que você possa conferir a informação, não só confiar nela.</p>
-      <p><a href="sobre.html">Conheça a autora e a metodologia usada nas calculadoras →</a></p>
-    </section>
-  </div>
+  <section class="section section-alt">
+    <div class="container">
+      <div class="autoridade-grid">
+        <div>
+          <span class="eyebrow">Quem faz</span>
+          <div class="autoridade-pessoa">
+            <div class="avatar">L</div>
+            <div>
+              <div class="nome">Lian Alves</div>
+              <div class="cargo">Criadora do Finanças no Japão</div>
+            </div>
+          </div>
+        </div>
+        <div class="autoridade-citacao">
+          <p class="frase">Cada número deste site vem de fonte oficial ou verificada — e a fonte fica visível pra você conferir. Não é conselho financeiro: é informação que você consegue auditar.</p>
+          <div class="fontes-chips">
+            <span class="fonte-chip">総務省 · Ministério das Comunicações</span>
+            <span class="fonte-chip">国税庁 · Receita japonesa</span>
+            <span class="fonte-chip">Satofull</span>
+          </div>
+          <p style="margin:0;"><a href="sobre.html">Como as calculadoras funcionam →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Por que existe</span>
+      <h2 class="section-title">Informação financeira em português, feita pra quem mora aqui</h2>
+      <p class="texto-longo">Encontrar informação financeira confiável em português, específica para quem mora no Japão, ainda é raro. A maior parte do conteúdo disponível ou é genérico — feito para o Brasil — ou é traduzido sem considerar as regras, impostos e prazos que realmente valem para o brasileiro residente no Japão.</p>
+      <p class="texto-longo">Este hub reúne calculadoras e explicações com números reais, fontes citadas e datas de atualização visíveis — para que você possa conferir a informação, não só confiar nela.</p>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-cols">
       <div>
-        <h4>Finanças Japão</h4>
+        <h4>Finanças no Japão</h4>
         <p>Calculadoras e conteúdo financeiro para brasileiros no Japão.</p>
       </div>
       <div>
@@ -110,15 +264,22 @@
         </ul>
       </div>
       <div>
+        <h4>Guias</h4>
+        <ul>
+          <li><a href="furusato-nozei.html">Guia do Furusato Nozei</a></li>
+          <li><a href="amazon-furusato-nozei.html">Furusato Nozei pela Amazon</a></li>
+        </ul>
+      </div>
+      <div>
         <h4>Site</h4>
         <ul>
           <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="amazon-furusato-nozei.html">Furusato Nozei pela Amazon</a></li>
+          <li><a href="sobre.html">Metodologia</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Este site tem finalidade informativa e não substitui aconselhamento financeiro, contábil ou jurídico profissional. Confira sempre as fontes oficiais antes de tomar decisões financeiras. © 2026 Finanças Japão.</p>
+      <p>Este site tem finalidade informativa e não substitui aconselhamento financeiro, contábil ou jurídico profissional. Confira sempre as fontes oficiais antes de tomar decisões financeiras. © 2026 Finanças no Japão.</p>
     </div>
   </div>
 </footer>
