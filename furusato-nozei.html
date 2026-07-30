@@ -169,6 +169,33 @@
 
 .faq-item .resposta{padding:0 0 16px;color:var(--color-text-muted);font-size:.93rem;margin:0;}
 
+/* ===== Bloco de destaque da calculadora (topo da pagina) ===== */
+.calc-destaque{
+  background:linear-gradient(160deg,#f2fbf7 0%,#eef5fa 100%);
+  border:1px solid #cfe6da;
+  border-radius:20px;
+  padding:34px 32px 32px;
+  margin:36px 0 44px;
+  box-shadow:0 10px 34px rgba(10,37,64,.07);
+  scroll-margin-top:88px;
+}
+.calc-destaque-head{display:flex;align-items:center;gap:28px;margin-bottom:26px;}
+.calc-destaque-head > div{flex:1;}
+.calc-eyebrow{
+  display:block;font-size:.8125rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;
+}
+.calc-destaque-head h2{margin:0 0 10px;font-size:clamp(1.55rem,3vw,2.1rem);}
+.calc-destaque-head p{margin:0;color:var(--color-text-muted);font-size:1.02rem;max-width:52ch;}
+.calc-destaque-icone{width:96px;height:96px;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(10,37,64,.12));}
+@media (max-width:640px){
+  .calc-destaque{padding:26px 20px;border-radius:16px;}
+  .calc-destaque-head{flex-direction:column;align-items:flex-start;gap:18px;margin-bottom:22px;}
+  .calc-destaque-icone{width:72px;height:72px;}
+}
+/* a calculadora dentro do destaque perde a borda dupla */
+.calc-destaque .calculator{margin:0;border-color:#dbe9e2;box-shadow:0 4px 16px rgba(10,37,64,.06);}
+
 .abas-calc{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
 .aba{background:var(--color-bg);border:1px solid var(--color-border);border-radius:8px;padding:10px 14px;font-weight:700;font-size:.88rem;color:var(--color-text-muted);cursor:pointer;}
 .aba.ativa{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
@@ -213,7 +240,7 @@
 <main>
   <div class="container section">
     <p class="breadcrumb"><a href="index.html">Início</a> / Furusato Nozei</p>
-    <span class="updated-badge">🕒 Calculadora recalibrada e revisada em 30 de julho de 2026, com base na tabela de referência do Satofull (contador licenciado)</span>
+    <span class="updated-badge">🕒 Calculadora recalibrada e revisada em 30 de julho de 2026.</span>
     <p class="categoria-etiqueta">Impostos</p>
     <h1>Furusato Nozei: quanto você pode doar sem perder dinheiro</h1>
     <p class="lead">Você já vai pagar o imposto residencial de qualquer jeito. O Furusato Nozei deixa você trocar parte dele por presentes — carne, arroz, fruta, cerveja — pagando só ¥2.000 no total. O segredo é não passar do seu limite.</p>
@@ -224,34 +251,27 @@
       <div class="passo"><span class="num">3</span><p><strong>O valor volta</strong> como desconto no seu imposto do ano seguinte, menos ¥2.000 fixos.</p></div>
     </div>
 
-    <div class="explica-simples">
-      <h2>Explicando como pra um amigo</h2>
-      <p>Todo ano, uma parte do seu salário vai embora em imposto pra prefeitura. Esse dinheiro some e você não vê nada em troca. Certo?</p>
-      <p>O Furusato Nozei é o governo dizendo o seguinte: <strong>"em vez de me pagar tudo, pode mandar um pedaço desse imposto pra uma cidadezinha do interior. E ela te agradece com um presente."</strong></p>
-      <p>Você não gasta dinheiro novo. É o <strong>mesmo imposto que você já ia pagar</strong> — só muda o caminho que ele faz. A única coisa que sai do seu bolso a mais é uma taxa única de ¥2.000 no ano inteiro.</p>
-      <div class="exemplo-numeros">
-        <p class="titulo-exemplo">Quem recebe o quê:</p>
-        <p>🏙️ <strong>A cidade recebe</strong> o dinheiro da sua doação</p>
-        <p>🎁 <strong>Você recebe o presente na sua casa</strong> — a cidade manda pelo correio, como agradecimento</p>
-        <p>📉 <strong>Você recebe de volta o valor doado</strong> (menos ¥2.000) como desconto no imposto do ano seguinte</p>
+    <section class="calc-destaque" id="calculadora">
+      <div class="calc-destaque-head">
+        <div>
+          <span class="calc-eyebrow">Calculadora gratuita</span>
+          <h2>Descubra o seu limite de doação</h2>
+          <p>Responda três coisas e veja quanto você pode doar sem perder dinheiro. Leva menos de um minuto e não precisa de cadastro.</p>
+        </div>
+        <svg class="calc-destaque-icone" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="22" y="10" width="52" height="76" rx="9" fill="#ffffff" stroke="#0a2540" stroke-width="3"/>
+          <rect x="30" y="19" width="36" height="16" rx="3" fill="#e8f7f0" stroke="#0a2540" stroke-width="2"/>
+          <text x="61" y="32" font-size="11" font-weight="700" fill="#0b6344" text-anchor="end" font-family="sans-serif">¥</text>
+          <circle cx="36" cy="48" r="4.4" fill="#0a2540"/>
+          <circle cx="48" cy="48" r="4.4" fill="#0a2540"/>
+          <circle cx="60" cy="48" r="4.4" fill="#0a2540"/>
+          <circle cx="36" cy="60" r="4.4" fill="#0a2540"/>
+          <circle cx="48" cy="60" r="4.4" fill="#0a2540"/>
+          <circle cx="60" cy="60" r="4.4" fill="#0a2540"/>
+          <circle cx="36" cy="72" r="4.4" fill="#0a2540"/>
+          <rect x="43.6" y="67.6" width="21" height="8.8" rx="4.4" fill="#1f9d6b"/>
+        </svg>
       </div>
-      <p><strong>Atenção pra não confundir:</strong> o desconto no imposto não é o seu "lucro" — ele só devolve o dinheiro que você doou. No fim das contas, você gastou ¥2.000. <strong>O seu lucro de verdade são os presentes</strong>, que chegam na sua porta e valem bem mais que isso.</p>
-      <div class="exemplo-numeros">
-        <p class="titulo-exemplo">"Então eu ganho o presente E o imposto de volta?"</p>
-        <p>Você ganha <strong>o presente</strong>. ✅</p>
-        <p>O imposto que "volta" <strong>não é ganho</strong> — é só a devolução do dinheiro que você adiantou na doação. ❌</p>
-        <p>Somando tudo: você paga o mesmo imposto de sempre + ¥2.000, e fica com os presentes. <strong>Ninguém lucra dinheiro — você lucra comida.</strong></p>
-      </div>
-      <div class="exemplo-numeros">
-        <p class="titulo-exemplo">Na prática, com números:</p>
-        <p>💴 Digamos que seu limite deu <strong>¥30.000</strong></p>
-        <p>🥩 Você doa ¥30.000 e escolhe os presentes nos sites: picanha, arroz, cerveja... <strong>tudo entregue na sua casa</strong></p>
-        <p>📉 No ano que vem, seu imposto vem <strong>¥28.000 mais barato</strong> — o dinheiro da doação voltou pra você</p>
-        <p>✅ Resultado: você gastou só <strong>¥2.000</strong> e os presentes todos ficaram com você</p>
-      </div>
-      <p>O único jeito de perder dinheiro é <strong>doar mais do que o seu limite permite</strong> — aí o que passar não volta. É pra isso que serve a calculadora aqui embaixo. 👇</p>
-    </div>
-
     <div class="calculator">
       <div class="abas-calc">
         <button type="button" class="aba ativa" data-aba="simples">Simulação simples</button>
@@ -417,7 +437,7 @@
         <p class="rotulo">Seu limite seguro de doação no ano</p>
         <p class="valor">¥<span id="valor-limite">0</span></p>
         <p class="custo-real">Doando até esse valor, seu custo real é de <strong>¥2.000</strong> — todo o resto volta como desconto no imposto do ano que vem. Os presentes são o seu lucro.</p>
-        <p class="nota" id="nota-metodologia">Estimativa conservadora (com margem de segurança e arredondada para baixo), calibrada para ficar alinhada à tabela de referência do <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">Satofull</a>, revisada por contador japonês. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.</p>
+        <p class="nota" id="nota-metodologia">Estimativa conservadora (com margem de segurança e arredondada para baixo), baseada na fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a>. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.</p>
         <div class="leitor-acoes">
           <button type="button" class="botao-whatsapp" onclick="compartilharResultado()"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>Compartilhar</button>
           <button type="button" class="botao-copiar" onclick="copiarResultado()">Copiar</button>
@@ -431,6 +451,37 @@
         </div>
       </div>
     </div>
+    </section>
+
+    <div class="explica-simples">
+      <h2>Explicando como pra um amigo</h2>
+      <p>Todo ano, uma parte do seu salário vai embora em imposto pra prefeitura. Esse dinheiro some e você não vê nada em troca. Certo?</p>
+      <p>O Furusato Nozei é o governo dizendo o seguinte: <strong>"em vez de me pagar tudo, pode mandar um pedaço desse imposto pra uma cidadezinha do interior. E ela te agradece com um presente."</strong></p>
+      <p>Você não gasta dinheiro novo. É o <strong>mesmo imposto que você já ia pagar</strong> — só muda o caminho que ele faz. A única coisa que sai do seu bolso a mais é uma taxa única de ¥2.000 no ano inteiro.</p>
+      <div class="exemplo-numeros">
+        <p class="titulo-exemplo">Quem recebe o quê:</p>
+        <p>🏙️ <strong>A cidade recebe</strong> o dinheiro da sua doação</p>
+        <p>🎁 <strong>Você recebe o presente na sua casa</strong> — a cidade manda pelo correio, como agradecimento</p>
+        <p>📉 <strong>Você recebe de volta o valor doado</strong> (menos ¥2.000) como desconto no imposto do ano seguinte</p>
+      </div>
+      <p><strong>Atenção pra não confundir:</strong> o desconto no imposto não é o seu "lucro" — ele só devolve o dinheiro que você doou. No fim das contas, você gastou ¥2.000. <strong>O seu lucro de verdade são os presentes</strong>, que chegam na sua porta e valem bem mais que isso.</p>
+      <div class="exemplo-numeros">
+        <p class="titulo-exemplo">"Então eu ganho o presente E o imposto de volta?"</p>
+        <p>Você ganha <strong>o presente</strong>. ✅</p>
+        <p>O imposto que "volta" <strong>não é ganho</strong> — é só a devolução do dinheiro que você adiantou na doação. ❌</p>
+        <p>Somando tudo: você paga o mesmo imposto de sempre + ¥2.000, e fica com os presentes. <strong>Ninguém lucra dinheiro — você lucra comida.</strong></p>
+      </div>
+      <div class="exemplo-numeros">
+        <p class="titulo-exemplo">Na prática, com números:</p>
+        <p>💴 Digamos que seu limite deu <strong>¥30.000</strong></p>
+        <p>🥩 Você doa ¥30.000 e escolhe os presentes nos sites: picanha, arroz, cerveja... <strong>tudo entregue na sua casa</strong></p>
+        <p>📉 No ano que vem, seu imposto vem <strong>¥28.000 mais barato</strong> — o dinheiro da doação voltou pra você</p>
+        <p>✅ Resultado: você gastou só <strong>¥2.000</strong> e os presentes todos ficaram com você</p>
+      </div>
+      <p>O único jeito de perder dinheiro é <strong>doar mais do que o seu limite permite</strong> — aí o que passar não volta. É pra isso que serve a <a href="#calculadora">calculadora lá em cima</a>. 👆</p>
+    </div>
+
+
 
     <div class="conteudo">
       <h2>Simulação real, do começo ao fim</h2>
@@ -485,7 +536,7 @@
       </div>
 
       <h2>Como o limite é calculado</h2>
-      <p>O limite (jōgen-gaku) depende do seu imposto residencial, que por sua vez depende da renda anual, dos descontos de seguro social e dos seus dependentes. A fórmula oficial usa a parcela proporcional do jūminzei e a sua alíquota de imposto de renda. A <strong>simulação simples</strong> aplica a fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> com premissas conservadoras (seguro social de 15% da renda, sem outras deduções) e uma margem de segurança adicional — calibrada para ficar alinhada à <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">tabela de referência do Satofull</a>, revisada por contador japonês licenciado. A <strong>simulação detalhada</strong> usa os valores reais impressos no seu gensen chōshūhyō em vez de estimar o seguro social, o que dá um resultado mais preciso — vale a pena usá-la se você já tem o documento em mãos. Em ambas, o resultado sai arredondado para baixo, de propósito, para você nunca passar do limite real. Fontes oficiais: <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> (Furusato Nozei e imposto residencial) e <a href="https://www.nta.go.jp/" target="_blank" rel="noopener nofollow">NTA</a> (imposto de renda).</p>
+      <p>O limite (jōgen-gaku) depende do seu imposto residencial, que por sua vez depende da renda anual, dos descontos de seguro social e dos seus dependentes. A fórmula oficial usa a parcela proporcional do jūminzei e a sua alíquota de imposto de renda. A <strong>simulação simples</strong> aplica a fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> com premissas conservadoras (seguro social de 15% da renda, sem outras deduções) e uma margem de segurança adicional. A <strong>simulação detalhada</strong> usa os valores reais impressos no seu gensen chōshūhyō em vez de estimar o seguro social, o que dá um resultado mais preciso — vale a pena usá-la se você já tem o documento em mãos. Em ambas, o resultado sai arredondado para baixo, de propósito, para você nunca passar do limite real. Fontes oficiais: <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> (Furusato Nozei e imposto residencial) e <a href="https://www.nta.go.jp/" target="_blank" rel="noopener nofollow">NTA</a> (imposto de renda).</p>
     </div>
 
     <div class="conteudo">
@@ -638,7 +689,15 @@
     </div>
 
     <div class="author-box">
-      <div class="avatar">L</div>
+      <svg class="avatar avatar-ilustrado" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração do rosto de Lian Alves">
+        <circle cx="32" cy="32" r="32" fill="#0f57a8"/>
+        <path d="M32 15c-8.2 0-13.4 5-13.4 12.2 0 3 .5 5.4 1.2 7.4l-2.6 1.1c-.7.3-.9 1.2-.4 1.8l3.6 4.2-1.1 4.1c-.2.8.4 1.5 1.2 1.4l4.6-.5V49h13.8v-2.3l4.6.5c.8.1 1.4-.6 1.2-1.4l-1.1-4.1 3.6-4.2c.5-.6.3-1.5-.4-1.8l-2.6-1.1c.7-2 1.2-4.4 1.2-7.4C45.4 20 40.2 15 32 15z" fill="#ffffff"/>
+        <path d="M18.6 27.2C18.6 20 23.8 15 32 15s13.4 5 13.4 12.2c0 1.6-.2 3-.4 4.3-1.3-3.6-3.5-6.1-6.6-7.3-3.5-1.4-8.4-1.1-11.9.9-3 1.7-5 4.4-5.6 7.6-.2-1.5-.3-3-.3-5.5z" fill="#141414"/>
+        <path d="M40.5 16.5c3.6-1.6 7.2-1.3 8.2 1 1 2.3-1 5.1-4.6 6.7-1.3.6-2.6.9-3.8 1l-1.9-7.2c.7-.6 1.4-1.1 2.1-1.5z" fill="#8b5cf6"/>
+        <circle cx="26.4" cy="33" r="1.7" fill="#141414"/>
+        <circle cx="37.6" cy="33" r="1.7" fill="#141414"/>
+        <path d="M28.8 39.4c1.9 1.3 4.5 1.3 6.4 0" stroke="#141414" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      </svg>
       <div class="meta">
         <p><strong>Escrito por Lian Alves</strong>, criadora do Finanças no Japão e do Calcula Japão. <a href="sobre.html">Conheça a metodologia e a experiência por trás deste conteúdo →</a></p>
       </div>
@@ -761,7 +820,7 @@ function calcularLimite(){
   if (renda <= 0) return;
 
   // renda tributavel apos deducao de trabalho e seguro social (15%, mesma premissa
-  // usada pelo simulador simplificado do Satofull, supervisionado por contador)
+  // premissa conservadora padrao para assalariado)
   var rendaLiquidaTrabalho = renda - deducaoTrabalho(renda);
   var seguroSocial = renda * 0.15;
 
@@ -784,7 +843,7 @@ function calcularLimite(){
   var limite = (shotokuwari * 0.20) / (0.90 - taxa * 1.021) + 2000;
 
   // margem de seguranca de 10%, calibrada para ficar alinhada (ou abaixo) da
-  // tabela de referencia do Satofull, revisada por contador licenciado
+  // margem conservadora, para o resultado nunca passar do limite real
   limite = limite * 0.90;
 
   // arredonda pra baixo no milhar, por seguranca
@@ -847,7 +906,7 @@ function mostrarLimite(limite, modo){
     if (modo === 'detalhada') {
       nota.innerHTML = 'Calculado a partir dos valores reais do seu gensen chōshūhyō (com margem de segurança de 5%, arredondado para baixo). Mais preciso que a simulação simples, porque não depende de estimar seu seguro social. Ainda não considera financiamento imobiliário nem despesas médicas altas.';
     } else {
-      nota.innerHTML = 'Estimativa conservadora (com margem de segurança e arredondada para baixo), calibrada para ficar alinhada à tabela de referência do <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">Satofull</a>, revisada por contador japonês. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.';
+      nota.innerHTML = 'Estimativa conservadora (com margem de segurança e arredondada para baixo), baseada na fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a>. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.';
     }
   }
 

@@ -572,3 +572,6 @@ p { margin: 0 0 1em; }
   border: 1px dashed var(--color-border);
   border-radius: var(--radius);
 }
+
+/* avatar ilustrado (substitui a inicial "L") */
+.author-box .avatar-ilustrado { border-radius: 50%; background: none; padding: 0; }
