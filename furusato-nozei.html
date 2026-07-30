@@ -100,6 +100,11 @@
       "@type": "Question",
       "name": "O que acontece se eu doar acima do meu limite?",
       "acceptedAnswer": { "@type": "Answer", "text": "O valor que passar do limite vira doação de verdade: não retorna como desconto. Por isso é essencial calcular o limite antes — e por isso esta calculadora arredonda o resultado para baixo." }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre a simulação simples e a detalhada?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A simulação simples pede só sua renda anual e estima o seguro social em 15%. A simulação detalhada usa os valores reais impressos no seu gensen chōshūhyō (給与所得控除後の金額 e 所得控除の額の合計額), o que elimina a estimativa e dá um resultado mais preciso. Use a detalhada se você já tem o documento em mãos." }
     }
   ]
 }
@@ -163,6 +168,24 @@
 .momento p{margin:0;font-size:.95rem;color:var(--color-text-muted);line-height:1.6;}
 
 .faq-item .resposta{padding:0 0 16px;color:var(--color-text-muted);font-size:.93rem;margin:0;}
+
+.abas-calc{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;border-bottom:1px solid var(--color-border);}
+.aba{background:transparent;border:none;border-bottom:3px solid transparent;padding:10px 4px 12px;font-weight:700;font-size:.92rem;color:var(--color-text-muted);cursor:pointer;margin-right:14px;}
+.aba.ativa{color:var(--color-primary);border-bottom-color:var(--color-accent);}
+.painel-calc{display:none;}
+.painel-calc.ativo{display:block;}
+
+.guia-gensen{background:var(--color-bg);border:1px solid var(--color-border);border-radius:10px;padding:16px;margin:0 0 20px;}
+.guia-gensen p.legenda{margin:10px 0 0;font-size:.85rem;color:var(--color-text-muted);line-height:1.5;}
+.guia-gensen svg{width:100%;height:auto;display:block;}
+
+.compartilhar-pagina{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);}
+.compartilhar-pagina p{font-size:.8rem;color:#9fb4c2;margin:0 0 8px;}
+.botoes-redes{display:flex;gap:8px;flex-wrap:wrap;}
+.botao-rede{display:inline-flex;align-items:center;gap:6px;padding:9px 13px;border-radius:8px;font-weight:700;font-size:.84rem;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:#eaf3f0;background:rgba(255,255,255,.06);}
+.botao-rede:hover{background:rgba(255,255,255,.12);text-decoration:none;}
+.botao-rede.facebook{color:#8fb8ff;}
+.botao-rede.x{color:#d7dee2;}
 </style>
 </head>
 <body>
@@ -226,43 +249,126 @@
     </div>
 
     <div class="calculator">
-      <div class="field">
-        <label for="renda-anual">Sua renda bruta anual (¥)</label>
-        <input type="number" id="renda-anual" min="0" step="10000" placeholder="Ex: 3500000" inputmode="numeric">
-        <p class="hint">Salário + horas extras + bônus, antes dos descontos. Está no seu gensen chōshūhyō (源泉徴収票) como 支払金額. Se não tiver, some seus holerites do ano.</p>
+      <div class="abas-calc">
+        <button type="button" class="aba ativa" data-aba="simples">Simulação simples</button>
+        <button type="button" class="aba" data-aba="detalhada">Simulação detalhada (com gensen chōshūhyō)</button>
       </div>
 
-      <div class="field">
-        <label>Cônjuge sem renda (ou com renda baixa) como dependente?</label>
-        <div class="opcoes" id="opcoes-conjuge">
-          <button type="button" class="opcao ativa" data-valor="0">Não</button>
-          <button type="button" class="opcao" data-valor="1">Sim</button>
+      <div class="painel-calc ativo" id="painel-simples">
+        <div class="field">
+          <label for="renda-anual">Sua renda bruta anual (¥)</label>
+          <input type="number" id="renda-anual" min="0" step="10000" placeholder="Ex: 3500000" inputmode="numeric">
+          <p class="hint">Salário + horas extras + bônus, antes dos descontos. Está no seu gensen chōshūhyō (源泉徴収票) como 支払金額. Se não tiver, some seus holerites do ano.</p>
         </div>
-        <p class="hint">Marque "sim" se seu cônjuge ganha menos de ¥1.030.000/ano e está declarado como seu dependente.</p>
+
+        <div class="field">
+          <label>Cônjuge sem renda (ou com renda baixa) como dependente?</label>
+          <div class="opcoes" id="opcoes-conjuge">
+            <button type="button" class="opcao ativa" data-valor="0">Não</button>
+            <button type="button" class="opcao" data-valor="1">Sim</button>
+          </div>
+          <p class="hint">Marque "sim" se seu cônjuge ganha menos de ¥1.030.000/ano e está declarado como seu dependente.</p>
+        </div>
+
+        <div class="field">
+          <label for="dependentes">Outros dependentes declarados (16 anos ou mais)</label>
+          <select id="dependentes">
+            <option value="0">Nenhum</option>
+            <option value="1">1 dependente</option>
+            <option value="2">2 dependentes</option>
+            <option value="3">3 dependentes</option>
+            <option value="4">4 dependentes</option>
+          </select>
+          <p class="hint">Filhos com menos de 16 anos não entram nessa conta. Dependentes no Brasil contam se estiverem declarados no seu nenmatsu chōsei.</p>
+        </div>
+
+        <button class="btn btn-full" onclick="calcularLimite()">Calcular meu limite</button>
       </div>
 
-      <div class="field">
-        <label for="dependentes">Outros dependentes declarados (16 anos ou mais)</label>
-        <select id="dependentes">
-          <option value="0">Nenhum</option>
-          <option value="1">1 dependente</option>
-          <option value="2">2 dependentes</option>
-          <option value="3">3 dependentes</option>
-          <option value="4">4 dependentes</option>
-        </select>
-        <p class="hint">Filhos com menos de 16 anos não entram nessa conta. Dependentes no Brasil contam se estiverem declarados no seu nenmatsu chōsei.</p>
-      </div>
+      <div class="painel-calc" id="painel-detalhada">
+        <div class="guia-gensen">
+          <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama do gensen chōshūhyō mostrando onde encontrar os campos usados na simulação detalhada">
+            <rect x="1" y="1" width="638" height="208" rx="8" fill="#ffffff" stroke="#e1e6ea"/>
+            <text x="16" y="24" font-family="sans-serif" font-size="13" font-weight="700" fill="#1c2b33">源泉徴収票 (gensen chōshūhyō) — parte de cima</text>
+            <line x1="16" y1="34" x2="624" y2="34" stroke="#e1e6ea"/>
 
-      <button class="btn btn-full" onclick="calcularLimite()">Calcular meu limite</button>
+            <rect x="16" y="46" width="185" height="52" rx="6" fill="#f7f9fb" stroke="#e1e6ea"/>
+            <text x="24" y="62" font-family="sans-serif" font-size="10" fill="#5a6b74">支払金額</text>
+            <text x="24" y="82" font-family="sans-serif" font-size="13" font-weight="700" fill="#1c2b33">¥3.500.000</text>
+
+            <rect x="211" y="46" width="200" height="52" rx="6" fill="#e3f7ec" stroke="#1f9d6b" stroke-width="2"/>
+            <text x="219" y="62" font-family="sans-serif" font-size="10" fill="#167a53">給与所得控除後の金額</text>
+            <text x="219" y="82" font-family="sans-serif" font-size="13" font-weight="700" fill="#0b3d59">¥2.370.000</text>
+
+            <rect x="421" y="46" width="200" height="52" rx="6" fill="#e3f7ec" stroke="#1f9d6b" stroke-width="2"/>
+            <text x="429" y="62" font-family="sans-serif" font-size="10" fill="#167a53">所得控除の額の合計額</text>
+            <text x="429" y="82" font-family="sans-serif" font-size="13" font-weight="700" fill="#0b3d59">¥1.005.000</text>
+
+            <line x1="311" y1="98" x2="311" y2="118" stroke="#1f9d6b" stroke-width="2"/>
+            <polygon points="311,124 306,116 316,116" fill="#1f9d6b"/>
+            <text x="311" y="142" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#0b3d59" text-anchor="middle">① Renda líquida do trabalho</text>
+            <text x="311" y="158" font-family="sans-serif" font-size="10" fill="#5a6b74" text-anchor="middle">campo 1 da calculadora abaixo</text>
+
+            <line x1="521" y1="98" x2="521" y2="118" stroke="#1f9d6b" stroke-width="2"/>
+            <polygon points="521,124 516,116 526,116" fill="#1f9d6b"/>
+            <text x="521" y="142" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#0b3d59" text-anchor="middle">② Suas deduções totais</text>
+            <text x="521" y="158" font-family="sans-serif" font-size="10" fill="#5a6b74" text-anchor="middle">campo 2 da calculadora abaixo</text>
+
+            <text x="16" y="188" font-family="sans-serif" font-size="10" fill="#5a6b74">支払金額 não entra na conta diretamente — é só pra você conferir que pegou o gensen certo.</text>
+          </svg>
+          <p class="legenda">Valores de exemplo. No seu gensen chōshūhyō de verdade, os campos ① e ② têm os mesmos nomes em japonês — copie os números exatamente como estão impressos.</p>
+        </div>
+
+        <div class="field">
+          <label for="renda-liquida-detalhada">① Renda líquida do trabalho (¥) — 給与所得控除後の金額</label>
+          <input type="number" id="renda-liquida-detalhada" min="0" step="1000" placeholder="Ex: 2370000" inputmode="numeric">
+          <p class="hint">É a renda depois do desconto padrão de trabalho, já calculada pela sua empresa e impressa no gensen chōshūhyō.</p>
+        </div>
+
+        <div class="field">
+          <label for="deducoes-detalhada">② Suas deduções totais (¥) — 所得控除の額の合計額</label>
+          <input type="number" id="deducoes-detalhada" min="0" step="1000" placeholder="Ex: 1005000" inputmode="numeric">
+          <p class="hint">Soma de seguro social, dedução básica, cônjuge, dependentes e outras deduções — já somada pela empresa e impressa no gensen chōshūhyō.</p>
+        </div>
+
+        <div class="field">
+          <label>Cônjuge sem renda (ou com renda baixa) como dependente?</label>
+          <div class="opcoes" id="opcoes-conjuge-detalhada">
+            <button type="button" class="opcao ativa" data-valor="0">Não</button>
+            <button type="button" class="opcao" data-valor="1">Sim</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="dependentes-detalhada">Outros dependentes declarados (16 anos ou mais)</label>
+          <select id="dependentes-detalhada">
+            <option value="0">Nenhum</option>
+            <option value="1">1 dependente</option>
+            <option value="2">2 dependentes</option>
+            <option value="3">3 dependentes</option>
+            <option value="4">4 dependentes</option>
+          </select>
+        </div>
+
+        <button class="btn btn-full" onclick="calcularLimiteDetalhado()">Calcular meu limite (detalhado)</button>
+        <p class="hint" style="margin-top:10px;">Não considera financiamento imobiliário (jūtaku loan). Se você tem, o limite real pode ser diferente — consulte um contador.</p>
+      </div>
 
       <div class="leitor" id="resultado">
         <p class="rotulo">Seu limite seguro de doação no ano</p>
         <p class="valor">¥<span id="valor-limite">0</span></p>
         <p class="custo-real">Doando até esse valor, seu custo real é de <strong>¥2.000</strong> — todo o resto volta como desconto no imposto do ano que vem. Os presentes são o seu lucro.</p>
-        <p class="nota">Estimativa conservadora (com margem de segurança e arredondada para baixo), calibrada para ficar alinhada à tabela de referência do <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">Satofull</a>, revisada por contador japonês. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.</p>
+        <p class="nota" id="nota-metodologia">Estimativa conservadora (com margem de segurança e arredondada para baixo), calibrada para ficar alinhada à tabela de referência do <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">Satofull</a>, revisada por contador japonês. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.</p>
         <div class="leitor-acoes">
           <button type="button" class="botao-whatsapp" onclick="compartilharResultado()"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>Compartilhar</button>
           <button type="button" class="botao-copiar" onclick="copiarResultado()">Copiar</button>
+        </div>
+        <div class="compartilhar-pagina">
+          <p>Gostou da calculadora? Compartilha com quem também mora no Japão:</p>
+          <div class="botoes-redes">
+            <a class="botao-rede facebook" id="link-facebook" href="#" target="_blank" rel="noopener">Facebook</a>
+            <a class="botao-rede x" id="link-x" href="#" target="_blank" rel="noopener">X</a>
+          </div>
         </div>
       </div>
     </div>
@@ -320,7 +426,7 @@
       </div>
 
       <h2>Como o limite é calculado</h2>
-      <p>O limite (jōgen-gaku) depende do seu imposto residencial, que por sua vez depende da renda anual, dos descontos de seguro social e dos seus dependentes. A fórmula oficial usa a parcela proporcional do jūminzei e a sua alíquota de imposto de renda. Esta calculadora aplica a fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> com premissas conservadoras (seguro social de 15% da renda, sem outras deduções) e uma margem de segurança adicional — calibrada para ficar alinhada à <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">tabela de referência do Satofull</a>, revisada por contador japonês licenciado. O resultado sai arredondado para baixo, de propósito, para você nunca passar do limite real. Fontes oficiais: <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> (Furusato Nozei e imposto residencial) e <a href="https://www.nta.go.jp/" target="_blank" rel="noopener nofollow">NTA</a> (imposto de renda).</p>
+      <p>O limite (jōgen-gaku) depende do seu imposto residencial, que por sua vez depende da renda anual, dos descontos de seguro social e dos seus dependentes. A fórmula oficial usa a parcela proporcional do jūminzei e a sua alíquota de imposto de renda. A <strong>simulação simples</strong> aplica a fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> com premissas conservadoras (seguro social de 15% da renda, sem outras deduções) e uma margem de segurança adicional — calibrada para ficar alinhada à <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">tabela de referência do Satofull</a>, revisada por contador japonês licenciado. A <strong>simulação detalhada</strong> usa os valores reais impressos no seu gensen chōshūhyō em vez de estimar o seguro social, o que dá um resultado mais preciso — vale a pena usá-la se você já tem o documento em mãos. Em ambas, o resultado sai arredondado para baixo, de propósito, para você nunca passar do limite real. Fontes oficiais: <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> (Furusato Nozei e imposto residencial) e <a href="https://www.nta.go.jp/" target="_blank" rel="noopener nofollow">NTA</a> (imposto de renda).</p>
     </div>
 
     <div class="conteudo">
@@ -462,6 +568,10 @@
         <summary>Preciso saber japonês para doar?</summary>
         <p class="resposta">Os sites são em japonês, mas funcionam como qualquer loja online — com o tradutor do navegador dá pra completar tudo. O formulário One-Stop pede basicamente nome, endereço, My Number e assinatura.</p>
       </details>
+      <details class="faq-item">
+        <summary>Qual a diferença entre a simulação simples e a detalhada?</summary>
+        <p class="resposta">A simples pede só sua renda anual e estima o seguro social em 15%. A detalhada usa os valores reais impressos no seu gensen chōshūhyō, sem estimar nada — resultado mais preciso. Use a detalhada se já tiver o documento em mãos (chega em dezembro/janeiro).</p>
+      </details>
     </div>
 
     <div class="author-box">
@@ -512,7 +622,13 @@ var textoResultadoAtual = '';
 function definirTextoResultado(t){ textoResultadoAtual = t; }
 function compartilharResultado(){
   if (!textoResultadoAtual) return;
-  window.open('https://wa.me/?text=' + encodeURIComponent(textoResultadoAtual), '_blank');
+  // no celular, o Web Share API abre o menu nativo do sistema (WhatsApp,
+  // Instagram, Telegram, etc.) — no desktop cai pro link direto do WhatsApp
+  if (navigator.share) {
+    navigator.share({ text: textoResultadoAtual, url: window.location.href.split('?')[0].split('#')[0] }).catch(function(){});
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(textoResultadoAtual), '_blank');
+  }
 }
 function copiarResultado(){
   if (!textoResultadoAtual) return;
@@ -529,11 +645,25 @@ function copiarResultado(){
   }
 }
 
-// botoes de opcao (conjuge)
-document.querySelectorAll('#opcoes-conjuge .opcao').forEach(function(b){
-  b.addEventListener('click', function(){
-    document.querySelectorAll('#opcoes-conjuge .opcao').forEach(function(x){ x.classList.remove('ativa'); });
-    b.classList.add('ativa');
+// botoes de opcao (conjuge) — versao simples e versao detalhada
+['#opcoes-conjuge', '#opcoes-conjuge-detalhada'].forEach(function(seletor){
+  document.querySelectorAll(seletor + ' .opcao').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll(seletor + ' .opcao').forEach(function(x){ x.classList.remove('ativa'); });
+      b.classList.add('ativa');
+    });
+  });
+});
+
+// abas da calculadora (simples / detalhada)
+document.querySelectorAll('.aba').forEach(function(aba){
+  aba.addEventListener('click', function(){
+    document.querySelectorAll('.aba').forEach(function(a){ a.classList.remove('ativa'); });
+    aba.classList.add('ativa');
+    var alvo = aba.getAttribute('data-aba');
+    document.querySelectorAll('.painel-calc').forEach(function(p){ p.classList.remove('ativo'); });
+    document.getElementById('painel-' + alvo).classList.add('ativo');
+    document.getElementById('resultado').classList.remove('visivel');
   });
 });
 
@@ -594,14 +724,67 @@ function calcularLimite(){
 
   // arredonda pra baixo no milhar, por seguranca
   limite = Math.floor(limite / 1000) * 1000;
-  mostrarLimite(limite);
+  mostrarLimite(limite, 'simples');
 }
 
-function mostrarLimite(limite){
+// simulacao detalhada: usa os valores reais do gensen choshuhyo
+// (given so soma-se 50.000 por "caixa" de deducao pessoal, ja que o kiso kojo,
+// o haigusha kojo e o fuyo kojo do imposto residencial sao cada um 50.000 menores
+// que os equivalentes do imposto de renda usados no calculo do gensen)
+function calcularLimiteDetalhado(){
+  var rendaLiquidaTrabalho = parseFloat(document.getElementById('renda-liquida-detalhada').value) || 0;
+  var deducoesTotais = parseFloat(document.getElementById('deducoes-detalhada').value) || 0;
+  var temConjuge = document.querySelector('#opcoes-conjuge-detalhada .opcao.ativa').getAttribute('data-valor') === '1';
+  var deps = parseInt(document.getElementById('dependentes-detalhada').value, 10) || 0;
+
+  if (rendaLiquidaTrabalho <= 0) return;
+
+  var baseIR = Math.max(rendaLiquidaTrabalho - deducoesTotais, 0);
+  var baseResidencial = baseIR + 50000 * (1 + (temConjuge ? 1 : 0) + deps);
+  var shotokuwari = baseResidencial * 0.10;
+
+  if (shotokuwari <= 0) {
+    mostrarLimite(0, 'detalhada');
+    return;
+  }
+
+  var taxa = aliquotaIR(baseIR);
+  var limite = (shotokuwari * 0.20) / (0.90 - taxa * 1.021) + 2000;
+
+  // margem de seguranca menor (5%) que a simulacao simples, porque aqui os
+  // valores de renda e deducao ja sao os reais do gensen, nao estimativas
+  limite = limite * 0.95;
+  limite = Math.floor(limite / 1000) * 1000;
+  mostrarLimite(limite, 'detalhada');
+}
+
+var textoCompartilhamentoPagina = 'Descobri quanto posso doar via Furusato Nozei sem sair no prejuízo — calculadora grátis em português pra quem mora no Japão:';
+
+function atualizarLinksRedes(){
+  var url = window.location.href.split('?')[0].split('#')[0];
+  var texto = encodeURIComponent(textoCompartilhamentoPagina);
+  var urlEnc = encodeURIComponent(url);
+  var fb = document.getElementById('link-facebook');
+  var x = document.getElementById('link-x');
+  if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + urlEnc;
+  if (x) x.href = 'https://twitter.com/intent/tweet?text=' + texto + '&url=' + urlEnc;
+}
+atualizarLinksRedes();
+
+function mostrarLimite(limite, modo){
   var painel = document.getElementById('resultado');
   painel.classList.add('visivel');
   document.getElementById('valor-limite').textContent = formatoJP(limite);
   painel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  var nota = document.getElementById('nota-metodologia');
+  if (nota) {
+    if (modo === 'detalhada') {
+      nota.innerHTML = 'Calculado a partir dos valores reais do seu gensen chōshūhyō (com margem de segurança de 5%, arredondado para baixo). Mais preciso que a simulação simples, porque não depende de estimar seu seguro social. Ainda não considera financiamento imobiliário nem despesas médicas altas.';
+    } else {
+      nota.innerHTML = 'Estimativa conservadora (com margem de segurança e arredondada para baixo), calibrada para ficar alinhada à tabela de referência do <a href="https://www.satofull.jp/static/calculation01.php" target="_blank" rel="noopener nofollow">Satofull</a>, revisada por contador japonês. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.';
+    }
+  }
 
   if (limite > 0) {
     definirTextoResultado(
@@ -614,10 +797,17 @@ function mostrarLimite(limite){
   }
 }
 
-// Enter calcula
+// Enter calcula (usa a funcao da aba ativa no momento)
 document.querySelectorAll('.calculator input, .calculator select').forEach(function(c){
   c.addEventListener('keydown', function(e){
-    if (e.key === 'Enter') { e.preventDefault(); calcularLimite(); }
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    var abaAtiva = document.querySelector('.aba.ativa');
+    if (abaAtiva && abaAtiva.getAttribute('data-aba') === 'detalhada') {
+      calcularLimiteDetalhado();
+    } else {
+      calcularLimite();
+    }
   });
 });
 </script>
