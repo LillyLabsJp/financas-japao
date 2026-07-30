@@ -111,6 +111,30 @@
 .cta-amazon .btn{background:var(--color-accent);color:#fff;font-weight:700;}
 
 .faq-item .resposta{padding:0 0 16px;color:var(--color-text-muted);font-size:.93rem;margin:0;}
+
+.hero-amazon{background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-primary-dark) 100%);border-radius:14px;padding:34px 28px;margin:22px 0 30px;text-align:center;color:#fff;}
+.hero-amazon .emoji-caixa{font-size:2.6rem;line-height:1;margin-bottom:10px;}
+.hero-amazon h2{color:#fff;margin:0 0 8px;font-size:1.5rem;}
+.hero-amazon p{color:#cfe3dd;margin:0;font-size:.98rem;max-width:560px;margin-left:auto;margin-right:auto;}
+
+.motivos-titulo{text-align:center;margin:34px 0 6px;}
+.motivos{display:grid;grid-template-columns:1fr;gap:18px;margin:22px 0 30px;}
+@media (min-width:720px){.motivos{grid-template-columns:1fr 1fr 1fr;}}
+.motivo{text-align:center;padding:8px 10px;}
+.motivo .icone{width:76px;height:76px;border-radius:50%;background:#e3f7ec;border:2px solid var(--color-accent);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 14px;}
+.motivo h3{font-size:1.02rem;margin:0 0 8px;color:var(--color-primary);}
+.motivo p{font-size:.88rem;color:var(--color-text-muted);margin:0;line-height:1.5;}
+
+.passos-banner{background:var(--color-accent);color:#fff;text-align:center;font-weight:800;font-size:1.15rem;padding:12px 16px;border-radius:8px;margin:30px 0 18px;}
+
+.exemplos-titulo{margin:34px 0 6px;}
+.exemplos-reais{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 8px;}
+@media (min-width:640px){.exemplos-reais{grid-template-columns:1fr 1fr 1fr;}}
+.exemplo-real{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:14px 12px;text-align:center;}
+.exemplo-real .emoji{font-size:1.7rem;display:block;margin-bottom:6px;}
+.exemplo-real .nome{display:block;font-size:.82rem;color:var(--color-text);font-weight:600;line-height:1.3;margin-bottom:4px;}
+.exemplo-real .preco{display:block;font-size:.92rem;color:var(--color-accent-dark);font-weight:800;}
+.exemplos-nota{font-size:.82rem;color:var(--color-text-muted);margin-top:10px;}
 </style>
 </head>
 <body>
@@ -137,30 +161,47 @@
     <span class="updated-badge">🕒 Guia revisado em 30 de julho de 2026, com base no guia oficial da Amazon</span>
     <p class="categoria-etiqueta">Impostos</p>
     <h1>Furusato Nozei pela Amazon: guia completo em português</h1>
-    <p class="lead">A Amazon Japão tem uma seção própria de Furusato Nozei, integrada com a conta que você já usa — mas o guia oficial só existe em japonês e inglês. Aqui está tudo explicado em português, sem juridiquês.</p>
+    <p class="lead">A Amazon Japão tem uma seção própria de Furusato Nozei, integrada com a conta que você já usa — mas o guia oficial só existe em japonês e inglês. Aqui está tudo explicado em português, sem juridiquês, baseado no guia oficial da própria Amazon.</p>
+
+    <div class="hero-amazon">
+      <div class="emoji-caixa">📦🦀🍇🥩</div>
+      <h2>Como usar a Amazon Furusato Nozei</h2>
+      <p>Mesma conta, mesmo cartão, mesmo endereço que você já usa pra comprar qualquer coisa — só que parte do que você gasta vira imposto que você já ia pagar de qualquer jeito.</p>
+    </div>
+
+    <h2 class="motivos-titulo">3 motivos pra escolher a Amazon Furusato</h2>
+    <div class="motivos">
+      <div class="motivo">
+        <div class="icone">🚚</div>
+        <h3>Presente chega rápido</h3>
+        <p>Muitos produtos chegam já no dia seguinte — bom pra item do dia a dia ou pra quando você deixou pra última hora antes do fim do ano.</p>
+      </div>
+      <div class="motivo">
+        <div class="icone">🏷️</div>
+        <h3>Preço especial só na Amazon</h3>
+        <p>Algumas prefeituras oferecem valores de doação exclusivos pela Amazon — o mesmo presente pode sair mais em conta do que em outro site.</p>
+      </div>
+      <div class="motivo">
+        <div class="icone">🎁</div>
+        <h3>Presentes exclusivos</h3>
+        <p>Tem produto de cidade pequena que só aparece na Amazon — de pacote família a porção individual, direto de quem produz.</p>
+      </div>
+    </div>
 
     <div class="vantagens">
       <div class="vantagem">
-        <span class="titulo">🛒 Você já sabe usar</span>
-        <p>É a mesma conta, o mesmo cartão cadastrado e o mesmo endereço da Amazon que você já usa pra comprar qualquer coisa. Não precisa criar cadastro em site novo.</p>
-      </div>
-      <div class="vantagem">
-        <span class="titulo">📦 Endereço flexível</span>
+        <span class="titulo">📮 Endereço flexível</span>
         <p>A Amazon confirma que o presente pode ir pra um endereço diferente do seu, e o destinatário pode ser outra pessoa — sem burocracia extra.</p>
       </div>
       <div class="vantagem">
         <span class="titulo">🧾 Certificado digital</span>
         <p>Pra doações a partir de julho de 2025, a Amazon gera um certificado de dedução eletrônico único — evita juntar comprovante de papel de cada prefeitura pra fazer a declaração.</p>
       </div>
-      <div class="vantagem">
-        <span class="titulo">🔍 Aparece na busca normal</span>
-        <p>Produtos participantes mostram um ícone de "Hometown Tax Program" na página — você pode esbarrar neles procurando qualquer outra coisa na Amazon.</p>
-      </div>
     </div>
 
     <div class="callout">
       <h4>O valor doado e o desconto são iguais em qualquer site</h4>
-      <p>Isso é regra do governo japonês, não muda pela plataforma. A vantagem da Amazon é só conveniência — não é mais barato nem mais caro doar por ela em vez de Rakuten, Satofull ou Furusato Choice.</p>
+      <p>Isso é regra do governo japonês, não muda pela plataforma. As vantagens da Amazon são conveniência e, às vezes, preço — mas o desconto no imposto é idêntico ao de doar por Rakuten, Satofull ou Furusato Choice.</p>
     </div>
 
     <div class="conteudo">
@@ -168,14 +209,28 @@
       <p>Assim como em qualquer site de Furusato Nozei, existe um limite anual de doação baseado na sua renda e situação familiar — passar dele significa perder dinheiro de verdade. Se ainda não calculou o seu, use a <a href="furusato-nozei.html">calculadora de limite do Finanças Japão</a> antes de continuar.</p>
     </div>
 
+    <div class="passos-banner">Furusato Nozei na Amazon: 3 passos</div>
     <div class="conteudo">
-      <h2>Passo a passo na Amazon</h2>
       <div class="passos">
         <div class="passo"><span class="num">1</span><p><strong>Encontre a seção Amazon Furusato</strong> ou procure o ícone "Hometown Tax Program" (ふるさと納税) perto do preço de um produto elegível.</p></div>
         <div class="passo"><span class="num">2</span><p><strong>Escolha o presente e finalize a compra</strong> normalmente, com o cartão e endereço que já estão salvos na sua conta.</p></div>
         <div class="passo"><span class="num">3</span><p><strong>Resolva o One-Stop (ou a declaração)</strong> depois que o presente chegar — veja como logo abaixo.</p></div>
       </div>
       <p>Detalhe importante: doações pra sua própria prefeitura ou província de residência não dão direito a presente — regra do governo, vale pra qualquer site.</p>
+    </div>
+
+    <div class="conteudo">
+      <h2 class="exemplos-titulo">Exemplos reais de presentes na Amazon Furusato</h2>
+      <p>Pra você ter uma ideia do que tem disponível — estes são exemplos reais do ranking semanal da Amazon Furusato (preços e disponibilidade mudam o tempo todo, confira sempre o valor atual na página do produto):</p>
+      <div class="exemplos-reais">
+        <div class="exemplo-real"><span class="emoji">🍚</span><span class="nome">Arroz Koshihikari, 5 kg — Ibaraki</span><span class="preco">¥8.000</span></div>
+        <div class="exemplo-real"><span class="emoji">🐟</span><span class="nome">Filé de salmão, ~2,4 kg — Chiba</span><span class="preco">¥12.000</span></div>
+        <div class="exemplo-real"><span class="emoji">🥩</span><span class="nome">Hambúrguer de wagyu, 12 un. — Saga</span><span class="preco">¥12.000</span></div>
+        <div class="exemplo-real"><span class="emoji">🧻</span><span class="nome">Papel higiênico, caixa fechada</span><span class="preco">¥20.500</span></div>
+        <div class="exemplo-real"><span class="emoji">🤧</span><span class="nome">Lenço de papel, 60 caixas</span><span class="preco">¥14.000</span></div>
+        <div class="exemplo-real"><span class="emoji">🍙</span><span class="nome">Arroz branco, 5 kg — várias marcas</span><span class="preco">¥7.500</span></div>
+      </div>
+      <p class="exemplos-nota">Itens do dia a dia (arroz, papel higiênico, lenço de papel) costumam ser a escolha mais prática pra quem quer aproveitar o limite sem desperdício — você ia comprar de qualquer jeito.</p>
     </div>
 
     <div class="conteudo">
