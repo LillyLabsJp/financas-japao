@@ -112,22 +112,46 @@
 
 .faq-item .resposta{padding:0 0 16px;color:var(--color-text-muted);font-size:.93rem;margin:0;}
 
-.hero-amazon{background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-primary-dark) 100%);border-radius:14px;padding:34px 28px;margin:22px 0 30px;text-align:center;color:#fff;}
-.hero-amazon .hero-ilustracao{width:230px;max-width:75%;height:auto;margin:0 auto 14px;display:block;}
-.hero-amazon h2{color:#fff;margin:0 0 8px;font-size:1.5rem;}
-.hero-amazon p{color:#cfe3dd;margin:0;font-size:.98rem;max-width:560px;margin-left:auto;margin-right:auto;}
+.hero-amazon{background:linear-gradient(135deg,#eaf6f0 0%,#eef4f8 100%);border:1px solid var(--color-border);border-radius:14px;padding:30px 28px;margin:22px 0 26px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.hero-amazon-conteudo{flex:1 1 280px;min-width:240px;}
+.hero-amazon .eyebrow{display:block;font-weight:700;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--color-accent-dark);margin-bottom:6px;}
+.hero-amazon h2{color:var(--color-primary-dark);margin:0 0 10px;font-size:1.7rem;line-height:1.2;}
+.hero-amazon h2 span{color:var(--color-accent-dark);}
+.hero-amazon p{color:var(--color-text-muted);margin:0;font-size:.98rem;max-width:420px;}
+.hero-amazon .hero-ilustracao{flex:0 0 220px;width:220px;max-width:100%;height:auto;}
+@media (max-width:640px){.hero-amazon{flex-direction:column;text-align:center;}.hero-amazon p{margin:0 auto;}}
 
-.motivos-titulo{text-align:center;margin:34px 0 6px;}
-.motivos{display:grid;grid-template-columns:1fr;gap:18px;margin:22px 0 30px;}
+.indice{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:16px 22px;margin:0 0 32px;font-size:.9rem;}
+.indice strong{color:var(--color-primary-dark);display:block;margin-bottom:8px;}
+.indice ul{margin:0;padding-left:18px;columns:2;column-gap:24px;}
+.indice li{margin-bottom:6px;}
+@media (max-width:560px){.indice ul{columns:1;}}
+
+.secao-banner{background:var(--color-accent);border-radius:10px;padding:22px 20px;margin:34px 0 26px;text-align:center;color:#fff;scroll-margin-top:20px;}
+.secao-banner-sub{margin:0 0 4px;font-size:.85rem;color:#e3f7ec;}
+.secao-banner h2{color:#fff;margin:0;font-size:1.35rem;}
+
+.motivos{display:grid;grid-template-columns:1fr;gap:24px;margin:0 0 30px;}
 @media (min-width:720px){.motivos{grid-template-columns:1fr 1fr 1fr;}}
-.motivo{text-align:center;padding:8px 10px;}
-.motivo .icone{width:76px;height:76px;border-radius:50%;background:#e3f7ec;border:2px solid var(--color-accent);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 14px;}
-.motivo h3{font-size:1.02rem;margin:0 0 8px;color:var(--color-primary);}
+.motivo{text-align:center;padding:0 10px;}
+.motivo .icone{width:104px;height:104px;border-radius:50%;background:#fff;border:2.5px solid var(--color-accent);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.motivo .icone svg{width:56px;height:56px;}
+.motivo h3{font-size:1.05rem;margin:0 0 8px;color:var(--color-accent-dark);font-weight:800;line-height:1.3;}
 .motivo p{font-size:.88rem;color:var(--color-text-muted);margin:0;line-height:1.5;}
 
-.passos-banner{background:var(--color-accent);color:#fff;text-align:center;font-weight:800;font-size:1.15rem;padding:12px 16px;border-radius:8px;margin:30px 0 18px;}
+.passos-steps{display:grid;grid-template-columns:1fr;gap:10px;align-items:start;margin:24px 0;}
+@media (min-width:760px){.passos-steps{grid-template-columns:1fr auto 1fr auto 1fr;}}
+.passo-step{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;overflow:hidden;}
+.step-header{background:var(--color-accent);color:#fff;font-weight:800;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;}
+.step-header span{font-size:1.2rem;margin-left:4px;}
+.step-body{padding:16px 16px 18px;text-align:center;}
+.step-body h3{font-size:.95rem;margin:0 0 10px;color:var(--color-primary-dark);}
+.step-ilustracao{width:64px;height:64px;margin:0 auto 10px;display:block;}
+.step-body p{font-size:.84rem;color:var(--color-text-muted);margin:0;line-height:1.5;}
+.passo-seta{display:none;}
+@media (min-width:760px){.passo-seta{display:flex;align-items:center;justify-content:center;color:var(--color-border);font-size:1.6rem;padding-top:44px;}}
 
-.exemplos-titulo{margin:34px 0 6px;}
+.exemplos-titulo{margin:34px 0 6px;scroll-margin-top:20px;}
 .exemplos-reais{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 8px;}
 @media (min-width:640px){.exemplos-reais{grid-template-columns:1fr 1fr 1fr;}}
 .exemplo-real{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:14px 12px;text-align:center;}
@@ -164,6 +188,11 @@
     <p class="lead">A Amazon Japão tem uma seção própria de Furusato Nozei, integrada com a conta que você já usa — mas o guia oficial só existe em japonês e inglês. Aqui está tudo explicado em português, sem juridiquês, baseado no guia oficial da própria Amazon.</p>
 
     <div class="hero-amazon">
+      <div class="hero-amazon-conteudo">
+        <span class="eyebrow">Como usar</span>
+        <h2>Amazon <span>Furusato Nozei</span></h2>
+        <p>Mesma conta, mesmo cartão, mesmo endereço que você já usa pra comprar qualquer coisa — só que parte do que você gasta vira imposto que você já ia pagar de qualquer jeito.</p>
+      </div>
       <svg class="hero-ilustracao" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de uma pessoa recebendo uma caixa de presente do Furusato Nozei, com um caranguejo, uvas e carne flutuando ao redor">
         <circle cx="62" cy="56" r="30" fill="#fbe0d9"/>
         <g transform="translate(62,56)">
@@ -209,24 +238,60 @@
         <rect x="196" y="122" width="8" height="38" fill="#1f9d6b"/>
         <path d="M188 122 Q192 108 200 122 Q208 108 212 122" fill="none" stroke="#1f9d6b" stroke-width="4" stroke-linecap="round"/>
       </svg>
-      <h2>Como usar a Amazon Furusato Nozei</h2>
-      <p>Mesma conta, mesmo cartão, mesmo endereço que você já usa pra comprar qualquer coisa — só que parte do que você gasta vira imposto que você já ia pagar de qualquer jeito.</p>
     </div>
 
-    <h2 class="motivos-titulo">3 motivos pra escolher a Amazon Furusato</h2>
+    <nav class="indice" aria-label="Índice da página">
+      <strong>Nesta página:</strong>
+      <ul>
+        <li><a href="#motivos">3 motivos pra escolher a Amazon</a></li>
+        <li><a href="#passos">Furusato Nozei na Amazon em 3 passos</a></li>
+        <li><a href="#exemplos">Exemplos reais de presentes</a></li>
+        <li><a href="#one-stop">Resolvendo o One-Stop</a></li>
+        <li><a href="#faq">Perguntas frequentes</a></li>
+      </ul>
+    </nav>
+
+    <div class="secao-banner" id="motivos">
+      <p class="secao-banner-sub">Furusato Nozei pela Amazon — tão fácil quanto suas compras do dia a dia</p>
+      <h2>3 motivos pra escolher a Amazon Furusato</h2>
+    </div>
     <div class="motivos">
       <div class="motivo">
-        <div class="icone">🚚</div>
+        <div class="icone">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="26" width="28" height="16" rx="2" fill="none" stroke="#0b3d59" stroke-width="2.4"/>
+            <path d="M34 30h10l8 8v4h-18z" fill="none" stroke="#0b3d59" stroke-width="2.4" stroke-linejoin="round"/>
+            <circle cx="18" cy="46" r="5" fill="#fff" stroke="#1f9d6b" stroke-width="2.4"/>
+            <circle cx="46" cy="46" r="5" fill="#fff" stroke="#1f9d6b" stroke-width="2.4"/>
+            <line x1="10" y1="34" x2="20" y2="34" stroke="#1f9d6b" stroke-width="2"/>
+          </svg>
+        </div>
         <h3>Presente chega rápido</h3>
         <p>Muitos produtos chegam já no dia seguinte — bom pra item do dia a dia ou pra quando você deixou pra última hora antes do fim do ano.</p>
       </div>
       <div class="motivo">
-        <div class="icone">🏷️</div>
+        <div class="icone">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 40 Q14 52 26 54 Q40 56 46 46 L52 36" fill="none" stroke="#0b3d59" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M14 40 Q10 34 16 30 Q22 26 26 32" fill="none" stroke="#0b3d59" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="34" cy="20" r="10" fill="#e3f7ec" stroke="#1f9d6b" stroke-width="2.4"/>
+            <text x="34" y="25" font-size="11" font-weight="700" fill="#167a53" text-anchor="middle" font-family="sans-serif">¥</text>
+          </svg>
+        </div>
         <h3>Preço especial só na Amazon</h3>
         <p>Algumas prefeituras oferecem valores de doação exclusivos pela Amazon — o mesmo presente pode sair mais em conta do que em outro site.</p>
       </div>
       <div class="motivo">
-        <div class="icone">🎁</div>
+        <div class="icone">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="14" y="26" width="36" height="26" rx="2" fill="none" stroke="#0b3d59" stroke-width="2.4"/>
+            <line x1="14" y1="34" x2="50" y2="34" stroke="#0b3d59" stroke-width="2"/>
+            <line x1="32" y1="26" x2="32" y2="52" stroke="#0b3d59" stroke-width="2"/>
+            <path d="M32 26 Q26 14 20 20 Q18 26 26 26 Z" fill="none" stroke="#1f9d6b" stroke-width="2.2"/>
+            <path d="M32 26 Q38 14 44 20 Q46 26 38 26 Z" fill="none" stroke="#1f9d6b" stroke-width="2.2"/>
+            <path d="M50 16 l2 4 4 1-3 3 1 4-4-2-4 2 1-4-3-3 4-1z" fill="#1f9d6b"/>
+          </svg>
+        </div>
         <h3>Presentes exclusivos</h3>
         <p>Tem produto de cidade pequena que só aparece na Amazon — de pacote família a porção individual, direto de quem produz.</p>
       </div>
@@ -253,18 +318,69 @@
       <p>Assim como em qualquer site de Furusato Nozei, existe um limite anual de doação baseado na sua renda e situação familiar — passar dele significa perder dinheiro de verdade. Se ainda não calculou o seu, use a <a href="furusato-nozei.html">calculadora de limite do Finanças Japão</a> antes de continuar.</p>
     </div>
 
-    <div class="passos-banner">Furusato Nozei na Amazon: 3 passos</div>
+    <div class="secao-banner" id="passos">
+      <p class="secao-banner-sub">Do cálculo do limite até o presente na porta</p>
+      <h2>Furusato Nozei na Amazon em 3 passos</h2>
+    </div>
     <div class="conteudo">
-      <div class="passos">
-        <div class="passo"><span class="num">1</span><p><strong>Encontre a seção Amazon Furusato</strong> ou procure o ícone "Hometown Tax Program" (ふるさと納税) perto do preço de um produto elegível.</p></div>
-        <div class="passo"><span class="num">2</span><p><strong>Escolha o presente e finalize a compra</strong> normalmente, com o cartão e endereço que já estão salvos na sua conta.</p></div>
-        <div class="passo"><span class="num">3</span><p><strong>Resolva o One-Stop (ou a declaração)</strong> depois que o presente chegar — veja como logo abaixo.</p></div>
+      <div class="passos-steps">
+        <div class="passo-step">
+          <div class="step-header">PASSO<span>1</span></div>
+          <div class="step-body">
+            <h3>Encontre a seção Amazon Furusato</h3>
+            <svg class="step-ilustracao" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="18" y="10" width="28" height="44" rx="4" fill="#1f9d6b"/>
+              <rect x="22" y="16" width="20" height="9" rx="1.5" fill="#e3f7ec"/>
+              <circle cx="25" cy="32" r="2.6" fill="#fff"/>
+              <circle cx="32" cy="32" r="2.6" fill="#fff"/>
+              <circle cx="39" cy="32" r="2.6" fill="#fff"/>
+              <circle cx="25" cy="40" r="2.6" fill="#fff"/>
+              <circle cx="32" cy="40" r="2.6" fill="#fff"/>
+              <circle cx="39" cy="40" r="2.6" fill="#fff"/>
+              <circle cx="25" cy="48" r="2.6" fill="#fff"/>
+              <rect x="30" y="45.4" width="14" height="5.2" rx="2.6" fill="#fff"/>
+            </svg>
+            <p>Procure o ícone "Hometown Tax Program" (ふるさと納税) perto do preço de um produto elegível.</p>
+          </div>
+        </div>
+        <div class="passo-seta">→</div>
+        <div class="passo-step">
+          <div class="step-header">PASSO<span>2</span></div>
+          <div class="step-body">
+            <h3>Escolha o presente e finalize a compra</h3>
+            <svg class="step-ilustracao" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16 24 L20 14 H44 L48 24 Z" fill="none" stroke="#0b3d59" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M14 24 H50 L47 54 H17 Z" fill="#e3f7ec" stroke="#0b3d59" stroke-width="2.4" stroke-linejoin="round"/>
+              <circle cx="24" cy="18" r="3" fill="#d97a5f"/>
+              <path d="M24 18 L20 12 M24 18 L28 12" stroke="#d97a5f" stroke-width="2" stroke-linecap="round"/>
+              <path d="M38 16 Q42 10 46 16" stroke="#1f9d6b" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            </svg>
+            <p>Compra normal, com o cartão e endereço que já estão salvos na sua conta.</p>
+          </div>
+        </div>
+        <div class="passo-seta">→</div>
+        <div class="passo-step">
+          <div class="step-header">PASSO<span>3</span></div>
+          <div class="step-body">
+            <h3>Resolva o One-Stop (ou a declaração)</h3>
+            <svg class="step-ilustracao" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M18 8 H38 L48 18 V56 H18 Z" fill="#eef2f5" stroke="#0b3d59" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M38 8 V18 H48 Z" fill="#dbe4e9" stroke="#0b3d59" stroke-width="2"/>
+              <line x1="24" y1="28" x2="42" y2="28" stroke="#0b3d59" stroke-width="2"/>
+              <line x1="24" y1="35" x2="42" y2="35" stroke="#0b3d59" stroke-width="2"/>
+              <line x1="24" y1="42" x2="36" y2="42" stroke="#0b3d59" stroke-width="2"/>
+              <circle cx="42" cy="48" r="9" fill="#1f9d6b"/>
+              <path d="M38 48 l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Depois que o presente chegar — veja como logo abaixo.</p>
+          </div>
+        </div>
       </div>
       <p>Detalhe importante: doações pra sua própria prefeitura ou província de residência não dão direito a presente — regra do governo, vale pra qualquer site.</p>
     </div>
 
     <div class="conteudo">
-      <h2 class="exemplos-titulo">Exemplos reais de presentes na Amazon Furusato</h2>
+      <h2 id="exemplos" class="exemplos-titulo">Exemplos reais de presentes na Amazon Furusato</h2>
       <p>Pra você ter uma ideia do que tem disponível — estes são exemplos reais do ranking semanal da Amazon Furusato (preços e disponibilidade mudam o tempo todo, confira sempre o valor atual na página do produto):</p>
       <div class="exemplos-reais">
         <div class="exemplo-real">
@@ -333,7 +449,7 @@
     </div>
 
     <div class="conteudo">
-      <h2>Resolvendo o One-Stop das doações da Amazon</h2>
+      <h2 id="one-stop" style="scroll-margin-top:20px;">Resolvendo o One-Stop das doações da Amazon</h2>
       <p>Depois de doar, a prefeitura envia o formulário do One-Stop (por correio ou, se ela participar, por um sistema online). A Amazon Furusato aceita 3 caminhos online, além do envio por correio:</p>
       <ol>
         <li><strong>Local Government My Page</strong> — portal da própria prefeitura (se ela participar).</li>
@@ -354,7 +470,7 @@
     </div>
 
     <div class="faq">
-      <h2>Perguntas frequentes</h2>
+      <h2 id="faq" style="scroll-margin-top:20px;">Perguntas frequentes</h2>
 
       <details class="faq-item">
         <summary>Preciso de uma conta separada pra doar pela Amazon?</summary>
