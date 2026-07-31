@@ -502,7 +502,7 @@
 (function(){
   // mesma base das outras calculadoras do site
   function deducaoTrabalho(r){
-    if (r <= 1625000) return 550000;
+    if (r <= 1625000) return 740000;   // piso de 2026 (era 550.000 ate 2024)
     if (r <= 1800000) return r * 0.4 - 100000;
     if (r <= 3600000) return r * 0.3 + 80000;
     if (r <= 6600000) return r * 0.2 + 440000;
@@ -533,8 +533,14 @@
     var liquida = renda - deducaoTrabalho(renda);
     var seguro  = renda * 0.15;
 
-    // base do IR ja considerando apenas a deducao basica, para achar a faixa
-    var baseIR = Math.max(liquida - seguro - 480000, 0);
+    // deducao basica do IR em 2026 varia por faixa (era fixa em 480.000 ate 2024)
+    function basicaIR(l){
+      if (l <=  4890000) return 1040000;
+      if (l <=  6550000) return  670000;
+      if (l <= 23500000) return  620000;
+      return 480000;
+    }
+    var baseIR = Math.max(liquida - seguro - basicaIR(liquida), 0);
     var taxa   = aliquotaIR(baseIR);
 
     // 1,021 = imposto especial de reconstrucao

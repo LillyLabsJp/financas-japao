@@ -192,7 +192,7 @@
 <main>
   <div class="container section">
     <p class="breadcrumb"><a href="index.html">Início</a> / Imposto residencial (jūminzei)</p>
-    <span class="updated-badge">🕒 Revisado em 31 de julho de 2026</span>
+    <span class="updated-badge">🕒 Calculadora com as deduções de 2026 — revisado em 31 de julho de 2026</span>
 
     <h1>Jūminzei: por que o imposto residencial vem tão alto no segundo ano</h1>
 
@@ -479,7 +479,7 @@
   // mesma base de calculo usada na calculadora do Furusato Nozei,
   // pra que as duas paginas nunca se contradigam
   function deducaoTrabalho(renda){
-    if (renda <= 1625000) return 550000;
+    if (renda <= 1625000) return 740000;   // piso de 2026 (era 550.000 ate 2024)
     if (renda <= 1800000) return renda * 0.4 - 100000;
     if (renda <= 3600000) return renda * 0.3 + 80000;
     if (renda <= 6600000) return renda * 0.2 + 440000;

@@ -253,7 +253,7 @@
 <main>
   <div class="container section">
     <p class="breadcrumb"><a href="index.html">Início</a> / Furusato Nozei</p>
-    <span class="updated-badge">🕒 Calculadora recalibrada e revisada em 30 de julho de 2026.</span>
+    <span class="updated-badge">🕒 Calculadora atualizada para as deduções de 2026, em 31 de julho de 2026.</span>
     <p class="categoria-etiqueta">Impostos</p>
     <h1>Furusato Nozei: quanto você pode doar sem perder dinheiro</h1>
     <p class="lead">Você já vai pagar o imposto residencial de qualquer jeito. O Furusato Nozei deixa você trocar parte dele por presentes — carne, arroz, fruta, cerveja — pagando só ¥2.000 no total. O segredo é não passar do seu limite.</p>
@@ -839,13 +839,23 @@ document.querySelectorAll('.aba').forEach(function(aba){
 });
 
 // deducao de renda de trabalho (kyuyo shotoku kojo)
+// piso da deducao de trabalho subiu de 550.000 (ate 2024) para 740.000 em 2026
 function deducaoTrabalho(renda){
-  if (renda <= 1625000) return 550000;
+  if (renda <= 1625000) return 740000;
   if (renda <= 1800000) return renda * 0.4 - 100000;
   if (renda <= 3600000) return renda * 0.3 + 80000;
   if (renda <= 6600000) return renda * 0.2 + 440000;
   if (renda <= 8500000) return renda * 0.1 + 1100000;
   return 1950000;
+}
+
+// deducao basica do imposto de renda em 2026 — varia por faixa de renda liquida.
+// era fixa em 480.000 ate 2024. A do imposto residencial continua 430.000.
+function basicaIR(rendaLiquida){
+  if (rendaLiquida <=  4890000) return 1040000;
+  if (rendaLiquida <=  6550000) return  670000;
+  if (rendaLiquida <= 23500000) return  620000;
+  return 480000;
 }
 
 // aliquota marginal do imposto de renda
@@ -872,7 +882,7 @@ function calcularLimite(){
   var seguroSocial = renda * 0.15;
 
   // deducoes pessoais: basica + conjuge + dependentes gerais
-  var dedIR = 480000 + (temConjuge ? 380000 : 0) + deps * 380000;
+  var dedIR = basicaIR(rendaLiquidaTrabalho) + (temConjuge ? 380000 : 0) + deps * 380000;
   var dedResidencial = 430000 + (temConjuge ? 330000 : 0) + deps * 330000;
 
   var baseIR = Math.max(rendaLiquidaTrabalho - seguroSocial - dedIR, 0);
