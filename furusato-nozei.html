@@ -130,9 +130,8 @@
 .fu-btn-grande{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;font-size:1rem;border-radius:999px;text-decoration:none;font-weight:700;}
 @media(max-width:520px){.fu-ctas{flex-direction:column;}.fu-btn-grande{width:100%;justify-content:center;}}
 
-.fu-confianca{display:flex;gap:10px 24px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--color-border);font-size:.86rem;color:var(--color-text-muted);}
-.fu-confianca span{display:inline-flex;align-items:center;gap:7px;}
-.fu-confianca svg{width:16px;height:16px;flex-shrink:0;color:var(--color-accent);}
+.fu-confianca{display:flex;align-items:center;gap:8px;padding-top:20px;margin:0;border-top:1px solid var(--color-border);font-size:.78rem;color:var(--color-text-faint);line-height:1.4;}
+.fu-confianca svg{width:14px;height:14px;flex-shrink:0;color:var(--color-accent);}
 
 .fu-hero-arte{position:relative;}
 .fu-hero-arte svg{width:100%;height:auto;display:block;}
@@ -205,18 +204,25 @@
 
 .fu-afiliado{background:var(--color-primary);color:#fff;border-radius:16px;padding:28px 26px;}
 
-/* versao horizontal, logo depois da calculadora */
-.fu-afiliado-topo{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:36px 0 8px;}
+/* versao clara e horizontal — fica antes da calculadora */
+.fu-afiliado-topo{
+  display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:36px 0 8px;
+  background:var(--color-bg);border:1.5px solid var(--color-border);
+  border-radius:16px;padding:26px 28px;color:var(--color-text);
+}
 .fu-afiliado-topo .fu-af-txt{flex:1;min-width:260px;}
-.fu-afiliado-topo .fu-af-txt h3{margin:0 0 8px;}
-.fu-afiliado-topo .fu-af-txt p{margin:0;}
-.fu-afiliado-topo .fu-af-acao{flex-shrink:0;max-width:260px;}
+.fu-afiliado-topo .fu-af-txt h3{margin:0 0 8px;color:var(--color-text);font-size:1.15rem;}
+.fu-afiliado-topo .fu-af-txt p{margin:0;color:var(--color-text-muted);font-size:.95rem;line-height:1.6;}
+.fu-afiliado-topo .fu-af-acao{flex-shrink:0;max-width:250px;}
 .fu-afiliado-topo .fu-af-acao .btn{white-space:nowrap;}
-.fu-afiliado-topo .fu-disclosure{margin-top:10px;}
+.fu-afiliado-topo .fu-disclosure{margin-top:10px;color:var(--color-text-faint);}
 @media(max-width:700px){
-  .fu-afiliado-topo{gap:18px;}
+  .fu-afiliado-topo{gap:18px;padding:22px 20px;}
   .fu-afiliado-topo .fu-af-acao{max-width:none;width:100%;}
 }
+
+/* aviso de afiliado — discreto nas duas caixas */
+.fu-disclosure{font-size:.7rem;line-height:1.45;}
 .fu-afiliado h3{color:#fff;font-size:1.2rem;margin:0 0 10px;font-weight:800;}
 .fu-afiliado p{color:#c3c8cf;font-size:.92rem;margin:0 0 18px;line-height:1.55;}
 .fu-afiliado .btn{width:100%;justify-content:center;text-align:center;display:inline-flex;align-items:center;gap:8px;}
@@ -422,10 +428,10 @@
           </a>
         </div>
 
-        <div class="fu-confianca">
-          <span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.4" stroke="currentColor" stroke-width="1.8"/><path d="M6.4 10.2l2.4 2.4 4.8-5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Atualizado em 31 de julho de 2026</span>
-          <span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.4" stroke="currentColor" stroke-width="1.8"/><path d="M10 6v5M10 13.6v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Fonte: Ministério de Assuntos Internos (Sōmushō)</span>
-        </div>
+        <p class="fu-confianca">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.4" stroke="currentColor" stroke-width="1.8"/><path d="M6.4 10.2l2.4 2.4 4.8-5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Atualizado em 31 de julho de 2026 · Fonte: Sōmushō, o Ministério de Assuntos Internos
+        </p>
       </div>
 
       <div class="fu-hero-arte">
@@ -440,6 +446,150 @@
     </div>
   </div>
 </section>
+
+  <div class="container section" style="padding-top:0;">
+      <!-- ============ COMO FUNCIONA — 4 PASSOS ============ -->
+      <section class="fu-como">
+        <div class="container">
+          <h2 style="margin-top:0;">Como funciona?</h2>
+          <p class="sub">Você doa uma vez e recebe duas: em presente e em desconto no imposto.</p>
+          <div class="fu-passos4">
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">1</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#e02b25" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40s-13-8.5-13-17a7.5 7.5 0 0 1 13-5 7.5 7.5 0 0 1 13 5c0 8.5-13 17-13 17z"/></svg>
+              </div>
+              <h3>Você doa</h3>
+              <p>Escolhe uma cidade do Japão e o valor. Não precisa nunca ter ido lá.</p>
+            </div>
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">2</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="19" width="32" height="21" rx="2"/><path d="M6 19h36M24 19v21M24 19c-4 0-7-2.6-7-5a3.5 3.5 0 0 1 7 0c0 2.4-3 5-7 5M24 19c4 0 7-2.6 7-5a3.5 3.5 0 0 0-7 0c0 2.4 3 5 7 5"/></svg>
+              </div>
+              <h3>Recebe o presente</h3>
+              <p>A cidade manda produto da região: carne, arroz, fruta, peixe.</p>
+            </div>
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">3</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 26l4 4 9-9"/></svg>
+              </div>
+              <h3>Avisa o imposto</h3>
+              <p>Manda o formulário One-Stop, que vem junto com o presente.</p>
+            </div>
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">4</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#00a866" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 34l10-10 7 6 13-15"/><path d="M30 15h8v8"/></svg>
+              </div>
+              <h3>O imposto cai</h3>
+              <p>No ano seguinte, o valor sai do seu jūminzei, menos ¥2.000.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============ 5 CARDS ============ -->
+      <div class="fu-cards">
+        <a class="fu-card" href="#quem-pode">
+          <span class="ico">👥</span>
+          <h3>Quem pode usar?</h3>
+          <p>Brasileiro pode. O que conta é pagar imposto residencial no Japão — não o tipo de visto.</p>
+          <span class="mais">Saiba mais →</span>
+        </a>
+        <a class="fu-card" href="#quanto-doar">
+          <span class="ico">💰</span>
+          <h3>Quanto posso doar?</h3>
+          <p>Depende do salário, do bônus e de quantas pessoas dependem de você. A conta por dentro.</p>
+          <span class="mais">Saiba mais →</span>
+        </a>
+        <a class="fu-card" href="#presentes">
+          <span class="ico">🎁</span>
+          <h3>O que eu ganho?</h3>
+          <p>Carne, arroz, fruta, peixe e até papel higiênico. Como escolher e quando chega.</p>
+          <span class="mais">Saiba mais →</span>
+        </a>
+        <a class="fu-card" href="#cuidados">
+          <span class="ico">⚠️</span>
+          <h3>Cuidados</h3>
+          <p>Passar do limite é o único erro que custa dinheiro. E o One-Stop tem prazo.</p>
+          <span class="mais">Saiba mais →</span>
+        </a>
+        <a class="fu-card" href="#calendario">
+          <span class="ico">📅</span>
+          <h3>Prazos de 2026</h3>
+          <p>Doação até 31 de dezembro, One-Stop até 10 de janeiro, desconto a partir de junho.</p>
+          <span class="mais">Saiba mais →</span>
+        </a>
+      </div>
+    <!-- ============ TRIO: EXEMPLO, GRAFICO, FAQ ============ -->
+    <div class="fu-trio">
+
+      <div class="fu-bloco">
+        <h3>Exemplo real</h3>
+        <div class="fu-pessoa">
+          <span class="av">👨‍🔧</span>
+          <span class="quem"><b>João, Aichi</b><span>Fábrica, solteiro, sem dependentes</span></span>
+        </div>
+        <ul class="fu-lista-ex">
+          <li>Renda anual: <b>¥5.700.000</b></li>
+          <li>Limite calculado: <b>¥65.000</b></li>
+          <li>Doou para <b>3 cidades</b> em novembro</li>
+          <li class="ok">✓ 30 kg de arroz koshihikari</li>
+          <li class="ok">✓ 3 kg de wagyu fatiado</li>
+          <li class="ok">✓ 2 kg de salmão e 24 cervejas</li>
+          <li>Desconto no imposto: <b>¥63.000</b></li>
+        </ul>
+        <div class="fu-fecho-ex">Gasto real no ano: ¥2.000</div>
+      </div>
+
+      <div class="fu-bloco">
+        <h3>A economia na prática</h3>
+        <div class="fu-barras">
+          <div class="fu-barra">
+            <div class="col cheia" style="height:132px;"></div>
+            <span class="vl">¥65.000</span>
+            <span class="lb">imposto normal</span>
+          </div>
+          <div class="fu-barra">
+            <div class="col magra" style="height:9px;"></div>
+            <span class="vl">¥2.000</span>
+            <span class="lb">com furusato</span>
+          </div>
+        </div>
+        <div class="fu-economia">
+          <span class="n">¥63.000</span>
+          <span class="t">voltam pra você em comida e desconto</span>
+        </div>
+        <p style="margin:12px 0 0;font-size:.8rem;color:var(--color-text-faint);line-height:1.5;">Mesmo imposto, destino diferente: em vez de sumir, ele vira produto na sua casa.</p>
+      </div>
+
+      <div class="fu-bloco">
+        <h3>Dúvidas mais comuns</h3>
+        <ul class="fu-faq-mini">
+          <li><a href="#faq">Estrangeiro pode usar?</a></li>
+          <li><a href="#faq">Preciso falar japonês?</a></li>
+          <li><a href="#faq">E se eu passar do limite?</a></li>
+          <li><a href="#faq">Posso usar o One-Stop?</a></li>
+          <li><a href="#faq">Quando o presente chega?</a></li>
+          <li><a href="#faq">Vale a pena pra quem ganha pouco?</a></li>
+        </ul>
+        <a class="fu-ver-todas" href="#faq">Ver todas as perguntas →</a>
+      </div>
+
+    </div>
+      <!-- ============ AMAZON, LOGO APOS O RESULTADO ============ -->
+      <aside class="fu-afiliado fu-afiliado-topo">
+        <div class="fu-af-txt">
+          <h3>Onde doar: comece pela Amazon</h3>
+          <p>Depois de saber o seu limite, o passo seguinte é escolher o que vem pra casa. Se você já compra na Amazon Japão, é o caminho mais curto: mesma conta, mesmo endereço, mesmo checkout de sempre.</p>
+        </div>
+        <div class="fu-af-acao">
+          <a class="btn" href="amazon-furusato-nozei.html">Veja como fazer</a>
+          <p class="fu-disclosure">Contém link de afiliado. Se você doar por aqui, o site recebe uma pequena comissão — sem custo adicional pra você.</p>
+        </div>
+      </aside>
+  </div>
 
   <div class="container section">
     <section class="calc-destaque" id="calculadora">
@@ -671,93 +821,8 @@
     </section>
 
     <div class="explica-simples">
-      <!-- ============ AMAZON, LOGO APOS O RESULTADO ============ -->
-      <aside class="fu-afiliado fu-afiliado-topo">
-        <div class="fu-af-txt">
-          <h3>Já sabe seu limite. Agora escolha os presentes.</h3>
-          <p>Com o número na mão, o próximo passo é escolher o que vem pra casa. Se você já compra na Amazon Japão, é o caminho mais curto: mesma conta, mesmo endereço, mesmo checkout de sempre.</p>
-        </div>
-        <div class="fu-af-acao">
-          <a class="btn" href="amazon-furusato-nozei.html">Veja como fazer</a>
-          <p class="fu-disclosure">Contém link de afiliado. Se você doar por aqui, o site recebe uma pequena comissão — sem custo adicional pra você.</p>
-        </div>
-      </aside>
 
-      <!-- ============ COMO FUNCIONA — 4 PASSOS ============ -->
-      <section class="fu-como">
-        <div class="container">
-          <h2 style="margin-top:0;">Como funciona?</h2>
-          <p class="sub">Você doa uma vez e recebe duas: em presente e em desconto no imposto.</p>
-          <div class="fu-passos4">
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">1</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#e02b25" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40s-13-8.5-13-17a7.5 7.5 0 0 1 13-5 7.5 7.5 0 0 1 13 5c0 8.5-13 17-13 17z"/></svg>
-              </div>
-              <h3>Você doa</h3>
-              <p>Escolhe uma cidade do Japão e o valor. Não precisa nunca ter ido lá.</p>
-            </div>
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">2</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="19" width="32" height="21" rx="2"/><path d="M6 19h36M24 19v21M24 19c-4 0-7-2.6-7-5a3.5 3.5 0 0 1 7 0c0 2.4-3 5-7 5M24 19c4 0 7-2.6 7-5a3.5 3.5 0 0 0-7 0c0 2.4 3 5 7 5"/></svg>
-              </div>
-              <h3>Recebe o presente</h3>
-              <p>A cidade manda produto da região: carne, arroz, fruta, peixe.</p>
-            </div>
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">3</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 26l4 4 9-9"/></svg>
-              </div>
-              <h3>Avisa o imposto</h3>
-              <p>Manda o formulário One-Stop, que vem junto com o presente.</p>
-            </div>
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">4</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#00a866" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 34l10-10 7 6 13-15"/><path d="M30 15h8v8"/></svg>
-              </div>
-              <h3>O imposto cai</h3>
-              <p>No ano seguinte, o valor sai do seu jūminzei, menos ¥2.000.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- ============ 5 CARDS ============ -->
-      <div class="fu-cards">
-        <a class="fu-card" href="#quem-pode">
-          <span class="ico">👥</span>
-          <h3>Quem pode usar?</h3>
-          <p>Brasileiro pode. O que conta é pagar imposto residencial no Japão — não o tipo de visto.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#quanto-doar">
-          <span class="ico">💰</span>
-          <h3>Quanto posso doar?</h3>
-          <p>Depende do salário, do bônus e de quantas pessoas dependem de você. A conta por dentro.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#presentes">
-          <span class="ico">🎁</span>
-          <h3>O que eu ganho?</h3>
-          <p>Carne, arroz, fruta, peixe e até papel higiênico. Como escolher e quando chega.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#cuidados">
-          <span class="ico">⚠️</span>
-          <h3>Cuidados</h3>
-          <p>Passar do limite é o único erro que custa dinheiro. E o One-Stop tem prazo.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#calendario">
-          <span class="ico">📅</span>
-          <h3>Prazos de 2026</h3>
-          <p>Doação até 31 de dezembro, One-Stop até 10 de janeiro, desconto a partir de junho.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-      </div>
 
       <h2 id="quem-pode">Explicando como pra um amigo</h2>
       <p>Todo ano, uma parte do seu salário vai embora em imposto pra prefeitura. Esse dinheiro some e você não vê nada em troca. Certo?</p>
@@ -971,61 +1036,6 @@
       </aside>
     </div>
 
-    <!-- ============ TRIO: EXEMPLO, GRAFICO, FAQ ============ -->
-    <div class="fu-trio">
-
-      <div class="fu-bloco">
-        <h3>Exemplo real</h3>
-        <div class="fu-pessoa">
-          <span class="av">👨‍🔧</span>
-          <span class="quem"><b>João, Aichi</b><span>Fábrica, solteiro, sem dependentes</span></span>
-        </div>
-        <ul class="fu-lista-ex">
-          <li>Renda anual: <b>¥3.500.000</b></li>
-          <li>Limite calculado: <b>¥31.000</b></li>
-          <li>Doou para <b>2 cidades</b> em novembro</li>
-          <li class="ok">✓ Recebeu 20 kg de arroz</li>
-          <li class="ok">✓ Recebeu 2,4 kg de carne</li>
-          <li>Desconto no imposto: <b>¥29.000</b></li>
-        </ul>
-        <div class="fu-fecho-ex">Gasto real no ano: ¥2.000</div>
-      </div>
-
-      <div class="fu-bloco">
-        <h3>A economia na prática</h3>
-        <div class="fu-barras">
-          <div class="fu-barra">
-            <div class="col cheia" style="height:132px;"></div>
-            <span class="vl">¥31.000</span>
-            <span class="lb">sem furusato</span>
-          </div>
-          <div class="fu-barra">
-            <div class="col magra" style="height:9px;"></div>
-            <span class="vl">¥2.000</span>
-            <span class="lb">com furusato</span>
-          </div>
-        </div>
-        <div class="fu-economia">
-          <span class="n">¥29.000</span>
-          <span class="t">voltam pra você em comida e desconto</span>
-        </div>
-        <p style="margin:12px 0 0;font-size:.8rem;color:var(--color-text-faint);line-height:1.5;">Mesmo imposto, destino diferente: em vez de sumir, ele vira produto na sua casa.</p>
-      </div>
-
-      <div class="fu-bloco">
-        <h3>Dúvidas mais comuns</h3>
-        <ul class="fu-faq-mini">
-          <li><a href="#faq">Estrangeiro pode usar?</a></li>
-          <li><a href="#faq">Preciso falar japonês?</a></li>
-          <li><a href="#faq">E se eu passar do limite?</a></li>
-          <li><a href="#faq">Posso usar o One-Stop?</a></li>
-          <li><a href="#faq">Quando o presente chega?</a></li>
-          <li><a href="#faq">Vale a pena pra quem ganha pouco?</a></li>
-        </ul>
-        <a class="fu-ver-todas" href="#faq">Ver todas as perguntas →</a>
-      </div>
-
-    </div>
 
     <div class="faq" id="faq">
       <h2>Perguntas frequentes</h2>
