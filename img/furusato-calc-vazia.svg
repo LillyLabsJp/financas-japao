@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" role="img" aria-label="Ilustração de uma calculadora com uma seta apontando para um valor">
+  <rect x="24" y="18" width="76" height="114" rx="9" fill="#fbfaf8" stroke="#16181d" stroke-width="3"/>
+  <rect x="34" y="28" width="56" height="22" rx="3" fill="#e8faf1" stroke="#16181d" stroke-width="2"/>
+  <text x="84" y="44" font-family="sans-serif" font-size="13" font-weight="700" fill="#00854f" text-anchor="end">¥</text>
+  <g fill="#16181d">
+    <circle cx="45" cy="66" r="5"/><circle cx="62" cy="66" r="5"/><circle cx="79" cy="66" r="5"/>
+    <circle cx="45" cy="84" r="5"/><circle cx="62" cy="84" r="5"/><circle cx="79" cy="84" r="5"/>
+    <circle cx="45" cy="102" r="5"/>
+  </g>
+  <rect x="55" y="96" width="29" height="12" rx="6" fill="#e02b25"/>
+  <path d="M116 80 h44" stroke="#16181d" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="7 8"/>
+  <path d="M152 72 l10 8 l-10 8" fill="none" stroke="#16181d" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="172" y="52" width="52" height="56" rx="9" fill="#16181d"/>
+  <path d="M184 84 h28 M184 72 h28 M184 96 h18" stroke="#00c47a" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 400" role="img" aria-label="Sol nascente sobre o monte Fuji e um torii, com produtos japoneses de furusato nozei">
+  <circle cx="252" cy="128" r="86" fill="#e02b25"/>
+  <path d="M96 262 L176 128 L256 262 Z" fill="#16181d"/>
+  <path d="M152 190 L176 128 L200 190 C188 198, 164 198, 152 190 Z" fill="#fbfaf8"/>
+  <g fill="#16181d">
+    <rect x="342" y="120" width="13" height="150" rx="2"/>
+    <rect x="404" y="120" width="13" height="150" rx="2"/>
+    <path d="M326 112 h108 l-7 15 h-94 Z"/>
+    <rect x="334" y="140" width="92" height="11" rx="3"/>
+  </g>
+  <rect x="40" y="262" width="392" height="9" rx="4" fill="#16181d"/>
+  <g>
+    <rect x="66" y="212" width="96" height="50" rx="7" fill="#fbfaf8" stroke="#16181d" stroke-width="3.4"/>
+    <path d="M78 236 q12 -13 24 0 q12 13 24 0 q10 -11 24 0" fill="none" stroke="#e02b25" stroke-width="4" stroke-linecap="round"/>
+    <path d="M78 249 q12 -13 24 0 q12 13 24 0 q10 -11 24 0" fill="none" stroke="#e02b25" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g>
+    <path d="M186 262 q26 -46 52 0 Z" fill="#fbfaf8" stroke="#16181d" stroke-width="3.4" stroke-linejoin="round"/>
+    <ellipse cx="212" cy="222" rx="21" ry="12" fill="#fbfaf8" stroke="#16181d" stroke-width="3.2"/>
+  </g>
+  <g>
+    <circle cx="288" cy="236" r="25" fill="#00a866"/>
+    <path d="M270 226 q18 10 36 0 M270 240 q18 10 36 0" fill="none" stroke="#fbfaf8" stroke-width="2.6"/>
+    <path d="M288 211 v-9" stroke="#16181d" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+  <g>
+    <ellipse cx="360" cy="240" rx="30" ry="20" fill="#e02b25"/>
+    <circle cx="349" cy="234" r="3.4" fill="#fbfaf8"/>
+    <circle cx="361" cy="231" r="3.4" fill="#fbfaf8"/>
+    <circle cx="371" cy="236" r="3.4" fill="#fbfaf8"/>
+    <path d="M334 250 l-11 9 M386 250 l11 9" stroke="#16181d" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+  <rect x="404" y="222" width="34" height="40" rx="4" fill="#16181d"/>
+  <rect x="410" y="230" width="22" height="15" rx="2" fill="#fbfaf8"/>
+</svg>

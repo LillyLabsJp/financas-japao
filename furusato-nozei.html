@@ -204,6 +204,19 @@
 @media(max-width:560px){.fu-tabela{font-size:.78rem;}.fu-tabela th,.fu-tabela td{padding:9px 5px;}}
 
 .fu-afiliado{background:var(--color-primary);color:#fff;border-radius:16px;padding:28px 26px;}
+
+/* versao horizontal, logo depois da calculadora */
+.fu-afiliado-topo{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:36px 0 8px;}
+.fu-afiliado-topo .fu-af-txt{flex:1;min-width:260px;}
+.fu-afiliado-topo .fu-af-txt h3{margin:0 0 8px;}
+.fu-afiliado-topo .fu-af-txt p{margin:0;}
+.fu-afiliado-topo .fu-af-acao{flex-shrink:0;max-width:260px;}
+.fu-afiliado-topo .fu-af-acao .btn{white-space:nowrap;}
+.fu-afiliado-topo .fu-disclosure{margin-top:10px;}
+@media(max-width:700px){
+  .fu-afiliado-topo{gap:18px;}
+  .fu-afiliado-topo .fu-af-acao{max-width:none;width:100%;}
+}
 .fu-afiliado h3{color:#fff;font-size:1.2rem;margin:0 0 10px;font-weight:800;}
 .fu-afiliado p{color:#c3c8cf;font-size:.92rem;margin:0 0 18px;line-height:1.55;}
 .fu-afiliado .btn{width:100%;justify-content:center;text-align:center;display:inline-flex;align-items:center;gap:8px;}
@@ -405,7 +418,7 @@
           </a>
           <a class="btn-secondary fu-btn-grande" href="#presentes">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M3 12h18M12 8C10 8 8 6.5 8 5a2 2 0 0 1 4 0c0 1.5-2 3-4 3M12 8c2 0 4-1.5 4-3a2 2 0 0 0-4 0c0 1.5 2 3 4 3"/></svg>
-            Ver os presentes
+            Veja como fazer
           </a>
         </div>
 
@@ -416,41 +429,7 @@
       </div>
 
       <div class="fu-hero-arte">
-        <svg viewBox="0 0 460 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sol nascente sobre o monte Fuji e um torii, com uma mesa de produtos japoneses de furusato nozei">
-          <circle cx="252" cy="128" r="86" fill="#e02b25"/>
-          <path d="M96 262 L176 128 L256 262 Z" fill="#16181d"/>
-          <path d="M152 190 L176 128 L200 190 C188 198, 164 198, 152 190 Z" fill="#fbfaf8"/>
-          <g fill="#16181d">
-            <rect x="342" y="120" width="13" height="150" rx="2"/>
-            <rect x="404" y="120" width="13" height="150" rx="2"/>
-            <path d="M326 112 h108 l-7 15 h-94 Z"/>
-            <rect x="334" y="140" width="92" height="11" rx="3"/>
-          </g>
-          <rect x="40" y="262" width="392" height="9" rx="4" fill="#16181d"/>
-          <g>
-            <rect x="66" y="212" width="96" height="50" rx="7" fill="#fbfaf8" stroke="#16181d" stroke-width="3.4"/>
-            <path d="M78 236 q12 -13 24 0 q12 13 24 0 q10 -11 24 0" fill="none" stroke="#e02b25" stroke-width="4" stroke-linecap="round"/>
-            <path d="M78 249 q12 -13 24 0 q12 13 24 0 q10 -11 24 0" fill="none" stroke="#e02b25" stroke-width="4" stroke-linecap="round"/>
-          </g>
-          <g>
-            <path d="M186 262 q26 -46 52 0 Z" fill="#fbfaf8" stroke="#16181d" stroke-width="3.4" stroke-linejoin="round"/>
-            <ellipse cx="212" cy="222" rx="21" ry="12" fill="#fbfaf8" stroke="#16181d" stroke-width="3.2"/>
-          </g>
-          <g>
-            <circle cx="288" cy="236" r="25" fill="#00a866"/>
-            <path d="M270 226 q18 10 36 0 M270 240 q18 10 36 0" fill="none" stroke="#fbfaf8" stroke-width="2.6"/>
-            <path d="M288 211 v-9" stroke="#16181d" stroke-width="3.4" stroke-linecap="round"/>
-          </g>
-          <g>
-            <ellipse cx="360" cy="240" rx="30" ry="20" fill="#e02b25"/>
-            <circle cx="349" cy="234" r="3.4" fill="#fbfaf8"/>
-            <circle cx="361" cy="231" r="3.4" fill="#fbfaf8"/>
-            <circle cx="371" cy="236" r="3.4" fill="#fbfaf8"/>
-            <path d="M334 250 l-11 9 M386 250 l11 9" stroke="#16181d" stroke-width="3.4" stroke-linecap="round"/>
-          </g>
-          <rect x="404" y="222" width="34" height="40" rx="4" fill="#16181d"/>
-          <rect x="410" y="230" width="22" height="15" rx="2" fill="#fbfaf8"/>
-        </svg>
+        <img src="img/furusato-hero.svg" alt="Sol nascente sobre o monte Fuji e um torii, com produtos japoneses de furusato nozei" width="460" height="400" loading="eager">
 
         <div class="fu-selo-flutuante">
           <span class="rot">Você só paga</span>
@@ -692,6 +671,18 @@
     </section>
 
     <div class="explica-simples">
+      <!-- ============ AMAZON, LOGO APOS O RESULTADO ============ -->
+      <aside class="fu-afiliado fu-afiliado-topo">
+        <div class="fu-af-txt">
+          <h3>Já sabe seu limite. Agora escolha os presentes.</h3>
+          <p>Com o número na mão, o próximo passo é escolher o que vem pra casa. Se você já compra na Amazon Japão, é o caminho mais curto: mesma conta, mesmo endereço, mesmo checkout de sempre.</p>
+        </div>
+        <div class="fu-af-acao">
+          <a class="btn" href="amazon-furusato-nozei.html">Veja como fazer</a>
+          <p class="fu-disclosure">Contém link de afiliado. Se você doar por aqui, o site recebe uma pequena comissão — sem custo adicional pra você.</p>
+        </div>
+      </aside>
+
       <!-- ============ COMO FUNCIONA — 4 PASSOS ============ -->
       <section class="fu-como">
         <div class="container">
@@ -980,7 +971,63 @@
       </aside>
     </div>
 
-    <div class="faq">
+    <!-- ============ TRIO: EXEMPLO, GRAFICO, FAQ ============ -->
+    <div class="fu-trio">
+
+      <div class="fu-bloco">
+        <h3>Exemplo real</h3>
+        <div class="fu-pessoa">
+          <span class="av">👨‍🔧</span>
+          <span class="quem"><b>João, Aichi</b><span>Fábrica, solteiro, sem dependentes</span></span>
+        </div>
+        <ul class="fu-lista-ex">
+          <li>Renda anual: <b>¥3.500.000</b></li>
+          <li>Limite calculado: <b>¥31.000</b></li>
+          <li>Doou para <b>2 cidades</b> em novembro</li>
+          <li class="ok">✓ Recebeu 20 kg de arroz</li>
+          <li class="ok">✓ Recebeu 2,4 kg de carne</li>
+          <li>Desconto no imposto: <b>¥29.000</b></li>
+        </ul>
+        <div class="fu-fecho-ex">Gasto real no ano: ¥2.000</div>
+      </div>
+
+      <div class="fu-bloco">
+        <h3>A economia na prática</h3>
+        <div class="fu-barras">
+          <div class="fu-barra">
+            <div class="col cheia" style="height:132px;"></div>
+            <span class="vl">¥31.000</span>
+            <span class="lb">sem furusato</span>
+          </div>
+          <div class="fu-barra">
+            <div class="col magra" style="height:9px;"></div>
+            <span class="vl">¥2.000</span>
+            <span class="lb">com furusato</span>
+          </div>
+        </div>
+        <div class="fu-economia">
+          <span class="n">¥29.000</span>
+          <span class="t">voltam pra você em comida e desconto</span>
+        </div>
+        <p style="margin:12px 0 0;font-size:.8rem;color:var(--color-text-faint);line-height:1.5;">Mesmo imposto, destino diferente: em vez de sumir, ele vira produto na sua casa.</p>
+      </div>
+
+      <div class="fu-bloco">
+        <h3>Dúvidas mais comuns</h3>
+        <ul class="fu-faq-mini">
+          <li><a href="#faq">Estrangeiro pode usar?</a></li>
+          <li><a href="#faq">Preciso falar japonês?</a></li>
+          <li><a href="#faq">E se eu passar do limite?</a></li>
+          <li><a href="#faq">Posso usar o One-Stop?</a></li>
+          <li><a href="#faq">Quando o presente chega?</a></li>
+          <li><a href="#faq">Vale a pena pra quem ganha pouco?</a></li>
+        </ul>
+        <a class="fu-ver-todas" href="#faq">Ver todas as perguntas →</a>
+      </div>
+
+    </div>
+
+    <div class="faq" id="faq">
       <h2>Perguntas frequentes</h2>
 
       <details class="faq-item">
@@ -1079,6 +1126,20 @@
         <p><strong>Escrito por Lian Alves</strong>, criadora do Finanças no Japão e do Calcula Japão. <a href="sobre.html">Conheça a metodologia e a experiência por trás deste conteúdo →</a></p>
       </div>
     </div>
+
+    <!-- ============ CHAMADA FINAL ============ -->
+    <div class="fu-cta-final">
+      <span class="ico">🎁</span>
+      <div class="txt">
+        <h3>Pronto para começar?</h3>
+        <p>Descubra seu limite e escolha os presentes antes de 31 de dezembro.</p>
+      </div>
+      <div class="acoes">
+        <a class="btn" href="#calculadora">Calcular meu limite</a>
+        <a class="btn-secondary" href="amazon-furusato-nozei.html">Veja como fazer</a>
+      </div>
+    </div>
+
   </div>
 </main>
 
