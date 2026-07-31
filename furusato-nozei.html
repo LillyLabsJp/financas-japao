@@ -147,9 +147,82 @@
 .fu-selo-flutuante .val{font-size:1.62rem;font-weight:850;letter-spacing:-.03em;line-height:1.1;color:#fff;}
 .fu-selo-flutuante .sub{font-size:.66rem;color:#b9bec6;}
 
-/* ============ CALCULADORA ============ */
-.fu-linha-campos{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-@media(max-width:620px){.fu-linha-campos{grid-template-columns:1fr;gap:0;}}
+/* ============ CALCULADORA HORIZONTAL ============ */
+.fu-calc-linha{
+  display:grid;
+  grid-template-columns:1.25fr 1fr .8fr .9fr 1fr;
+  gap:18px;align-items:end;
+}
+@media(max-width:1000px){.fu-calc-linha{grid-template-columns:1fr 1fr 1fr;}}
+@media(max-width:620px){.fu-calc-linha{grid-template-columns:1fr 1fr;gap:14px;}}
+@media(max-width:420px){.fu-calc-linha{grid-template-columns:1fr;}}
+
+.fu-campo label{
+  display:block;font-size:.83rem;font-weight:700;color:var(--color-text);
+  margin-bottom:8px;letter-spacing:-.01em;
+}
+.fu-campo label small{font-weight:450;color:var(--color-text-faint);font-size:.76rem;}
+
+.fu-input-iene{position:relative;display:flex;align-items:center;}
+.fu-input-iene .fu-yen{
+  position:absolute;left:13px;font-weight:700;color:var(--color-text-faint);
+  font-size:1rem;pointer-events:none;
+}
+.fu-input-iene input{
+  width:100%;padding:13px 14px 13px 32px;font-size:1rem;font-weight:650;
+  font-family:inherit;color:var(--color-text);background:#fff;
+  border:1.5px solid var(--color-border);border-radius:10px;
+  font-variant-numeric:tabular-nums;
+}
+.fu-input-iene input:focus{
+  outline:none;border-color:var(--color-red);
+  box-shadow:0 0 0 3px rgba(224,43,37,.13);
+}
+
+.fu-toggle{display:flex;gap:0;border:1.5px solid var(--color-border);border-radius:10px;overflow:hidden;}
+.fu-toggle .opcao{
+  flex:1;padding:13px 6px;border:none;background:#fff;cursor:pointer;
+  font-family:inherit;font-size:.92rem;font-weight:650;color:var(--color-text-muted);
+  transition:var(--ease);min-height:0;border-radius:0;
+}
+.fu-toggle .opcao:hover{background:var(--color-bg);}
+.fu-toggle .opcao.ativa{background:var(--color-red);color:#fff;}
+
+.fu-stepper{
+  display:flex;align-items:center;justify-content:space-between;
+  border:1.5px solid var(--color-border);border-radius:10px;background:#fff;overflow:hidden;
+}
+.fu-stepper button{
+  width:40px;padding:13px 0;border:none;background:#fff;cursor:pointer;
+  font-family:inherit;font-size:1.2rem;font-weight:700;color:var(--color-red);
+  transition:var(--ease);line-height:1;
+}
+.fu-stepper button:hover{background:var(--color-red-soft);}
+.fu-stepper button:disabled{color:var(--color-border);cursor:default;background:#fff;}
+.fu-step-valor{font-size:1rem;font-weight:750;font-variant-numeric:tabular-nums;}
+
+.fu-calc-nota{
+  margin:16px 0 0;font-size:.78rem;color:var(--color-text-faint);line-height:1.5;
+}
+
+/* faixa verde do resultado */
+.fu-resultado-faixa{
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  background:var(--color-accent-soft);border-radius:14px;padding:22px 24px;margin-bottom:20px;
+}
+.fu-res-num{flex-shrink:0;}
+.fu-res-rot{display:block;font-size:.85rem;color:var(--color-accent-dark);font-weight:600;margin-bottom:2px;}
+.fu-res-val{
+  display:block;font-size:clamp(2rem,5vw,2.9rem);font-weight:850;
+  letter-spacing:-.04em;line-height:1.05;color:var(--color-accent-dark);
+  font-variant-numeric:tabular-nums;
+}
+.fu-res-txt{flex:1;min-width:180px;margin:0;font-size:.88rem;color:var(--color-text-muted);line-height:1.55;}
+.fu-res-btn{flex-shrink:0;white-space:nowrap;text-decoration:none;}
+@media(max-width:700px){
+  .fu-resultado-faixa{gap:16px;padding:20px;}
+  .fu-res-btn{width:100%;text-align:center;justify-content:center;}
+}
 
 .fu-aviso-fin{
   display:none;margin-top:18px;background:#fff8e6;border:1.5px solid #f0c869;
@@ -624,50 +697,53 @@
       </div>
 
       <div class="painel-calc ativo" id="painel-simples">
-        <div class="fu-linha-campos">
-          <div class="field">
-            <label for="renda-anual">Salário anual bruto (¥)</label>
-            <input type="number" id="renda-anual" min="0" step="10000" placeholder="Ex: 3500000" inputmode="numeric">
-            <p class="hint">Antes dos descontos. Está no gensen chōshūhyō como 支払金額.</p>
+        <div class="fu-calc-linha">
+
+          <div class="fu-campo">
+            <label for="renda-anual">Renda anual <small>(antes de impostos)</small></label>
+            <div class="fu-input-iene">
+              <span class="fu-yen">¥</span>
+              <input type="number" id="renda-anual" min="0" step="10000" placeholder="3.500.000" inputmode="numeric">
+            </div>
           </div>
-          <div class="field">
-            <label for="bonus-anual">Bônus do ano (¥)</label>
-            <input type="number" id="bonus-anual" min="0" step="10000" placeholder="0" inputmode="numeric">
-            <p class="hint">Some os bônus de verão e inverno. Se o salário acima já os inclui, deixe zero.</p>
+
+          <div class="fu-campo">
+            <label for="bonus-anual">Bônus anual</label>
+            <div class="fu-input-iene">
+              <span class="fu-yen">¥</span>
+              <input type="number" id="bonus-anual" min="0" step="10000" placeholder="0" inputmode="numeric">
+            </div>
           </div>
+
+          <div class="fu-campo fu-campo-curto">
+            <label>Cônjuge</label>
+            <div class="fu-toggle" id="opcoes-conjuge">
+              <button type="button" class="opcao" data-valor="1">Sim</button>
+              <button type="button" class="opcao ativa" data-valor="0">Não</button>
+            </div>
+          </div>
+
+          <div class="fu-campo fu-campo-curto">
+            <label>Dependentes</label>
+            <div class="fu-stepper">
+              <button type="button" class="fu-step-menos" aria-label="Menos um dependente">−</button>
+              <span class="fu-step-valor" id="dependentes-visor">0</span>
+              <button type="button" class="fu-step-mais" aria-label="Mais um dependente">+</button>
+              <input type="hidden" id="dependentes" value="0">
+            </div>
+          </div>
+
+          <div class="fu-campo fu-campo-curto">
+            <label>Financiamento da casa</label>
+            <div class="fu-toggle" id="opcoes-financiamento">
+              <button type="button" class="opcao" data-valor="1">Sim</button>
+              <button type="button" class="opcao ativa" data-valor="0">Não</button>
+            </div>
+          </div>
+
         </div>
 
-        <div class="field">
-          <label>Financiamento imobiliário com abatimento no imposto?</label>
-          <div class="opcoes" id="opcoes-financiamento">
-            <button type="button" class="opcao ativa" data-valor="0">Não</button>
-            <button type="button" class="opcao" data-valor="1">Sim</button>
-          </div>
-          <p class="hint">O jūtaku rōn kōjo, que aparece no seu nenmatsu chōsei.</p>
-        </div>
-
-        <div class="field">
-          <label>Cônjuge sem renda (ou com renda baixa) como dependente?</label>
-          <div class="opcoes" id="opcoes-conjuge">
-            <button type="button" class="opcao ativa" data-valor="0">Não</button>
-            <button type="button" class="opcao" data-valor="1">Sim</button>
-          </div>
-          <p class="hint">Marque "sim" se seu cônjuge ganha menos de ¥1.030.000/ano e está declarado como seu dependente.</p>
-        </div>
-
-        <div class="field">
-          <label for="dependentes">Outros dependentes declarados (16 anos ou mais)</label>
-          <select id="dependentes">
-            <option value="0">Nenhum</option>
-            <option value="1">1 dependente</option>
-            <option value="2">2 dependentes</option>
-            <option value="3">3 dependentes</option>
-            <option value="4">4 dependentes</option>
-          </select>
-          <p class="hint">Filhos com menos de 16 anos não entram nessa conta. Dependentes no Brasil contam se estiverem declarados no seu nenmatsu chōsei.</p>
-        </div>
-
-        <button class="btn btn-full" onclick="calcularLimite()">Calcular meu limite</button>
+        <p class="fu-calc-nota">Dependentes: só conta quem tem 16 anos ou mais e está no seu nenmatsu chōsei. Cônjuge: marque sim se ganha menos de ¥1.030.000 por ano.</p>
 
         <div class="fu-aviso-fin" id="aviso-financiamento">
           <strong>⚠️ Atenção: você marcou financiamento imobiliário.</strong>
@@ -801,8 +877,14 @@
       </div>
 
       <div class="leitor" id="resultado">
-        <p class="rotulo">Seu limite seguro de doação no ano</p>
-        <p class="valor">¥<span id="valor-limite">0</span></p>
+        <div class="fu-resultado-faixa">
+          <div class="fu-res-num">
+            <span class="fu-res-rot">Seu limite estimado de doação é:</span>
+            <span class="fu-res-val">¥<span id="valor-limite">0</span></span>
+          </div>
+          <p class="fu-res-txt">Este é o valor máximo que você pode doar recebendo o benefício fiscal — com <strong>¥2.000</strong> de custo real no ano inteiro.</p>
+          <a class="btn fu-res-btn" href="amazon-furusato-nozei.html">Veja como fazer</a>
+        </div>
         <p class="custo-real">Doando até esse valor, seu custo real é de <strong>¥2.000</strong> — todo o resto volta como desconto no imposto do ano que vem. Os presentes são o seu lucro.</p>
         <p class="nota" id="nota-metodologia">Estimativa conservadora (com margem de segurança e arredondada para baixo), baseada na fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a>. Assume assalariado com desconto padrão de seguro social (15% da renda). Financiamento imobiliário, despesas médicas altas e outras deduções diminuem o limite real. Na dúvida, doe um pouco abaixo.</p>
         <div class="leitor-acoes">
@@ -1244,6 +1326,39 @@ function copiarResultado(){
 }
 
 // botoes de opcao (conjuge) — versao simples e versao detalhada
+// stepper de dependentes (- 0 +) e recalculo automatico
+(function(){
+  var visor  = document.getElementById('dependentes-visor');
+  var campo  = document.getElementById('dependentes');
+  var menos  = document.querySelector('.fu-step-menos');
+  var mais   = document.querySelector('.fu-step-mais');
+  if (!visor || !campo || !menos || !mais) return;
+
+  function pinta(){
+    var v = parseInt(campo.value, 10) || 0;
+    visor.textContent = v;
+    menos.disabled = (v <= 0);
+    mais.disabled  = (v >= 8);
+  }
+  function muda(passo){
+    var v = Math.min(8, Math.max(0, (parseInt(campo.value,10)||0) + passo));
+    campo.value = v;
+    pinta();
+    if ((parseFloat(document.getElementById('renda-anual').value)||0) > 0) calcularLimite();
+  }
+  menos.addEventListener('click', function(){ muda(-1); });
+  mais .addEventListener('click', function(){ muda( 1); });
+  pinta();
+})();
+
+// recalcula sozinho enquanto a pessoa digita
+['renda-anual','bonus-anual'].forEach(function(id){
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', function(){
+    if ((parseFloat(document.getElementById('renda-anual').value)||0) > 0) calcularLimite();
+  });
+});
+
 ['#opcoes-conjuge', '#opcoes-conjuge-detalhada', '#opcoes-financiamento'].forEach(function(seletor){
   document.querySelectorAll(seletor + ' .opcao').forEach(function(b){
     b.addEventListener('click', function(){
