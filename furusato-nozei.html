@@ -1353,7 +1353,8 @@
 <script>
 function formatoJP(n){
   if (isNaN(n) || !isFinite(n)) return '—';
-  return Math.round(n).toLocaleString('ja-JP');
+  /* ponto como separador de milhar, igual ao resto do site */
+  return Math.round(n).toLocaleString('pt-BR');
 }
 
 var textoResultadoAtual = '';
