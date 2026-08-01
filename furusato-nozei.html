@@ -239,6 +239,7 @@
   position:absolute;left:13px;font-weight:700;color:var(--color-text-faint);
   font-size:1rem;pointer-events:none;
 }
+.calculator .fu-input-iene input,
 .fu-input-iene input{
   width:100%;padding:13px 14px 13px 32px;font-size:1rem;font-weight:650;
   font-family:inherit;color:var(--color-text);background:#fff;
@@ -781,7 +782,7 @@
         <div class="fu-calc-linha">
 
           <div class="fu-campo">
-            <label for="renda-anual">Renda anual <small>(antes de impostos)</small></label>
+            <label for="renda-anual">Renda anual <small>(bruta)</small></label>
             <div class="fu-input-iene">
               <span class="fu-yen">¥</span>
               <input type="number" id="renda-anual" min="0" step="10000" placeholder="3.500.000" inputmode="numeric">
