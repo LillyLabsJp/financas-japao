@@ -147,6 +147,76 @@
 .fu-selo-flutuante .val{font-size:1.62rem;font-weight:850;letter-spacing:-.03em;line-height:1.1;color:#fff;}
 .fu-selo-flutuante .sub{font-size:.66rem;color:#b9bec6;}
 
+/* ============ CABECALHO ============ */
+.logo-marca{width:38px;height:38px;}
+.logo .logo-texto{display:flex;flex-direction:column;line-height:1;gap:2px;}
+.logo .logo-texto b{font-size:1.14rem;font-weight:850;letter-spacing:-.02em;color:var(--color-text);}
+.logo .logo-texto i{font-style:normal;font-size:.72rem;font-weight:650;letter-spacing:.12em;color:var(--color-text-muted);}
+
+.main-nav .tem-sub{position:relative;}
+.main-nav .tem-sub > a .seta{font-size:.8em;margin-left:2px;}
+.main-nav .submenu{
+  position:absolute;top:100%;left:-14px;min-width:230px;
+  background:#fff;border:1px solid var(--color-border);border-radius:12px;
+  box-shadow:0 12px 32px rgba(22,24,29,.12);
+  padding:8px;display:none;flex-direction:column;gap:0;z-index:60;
+}
+.main-nav .tem-sub:hover .submenu,
+.main-nav .tem-sub:focus-within .submenu{display:flex;}
+.main-nav .submenu a{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;}
+.main-nav .submenu a:hover{background:var(--color-bg);color:var(--color-red);}
+
+.fu-header-acoes{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.header-cta{display:inline-flex;align-items:center;gap:7px;}
+.fu-busca{
+  background:none;border:none;cursor:pointer;color:var(--color-text);
+  padding:6px;display:flex;align-items:center;border-radius:8px;transition:var(--ease);
+}
+.fu-busca:hover{background:var(--color-bg);color:var(--color-red);}
+
+.fu-busca-campo{display:none;border-top:1px solid var(--color-border);background:#fff;padding:14px 0;}
+.fu-busca-campo.aberto{display:block;}
+.fu-busca-campo form{display:flex;gap:10px;}
+.fu-busca-campo input[type=search]{
+  flex:1;padding:12px 15px;font-family:inherit;font-size:.95rem;
+  border:1.5px solid var(--color-border);border-radius:10px;
+}
+.fu-busca-campo input[type=search]:focus{outline:none;border-color:var(--color-red);}
+@media(max-width:900px){.fu-header-acoes .header-cta{display:none;}}
+
+/* ============ SELO DE CONFIANCA ============ */
+.fu-confianca{
+  display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--color-accent-soft);border:1px solid #b3ecd0;
+  border-radius:10px;padding:9px 15px;margin:0;
+  font-size:.79rem;color:var(--color-accent-dark);line-height:1.4;
+}
+.fu-conf-item{display:inline-flex;align-items:center;gap:6px;}
+.fu-conf-item svg{width:14px;height:14px;flex-shrink:0;color:var(--color-accent);}
+.fu-conf-sep{width:1px;height:14px;background:#b3ecd0;}
+.fu-conf-fonte{color:var(--color-text-muted);}
+.fu-conf-fonte svg{color:var(--color-text-faint);}
+.fu-conf-fonte b{color:var(--color-text);font-weight:700;}
+@media(max-width:560px){.fu-conf-sep{display:none;}.fu-confianca{gap:6px 12px;}}
+
+/* ============ COLUNA ESQUERDA DA CALCULADORA ============ */
+.calc-destaque{display:grid;grid-template-columns:250px 1fr;gap:36px;align-items:start;}
+@media(max-width:900px){.calc-destaque{grid-template-columns:1fr;gap:22px;}}
+
+.fu-calc-esq{padding-top:4px;}
+.fu-calc-titulo{
+  display:block;font-size:1rem;font-weight:850;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--color-red);margin-bottom:10px;
+}
+.fu-calc-desc{margin:0 0 14px;font-size:1rem;color:var(--color-text);line-height:1.5;font-weight:500;}
+.fu-calc-aviso{margin:0 0 14px;font-size:.75rem;color:var(--color-text-faint);line-height:1.5;font-style:italic;}
+.fu-calc-link{
+  display:inline-flex;align-items:center;gap:6px;font-size:.82rem;
+  color:var(--color-text-muted);text-decoration:none;font-weight:600;
+}
+.fu-calc-link:hover{color:var(--color-red);}
+.fu-calc-esq .btn-compartilhar-calc{margin-top:14px;font-size:.8rem;}
+
 /* ============ CALCULADORA HORIZONTAL ============ */
 .fu-calc-linha{
   display:grid;
@@ -463,19 +533,43 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="index.html" class="logo"><svg class="logo-marca" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="20" cy="14" r="7.5" fill="#e02b25"/><path d="M4 33 C 11 33, 13 24, 20 24 C 27 24, 29 33, 36 33" fill="none" stroke="#16181d" stroke-width="3.4" stroke-linecap="round"/></svg><span class="logo-texto">Finanças <span class="leve">no</span> <span>Japão</span></span></a>
+    <a href="index.html" class="logo"><svg class="logo-marca" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#16181d"/><circle cx="22" cy="17" r="9" fill="#e02b25"/><path d="M7 33 L20 13 L33 33 Z" fill="#16181d"/><path d="M15.6 20 L20 13 L24.4 20 C22 21.6, 18 21.6, 15.6 20 Z" fill="#ffffff"/><rect x="6" y="32" width="32" height="3" rx="1.5" fill="#16181d"/></svg><span class="logo-texto"><b>FINANÇAS</b><i>NO JAPÃO</i></span></a>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰ Menu</button>
     <nav class="main-nav" aria-label="Navegação principal">
       <ul>
         <li><a href="index.html">Início</a></li>
-        <li><a href="remessa-japao-brasil.html">Remessa Japão-Brasil</a></li>
-        <li><a href="aposentadoria-nenkin.html">Nenkin</a></li>
-        <li><a href="furusato-nozei.html" aria-current="page">Furusato Nozei</a></li>
-        <li><a href="imposto-residencial-juminzei.html">Imposto residencial</a></li>
-        <li><a href="dependentes-no-brasil.html">Dependentes no Brasil</a></li>
+        <li class="tem-sub">
+          <a href="#" aria-haspopup="true" aria-expanded="false">Impostos <span class="seta">⌄</span></a>
+          <ul class="submenu">
+            <li><a href="furusato-nozei.html">Furusato Nozei</a></li>
+            <li><a href="amazon-furusato-nozei.html">Furusato pela Amazon</a></li>
+            <li><a href="imposto-residencial-juminzei.html">Imposto residencial</a></li>
+            <li><a href="dependentes-no-brasil.html">Dependentes no Brasil</a></li>
+          </ul>
+        </li>
+        <li><a href="aposentadoria-nenkin.html">Aposentadoria</a></li>
+        <li><a href="remessa-japao-brasil.html">Remessa</a></li>
         <li><a href="sobre.html">Sobre</a></li>
       </ul>
     </nav>
+    <div class="fu-header-acoes">
+      <a class="btn btn-sm header-cta" href="#calculadora">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="12" y1="11" x2="12" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/><line x1="8" y1="16" x2="8" y2="16"/></svg>
+        Calculadora
+      </a>
+      <button type="button" class="fu-busca" aria-label="Buscar no site" onclick="var b=document.getElementById('fu-busca-campo'); b.classList.toggle('aberto'); if(b.classList.contains('aberto')) b.querySelector('input').focus();">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="fu-busca-campo" id="fu-busca-campo">
+    <div class="container">
+      <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener">
+        <input type="hidden" name="q" value="site:financasnojapao.com">
+        <input type="search" name="q" placeholder="Buscar no site — furusato, nenkin, imposto..." aria-label="Buscar no site">
+        <button type="submit" class="btn btn-sm">Buscar</button>
+      </form>
+    </div>
   </div>
 </header>
 
@@ -501,10 +595,17 @@
           </a>
         </div>
 
-        <p class="fu-confianca">
-          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.4" stroke="currentColor" stroke-width="1.8"/><path d="M6.4 10.2l2.4 2.4 4.8-5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Atualizado em 31 de julho de 2026 · Fonte: Sōmushō, o Ministério de Assuntos Internos
-        </p>
+        <div class="fu-confianca">
+          <span class="fu-conf-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l8 3.5v6c0 5-3.4 9.4-8 10.5-4.6-1.1-8-5.5-8-10.5v-6L12 2z"/><path d="M10.4 15.2l-3-3 1.4-1.4 1.6 1.6 4.4-4.4 1.4 1.4-5.8 5.8z" fill="#fff"/></svg>
+            Atualizado em 31 de julho de 2026
+          </span>
+          <span class="fu-conf-sep"></span>
+          <span class="fu-conf-item fu-conf-fonte">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg>
+            <span><b>Fonte:</b> Ministério de Assuntos Internos e Comunicações</span>
+          </span>
+        </div>
       </div>
 
       <div class="fu-hero-arte">
@@ -666,30 +767,20 @@
 
   <div class="container section">
     <section class="calc-destaque" id="calculadora">
-      <div class="calc-destaque-head">
-        <div>
-          <span class="calc-eyebrow">Calculadora gratuita</span>
-          <h2>Descubra o seu limite de doação</h2>
-          <p>Responda três coisas e veja quanto você pode doar sem perder dinheiro. Leva menos de um minuto e não precisa de cadastro.</p>
-          <button type="button" class="btn-compartilhar-calc" onclick="compartilharCalculadora(this)">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-            <span>Compartilhar esta calculadora</span>
-          </button>
-        </div>
-        <svg class="calc-destaque-icone" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="22" y="10" width="52" height="76" rx="9" fill="#ffffff" stroke="#0a2540" stroke-width="3"/>
-          <rect x="30" y="19" width="36" height="16" rx="3" fill="#e8f7f0" stroke="#0a2540" stroke-width="2"/>
-          <text x="61" y="32" font-size="11" font-weight="700" fill="#0b6344" text-anchor="end" font-family="sans-serif">¥</text>
-          <circle cx="36" cy="48" r="4.4" fill="#0a2540"/>
-          <circle cx="48" cy="48" r="4.4" fill="#0a2540"/>
-          <circle cx="60" cy="48" r="4.4" fill="#0a2540"/>
-          <circle cx="36" cy="60" r="4.4" fill="#0a2540"/>
-          <circle cx="48" cy="60" r="4.4" fill="#0a2540"/>
-          <circle cx="60" cy="60" r="4.4" fill="#0a2540"/>
-          <circle cx="36" cy="72" r="4.4" fill="#0a2540"/>
-          <rect x="43.6" y="67.6" width="21" height="8.8" rx="4.4" fill="#1f9d6b"/>
-        </svg>
+      <div class="fu-calc-esq">
+        <span class="fu-calc-titulo">Calcule seu limite</span>
+        <p class="fu-calc-desc">Descubra quanto você pode doar sem pagar mais impostos.</p>
+        <p class="fu-calc-aviso">*Cálculo estimado com as regras de 2026. O valor exato pode variar conforme suas outras deduções.</p>
+        <a class="fu-calc-link" href="#quanto-doar">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.1" stroke-linecap="round"/></svg>
+          Como o cálculo funciona?
+        </a>
+        <button type="button" class="btn-compartilhar-calc" onclick="compartilharCalculadora(this)">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+          <span>Compartilhar</span>
+        </button>
       </div>
+
     <div class="calculator">
       <div class="abas-calc">
         <button type="button" class="aba ativa" data-aba="simples">Simulação simples</button>
