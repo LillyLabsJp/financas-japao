@@ -218,6 +218,82 @@
 .fu-calc-link:hover{color:var(--color-red);}
 .fu-calc-esq .btn-compartilhar-calc{margin-top:14px;font-size:.8rem;}
 
+/* ============ PRESENTES POR CATEGORIA ============ */
+.fu-presentes{max-width:1180px;margin:0 auto 10px;padding:54px 22px 8px;}
+.fu-presentes-topo{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;margin-bottom:26px;
+}
+.fu-presentes-topo h2{margin:0 0 8px;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.02em;}
+.fu-presentes-topo .sub{margin:0;color:var(--color-text-muted);font-size:1rem;max-width:60ch;line-height:1.55;}
+.fu-presentes-guia{
+  display:inline-flex;align-items:center;gap:6px;flex-shrink:0;
+  font-size:.9rem;font-weight:700;color:var(--color-red);text-decoration:none;
+  padding:9px 15px;border:1.5px solid var(--color-red);border-radius:999px;
+  transition:var(--ease);white-space:nowrap;
+}
+.fu-presentes-guia:hover{background:var(--color-red);color:#fff;}
+
+.fu-cat-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:16px;
+  list-style:none;margin:0;padding:0;
+}
+.fu-cat{margin:0;}
+.fu-cat > a{
+  display:block;text-decoration:none;color:inherit;
+  border-radius:14px;overflow:hidden;background:#fff;
+  border:1px solid var(--color-border);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.fu-cat > a:hover{
+  transform:translateY(-4px);
+  border-color:var(--color-red);
+  box-shadow:0 12px 26px rgba(22,24,29,.13);
+}
+.fu-cat-img{
+  display:flex;align-items:center;justify-content:center;
+  aspect-ratio:1/1;width:100%;position:relative;overflow:hidden;
+  background:var(--color-bg);
+}
+.fu-cat-img img{width:100%;height:100%;object-fit:cover;display:block;}
+/* enquanto a imagem nao existe, mostra um marcador com o icone da categoria */
+.fu-cat-img::before{
+  content:attr(data-emoji);font-size:2.6rem;line-height:1;
+}
+.fu-cat-img img + *{display:none;}
+.fu-cat-img:has(img)::before{display:none;}
+.fu-cat-img[data-img="carnes"]  {background:linear-gradient(160deg,#fdecea,#f9d9d5);}
+.fu-cat-img[data-img="mar"]     {background:linear-gradient(160deg,#e8f4fb,#d3e9f6);}
+.fu-cat-img[data-img="frutas"]  {background:linear-gradient(160deg,#fdeef4,#fadbe7);}
+.fu-cat-img[data-img="arroz"]   {background:linear-gradient(160deg,#fbf6e8,#f3e9d0);}
+.fu-cat-img[data-img="bebidas"] {background:linear-gradient(160deg,#e8faf1,#d2f2e2);}
+.fu-cat-img[data-img="casa"]    {background:linear-gradient(160deg,#eef0f4,#dfe3ea);}
+.fu-cat-img[data-img="carnes"]::before {content:"🥩";}
+.fu-cat-img[data-img="mar"]::before    {content:"🦀";}
+.fu-cat-img[data-img="frutas"]::before {content:"🍈";}
+.fu-cat-img[data-img="arroz"]::before  {content:"🍚";}
+.fu-cat-img[data-img="bebidas"]::before{content:"🍺";}
+.fu-cat-img[data-img="casa"]::before   {content:"🍳";}
+
+.fu-cat-txt{display:block;padding:13px 14px 15px;}
+.fu-cat-txt b{display:block;font-size:.98rem;font-weight:800;letter-spacing:-.01em;margin-bottom:3px;}
+.fu-cat-txt i{display:block;font-style:normal;font-size:.79rem;color:var(--color-text-muted);line-height:1.4;}
+
+.fu-presentes-nota{
+  margin:20px 0 0;font-size:.74rem;color:var(--color-text-faint);
+  line-height:1.55;max-width:80ch;
+}
+
+@media(max-width:1080px){.fu-cat-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:720px){
+  .fu-presentes{padding:38px 18px 4px;}
+  .fu-presentes-topo{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:20px;}
+  .fu-cat-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .fu-cat-txt{padding:11px 12px 13px;}
+  .fu-cat-txt b{font-size:.92rem;}
+  .fu-cat-img::before{font-size:2.1rem;}
+}
+
 /* ============ CALCULADORA HORIZONTAL ============ */
 .fu-calc-linha{
   display:grid;
@@ -345,7 +421,53 @@
 .fu-est .off{color:#d9d5cf;}
 .fu-sim{color:var(--color-accent);font-weight:800;}
 .fu-nao{color:#c9c5be;font-weight:700;}
-@media(max-width:560px){.fu-tabela{font-size:.78rem;}.fu-tabela th,.fu-tabela td{padding:9px 5px;}}
+.fu-tabela .fu-linha-melhor td{font-size:.82rem;line-height:1.4;color:var(--color-text);vertical-align:top;}
+.fu-tabela .fu-linha-melhor td b{color:var(--color-red);font-weight:800;}
+.fu-tabela .fu-linha-taxa td[colspan]{text-align:center;color:var(--color-accent-dark);font-weight:700;background:var(--color-accent-soft);}
+.fu-tabela .fu-linha-ir td{padding-top:16px;}
+.fu-ir{
+  display:inline-block;padding:8px 14px;border-radius:999px;
+  border:1.5px solid var(--color-border);background:#fff;
+  font-size:.8rem;font-weight:700;color:var(--color-text);text-decoration:none;
+  white-space:nowrap;transition:var(--ease);
+}
+.fu-ir:hover{border-color:var(--color-red);color:var(--color-red);}
+.fu-ir.destaque{background:var(--color-red);border-color:var(--color-red);color:#fff;}
+.fu-ir.destaque:hover{background:var(--color-red-dark);border-color:var(--color-red-dark);color:#fff;}
+
+/* --- no celular a tabela vira um cartao por plataforma --- */
+@media(max-width:760px){
+  .fu-tabela thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  .fu-tabela,.fu-tabela tbody,.fu-tabela tr,.fu-tabela td{display:block;width:100%;}
+  .fu-tabela tr{
+    border:1px solid var(--color-border);border-radius:14px;
+    padding:6px 14px 14px;margin-bottom:14px;background:#fff;
+  }
+  .fu-tabela td{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    text-align:right;padding:10px 0;border-bottom:1px solid var(--color-border);
+  }
+  .fu-tabela td:last-child{border-bottom:none;}
+  .fu-tabela td::before{
+    content:attr(data-site);flex:1;text-align:left;
+    font-weight:700;color:var(--color-text);font-size:.86rem;
+  }
+  .fu-tabela td:first-child{
+    display:block;text-align:left;font-size:.8rem;font-weight:800;
+    text-transform:uppercase;letter-spacing:.04em;
+    color:var(--color-text-faint);padding:12px 0 8px;white-space:normal;
+    border-bottom:2px solid var(--color-border);
+  }
+  .fu-tabela td:first-child::before{content:none;}
+  .fu-tabela .fu-linha-taxa td[colspan]{
+    display:block;text-align:center;border-radius:10px;padding:12px;
+  }
+  .fu-tabela .fu-linha-taxa td[colspan]::before{content:none;}
+  .fu-tabela .fu-linha-ir td{padding:10px 0;}
+  .fu-tabela .fu-linha-ir td:first-child{display:none;}
+  .fu-ir{width:auto;}
+}
+@media(max-width:560px){.fu-tabela{font-size:.82rem;}}
 
 .fu-afiliado{background:var(--color-primary);color:#fff;border-radius:16px;padding:28px 26px;}
 
@@ -984,6 +1106,97 @@
     </div>
     </section>
 
+    <!-- ============ PRESENTES POR CATEGORIA ============ -->
+    <section class="fu-presentes" id="presentes-categorias" aria-labelledby="tit-presentes">
+      <div class="fu-presentes-topo">
+        <div>
+          <h2 id="tit-presentes">Agora escolha o que você quer receber</h2>
+          <p class="sub">Com o seu limite em mãos, é só escolher a categoria. Os preços vão de ¥5.000 a mais de ¥100.000 — dá pra montar várias doações dentro de um limite só.</p>
+        </div>
+        <a class="fu-presentes-guia" href="amazon-furusato-nozei.html">Veja como escolher
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <ul class="fu-cat-grid">
+
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img" data-img="carnes">
+              <img src="img/cat-carnes.webp" alt="Wagyu e outros cortes de carne oferecidos como presente de furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Carnes</b>
+              <i>Wagyu, porco, frango</i>
+            </span>
+          </a>
+        </li>
+
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img" data-img="mar">
+              <img src="img/cat-frutos-do-mar.webp" alt="Salmão, caranguejo e outros frutos do mar de furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Frutos do mar</b>
+              <i>Salmão, caranguejo, ovas</i>
+            </span>
+          </a>
+        </li>
+
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img" data-img="frutas">
+              <img src="img/cat-frutas.webp" alt="Melão, morango e uva das regiões do Japão" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Frutas</b>
+              <i>Melão, morango, uva</i>
+            </span>
+          </a>
+        </li>
+
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img" data-img="arroz">
+              <img src="img/cat-arroz.webp" alt="Sacos de arroz koshihikari de furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Arroz</b>
+              <i>Koshihikari e outros</i>
+            </span>
+          </a>
+        </li>
+
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img" data-img="bebidas">
+              <img src="img/cat-bebidas.webp" alt="Cerveja e saquê regionais oferecidos no furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Bebidas</b>
+              <i>Cerveja, saquê, chá</i>
+            </span>
+          </a>
+        </li>
+
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img" data-img="casa">
+              <img src="img/cat-casa.webp" alt="Eletrodomésticos e itens de casa disponíveis no furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Casa e eletro</b>
+              <i>Panela, toalha, ventilador</i>
+            </span>
+          </a>
+        </li>
+
+      </ul>
+
+      <p class="fu-presentes-nota">As fotos são ilustrativas. Cada cidade oferece produtos diferentes — o que você recebe é o que a cidade escolhida envia. Contém link de afiliado: se você doar por aqui, o site recebe uma pequena comissão, sem custo adicional pra você.</p>
+    </section>
+
     <div class="explica-simples">
 
 
@@ -1120,64 +1333,72 @@
             <tr>
               <th></th>
               <th class="destaque">Amazon</th>
+              <th>Rakuten</th>
               <th>Furusato Choice</th>
               <th>Satofull</th>
               <th>Furunavi</th>
-              <th>Rakuten</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Facilidade pra quem já tem conta</td>
-              <td><span class="fu-est">★★★★★</span></td>
-              <td><span class="fu-est">★★★<span class="off">★★</span></span></td>
-              <td><span class="fu-est">★★★★<span class="off">★</span></span></td>
-              <td><span class="fu-est">★★★<span class="off">★★</span></span></td>
-              <td><span class="fu-est">★★★★★</span></td>
+            <tr class="fu-linha-melhor">
+              <td data-rot="Melhor para">Melhor para</td>
+              <td data-site="Amazon"><b>Quem quer o caminho mais curto</b></td>
+              <td data-site="Rakuten">Quem já usa o Rakuten no dia a dia</td>
+              <td data-site="Furusato Choice">Quem quer o maior número de cidades</td>
+              <td data-site="Satofull">Quem prefere resolver pelo aplicativo</td>
+              <td data-site="Furunavi">Quem quer eletrodoméstico</td>
             </tr>
             <tr>
-              <td>Variedade de presentes</td>
-              <td><span class="fu-est">★★★<span class="off">★★</span></span></td>
-              <td><span class="fu-est">★★★★★</span></td>
-              <td><span class="fu-est">★★★★<span class="off">★</span></span></td>
-              <td><span class="fu-est">★★★★<span class="off">★</span></span></td>
-              <td><span class="fu-est">★★★★★</span></td>
+              <td data-rot="Facilidade pra quem já tem conta">Facilidade pra quem já tem conta</td>
+              <td data-site="Amazon"><span class="fu-est">★★★★★</span></td>
+              <td data-site="Rakuten"><span class="fu-est">★★★★★</span></td>
+              <td data-site="Furusato Choice"><span class="fu-est">★★★<span class="off">★★</span></span></td>
+              <td data-site="Satofull"><span class="fu-est">★★★★<span class="off">★</span></span></td>
+              <td data-site="Furunavi"><span class="fu-est">★★★<span class="off">★★</span></span></td>
             </tr>
             <tr>
-              <td>Especialidade</td>
-              <td>Entrega e checkout</td>
-              <td>Maior catálogo</td>
-              <td>Fácil de navegar</td>
-              <td>Eletrônicos</td>
-              <td>Catálogo enorme</td>
+              <td data-rot="Variedade de presentes">Variedade de presentes</td>
+              <td data-site="Amazon"><span class="fu-est">★★★<span class="off">★★</span></span></td>
+              <td data-site="Rakuten"><span class="fu-est">★★★★★</span></td>
+              <td data-site="Furusato Choice"><span class="fu-est">★★★★★</span></td>
+              <td data-site="Satofull"><span class="fu-est">★★★★<span class="off">★</span></span></td>
+              <td data-site="Furunavi"><span class="fu-est">★★★★<span class="off">★</span></span></td>
             </tr>
             <tr>
-              <td>Ganha pontos ao doar</td>
-              <td><span class="fu-nao">Não</span></td>
-              <td><span class="fu-nao">Não</span></td>
-              <td><span class="fu-nao">Não</span></td>
-              <td><span class="fu-nao">Não</span></td>
-              <td><span class="fu-nao">Não</span></td>
+              <td data-rot="Ganha pontos ao doar">Ganha pontos ao doar</td>
+              <td data-site="Amazon"><span class="fu-nao">Não</span></td>
+              <td data-site="Rakuten"><span class="fu-nao">Não</span></td>
+              <td data-site="Furusato Choice"><span class="fu-nao">Não</span></td>
+              <td data-site="Satofull"><span class="fu-nao">Não</span></td>
+              <td data-site="Furunavi"><span class="fu-nao">Não</span></td>
             </tr>
             <tr>
-              <td>Paga usando seus pontos</td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
+              <td data-rot="Site em português">Site em português</td>
+              <td data-site="Amazon"><span class="fu-nao">Não</span></td>
+              <td data-site="Rakuten"><span class="fu-nao">Não</span></td>
+              <td data-site="Furusato Choice"><span class="fu-nao">Não</span></td>
+              <td data-site="Satofull"><span class="fu-nao">Não</span></td>
+              <td data-site="Furunavi"><span class="fu-nao">Não</span></td>
             </tr>
             <tr>
-              <td>Taxa pra você</td>
-              <td colspan="5" style="text-align:center;color:var(--color-accent);font-weight:700;">Nenhuma — todos são gratuitos para quem doa</td>
+              <td data-rot="One-Stop online">One-Stop online</td>
+              <td data-site="Amazon"><span class="fu-sim">Sim</span></td>
+              <td data-site="Rakuten"><span class="fu-sim">Sim</span></td>
+              <td data-site="Furusato Choice"><span class="fu-sim">Sim</span></td>
+              <td data-site="Satofull"><span class="fu-sim">Sim</span></td>
+              <td data-site="Furunavi"><span class="fu-sim">Sim</span></td>
             </tr>
-            <tr>
-              <td>One-Stop online</td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
-              <td><span class="fu-sim">Sim</span></td>
+            <tr class="fu-linha-taxa">
+              <td data-rot="Taxa pra você">Taxa pra você</td>
+              <td colspan="5">Nenhuma — todos são gratuitos para quem doa</td>
+            </tr>
+            <tr class="fu-linha-ir">
+              <td data-rot=""></td>
+              <td data-site="Amazon"><a class="fu-ir destaque" href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">Ir ao site</a></td>
+              <td data-site="Rakuten"><a class="fu-ir" href="https://event.rakuten.co.jp/furusato/" target="_blank" rel="sponsored nofollow noopener">Ir ao site</a></td>
+              <td data-site="Furusato Choice"><a class="fu-ir" href="https://www.furusato-tax.jp/" target="_blank" rel="nofollow noopener">Ir ao site</a></td>
+              <td data-site="Satofull"><a class="fu-ir" href="https://www.satofull.jp/" target="_blank" rel="nofollow noopener">Ir ao site</a></td>
+              <td data-site="Furunavi"><a class="fu-ir" href="https://furunavi.jp/" target="_blank" rel="nofollow noopener">Ir ao site</a></td>
             </tr>
           </tbody>
         </table>
