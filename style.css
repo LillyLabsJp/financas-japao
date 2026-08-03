@@ -587,3 +587,55 @@ p { margin: 0 0 1em; }
 
 /* avatar ilustrado (substitui a inicial "L") */
 .author-box .avatar-ilustrado { border-radius: 50%; background: none; padding: 0; }
+
+/* ================================================================
+   CABECALHO COMPARTILHADO (movido do furusato para todas as paginas)
+   ================================================================ */
+/* ============ CABECALHO ============ */
+.logo-marca{width:38px;height:38px;}
+.logo .logo-texto{display:flex;flex-direction:column;line-height:1;gap:2px;}
+.logo .logo-texto b{font-size:1.14rem;font-weight:850;letter-spacing:-.02em;color:var(--color-text);}
+.logo .logo-texto i{font-style:normal;font-size:.72rem;font-weight:650;letter-spacing:.12em;color:var(--color-text-muted);}
+
+.main-nav .tem-sub{position:relative;}
+.main-nav .tem-sub > a .seta{font-size:.8em;margin-left:2px;}
+.main-nav .submenu{
+  position:absolute;top:100%;left:-14px;min-width:230px;
+  background:#fff;border:1px solid var(--color-border);border-radius:12px;
+  box-shadow:0 12px 32px rgba(22,24,29,.12);
+  padding:8px;display:none;flex-direction:column;gap:0;z-index:60;
+}
+.main-nav .tem-sub:hover .submenu,
+.main-nav .tem-sub:focus-within .submenu{display:flex;}
+.main-nav .submenu a{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;}
+.main-nav .submenu a:hover{background:var(--color-bg);color:var(--color-red);}
+
+.fu-header-acoes{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.header-cta{display:inline-flex;align-items:center;gap:7px;}
+.fu-busca{
+  background:none;border:none;cursor:pointer;color:var(--color-text);
+  padding:6px;display:flex;align-items:center;border-radius:8px;transition:var(--ease);
+}
+.fu-busca:hover{background:var(--color-bg);color:var(--color-red);}
+
+.fu-busca-campo{display:none;border-top:1px solid var(--color-border);background:#fff;padding:14px 0;}
+.fu-busca-campo.aberto{display:block;}
+.fu-busca-campo form{display:flex;gap:10px;}
+.fu-busca-campo input[type=search]{
+  flex:1;padding:12px 15px;font-family:inherit;font-size:.95rem;
+  border:1.5px solid var(--color-border);border-radius:10px;
+}
+.fu-busca-campo input[type=search]:focus{outline:none;border-color:var(--color-red);}
+@media(max-width:900px){.fu-header-acoes .header-cta{display:none;}}
+/* no celular nao existe hover: o submenu abre pela classe que o main.js adiciona */
+.main-nav .tem-sub.aberto > .submenu{display:flex;}
+@media(hover:none){
+  .main-nav .submenu{
+    position:static;left:auto;min-width:0;box-shadow:none;
+    border:none;border-left:2px solid var(--color-border);
+    border-radius:0;margin:4px 0 4px 12px;padding:0 0 0 8px;
+  }
+  .main-nav .tem-sub:hover > .submenu{display:none;}
+  .main-nav .tem-sub.aberto > .submenu{display:flex;}
+}
+
