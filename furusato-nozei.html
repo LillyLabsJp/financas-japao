@@ -921,7 +921,7 @@
           </select>
         </div>
 
-        <button class="btn btn-full" onclick="calcularLimiteDetalhado()">Calcular meu limite (detalhado)</button>
+        <button class="btn btn-full" onclick="rolarAteResultado=true; calcularLimiteDetalhado()">Calcular meu limite (detalhado)</button>
         <p class="hint" style="margin-top:10px;">Não considera financiamento imobiliário (jūtaku loan). Se você tem, o limite real pode ser diferente — consulte um contador.</p>
       </div>
 
@@ -1786,11 +1786,18 @@ function atualizarLinksRedes(){
 }
 atualizarLinksRedes();
 
+/* so rola ate o resultado quando a pessoa pede o calculo de proposito.
+   enquanto ela digita a renda, a pagina fica parada onde esta. */
+var rolarAteResultado = false;
+
 function mostrarLimite(limite, modo){
   var painel = document.getElementById('resultado');
   painel.classList.add('visivel');
   document.getElementById('valor-limite').textContent = formatoJP(limite);
-  painel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (rolarAteResultado) {
+    painel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    rolarAteResultado = false;
+  }
 
   var nota = document.getElementById('nota-metodologia');
   if (nota) {
@@ -1818,6 +1825,7 @@ document.querySelectorAll('.calculator input, .calculator select').forEach(funct
   c.addEventListener('keydown', function(e){
     if (e.key !== 'Enter') return;
     e.preventDefault();
+    rolarAteResultado = true;
     var abaAtiva = document.querySelector('.aba.ativa');
     if (abaAtiva && abaAtiva.getAttribute('data-aba') === 'detalhada') {
       calcularLimiteDetalhado();
