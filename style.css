@@ -746,3 +746,20 @@ p { margin: 0 0 1em; }
 }
 @media(max-width:1000px){.rk-cards{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.rk-cards{grid-template-columns:1fr;gap:26px;}}
+
+/* hero de largura total com a foto ao fundo e o texto sobre o degrade claro */
+.rk-hero-foto{position:relative;overflow:hidden;padding:0;border-bottom:1px solid var(--color-border);}
+.rk-hero-foto .rk-hero-bg{
+  position:absolute;top:0;right:0;height:100%;width:auto;max-width:none;
+  object-fit:cover;object-position:right center;z-index:0;
+}
+.rk-hero-foto .container{position:relative;z-index:1;}
+.rk-hero-foto .rk-hero-txt{max-width:46%;padding:52px 0 56px;}
+.rk-hero-foto h1{font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.08;letter-spacing:-.03em;margin:12px 0 14px;}
+.rk-hero-foto .lead{font-size:1.02rem;margin-bottom:20px;}
+@media(max-width:1100px){.rk-hero-foto .rk-hero-txt{max-width:56%;}}
+@media(max-width:860px){
+  .rk-hero-foto{padding:0 0 4px;}
+  .rk-hero-foto .rk-hero-bg{position:static;width:100%;height:auto;object-position:center;}
+  .rk-hero-foto .rk-hero-txt{max-width:100%;padding:26px 0 34px;}
+}
