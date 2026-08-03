@@ -52,6 +52,22 @@
 .autoridade .texto a{color:var(--color-text-faint);text-decoration-color:rgba(143,163,173,.4);}
 .autoridade .texto a:hover{color:var(--color-text-muted);}
 .texto-longo{max-width:62ch;color:var(--color-text-muted);font-size:1.09rem;}
+
+/* foto do hero */
+.hero-foto img{width:100%;height:auto;display:block;border-radius:18px;box-shadow:0 18px 44px rgba(22,24,29,.14);}
+
+/* icones nos cartoes e na barra de confianca */
+.card-icon img{width:44px;height:44px;object-fit:contain;display:block;}
+.trust-ico{width:30px;height:30px;object-fit:contain;display:block;margin:0 auto 8px;}
+
+/* explicacoes curtas de cada tema */
+.temas{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px;}
+.tema h3{font-size:1.05rem;margin:0 0 8px;letter-spacing:-.01em;}
+.tema h3 span{display:block;font-size:.74rem;font-weight:650;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--color-text-faint);margin-bottom:4px;}
+.tema p{margin:0 0 10px;font-size:.94rem;color:var(--color-text-muted);line-height:1.6;}
+.tema a{font-size:.9rem;font-weight:650;}
+@media(max-width:860px){.temas{grid-template-columns:1fr;gap:22px;}}
 </style>
 </head>
 <body>
@@ -124,29 +140,9 @@
         </div>
       </div>
 
-      <svg class="hero-mockup" viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maquete da calculadora de Furusato Nozei mostrando um limite de doação de 31.000 ienes">
-        <rect x="46" y="18" width="348" height="60" rx="14" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5" opacity=".55"/>
-        <rect x="28" y="36" width="384" height="60" rx="15" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5" opacity=".8"/>
-        <rect x="10" y="58" width="420" height="304" rx="18" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
-        <rect x="34" y="84" width="124" height="9" rx="4.5" fill="#0a2540" opacity=".8"/>
-        <rect x="34" y="102" width="76" height="8" rx="4" fill="#8fa3ad" opacity=".55"/>
-        <rect x="34" y="128" width="372" height="50" rx="10" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
-        <text x="52" y="159" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#8fa3ad">¥</text>
-        <text x="70" y="159" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#16232c">3.500.000</text>
-        <rect x="330" y="145" width="58" height="17" rx="8.5" fill="#e8f7f0"/>
-        <text x="359" y="157" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0b6344" text-anchor="middle">/ ano</text>
-        <rect x="34" y="190" width="104" height="34" rx="9" fill="#e8f7f0" stroke="#1f9d6b" stroke-width="1.5"/>
-        <text x="86" y="212" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#0b6344" text-anchor="middle">Solteiro</text>
-        <rect x="148" y="190" width="104" height="34" rx="9" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
-        <text x="200" y="212" font-family="Inter, sans-serif" font-size="12.5" font-weight="500" fill="#8fa3ad" text-anchor="middle">Casado</text>
-        <rect x="262" y="190" width="144" height="34" rx="9" fill="#ffffff" stroke="#e3e9ed" stroke-width="1.5"/>
-        <text x="334" y="212" font-family="Inter, sans-serif" font-size="12.5" font-weight="500" fill="#8fa3ad" text-anchor="middle">0 dependentes</text>
-        <rect x="34" y="242" width="372" height="96" rx="14" fill="#e8f7f0"/>
-        <text x="56" y="272" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#0b6344" letter-spacing="1.1">SEU LIMITE DE DOAÇÃO</text>
-        <text x="56" y="316" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="#0a2540" letter-spacing="-1.4">¥31.000</text>
-        <circle cx="366" cy="298" r="24" fill="#1f9d6b"/>
-        <path d="M355 298.5l7 7 14-15" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
+      <div class="hero-foto">
+        <img src="img/hero-home.webp?v=1" alt="Mesa com laptop mostrando um painel financeiro, calculadora, maneki-neko e daruma, com o monte Fuji e um torii ao fundo" width="1246" height="636" loading="eager" fetchpriority="high" decoding="async">
+      </div>
     </div>
   </div>
 </section>
@@ -154,20 +150,24 @@
 <section class="trust-band">
   <div class="container">
     <div class="trust-item">
-      <span class="stat-num">3</span>
+      <img class="trust-ico" src="img/ico-calc.webp?v=1" alt="" width="256" height="256" loading="lazy" decoding="async">
+      <span class="stat-num">5</span>
       <span class="stat-label">calculadoras gratuitas</span>
     </div>
     <div class="trust-item">
-      <span class="stat-num">Julho 2026</span>
-      <span class="stat-label">última revisão</span>
+      <img class="trust-ico" src="img/ico-fontes.webp?v=1" alt="" width="256" height="256" loading="lazy" decoding="async">
+      <span class="stat-num">Fontes</span>
+      <span class="stat-label">oficiais citadas em cada página</span>
     </div>
     <div class="trust-item">
-      <span class="stat-num">100%</span>
-      <span class="stat-label">fontes citadas</span>
+      <img class="trust-ico" src="img/ico-escudo.webp?v=1" alt="" width="256" height="256" loading="lazy" decoding="async">
+      <span class="stat-num">Regras de 2026</span>
+      <span class="stat-label">deduções e alíquotas do ano vigente</span>
     </div>
     <div class="trust-item">
+      <img class="trust-ico" src="img/ico-iene.webp?v=1" alt="" width="256" height="256" loading="lazy" decoding="async">
       <span class="stat-num">¥</span>
-      <span class="stat-label">valores em iene real</span>
+      <span class="stat-label">valores em iene, sem conversão</span>
     </div>
   </div>
 </section>
@@ -181,14 +181,7 @@
         <a class="tool-card" href="remessa-japao-brasil.html">
           <span class="faixa"></span>
           <span class="card-body">
-            <span class="card-icon">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="25" cy="34" r="14" fill="none" stroke="#0a2540" stroke-width="2.6"/>
-                <circle cx="41" cy="30" r="14" fill="none" stroke="#1f9d6b" stroke-width="2.6"/>
-                <text x="25" y="39" font-size="12" font-weight="700" fill="#0a2540" text-anchor="middle" font-family="sans-serif">¥</text>
-                <text x="41" y="35" font-size="11" font-weight="700" fill="#0b6344" text-anchor="middle" font-family="sans-serif">R$</text>
-              </svg>
-            </span>
+            <span class="card-icon"><img src="img/ico-remessa.webp?v=1" alt="Ícone de remessa internacional" width="256" height="256" loading="lazy" decoding="async"></span>
             <span class="status live">Disponível</span>
             <h3>Comparador de remessa Japão → Brasil</h3>
             <p>Compare o custo real de enviar dinheiro entre Wise, Brastel Remit, Remitly e banco tradicional, com cotação atualizada em tempo real.</p>
@@ -199,16 +192,7 @@
         <a class="tool-card" href="aposentadoria-nenkin.html">
           <span class="faixa"></span>
           <span class="card-body">
-            <span class="card-icon">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <ellipse cx="32" cy="38" rx="19" ry="14" fill="none" stroke="#5a6b74" stroke-width="2.6"/>
-                <circle cx="45" cy="31" r="3.4" fill="#5a6b74"/>
-                <rect x="27" y="19" width="4" height="8" rx="2" fill="#5a6b74"/>
-                <rect x="27" y="29" width="10" height="3.4" rx="1.7" fill="#5a6b74"/>
-                <circle cx="23" cy="50" r="3" fill="#5a6b74"/>
-                <circle cx="41" cy="50" r="3" fill="#5a6b74"/>
-              </svg>
-            </span>
+            <span class="card-icon"><img src="img/ico-nenkin.webp?v=1" alt="Ícone de aposentadoria" width="256" height="256" loading="lazy" decoding="async"></span>
             <span class="status live">Disponível</span>
             <h3>Simulador de aposentadoria (nenkin)</h3>
             <p>Quanto você recebe de volta se voltar pro Brasil, quanto seria sua aposentadoria — e por que pegar o dinheiro de volta pode custar milhões de ienes.</p>
@@ -219,15 +203,7 @@
         <a class="tool-card" href="furusato-nozei.html">
           <span class="faixa"></span>
           <span class="card-body">
-            <span class="card-icon">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="14" y="26" width="36" height="26" rx="2.5" fill="none" stroke="#0a2540" stroke-width="2.6"/>
-                <line x1="14" y1="34" x2="50" y2="34" stroke="#0a2540" stroke-width="2.2"/>
-                <line x1="32" y1="26" x2="32" y2="52" stroke="#0a2540" stroke-width="2.2"/>
-                <path d="M32 26 Q26 14 20 20 Q18 26 26 26 Z" fill="none" stroke="#1f9d6b" stroke-width="2.4"/>
-                <path d="M32 26 Q38 14 44 20 Q46 26 38 26 Z" fill="none" stroke="#1f9d6b" stroke-width="2.4"/>
-              </svg>
-            </span>
+            <span class="card-icon"><img src="img/ico-furusato.webp?v=1" alt="Ícone de presente" width="256" height="256" loading="lazy" decoding="async"></span>
             <span class="status live">Disponível</span>
             <h3>Furusato Nozei: limite de doação</h3>
             <p>Quanto você pode doar via Furusato Nozei sem sair no prejuízo, considerando sua renda e situação familiar — com guia completo e passo a passo do One-Stop.</p>
@@ -238,15 +214,7 @@
         <a class="tool-card" href="imposto-residencial-juminzei.html">
           <span class="faixa"></span>
           <span class="card-body">
-            <span class="card-icon">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M18 14h20l10 10v26a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z" fill="none" stroke="#0a2540" stroke-width="2.6" stroke-linejoin="round"/>
-                <path d="M38 14v10h10" fill="none" stroke="#0a2540" stroke-width="2.2" stroke-linejoin="round"/>
-                <line x1="23" y1="33" x2="41" y2="33" stroke="#0a2540" stroke-width="2.2"/>
-                <line x1="23" y1="40" x2="41" y2="40" stroke="#0a2540" stroke-width="2.2"/>
-                <path d="M23 46l5 5 13-13" fill="none" stroke="#1f9d6b" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
+            <span class="card-icon"><img src="img/ico-juminzei.webp?v=1" alt="Ícone de casa" width="256" height="256" loading="lazy" decoding="async"></span>
             <span class="status live">Disponível</span>
             <h3>Imposto residencial (jūminzei)</h3>
             <p>Por que a conta vem tão alta no segundo ano, quanto você vai pagar, e os cuidados na hora de sair do emprego ou voltar pro Brasil — inclusive o risco na renovação do visto.</p>
@@ -257,20 +225,44 @@
         <a class="tool-card" href="dependentes-no-brasil.html">
           <span class="faixa"></span>
           <span class="card-body">
-            <span class="card-icon">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="23" cy="22" r="8" fill="none" stroke="#0a2540" stroke-width="2.6"/>
-                <path d="M9 50c0-7.7 6.3-14 14-14s14 6.3 14 14" fill="none" stroke="#0a2540" stroke-width="2.6" stroke-linecap="round"/>
-                <circle cx="44" cy="27" r="6" fill="none" stroke="#1f9d6b" stroke-width="2.4"/>
-                <path d="M35 50c0-6 4.3-11 9.7-11 4.5 0 8.4 3.4 9.5 8.1" fill="none" stroke="#1f9d6b" stroke-width="2.4" stroke-linecap="round"/>
-              </svg>
-            </span>
+            <span class="card-icon"><img src="img/ico-dependentes.webp?v=1" alt="Ícone de família" width="256" height="256" loading="lazy" decoding="async"></span>
             <span class="status live">Disponível</span>
             <h3>Dependentes no Brasil</h3>
             <p>A regra mudou em 2023 e a fiscalização está apertando. Veja quem ainda pode ser declarado, quais comprovantes o Japão exige, e quanto isso reduz do seu imposto.</p>
             <span class="card-action">Calcular agora →</span>
           </span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Entenda antes de calcular</span>
+      <h2 class="section-title">Os três impostos que mais pesam no bolso de quem mora aqui</h2>
+      <p class="texto-longo" style="margin-bottom:32px;">Quem chega ao Japão descobre o sistema tributário aos poucos, quase sempre depois de levar um susto no holerite. Estes são os três pontos onde a diferença entre saber e não saber custa mais caro — e onde uma decisão simples pode devolver dinheiro para o seu bolso.</p>
+
+      <div class="temas">
+        <div class="tema">
+          <h3><span>Furusato Nozei</span>Você já paga esse imposto. Só muda para onde ele vai.</h3>
+          <p>O furusato nozei permite direcionar parte do imposto residencial que você pagaria de qualquer jeito para a cidade japonesa que quiser. Em troca, a cidade envia um presente — carne, arroz, fruta, eletrodoméstico. O valor doado volta como desconto no imposto do ano seguinte, menos ¥2.000 fixos no ano inteiro.</p>
+          <p>O que quase ninguém conta em português: desde outubro de 2025 os sites estão <strong>proibidos de dar pontos</strong> por doação, e o limite despenca se você tem financiamento imobiliário. Doar acima do limite significa pagar do próprio bolso.</p>
+          <a href="furusato-nozei.html">Calcular meu limite →</a>
+        </div>
+
+        <div class="tema">
+          <h3><span>Jūminzei</span>Por que a conta chega tão alta no segundo ano</h3>
+          <p>O imposto residencial é cobrado com um ano de atraso, sobre a renda do ano anterior. Por isso quem chegou ao Japão quase não paga no primeiro ano e leva um choque no segundo — a conta vem cheia, referente a um ano em que talvez você nem ganhasse o mesmo.</p>
+          <p>O detalhe que pega muita gente: quem pede demissão entre janeiro e maio pode ter o restante do ano <strong>descontado de uma vez</strong> no último salário. E jūminzei em aberto pode complicar a renovação do visto.</p>
+          <a href="imposto-residencial-juminzei.html">Simular meu jūminzei →</a>
+        </div>
+
+        <div class="tema">
+          <h3><span>Nenkin</span>Sacar ao voltar pro Brasil pode custar caro</h3>
+          <p>Todo trabalhador no Japão contribui para a aposentadoria. Ao voltar definitivamente, é possível pedir o reembolso parcial — o <i lang="ja">dattai ichijikin</i>. Só que ele devolve uma fração do que foi pago, e não é sempre a melhor escolha.</p>
+          <p>Existe acordo previdenciário entre Brasil e Japão: o tempo contribuído aqui pode ser <strong>somado ao tempo no INSS</strong>. Quem saca perde esse tempo para sempre. A diferença ao longo da vida pode passar de vários milhões de ienes.</p>
+          <a href="aposentadoria-nenkin.html">Comparar as opções →</a>
+        </div>
       </div>
     </div>
   </section>
