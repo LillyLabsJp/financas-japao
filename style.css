@@ -654,3 +654,23 @@ p { margin: 0 0 1em; }
 .fu-conf-fonte svg{color:var(--color-text-faint);}
 .fu-conf-fonte b{color:var(--color-text);font-weight:700;}
 @media(max-width:560px){.fu-conf-sep{display:none;}.fu-confianca{gap:6px 12px;}}
+
+/* ================================================================
+   RESPOSTA RAPIDA — a pergunta central da pagina respondida em
+   duas ou tres frases, antes da explicacao longa.
+   ================================================================ */
+.resposta-rapida{
+  border-left:4px solid var(--color-accent);
+  background:var(--color-accent-soft);
+  border-radius:0 12px 12px 0;
+  padding:18px 22px;margin:0 0 30px;
+}
+.resposta-rapida h2{
+  margin:0 0 8px;font-size:1.05rem;letter-spacing:-.01em;color:var(--color-text);
+}
+.resposta-rapida p{
+  margin:0;font-size:1rem;line-height:1.65;color:var(--color-text);
+}
+.resposta-rapida p + p{margin-top:9px;}
+.resposta-rapida strong{font-weight:750;}
+@media(max-width:640px){.resposta-rapida{padding:15px 17px;margin-bottom:24px;}}
