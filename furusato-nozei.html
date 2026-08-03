@@ -134,6 +134,75 @@
 .fu-confianca{display:flex;align-items:center;gap:8px;padding-top:20px;margin:0;border-top:1px solid var(--color-border);font-size:.78rem;color:var(--color-text-faint);line-height:1.4;}
 .fu-confianca svg{width:14px;height:14px;flex-shrink:0;color:var(--color-accent);}
 
+/* ---- a conta do furusato, em tres passos ---- */
+.fu-conta{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+  list-style:none;margin:0 0 14px;padding:0;
+}
+.fu-conta-item{
+  position:relative;background:#fff;border:1px solid var(--color-border);
+  border-radius:14px;padding:15px 14px 14px;text-align:center;
+  box-shadow:0 2px 10px rgba(22,24,29,.05);
+}
+/* setinha entre os cartoes */
+.fu-conta-item + .fu-conta-item::before{
+  content:"";position:absolute;left:-11px;top:50%;
+  width:9px;height:9px;margin-top:-5px;
+  border-top:2px solid var(--color-text-faint);
+  border-right:2px solid var(--color-text-faint);
+  transform:rotate(45deg);
+}
+.fu-conta-ico{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:50%;margin-bottom:9px;
+}
+.fu-conta-ico.doa  {background:var(--color-red-soft);color:var(--color-red);}
+.fu-conta-ico.volta{background:var(--color-accent-soft);color:var(--color-accent-dark);}
+.fu-conta-ico.sobra{background:#eef1f6;color:#3d4a5c;}
+.fu-conta-rot{
+  display:block;font-size:.76rem;font-weight:650;color:var(--color-text-muted);
+  line-height:1.3;margin-bottom:6px;
+}
+.fu-conta-val{
+  display:block;font-size:clamp(1.5rem,2.6vw,1.95rem);font-weight:850;
+  letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;
+}
+.fu-conta-val.doa  {color:var(--color-red);}
+.fu-conta-val.volta{color:var(--color-accent-dark);}
+.fu-conta-val.sobra{color:var(--color-text);}
+.fu-conta-sub{
+  display:block;font-style:normal;font-size:.7rem;color:var(--color-text-faint);
+  margin-top:6px;line-height:1.3;
+}
+.fu-conta-nota{
+  display:flex;gap:8px;align-items:flex-start;
+  margin:0 0 22px;padding:11px 13px;
+  background:var(--color-bg);border:1px solid var(--color-border);border-radius:10px;
+  font-size:.76rem;color:var(--color-text-muted);line-height:1.5;
+}
+.fu-conta-nota svg{flex-shrink:0;margin-top:1px;color:var(--color-text-faint);}
+.fu-conta-nota a{color:var(--color-link);font-weight:650;}
+
+.fu-hero-tempo{
+  display:flex;align-items:center;gap:6px;
+  margin:-14px 0 20px;font-size:.8rem;color:var(--color-text-faint);
+}
+
+@media(max-width:900px){
+  .fu-conta{grid-template-columns:1fr;gap:10px;}
+  .fu-conta-item{
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+    gap:4px 12px;text-align:left;padding:12px 14px;
+  }
+  .fu-conta-ico{grid-row:1/3;margin-bottom:0;}
+  .fu-conta-rot{margin-bottom:0;}
+  .fu-conta-val{grid-row:1/3;grid-column:3;font-size:1.45rem;}
+  .fu-conta-sub{margin-top:2px;}
+  .fu-conta-item + .fu-conta-item::before{
+    left:50%;top:-11px;margin:0 0 0 -5px;transform:rotate(135deg);
+  }
+}
+
 .fu-hero-arte{position:relative;}
 .fu-hero-arte svg{width:100%;height:auto;display:block;}
 .fu-hero-arte img{width:100%;height:auto;display:block;border-radius:16px;}
@@ -682,8 +751,41 @@
     <div class="fu-hero-grid">
       <div class="fu-hero-txt">
         <span class="fu-eyebrow">Furusato Nozei</span>
-        <h1>Doe até o seu limite.<br>Receba comida.<br>Pague apenas <em>¥2.000</em>.</h1>
-        <p class="fu-lead">O sistema que deixa você doar para cidades do Japão, receber presentes e ainda descontar quase tudo do imposto que você já ia pagar.</p>
+        <h1>Doe para o seu Japão. <em>Receba de volta</em> no seu imposto.<br>Pague apenas <em>¥2.000</em>.</h1>
+        <p class="fu-lead">Ao doar para cidades japonesas pelo Furusato Nozei, você escolhe presentes e ainda reduz o imposto de renda e o imposto residencial que já ia pagar.</p>
+
+        <!-- a conta inteira, visivel: doa, volta, sobra -->
+        <ol class="fu-conta">
+          <li class="fu-conta-item">
+            <span class="fu-conta-ico doa">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M3 12h18M12 8C10 8 8 6.5 8 5a2 2 0 0 1 4 0c0 1.5-2 3-4 3M12 8c2 0 4-1.5 4-3a2 2 0 0 0-4 0c0 1.5 2 3 4 3"/></svg>
+            </span>
+            <span class="fu-conta-rot">Você pode doar até</span>
+            <b class="fu-conta-val doa">¥65.000</b>
+            <i class="fu-conta-sub">por ano (valor máximo)</i>
+          </li>
+          <li class="fu-conta-item">
+            <span class="fu-conta-ico volta">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 13l2 2 4-4"/></svg>
+            </span>
+            <span class="fu-conta-rot">Volta como redução de imposto</span>
+            <b class="fu-conta-val volta">¥63.000</b>
+            <i class="fu-conta-sub">retorno via imposto</i>
+          </li>
+          <li class="fu-conta-item">
+            <span class="fu-conta-ico sobra">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M17 15h2"/></svg>
+            </span>
+            <span class="fu-conta-rot">Seu custo real no ano</span>
+            <b class="fu-conta-val sobra">¥2.000</b>
+            <i class="fu-conta-sub">o que sobra para você</i>
+          </li>
+        </ol>
+
+        <p class="fu-conta-nota">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.1" stroke-linecap="round"/></svg>
+          <span>Exemplo com renda anual de ¥5.700.000, sem dependentes e sem financiamento. O limite muda conforme a sua renda, seus dependentes e outras deduções — <a href="#calculadora">use a calculadora</a> para descobrir o seu.</span>
+        </p>
 
         <div class="fu-ctas">
           <a class="btn fu-btn-grande" href="#calculadora">
@@ -695,6 +797,11 @@
             Veja como fazer
           </a>
         </div>
+
+        <p class="fu-hero-tempo">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg>
+          Leva menos de 1 minuto
+        </p>
 
         <div class="fu-confianca">
           <span class="fu-conf-item">
@@ -712,11 +819,6 @@
       <div class="fu-hero-arte">
         <img src="img/hero-furusato.webp?v=2" alt="Monte Fuji, torii e pagode ao fundo, com wagyu, melão, uvas, morangos, arroz, saquê, panela e toalhas — presentes típicos do furusato nozei" width="1400" height="885" loading="eager" fetchpriority="high" decoding="async">
 
-        <div class="fu-selo-flutuante">
-          <span class="rot">Você só paga</span>
-          <span class="val">¥2.000</span>
-          <span class="sub">no ano inteiro</span>
-        </div>
       </div>
     </div>
   </div>
@@ -792,7 +894,7 @@
 
         </div>
 
-        <p class="fu-calc-nota">Dependentes: só conta quem tem 16 anos ou mais e está no seu nenmatsu chōsei. Cônjuge: marque sim se ganha menos de ¥1.030.000 por ano.</p>
+        <p class="fu-calc-nota"><b>Digite os valores sem ponto</b> (5700000, não 5.700.000). O bônus já entra como zero — se você recebe, é só preencher que o cálculo se ajusta. Dependentes: só conta quem tem 16 anos ou mais e está no seu nenmatsu chōsei. Cônjuge: marque sim se ganha menos de ¥1.030.000 por ano.</p>
 
         <div class="fu-aviso-fin" id="aviso-financiamento">
           <strong>⚠️ Atenção: você marcou financiamento imobiliário.</strong>
