@@ -1632,11 +1632,16 @@ function copiarResultado(){
   pinta();
 })();
 
-// recalcula sozinho enquanto a pessoa digita
+// recalcula sozinho, mas so depois que a pessoa para de digitar —
+// senao pisca "¥0" a cada tecla enquanto o numero ainda esta incompleto
+var esperaDigitacao;
 ['renda-anual','bonus-anual'].forEach(function(id){
   var el = document.getElementById(id);
   if (el) el.addEventListener('input', function(){
-    if ((parseFloat(document.getElementById('renda-anual').value)||0) > 0) calcularLimite();
+    clearTimeout(esperaDigitacao);
+    esperaDigitacao = setTimeout(function(){
+      if ((parseFloat(document.getElementById('renda-anual').value)||0) > 0) calcularLimite();
+    }, 650);
   });
 });
 
