@@ -235,7 +235,7 @@
 .fu-presentes-guia:hover{background:var(--color-red);color:#fff;}
 
 .fu-cat-grid{
-  display:grid;grid-template-columns:repeat(6,1fr);gap:16px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
   list-style:none;margin:0;padding:0;
 }
 .fu-cat{margin:0;}
@@ -251,47 +251,35 @@
   box-shadow:0 12px 26px rgba(22,24,29,.13);
 }
 .fu-cat-img{
-  display:flex;align-items:center;justify-content:center;
-  aspect-ratio:1/1;width:100%;position:relative;overflow:hidden;
-  background:var(--color-bg);
+  display:block;aspect-ratio:4/3;width:100%;overflow:hidden;
+  background:#fff;
 }
-.fu-cat-img img{width:100%;height:100%;object-fit:cover;display:block;}
-/* enquanto a imagem nao existe, mostra um marcador com o icone da categoria */
-.fu-cat-img::before{
-  content:attr(data-emoji);font-size:2.6rem;line-height:1;
+.fu-cat-img img{
+  width:100%;height:100%;object-fit:contain;display:block;
+  transition:transform .25s ease;
 }
-.fu-cat-img img + *{display:none;}
-.fu-cat-img:has(img)::before{display:none;}
-.fu-cat-img[data-img="carnes"]  {background:linear-gradient(160deg,#fdecea,#f9d9d5);}
-.fu-cat-img[data-img="mar"]     {background:linear-gradient(160deg,#e8f4fb,#d3e9f6);}
-.fu-cat-img[data-img="frutas"]  {background:linear-gradient(160deg,#fdeef4,#fadbe7);}
-.fu-cat-img[data-img="arroz"]   {background:linear-gradient(160deg,#fbf6e8,#f3e9d0);}
-.fu-cat-img[data-img="bebidas"] {background:linear-gradient(160deg,#e8faf1,#d2f2e2);}
-.fu-cat-img[data-img="casa"]    {background:linear-gradient(160deg,#eef0f4,#dfe3ea);}
-.fu-cat-img[data-img="carnes"]::before {content:"🥩";}
-.fu-cat-img[data-img="mar"]::before    {content:"🦀";}
-.fu-cat-img[data-img="frutas"]::before {content:"🍈";}
-.fu-cat-img[data-img="arroz"]::before  {content:"🍚";}
-.fu-cat-img[data-img="bebidas"]::before{content:"🍺";}
-.fu-cat-img[data-img="casa"]::before   {content:"🍳";}
+.fu-cat > a:hover .fu-cat-img img{transform:scale(1.05);}
 
-.fu-cat-txt{display:block;padding:13px 14px 15px;}
-.fu-cat-txt b{display:block;font-size:.98rem;font-weight:800;letter-spacing:-.01em;margin-bottom:3px;}
-.fu-cat-txt i{display:block;font-style:normal;font-size:.79rem;color:var(--color-text-muted);line-height:1.4;}
+.fu-cat-txt{
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  gap:4px 10px;padding:12px 14px 14px;border-top:1px solid var(--color-border);
+}
+.fu-cat-txt b{font-size:.97rem;font-weight:800;letter-spacing:-.01em;grid-column:1;}
+.fu-cat-txt i{font-style:normal;font-size:.78rem;color:var(--color-text-muted);line-height:1.35;grid-column:1;}
+.fu-cat-seta{grid-column:2;grid-row:1/3;color:var(--color-red);flex-shrink:0;}
 
 .fu-presentes-nota{
   margin:20px 0 0;font-size:.74rem;color:var(--color-text-faint);
   line-height:1.55;max-width:80ch;
 }
 
-@media(max-width:1080px){.fu-cat-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:720px){
   .fu-presentes{padding:38px 18px 4px;}
   .fu-presentes-topo{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:20px;}
   .fu-cat-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
   .fu-cat-txt{padding:11px 12px 13px;}
-  .fu-cat-txt b{font-size:.92rem;}
-  .fu-cat-img::before{font-size:2.1rem;}
+  .fu-cat-txt b{font-size:.9rem;}
+  .fu-cat-txt i{font-size:.73rem;}
 }
 
 /* ============ CALCULADORA HORIZONTAL ============ */
@@ -687,8 +675,6 @@
 </header>
 
 <main>
-
-<!-- ===================== HERO ===================== -->
 <section class="fu-hero">
   <div class="container">
     <div class="fu-hero-grid">
@@ -722,7 +708,7 @@
       </div>
 
       <div class="fu-hero-arte">
-        <img src="img/furusato-hero.svg" alt="Sol nascente sobre o monte Fuji e um torii, com produtos japoneses de furusato nozei" width="460" height="400" loading="eager">
+        <img src="img/hero-furusato.webp" alt="Monte Fuji, torii e pagode ao fundo, com wagyu, melão, uvas, morangos, arroz, saquê, panela e toalhas — presentes típicos do furusato nozei" width="1200" height="760" loading="eager" fetchpriority="high" decoding="async">
 
         <div class="fu-selo-flutuante">
           <span class="rot">Você só paga</span>
@@ -734,151 +720,8 @@
   </div>
 </section>
 
-  <div class="container section" style="padding-top:0;">
-      <!-- ============ COMO FUNCIONA — 4 PASSOS ============ -->
-      <section class="fu-como">
-        <div class="container">
-          <h2 style="margin-top:0;">Como funciona?</h2>
-          <p class="sub">Você doa uma vez e recebe duas: em presente e em desconto no imposto.</p>
-          <div class="fu-passos4">
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">1</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#e02b25" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40s-13-8.5-13-17a7.5 7.5 0 0 1 13-5 7.5 7.5 0 0 1 13 5c0 8.5-13 17-13 17z"/></svg>
-              </div>
-              <h3>Você doa</h3>
-              <p>Escolhe uma cidade do Japão e o valor. Não precisa nunca ter ido lá.</p>
-            </div>
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">2</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="19" width="32" height="21" rx="2"/><path d="M6 19h36M24 19v21M24 19c-4 0-7-2.6-7-5a3.5 3.5 0 0 1 7 0c0 2.4-3 5-7 5M24 19c4 0 7-2.6 7-5a3.5 3.5 0 0 0-7 0c0 2.4 3 5 7 5"/></svg>
-              </div>
-              <h3>Recebe o presente</h3>
-              <p>A cidade manda produto da região: carne, arroz, fruta, peixe.</p>
-            </div>
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">3</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 26l4 4 9-9"/></svg>
-              </div>
-              <h3>Avisa o imposto</h3>
-              <p>Manda o formulário One-Stop, que vem junto com o presente.</p>
-            </div>
-            <div class="fu-p4">
-              <div class="circ">
-                <span class="n">4</span>
-                <svg viewBox="0 0 48 48" fill="none" stroke="#00a866" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 34l10-10 7 6 13-15"/><path d="M30 15h8v8"/></svg>
-              </div>
-              <h3>O imposto cai</h3>
-              <p>No ano seguinte, o valor sai do seu jūminzei, menos ¥2.000.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ============ 5 CARDS ============ -->
-      <div class="fu-cards">
-        <a class="fu-card" href="#quem-pode">
-          <span class="ico">👥</span>
-          <h3>Quem pode usar?</h3>
-          <p>Brasileiro pode. O que conta é pagar imposto residencial no Japão — não o tipo de visto.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#quanto-doar">
-          <span class="ico">💰</span>
-          <h3>Quanto posso doar?</h3>
-          <p>Depende do salário, do bônus e de quantas pessoas dependem de você. A conta por dentro.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#presentes">
-          <span class="ico">🎁</span>
-          <h3>O que eu ganho?</h3>
-          <p>Carne, arroz, fruta, peixe e até papel higiênico. Como escolher e quando chega.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#cuidados">
-          <span class="ico">⚠️</span>
-          <h3>Cuidados</h3>
-          <p>Passar do limite é o único erro que custa dinheiro. E o One-Stop tem prazo.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-        <a class="fu-card" href="#calendario">
-          <span class="ico">📅</span>
-          <h3>Prazos de 2026</h3>
-          <p>Doação até 31 de dezembro, One-Stop até 10 de janeiro, desconto a partir de junho.</p>
-          <span class="mais">Saiba mais →</span>
-        </a>
-      </div>
-    <!-- ============ TRIO: EXEMPLO, GRAFICO, FAQ ============ -->
-    <div class="fu-trio">
+    <div class="container section" style="padding-top:0;">
 
-      <div class="fu-bloco">
-        <h3>Exemplo real</h3>
-        <div class="fu-pessoa">
-          <span class="av">👨‍🔧</span>
-          <span class="quem"><b>João, Aichi</b><span>Fábrica, solteiro, sem dependentes</span></span>
-        </div>
-        <ul class="fu-lista-ex">
-          <li>Renda anual: <b>¥5.700.000</b></li>
-          <li>Limite calculado: <b>¥65.000</b></li>
-          <li>Doou para <b>3 cidades</b> em novembro</li>
-          <li class="ok">✓ 30 kg de arroz koshihikari</li>
-          <li class="ok">✓ 3 kg de wagyu fatiado</li>
-          <li class="ok">✓ 2 kg de salmão e 24 cervejas</li>
-          <li>Desconto no imposto: <b>¥63.000</b></li>
-        </ul>
-        <div class="fu-fecho-ex">Gasto real no ano: ¥2.000</div>
-      </div>
-
-      <div class="fu-bloco">
-        <h3>A economia na prática</h3>
-        <div class="fu-barras">
-          <div class="fu-barra">
-            <div class="col cheia" style="height:132px;"></div>
-            <span class="vl">¥65.000</span>
-            <span class="lb">imposto normal</span>
-          </div>
-          <div class="fu-barra">
-            <div class="col magra" style="height:9px;"></div>
-            <span class="vl">¥2.000</span>
-            <span class="lb">com furusato</span>
-          </div>
-        </div>
-        <div class="fu-economia">
-          <span class="n">¥63.000</span>
-          <span class="t">voltam pra você em comida e desconto</span>
-        </div>
-        <p style="margin:12px 0 0;font-size:.8rem;color:var(--color-text-faint);line-height:1.5;">Mesmo imposto, destino diferente: em vez de sumir, ele vira produto na sua casa.</p>
-      </div>
-
-      <div class="fu-bloco">
-        <h3>Dúvidas mais comuns</h3>
-        <ul class="fu-faq-mini">
-          <li><a href="#faq">Estrangeiro pode usar?</a></li>
-          <li><a href="#faq">Preciso falar japonês?</a></li>
-          <li><a href="#faq">E se eu passar do limite?</a></li>
-          <li><a href="#faq">Posso usar o One-Stop?</a></li>
-          <li><a href="#faq">Quando o presente chega?</a></li>
-          <li><a href="#faq">Vale a pena pra quem ganha pouco?</a></li>
-        </ul>
-        <a class="fu-ver-todas" href="#faq">Ver todas as perguntas →</a>
-      </div>
-
-    </div>
-      <!-- ============ AMAZON, LOGO APOS O RESULTADO ============ -->
-      <aside class="fu-afiliado fu-afiliado-topo">
-        <div class="fu-af-txt">
-          <h3>Onde doar: comece pela Amazon</h3>
-          <p>Depois de saber o seu limite, o passo seguinte é escolher o que vem pra casa. Se você já compra na Amazon Japão, é o caminho mais curto: mesma conta, mesmo endereço, mesmo checkout de sempre.</p>
-        </div>
-        <div class="fu-af-acao">
-          <a class="btn" href="amazon-furusato-nozei.html">Veja como fazer</a>
-          <p class="fu-disclosure">Contém link de afiliado. Se você doar por aqui, o site recebe uma pequena comissão — sem custo adicional pra você.</p>
-        </div>
-      </aside>
-  </div>
-
-  <div class="container section">
     <section class="calc-destaque" id="calculadora">
       <div class="fu-calc-esq">
         <span class="fu-calc-titulo">Calcule seu limite</span>
@@ -1106,7 +949,6 @@
     </div>
     </section>
 
-    <!-- ============ PRESENTES POR CATEGORIA ============ -->
     <section class="fu-presentes" id="presentes-categorias" aria-labelledby="tit-presentes">
       <div class="fu-presentes-topo">
         <div>
@@ -1119,210 +961,155 @@
       </div>
 
       <ul class="fu-cat-grid">
-
         <li class="fu-cat">
           <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
-            <span class="fu-cat-img" data-img="carnes">
-              <img src="img/cat-carnes.webp" alt="Wagyu e outros cortes de carne oferecidos como presente de furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            <span class="fu-cat-img">
+              <img src="img/cat-carnes.webp" alt="Cortes de wagyu e outras carnes — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
             </span>
             <span class="fu-cat-txt">
               <b>Carnes</b>
               <i>Wagyu, porco, frango</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
             </span>
           </a>
         </li>
 
         <li class="fu-cat">
           <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
-            <span class="fu-cat-img" data-img="mar">
-              <img src="img/cat-frutos-do-mar.webp" alt="Salmão, caranguejo e outros frutos do mar de furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            <span class="fu-cat-img">
+              <img src="img/cat-frutos-do-mar.webp" alt="Caranguejo, salmão e frutos do mar — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
             </span>
             <span class="fu-cat-txt">
               <b>Frutos do mar</b>
-              <i>Salmão, caranguejo, ovas</i>
+              <i>Caranguejo, salmão, ovas</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
             </span>
           </a>
         </li>
 
         <li class="fu-cat">
           <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
-            <span class="fu-cat-img" data-img="frutas">
-              <img src="img/cat-frutas.webp" alt="Melão, morango e uva das regiões do Japão" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            <span class="fu-cat-img">
+              <img src="img/cat-frutas.webp" alt="Melão, morangos e uvas do Japão — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
             </span>
             <span class="fu-cat-txt">
               <b>Frutas</b>
               <i>Melão, morango, uva</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
             </span>
           </a>
         </li>
 
         <li class="fu-cat">
           <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
-            <span class="fu-cat-img" data-img="arroz">
-              <img src="img/cat-arroz.webp" alt="Sacos de arroz koshihikari de furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            <span class="fu-cat-img">
+              <img src="img/cat-arroz.webp" alt="Arroz japonês em caixa de madeira — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
             </span>
             <span class="fu-cat-txt">
               <b>Arroz</b>
               <i>Koshihikari e outros</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
             </span>
           </a>
         </li>
 
         <li class="fu-cat">
           <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
-            <span class="fu-cat-img" data-img="bebidas">
-              <img src="img/cat-bebidas.webp" alt="Cerveja e saquê regionais oferecidos no furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            <span class="fu-cat-img">
+              <img src="img/cat-bebidas.webp" alt="Garrafas de saquê e cerveja — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
             </span>
             <span class="fu-cat-txt">
               <b>Bebidas</b>
-              <i>Cerveja, saquê, chá</i>
+              <i>Saquê, cerveja, chá</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
             </span>
           </a>
         </li>
 
         <li class="fu-cat">
           <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
-            <span class="fu-cat-img" data-img="casa">
-              <img src="img/cat-casa.webp" alt="Eletrodomésticos e itens de casa disponíveis no furusato nozei" width="400" height="400" loading="lazy" decoding="async" onerror="this.remove()">
+            <span class="fu-cat-img">
+              <img src="img/cat-casa.webp" alt="Panela vermelha e cafeteira — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
             </span>
             <span class="fu-cat-txt">
               <b>Casa e eletro</b>
-              <i>Panela, toalha, ventilador</i>
+              <i>Panela, cafeteira, ferro</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
             </span>
           </a>
         </li>
 
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img">
+              <img src="img/cat-itens-dia-a-dia.webp" alt="Toalhas e itens de uso doméstico — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Itens do dia a dia</b>
+              <i>Toalha, papel, sabão</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </li>
+
+        <li class="fu-cat">
+          <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="sponsored nofollow noopener">
+            <span class="fu-cat-img">
+              <img src="img/cat-cosmeticos.webp" alt="Frascos de creme e cosméticos — presentes de furusato nozei" width="560" height="560" loading="lazy" decoding="async">
+            </span>
+            <span class="fu-cat-txt">
+              <b>Cosméticos</b>
+              <i>Creme, sabonete, óleo</i>
+              <svg class="fu-cat-seta" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </li>
       </ul>
 
       <p class="fu-presentes-nota">As fotos são ilustrativas. Cada cidade oferece produtos diferentes — o que você recebe é o que a cidade escolhida envia. Contém link de afiliado: se você doar por aqui, o site recebe uma pequena comissão, sem custo adicional pra você.</p>
     </section>
 
-    <div class="explica-simples">
-
-
-
-      <h2 id="quem-pode">Explicando como pra um amigo</h2>
-      <p>Todo ano, uma parte do seu salário vai embora em imposto pra prefeitura. Esse dinheiro some e você não vê nada em troca. Certo?</p>
-      <p>O Furusato Nozei é o governo dizendo o seguinte: <strong>"em vez de me pagar tudo, pode mandar um pedaço desse imposto pra uma cidadezinha do interior. E ela te agradece com um presente."</strong></p>
-      <p>Você não gasta dinheiro novo. É o <strong>mesmo imposto que você já ia pagar</strong> — só muda o caminho que ele faz. A única coisa que sai do seu bolso a mais é uma taxa única de ¥2.000 no ano inteiro.</p>
-      <div class="exemplo-numeros">
-        <p class="titulo-exemplo">Quem recebe o quê:</p>
-        <p>🏙️ <strong>A cidade recebe</strong> o dinheiro da sua doação</p>
-        <p>🎁 <strong>Você recebe o presente na sua casa</strong> — a cidade manda pelo correio, como agradecimento</p>
-        <p>📉 <strong>Você recebe de volta o valor doado</strong> (menos ¥2.000) como desconto no imposto do ano seguinte</p>
-      </div>
-      <p><strong>Atenção pra não confundir:</strong> o desconto no imposto não é o seu "lucro" — ele só devolve o dinheiro que você doou. No fim das contas, você gastou ¥2.000. <strong>O seu lucro de verdade são os presentes</strong>, que chegam na sua porta e valem bem mais que isso.</p>
-      <div class="exemplo-numeros">
-        <p class="titulo-exemplo">"Então eu ganho o presente E o imposto de volta?"</p>
-        <p>Você ganha <strong>o presente</strong>. ✅</p>
-        <p>O imposto que "volta" <strong>não é ganho</strong> — é só a devolução do dinheiro que você adiantou na doação. ❌</p>
-        <p>Somando tudo: você paga o mesmo imposto de sempre + ¥2.000, e fica com os presentes. <strong>Ninguém lucra dinheiro — você lucra comida.</strong></p>
-      </div>
-      <div class="exemplo-numeros">
-        <p class="titulo-exemplo">Na prática, com números:</p>
-        <p>💴 Digamos que seu limite deu <strong>¥30.000</strong></p>
-        <p>🥩 Você doa ¥30.000 e escolhe os presentes nos sites: picanha, arroz, cerveja... <strong>tudo entregue na sua casa</strong></p>
-        <p>📉 No ano que vem, seu imposto vem <strong>¥28.000 mais barato</strong> — o dinheiro da doação voltou pra você</p>
-        <p>✅ Resultado: você gastou só <strong>¥2.000</strong> e os presentes todos ficaram com você</p>
-      </div>
-      <p>O único jeito de perder dinheiro é <strong>doar mais do que o seu limite permite</strong> — aí o que passar não volta. É pra isso que serve a <a href="#calculadora">calculadora lá em cima</a>. 👆</p>
-    </div>
-
-
-
-    <div class="conteudo">
-      <h2>Simulação real, do começo ao fim</h2>
-      <p>O João trabalha em fábrica em Aichi, solteiro, ganha ¥3.500.000 por ano (com as extras). Pela calculadora, o limite dele deu <strong>¥31.000</strong>. Olha a história completa:</p>
-
-      <div class="linha-tempo">
-        <div class="momento">
-          <span class="quando">Novembro de 2026</span>
-          <p>João entra no Rakuten Furusato Nozei e "gasta" os ¥31.000 do limite em 3 cidades: ¥13.000 numa cidade de Miyazaki (frango + porco), ¥9.000 numa de Niigata (10kg de arroz) e ¥9.000 numa de Hokkaido (caixa de cerveja). Marca a opção One-Stop nas três. Esse dinheiro sai do bolso dele agora.</p>
+      <section class="fu-como">
+        <div class="container">
+          <h2 style="margin-top:0;">Como funciona?</h2>
+          <p class="sub">Você doa uma vez e recebe duas: em presente e em desconto no imposto.</p>
+          <div class="fu-passos4">
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">1</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#e02b25" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40s-13-8.5-13-17a7.5 7.5 0 0 1 13-5 7.5 7.5 0 0 1 13 5c0 8.5-13 17-13 17z"/></svg>
+              </div>
+              <h3>Você doa</h3>
+              <p>Escolhe uma cidade do Japão e o valor. Não precisa nunca ter ido lá.</p>
+            </div>
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">2</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="19" width="32" height="21" rx="2"/><path d="M6 19h36M24 19v21M24 19c-4 0-7-2.6-7-5a3.5 3.5 0 0 1 7 0c0 2.4-3 5-7 5M24 19c4 0 7-2.6 7-5a3.5 3.5 0 0 0-7 0c0 2.4 3 5 7 5"/></svg>
+              </div>
+              <h3>Recebe o presente</h3>
+              <p>A cidade manda produto da região: carne, arroz, fruta, peixe.</p>
+            </div>
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">3</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#16181d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 26l4 4 9-9"/></svg>
+              </div>
+              <h3>Avisa o imposto</h3>
+              <p>Manda o formulário One-Stop, que vem junto com o presente.</p>
+            </div>
+            <div class="fu-p4">
+              <div class="circ">
+                <span class="n">4</span>
+                <svg viewBox="0 0 48 48" fill="none" stroke="#00a866" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 34l10-10 7 6 13-15"/><path d="M30 15h8v8"/></svg>
+              </div>
+              <h3>O imposto cai</h3>
+              <p>No ano seguinte, o valor sai do seu jūminzei, menos ¥2.000.</p>
+            </div>
+          </div>
         </div>
-        <div class="momento">
-          <span class="quando">Dezembro a janeiro</span>
-          <p>Os presentes vão chegando na casa dele pelo correio. Junto vêm os formulários One-Stop — ele preenche os 3, cola cópia do My Number e devolve pelo correio até 10 de janeiro.</p>
-        </div>
-        <div class="momento">
-          <span class="quando">Junho de 2027 em diante</span>
-          <p>O jūminzei no holerite do João cai, mês a mês, a partir de junho. No total do ano, ¥29.000 a menos de imposto — os ¥31.000 doados voltaram, menos os ¥2.000 fixos.</p>
-        </div>
-      </div>
+      </section>
 
-      <p>Comparando os dois Joãos no fim da história:</p>
-      <table class="data-table">
-        <thead><tr><th></th><th>João SEM furusato nozei</th><th>João COM furusato nozei</th></tr></thead>
-        <tbody>
-          <tr><td>Imposto + doação pagos</td><td>¥150.000</td><td>¥152.000</td></tr>
-          <tr><td>Recebeu em casa</td><td>nada</td><td>frango, porco, arroz e cerveja (~¥10.000)</td></tr>
-        </tbody>
-      </table>
-      <p><strong>Moral da história:</strong> o João pagou ¥2.000 a mais e encheu a despensa. Ele não ganhou dinheiro — ganhou comida que teria que comprar de qualquer jeito. É isso, e só isso, que o furusato nozei faz.</p>
-    </div>
-
-    <div class="conteudo">
-      <h2>Como usar (o passo a passo do One-Stop)</h2>
-      <ol>
-        <li><strong>Escolha um site</strong> — Rakuten Furusato Nozei, <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="noopener">Amazon Furusato Nozei</a>, Furunavi, Satofull ou Furusato Choice. Funciona como uma loja online normal.</li>
-        <li><strong>Escolha os presentes</strong> dentro do seu limite. Pode dividir entre produtos e cidades diferentes — mas para usar o One-Stop, doe para no máximo <strong>5 cidades</strong> no ano.</li>
-        <li><strong>Marque a opção One-Stop</strong> (ワンストップ特例制度) na hora de doar.</li>
-        <li><strong>Preencha e devolva o formulário</strong> que a cidade te envia pelo correio (ou faça online, se a cidade permitir), com cópia do My Number. Prazo: até 10 de janeiro do ano seguinte.</li>
-        <li><strong>Pronto.</strong> O desconto aparece no seu imposto residencial a partir de junho do ano seguinte — confira no aviso de jūminzei.</li>
-      </ol>
-
-      <div class="callout warning">
-        <h4>⚠ As 3 pegadinhas que derrubam todo mundo</h4>
-        <p><strong>1.</strong> Doou para 6 cidades ou mais? O One-Stop não vale — você precisa fazer a declaração de imposto (kakutei shinkoku).<br>
-        <strong>2.</strong> Fez declaração de imposto por qualquer outro motivo (despesa médica, primeiro ano de financiamento da casa)? O One-Stop é <strong>cancelado automaticamente</strong> — inclua as doações na declaração, senão perde o desconto.<br>
-        <strong>3.</strong> Esqueceu de mandar o formulário até 10 de janeiro? Ainda dá pra recuperar declarando no kakutei shinkoku até março.</p>
-      </div>
-
-      <div class="callout">
-        <h4>Dica</h4>
-        <p>O prazo do Furusato Nozei é o ano-calendário (1º de janeiro a 31 de dezembro). Dezembro é a época de correria — se puder, resolva antes.</p>
-      </div>
-
-      <h2 id="quanto-doar">Como o limite é calculado</h2>
-      <p>O limite (jōgen-gaku) depende do seu imposto residencial, que por sua vez depende da renda anual, dos descontos de seguro social e dos seus dependentes. A fórmula oficial usa a parcela proporcional do jūminzei e a sua alíquota de imposto de renda. A <strong>simulação simples</strong> aplica a fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> com premissas conservadoras (seguro social de 15% da renda, sem outras deduções) e uma margem de segurança adicional. A <strong>simulação detalhada</strong> usa os valores reais impressos no seu gensen chōshūhyō em vez de estimar o seguro social, o que dá um resultado mais preciso — vale a pena usá-la se você já tem o documento em mãos. Em ambas, o resultado sai arredondado para baixo, de propósito, para você nunca passar do limite real. Fontes oficiais: <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> (Furusato Nozei e imposto residencial) e <a href="https://www.nta.go.jp/" target="_blank" rel="noopener nofollow">NTA</a> (imposto de renda).</p>
-    </div>
-
-    <div class="conteudo">
-      <h2 id="cuidados">Precisa doar até o limite? E se eu doar menos?</h2>
-      <p><strong>Não precisa doar tudo.</strong> O limite é só o teto — o máximo que você pode doar com segurança. O custo real de ¥2.000 é fixo e vale para qualquer valor doado dentro do limite. Olha a conta (exemplo com limite de ¥30.000):</p>
-      <table class="data-table">
-        <thead><tr><th>Você doa</th><th>Volta como desconto</th><th>Custo real</th></tr></thead>
-        <tbody>
-          <tr><td>¥10.000</td><td>¥8.000</td><td>¥2.000</td></tr>
-          <tr><td>¥20.000</td><td>¥18.000</td><td>¥2.000</td></tr>
-          <tr><td>¥30.000 (o limite)</td><td>¥28.000</td><td>¥2.000</td></tr>
-          <tr><td>¥40.000 (passou!)</td><td>¥28.000</td><td>¥12.000 ✗</td></tr>
-        </tbody>
-      </table>
-      <p>Ou seja: <strong>doar menos é sempre seguro</strong> — a única diferença é que chegam menos presentes na sua casa. O único erro é passar do limite: aí o excesso não volta. E doações muito pequenas valem menos a pena, porque os ¥2.000 fixos pesam mais na proporção.</p>
-
-      <h2 id="calendario">Como e quando o desconto chega</h2>
-      <p>Aqui está o que mais confunde: <strong>não cai dinheiro na sua conta</strong> (pelo One-Stop). O que acontece é que o seu imposto residencial do ano seguinte vem menor.</p>
-      <p>Na prática: você doa em 2026 → a partir de <strong>junho de 2027</strong>, o jūminzei descontado no seu holerite todo mês vem reduzido, até completar o desconto. Você "recebe" pagando menos imposto, diluído ao longo dos meses.</p>
-      <p>Para conferir se funcionou: em junho chega o aviso do imposto residencial (住民税決定通知書, pela empresa ou pelo correio). Procure o campo <strong>寄附金税額控除</strong> (dedução por doações) — o valor das suas doações menos ¥2.000 deve estar lá.</p>
-      <p>Quem faz declaração de imposto (kakutei shinkoku) em vez do One-Stop recebe uma parte como <strong>restituição em dinheiro</strong> do imposto de renda e o resto como redução do jūminzei.</p>
-
-      <h2 id="presentes">Os presentes: o que tem e como chegam</h2>
-      <p>Por regra do governo, o presente vale até uns 30% do valor doado — doou ¥10.000, o produto vale por volta de ¥3.000 no mercado (e muitas vezes é coisa que você pagaria mais caro no supermercado). O que mais tem:</p>
-      <ol>
-        <li><strong>Carne</strong> — wagyu, porco, frango em quantidade (o campeão de popularidade)</li>
-        <li><strong>Arroz</strong> — sacos de 10kg ou 20kg, às vezes com entrega parcelada mês a mês</li>
-        <li><strong>Frutas</strong> — morango, uva, pêssego, melão, na época certa de cada região</li>
-        <li><strong>Frutos do mar</strong> — salmão, camarão, vieira, ikura</li>
-        <li><strong>Bebidas</strong> — cerveja em caixas, saquê, suco</li>
-        <li><strong>Itens do dia a dia</strong> — papel higiênico, detergente, fralda (escolha esperta de quem quer economia pura)</li>
-        <li><strong>Eletrônicos e hospedagem</strong> — de marcas de cidades produtoras e hotéis da região</li>
-      </ol>
-      <p><strong>Como chegam:</strong> você escolhe o presente na hora de doar, igual compra online. A cidade envia pra sua casa por transportadora — normalmente de algumas semanas até 2 meses. Produto fresco (fruta, marisco) chega na época de colheita/pesca. Não precisa resgatar nada: é só receber na porta.</p>
-      <p><strong>Dica de busca nos sites:</strong> 肉 (carne) · 米 (arroz) · 果物 (fruta) · 海鮮 (frutos do mar) · ビール (cerveja) · 日用品 (itens do dia a dia).</p>
-
-    </div>
-
-    <!-- ============ COMPARATIVO DOS SITES ============ -->
     <div class="fu-comp-zona" id="onde-doar">
       <div class="fu-comp">
         <h2>Qual site de Furusato Nozei escolher?</h2>
@@ -1421,6 +1208,195 @@
       </aside>
     </div>
 
+    <div class="fu-trio">
+
+      <div class="fu-bloco">
+        <h3>Exemplo real</h3>
+        <div class="fu-pessoa">
+          <span class="av">👨‍🔧</span>
+          <span class="quem"><b>João, Aichi</b><span>Fábrica, solteiro, sem dependentes</span></span>
+        </div>
+        <ul class="fu-lista-ex">
+          <li>Renda anual: <b>¥5.700.000</b></li>
+          <li>Limite calculado: <b>¥65.000</b></li>
+          <li>Doou para <b>3 cidades</b> em novembro</li>
+          <li class="ok">✓ 30 kg de arroz koshihikari</li>
+          <li class="ok">✓ 3 kg de wagyu fatiado</li>
+          <li class="ok">✓ 2 kg de salmão e 24 cervejas</li>
+          <li>Desconto no imposto: <b>¥63.000</b></li>
+        </ul>
+        <div class="fu-fecho-ex">Gasto real no ano: ¥2.000</div>
+      </div>
+
+      <div class="fu-bloco">
+        <h3>A economia na prática</h3>
+        <div class="fu-barras">
+          <div class="fu-barra">
+            <div class="col cheia" style="height:132px;"></div>
+            <span class="vl">¥65.000</span>
+            <span class="lb">imposto normal</span>
+          </div>
+          <div class="fu-barra">
+            <div class="col magra" style="height:9px;"></div>
+            <span class="vl">¥2.000</span>
+            <span class="lb">com furusato</span>
+          </div>
+        </div>
+        <div class="fu-economia">
+          <span class="n">¥63.000</span>
+          <span class="t">voltam pra você em comida e desconto</span>
+        </div>
+        <p style="margin:12px 0 0;font-size:.8rem;color:var(--color-text-faint);line-height:1.5;">Mesmo imposto, destino diferente: em vez de sumir, ele vira produto na sua casa.</p>
+      </div>
+
+      <div class="fu-bloco">
+        <h3>Dúvidas mais comuns</h3>
+        <ul class="fu-faq-mini">
+          <li><a href="#faq">Estrangeiro pode usar?</a></li>
+          <li><a href="#faq">Preciso falar japonês?</a></li>
+          <li><a href="#faq">E se eu passar do limite?</a></li>
+          <li><a href="#faq">Posso usar o One-Stop?</a></li>
+          <li><a href="#faq">Quando o presente chega?</a></li>
+          <li><a href="#faq">Vale a pena pra quem ganha pouco?</a></li>
+        </ul>
+        <a class="fu-ver-todas" href="#faq">Ver todas as perguntas →</a>
+      </div>
+
+    </div>
+
+      <aside class="fu-afiliado fu-afiliado-topo">
+        <div class="fu-af-txt">
+          <h3>Onde doar: comece pela Amazon</h3>
+          <p>Depois de saber o seu limite, o passo seguinte é escolher o que vem pra casa. Se você já compra na Amazon Japão, é o caminho mais curto: mesma conta, mesmo endereço, mesmo checkout de sempre.</p>
+        </div>
+        <div class="fu-af-acao">
+          <a class="btn" href="amazon-furusato-nozei.html">Veja como fazer</a>
+          <p class="fu-disclosure">Contém link de afiliado. Se você doar por aqui, o site recebe uma pequena comissão — sem custo adicional pra você.</p>
+        </div>
+      </aside>
+
+    <div class="explica-simples">
+
+
+
+      <h2 id="quem-pode">Explicando como pra um amigo</h2>
+      <p>Todo ano, uma parte do seu salário vai embora em imposto pra prefeitura. Esse dinheiro some e você não vê nada em troca. Certo?</p>
+      <p>O Furusato Nozei é o governo dizendo o seguinte: <strong>"em vez de me pagar tudo, pode mandar um pedaço desse imposto pra uma cidadezinha do interior. E ela te agradece com um presente."</strong></p>
+      <p>Você não gasta dinheiro novo. É o <strong>mesmo imposto que você já ia pagar</strong> — só muda o caminho que ele faz. A única coisa que sai do seu bolso a mais é uma taxa única de ¥2.000 no ano inteiro.</p>
+      <div class="exemplo-numeros">
+        <p class="titulo-exemplo">Quem recebe o quê:</p>
+        <p>🏙️ <strong>A cidade recebe</strong> o dinheiro da sua doação</p>
+        <p>🎁 <strong>Você recebe o presente na sua casa</strong> — a cidade manda pelo correio, como agradecimento</p>
+        <p>📉 <strong>Você recebe de volta o valor doado</strong> (menos ¥2.000) como desconto no imposto do ano seguinte</p>
+      </div>
+      <p><strong>Atenção pra não confundir:</strong> o desconto no imposto não é o seu "lucro" — ele só devolve o dinheiro que você doou. No fim das contas, você gastou ¥2.000. <strong>O seu lucro de verdade são os presentes</strong>, que chegam na sua porta e valem bem mais que isso.</p>
+      <div class="exemplo-numeros">
+        <p class="titulo-exemplo">"Então eu ganho o presente E o imposto de volta?"</p>
+        <p>Você ganha <strong>o presente</strong>. ✅</p>
+        <p>O imposto que "volta" <strong>não é ganho</strong> — é só a devolução do dinheiro que você adiantou na doação. ❌</p>
+        <p>Somando tudo: você paga o mesmo imposto de sempre + ¥2.000, e fica com os presentes. <strong>Ninguém lucra dinheiro — você lucra comida.</strong></p>
+      </div>
+      <div class="exemplo-numeros">
+        <p class="titulo-exemplo">Na prática, com números:</p>
+        <p>💴 Digamos que seu limite deu <strong>¥30.000</strong></p>
+        <p>🥩 Você doa ¥30.000 e escolhe os presentes nos sites: picanha, arroz, cerveja... <strong>tudo entregue na sua casa</strong></p>
+        <p>📉 No ano que vem, seu imposto vem <strong>¥28.000 mais barato</strong> — o dinheiro da doação voltou pra você</p>
+        <p>✅ Resultado: você gastou só <strong>¥2.000</strong> e os presentes todos ficaram com você</p>
+      </div>
+      <p>O único jeito de perder dinheiro é <strong>doar mais do que o seu limite permite</strong> — aí o que passar não volta. É pra isso que serve a <a href="#calculadora">calculadora lá em cima</a>. 👆</p>
+    </div>
+
+    <div class="conteudo">
+      <h2>Simulação real, do começo ao fim</h2>
+      <p>O João trabalha em fábrica em Aichi, solteiro, ganha ¥3.500.000 por ano (com as extras). Pela calculadora, o limite dele deu <strong>¥31.000</strong>. Olha a história completa:</p>
+
+      <div class="linha-tempo">
+        <div class="momento">
+          <span class="quando">Novembro de 2026</span>
+          <p>João entra no Rakuten Furusato Nozei e "gasta" os ¥31.000 do limite em 3 cidades: ¥13.000 numa cidade de Miyazaki (frango + porco), ¥9.000 numa de Niigata (10kg de arroz) e ¥9.000 numa de Hokkaido (caixa de cerveja). Marca a opção One-Stop nas três. Esse dinheiro sai do bolso dele agora.</p>
+        </div>
+        <div class="momento">
+          <span class="quando">Dezembro a janeiro</span>
+          <p>Os presentes vão chegando na casa dele pelo correio. Junto vêm os formulários One-Stop — ele preenche os 3, cola cópia do My Number e devolve pelo correio até 10 de janeiro.</p>
+        </div>
+        <div class="momento">
+          <span class="quando">Junho de 2027 em diante</span>
+          <p>O jūminzei no holerite do João cai, mês a mês, a partir de junho. No total do ano, ¥29.000 a menos de imposto — os ¥31.000 doados voltaram, menos os ¥2.000 fixos.</p>
+        </div>
+      </div>
+
+      <p>Comparando os dois Joãos no fim da história:</p>
+      <table class="data-table">
+        <thead><tr><th></th><th>João SEM furusato nozei</th><th>João COM furusato nozei</th></tr></thead>
+        <tbody>
+          <tr><td>Imposto + doação pagos</td><td>¥150.000</td><td>¥152.000</td></tr>
+          <tr><td>Recebeu em casa</td><td>nada</td><td>frango, porco, arroz e cerveja (~¥10.000)</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Moral da história:</strong> o João pagou ¥2.000 a mais e encheu a despensa. Ele não ganhou dinheiro — ganhou comida que teria que comprar de qualquer jeito. É isso, e só isso, que o furusato nozei faz.</p>
+    </div>
+
+    <div class="conteudo">
+      <h2>Como usar (o passo a passo do One-Stop)</h2>
+      <ol>
+        <li><strong>Escolha um site</strong> — Rakuten Furusato Nozei, <a href="https://www.amazon.co.jp/fmc/furusato" target="_blank" rel="noopener">Amazon Furusato Nozei</a>, Furunavi, Satofull ou Furusato Choice. Funciona como uma loja online normal.</li>
+        <li><strong>Escolha os presentes</strong> dentro do seu limite. Pode dividir entre produtos e cidades diferentes — mas para usar o One-Stop, doe para no máximo <strong>5 cidades</strong> no ano.</li>
+        <li><strong>Marque a opção One-Stop</strong> (ワンストップ特例制度) na hora de doar.</li>
+        <li><strong>Preencha e devolva o formulário</strong> que a cidade te envia pelo correio (ou faça online, se a cidade permitir), com cópia do My Number. Prazo: até 10 de janeiro do ano seguinte.</li>
+        <li><strong>Pronto.</strong> O desconto aparece no seu imposto residencial a partir de junho do ano seguinte — confira no aviso de jūminzei.</li>
+      </ol>
+
+      <div class="callout warning">
+        <h4>⚠ As 3 pegadinhas que derrubam todo mundo</h4>
+        <p><strong>1.</strong> Doou para 6 cidades ou mais? O One-Stop não vale — você precisa fazer a declaração de imposto (kakutei shinkoku).<br>
+        <strong>2.</strong> Fez declaração de imposto por qualquer outro motivo (despesa médica, primeiro ano de financiamento da casa)? O One-Stop é <strong>cancelado automaticamente</strong> — inclua as doações na declaração, senão perde o desconto.<br>
+        <strong>3.</strong> Esqueceu de mandar o formulário até 10 de janeiro? Ainda dá pra recuperar declarando no kakutei shinkoku até março.</p>
+      </div>
+
+      <div class="callout">
+        <h4>Dica</h4>
+        <p>O prazo do Furusato Nozei é o ano-calendário (1º de janeiro a 31 de dezembro). Dezembro é a época de correria — se puder, resolva antes.</p>
+      </div>
+
+      <h2 id="quanto-doar">Como o limite é calculado</h2>
+      <p>O limite (jōgen-gaku) depende do seu imposto residencial, que por sua vez depende da renda anual, dos descontos de seguro social e dos seus dependentes. A fórmula oficial usa a parcela proporcional do jūminzei e a sua alíquota de imposto de renda. A <strong>simulação simples</strong> aplica a fórmula oficial do <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> com premissas conservadoras (seguro social de 15% da renda, sem outras deduções) e uma margem de segurança adicional. A <strong>simulação detalhada</strong> usa os valores reais impressos no seu gensen chōshūhyō em vez de estimar o seguro social, o que dá um resultado mais preciso — vale a pena usá-la se você já tem o documento em mãos. Em ambas, o resultado sai arredondado para baixo, de propósito, para você nunca passar do limite real. Fontes oficiais: <a href="https://www.soumu.go.jp/" target="_blank" rel="noopener nofollow">Sōmushō</a> (Furusato Nozei e imposto residencial) e <a href="https://www.nta.go.jp/" target="_blank" rel="noopener nofollow">NTA</a> (imposto de renda).</p>
+    </div>
+
+    <div class="conteudo">
+      <h2 id="cuidados">Precisa doar até o limite? E se eu doar menos?</h2>
+      <p><strong>Não precisa doar tudo.</strong> O limite é só o teto — o máximo que você pode doar com segurança. O custo real de ¥2.000 é fixo e vale para qualquer valor doado dentro do limite. Olha a conta (exemplo com limite de ¥30.000):</p>
+      <table class="data-table">
+        <thead><tr><th>Você doa</th><th>Volta como desconto</th><th>Custo real</th></tr></thead>
+        <tbody>
+          <tr><td>¥10.000</td><td>¥8.000</td><td>¥2.000</td></tr>
+          <tr><td>¥20.000</td><td>¥18.000</td><td>¥2.000</td></tr>
+          <tr><td>¥30.000 (o limite)</td><td>¥28.000</td><td>¥2.000</td></tr>
+          <tr><td>¥40.000 (passou!)</td><td>¥28.000</td><td>¥12.000 ✗</td></tr>
+        </tbody>
+      </table>
+      <p>Ou seja: <strong>doar menos é sempre seguro</strong> — a única diferença é que chegam menos presentes na sua casa. O único erro é passar do limite: aí o excesso não volta. E doações muito pequenas valem menos a pena, porque os ¥2.000 fixos pesam mais na proporção.</p>
+
+      <h2 id="calendario">Como e quando o desconto chega</h2>
+      <p>Aqui está o que mais confunde: <strong>não cai dinheiro na sua conta</strong> (pelo One-Stop). O que acontece é que o seu imposto residencial do ano seguinte vem menor.</p>
+      <p>Na prática: você doa em 2026 → a partir de <strong>junho de 2027</strong>, o jūminzei descontado no seu holerite todo mês vem reduzido, até completar o desconto. Você "recebe" pagando menos imposto, diluído ao longo dos meses.</p>
+      <p>Para conferir se funcionou: em junho chega o aviso do imposto residencial (住民税決定通知書, pela empresa ou pelo correio). Procure o campo <strong>寄附金税額控除</strong> (dedução por doações) — o valor das suas doações menos ¥2.000 deve estar lá.</p>
+      <p>Quem faz declaração de imposto (kakutei shinkoku) em vez do One-Stop recebe uma parte como <strong>restituição em dinheiro</strong> do imposto de renda e o resto como redução do jūminzei.</p>
+
+      <h2 id="presentes">Os presentes: o que tem e como chegam</h2>
+      <p>Por regra do governo, o presente vale até uns 30% do valor doado — doou ¥10.000, o produto vale por volta de ¥3.000 no mercado (e muitas vezes é coisa que você pagaria mais caro no supermercado). O que mais tem:</p>
+      <ol>
+        <li><strong>Carne</strong> — wagyu, porco, frango em quantidade (o campeão de popularidade)</li>
+        <li><strong>Arroz</strong> — sacos de 10kg ou 20kg, às vezes com entrega parcelada mês a mês</li>
+        <li><strong>Frutas</strong> — morango, uva, pêssego, melão, na época certa de cada região</li>
+        <li><strong>Frutos do mar</strong> — salmão, camarão, vieira, ikura</li>
+        <li><strong>Bebidas</strong> — cerveja em caixas, saquê, suco</li>
+        <li><strong>Itens do dia a dia</strong> — papel higiênico, detergente, fralda (escolha esperta de quem quer economia pura)</li>
+        <li><strong>Eletrônicos e hospedagem</strong> — de marcas de cidades produtoras e hotéis da região</li>
+      </ol>
+      <p><strong>Como chegam:</strong> você escolhe o presente na hora de doar, igual compra online. A cidade envia pra sua casa por transportadora — normalmente de algumas semanas até 2 meses. Produto fresco (fruta, marisco) chega na época de colheita/pesca. Não precisa resgatar nada: é só receber na porta.</p>
+      <p><strong>Dica de busca nos sites:</strong> 肉 (carne) · 米 (arroz) · 果物 (fruta) · 海鮮 (frutos do mar) · ビール (cerveja) · 日用品 (itens do dia a dia).</p>
+
+    </div>
 
     <div class="faq" id="faq">
       <h2>Perguntas frequentes</h2>
@@ -1522,7 +1498,6 @@
       </div>
     </div>
 
-    <!-- ============ CHAMADA FINAL ============ -->
     <div class="fu-cta-final">
       <span class="ico">🎁</span>
       <div class="txt">
@@ -1535,8 +1510,8 @@
       </div>
     </div>
 
-  </div>
-</main>
+    </div>
+  </main>
 
 <footer class="site-footer">
   <div class="container">
