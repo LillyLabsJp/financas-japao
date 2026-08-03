@@ -709,8 +709,9 @@ p { margin: 0 0 1em; }
 }
 .rk-hero-arte img{width:100%;height:auto;display:block;border-radius:18px;
   box-shadow:0 18px 44px rgba(22,24,29,.16);}
-.rk-af-nota{margin:-14px 0 22px;font-size:.72rem;color:var(--color-text-faint);}
+.rk-af-nota{margin:10px 0 22px;font-size:.72rem;color:var(--color-text-faint);}
 @media(max-width:900px){
   .rk-hero-grid{grid-template-columns:1fr;gap:30px;}
   .rk-hero-arte{order:-1;}
 }
+.rk-hero-txt .fu-ctas{margin-bottom:0;}
