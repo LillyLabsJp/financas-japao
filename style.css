@@ -639,3 +639,18 @@ p { margin: 0 0 1em; }
   .main-nav .tem-sub.aberto > .submenu{display:flex;}
 }
 
+/* ============ SELO DE CONFIANCA ============ */
+.fu-confianca{
+  display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--color-accent-soft);border:1px solid #b3ecd0;
+  border-radius:10px;padding:9px 15px;margin:0;
+  font-size:.75rem;color:var(--color-accent-dark);line-height:1.4;
+}
+@media(min-width:900px){.fu-confianca{flex-wrap:nowrap;white-space:nowrap;}}
+.fu-conf-item{display:inline-flex;align-items:center;gap:6px;}
+.fu-conf-item svg{width:14px;height:14px;flex-shrink:0;color:var(--color-accent);}
+.fu-conf-sep{width:1px;height:14px;background:#b3ecd0;}
+.fu-conf-fonte{color:var(--color-text-muted);}
+.fu-conf-fonte svg{color:var(--color-text-faint);}
+.fu-conf-fonte b{color:var(--color-text);font-weight:700;}
+@media(max-width:560px){.fu-conf-sep{display:none;}.fu-confianca{gap:6px 12px;}}
