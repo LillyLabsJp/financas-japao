@@ -763,3 +763,4 @@ p { margin: 0 0 1em; }
   .rk-hero-foto .rk-hero-bg{position:static;width:100%;height:auto;object-position:center;}
   .rk-hero-foto .rk-hero-txt{max-width:100%;padding:26px 0 34px;}
 }
+.rk-card-tela img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--color-border);}
