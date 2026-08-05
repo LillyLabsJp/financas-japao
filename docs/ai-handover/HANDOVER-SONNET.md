@@ -98,6 +98,33 @@ Observações confirmadas:
 - A verificação do site é feita abrindo a URL pública no navegador.
 - O renderizador do navegador automatizado é instável nesta configuração. Prefira **medir por JavaScript** (dimensões, contagem de elementos, `naturalWidth` das imagens) em vez de depender de capturas de tela.
 
+### Como a publicação realmente acontece — leia antes de tentar
+
+**Não existe acesso ao GitHub nem ao Git por linha de comando.** A publicação é
+feita **controlando o GitHub Desktop na tela da Lilly**, que já está aberto e
+autenticado na máquina dela.
+
+Passos reais:
+
+1. Pedir acesso de controle ao aplicativo **GitHub Desktop** (`request_access`).
+2. Trazer o GitHub Desktop para a frente (`open_application`).
+3. Tirar um screenshot para localizar os elementos — a posição da janela muda entre sessões.
+4. Clicar no campo **Summary (required)**, no canto inferior esquerdo.
+5. Digitar a mensagem do commit.
+6. Clicar em **Commit to main**.
+7. Clicar em **Push origin**, no topo.
+8. Esperar de 1 a 3 minutos e abrir a URL publicada com parâmetro de cache (`?v=N`).
+
+> **Armadilha conhecida:** não rode comandos `git` pelo terminal isolado. Ele lê
+> os arquivos, mas **não tem permissão de escrita na pasta `.git`**. Um simples
+> `git status` pode deixar um `.git/index.lock` para trás que o terminal não
+> consegue apagar e que **bloqueia o GitHub Desktop**. Isso já aconteceu e
+> exigiu que a Lilly apagasse o arquivo à mão.
+>
+> Para inspecionar o projeto, use o terminal apenas para **ler** (listar
+> arquivos, contar tags com Python, medir imagens). Para ver o que mudou, use a
+> própria interface do GitHub Desktop.
+
 ### Pendência atual do Git
 
 `git status` mostra três arquivos modificados que **não foram alterados por
