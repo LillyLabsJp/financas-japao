@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600">
+  <defs>
+    <filter id="shadow" x="-15%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#16181d" flood-opacity=".13"/>
+    </filter>
+    <style>
+      .jp{font-family:"Noto Sans JP","Yu Gothic","Meiryo",sans-serif;fill:#16181d}
+      .pt{font-family:Arial,sans-serif;fill:#5E6878}
+      .rule{stroke:#D9E1E9;stroke-width:2}
+      .write{stroke:#B8C4CF;stroke-width:2}
+      .small{font-size:11px}
+    </style>
+  </defs>
+  <rect width="1200" height="1600" fill="#F2F5F8"/>
+  <g filter="url(#shadow)" transform="translate(100 55)">
+    <rect width="1000" height="1490" rx="18" fill="#fff"/>
+    <text x="500" y="52" text-anchor="middle" class="jp" font-size="24" font-weight="700">寄附金税額控除に係る申告特例申請書</text>
+    <text x="500" y="82" text-anchor="middle" class="pt" font-size="14">Solicitação da regra especial de dedução — One-Stop Furusato Nozei</text>
+    <text x="500" y="105" text-anchor="middle" class="pt" font-size="11">MODELO EDUCATIVO BILÍNGUE — NÃO ENVIAR À PREFEITURA</text>
+
+    <!-- Header -->
+    <rect x="50" y="130" width="900" height="118" rx="7" fill="#FAFBFC" stroke="#D9E1E9" stroke-width="2"/>
+    <text x="75" y="162" class="jp" font-size="14" font-weight="700">提出日</text>
+    <text x="75" y="183" class="pt" font-size="11">Data de envio</text>
+    <line x1="75" y1="220" x2="385" y2="220" class="write"/>
+    <text x="505" y="162" class="jp" font-size="14" font-weight="700">宛先（都道府県知事・市区町村長）</text>
+    <text x="505" y="183" class="pt" font-size="11">Destinatário: governador, prefeito ou chefe do município</text>
+    <line x1="505" y1="220" x2="920" y2="220" class="write"/>
+
+    <!-- Applicant section -->
+    <text x="50" y="285" class="jp" font-size="18" font-weight="700">申請者</text>
+    <text x="115" y="285" class="pt" font-size="12">Solicitante</text>
+    <rect x="50" y="302" width="900" height="420" rx="7" fill="#fff" stroke="#16181d" stroke-width="2"/>
+    <line x1="50" y1="400" x2="950" y2="400" class="rule"/>
+    <line x1="50" y1="495" x2="950" y2="495" class="rule"/>
+    <line x1="50" y1="590" x2="950" y2="590" class="rule"/>
+    <line x1="545" y1="495" x2="545" y2="722" class="rule"/>
+    <line x1="50" y1="655" x2="950" y2="655" class="rule"/>
+
+    <text x="72" y="333" class="jp" font-size="14" font-weight="700">住所</text>
+    <text x="72" y="354" class="pt" font-size="11">Endereço</text>
+    <line x1="190" y1="377" x2="910" y2="377" class="write"/>
+
+    <text x="72" y="430" class="jp" font-size="14" font-weight="700">フリガナ</text>
+    <text x="72" y="451" class="pt" font-size="11">Furigana</text>
+    <line x1="195" y1="474" x2="910" y2="474" class="write"/>
+
+    <text x="72" y="525" class="jp" font-size="14" font-weight="700">氏名</text>
+    <text x="72" y="546" class="pt" font-size="11">Nome completo</text>
+    <line x1="190" y1="569" x2="515" y2="569" class="write"/>
+
+    <text x="570" y="525" class="jp" font-size="14" font-weight="700">電話番号</text>
+    <text x="570" y="546" class="pt" font-size="11">Telefone</text>
+    <line x1="700" y1="569" x2="920" y2="569" class="write"/>
+
+    <text x="72" y="620" class="jp" font-size="14" font-weight="700">個人番号</text>
+    <text x="72" y="641" class="pt" font-size="11">My Number — 12 dígitos</text>
+
+    <text x="570" y="620" class="jp" font-size="14" font-weight="700">生年月日</text>
+    <text x="570" y="641" class="pt" font-size="11">Data de nascimento</text>
+    <line x1="700" y1="676" x2="920" y2="676" class="write"/>
+
+    <g fill="none" stroke="#16181d" stroke-width="1.6">
+      <rect x="250" y="670" width="29" height="31"/><rect x="281" y="670" width="29" height="31"/>
+      <rect x="312" y="670" width="29" height="31"/><rect x="343" y="670" width="29" height="31"/>
+      <rect x="374" y="670" width="29" height="31"/><rect x="405" y="670" width="29" height="31"/>
+      <rect x="436" y="670" width="29" height="31"/><rect x="467" y="670" width="29" height="31"/>
+      <rect x="498" y="670" width="29" height="31"/><rect x="529" y="670" width="29" height="31"/>
+      <rect x="560" y="670" width="29" height="31"/><rect x="591" y="670" width="29" height="31"/>
+    </g>
+
+    <!-- Donation -->
+    <text x="50" y="770" class="jp" font-size="17" font-weight="700">1. 当団体に対する寄附に関する事項</text>
+    <text x="395" y="770" class="pt" font-size="12">Dados da doação feita a este município</text>
+    <rect x="50" y="790" width="900" height="142" rx="7" fill="#fff" stroke="#16181d" stroke-width="2"/>
+    <line x1="500" y1="790" x2="500" y2="932" class="rule"/>
+    <text x="75" y="825" class="jp" font-size="14" font-weight="700">寄附年月日</text>
+    <text x="75" y="847" class="pt" font-size="11">Data da doação</text>
+    <line x1="75" y1="892" x2="460" y2="892" class="write"/>
+    <text x="530" y="825" class="jp" font-size="14" font-weight="700">寄附金額</text>
+    <text x="530" y="847" class="pt" font-size="11">Valor doado</text>
+    <line x1="530" y1="892" x2="900" y2="892" class="write"/>
+    <text x="912" y="892" class="jp" font-size="15">円</text>
+
+    <!-- Eligibility -->
+    <text x="50" y="985" class="jp" font-size="17" font-weight="700">2. 申告の特例の適用に関する事項</text>
+    <text x="405" y="985" class="pt" font-size="12">Declarações para utilizar o One-Stop</text>
+    <rect x="50" y="1005" width="900" height="340" rx="7" fill="#fff" stroke="#16181d" stroke-width="2"/>
+
+    <rect x="78" y="1045" width="31" height="31" fill="#fff" stroke="#16181d" stroke-width="2"/>
+    <text x="132" y="1059" class="jp" font-size="13" font-weight="700">地方税法附則第7条第1項（第8項）に規定する</text>
+    <text x="132" y="1082" class="jp" font-size="13" font-weight="700">申告特例対象寄附者である</text>
+    <text x="132" y="1106" class="pt" font-size="11">Declaro que sou elegível: não preciso fazer declaração de imposto por outro motivo.</text>
+
+    <line x1="78" y1="1140" x2="920" y2="1140" class="rule"/>
+
+    <rect x="78" y="1174" width="31" height="31" fill="#fff" stroke="#16181d" stroke-width="2"/>
+    <text x="132" y="1188" class="jp" font-size="13" font-weight="700">地方税法附則第7条第2項（第9項）に規定する</text>
+    <text x="132" y="1211" class="jp" font-size="13" font-weight="700">要件に該当する者である</text>
+    <text x="132" y="1235" class="pt" font-size="11">Declaro que doarei para no máximo cinco municípios durante o ano.</text>
+
+    <rect x="78" y="1270" width="842" height="48" rx="7" fill="#FFF7EC" stroke="#EAD8B8"/>
+    <text x="98" y="1290" class="jp" font-size="11">※ 上記2項目の両方に該当する場合のみワンストップ特例を利用できます。</text>
+    <text x="98" y="1310" class="pt" font-size="10">As duas declarações precisam ser verdadeiras.</text>
+
+    <!-- Municipal box -->
+    <rect x="50" y="1380" width="900" height="72" rx="7" fill="#F8FAFC" stroke="#D9E1E9" stroke-width="2"/>
+    <text x="75" y="1408" class="jp" font-size="13" font-weight="700">自治体受付欄</text>
+    <text x="75" y="1432" class="pt" font-size="11">Uso da prefeitura / protocolo de recebimento</text>
+
+    <!-- numbered markers -->
+    <g font-family="Arial" font-size="20" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+      <g><circle cx="30" cy="190" r="24" fill="#e02b25"/><text x="30" y="190" fill="#fff">1</text></g>
+      <g><circle cx="30" cy="350" r="24" fill="#e02b25"/><text x="30" y="350" fill="#fff">2</text></g>
+      <g><circle cx="30" cy="448" r="24" fill="#e02b25"/><text x="30" y="448" fill="#fff">3</text></g>
+      <g><circle cx="30" cy="543" r="24" fill="#e02b25"/><text x="30" y="543" fill="#fff">4</text></g>
+      <g><circle cx="30" cy="640" r="24" fill="#e02b25"/><text x="30" y="640" fill="#fff">5</text></g>
+      <g><circle cx="30" cy="855" r="24" fill="#e02b25"/><text x="30" y="855" fill="#fff">6</text></g>
+      <g><circle cx="30" cy="1080" r="24" fill="#e02b25"/><text x="30" y="1080" fill="#fff">7</text></g>
+      <g><circle cx="30" cy="1210" r="24" fill="#e02b25"/><text x="30" y="1210" fill="#fff">8</text></g>
+    </g>
+  </g>
+</svg>
