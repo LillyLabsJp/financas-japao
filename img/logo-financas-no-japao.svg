@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260">
+  <title>Finanças no Japão</title>
+  <g transform="translate(10,2)">
+    <circle cx="118" cy="58" r="31" fill="#e02b25"/>
+    <path d="M35 184 C58 184 68 133 118 133 C168 133 178 184 201 184"
+          fill="none" stroke="#16181d" stroke-width="22"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g font-family="Inter, Arial, Helvetica, sans-serif" font-weight="800" fill="#16181d">
+    <text x="255" y="95" font-size="62">FINANÇAS</text>
+    <text x="255" y="172" font-size="62">NO <tspan fill="#e02b25">JAPÃO</tspan></text>
+  </g>
+</svg>
