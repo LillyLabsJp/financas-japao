@@ -18,6 +18,13 @@ o Brasil, ou é tradução que ignora as regras japonesas.
 final em 31 de dezembro. É o tema com maior intenção de busca e maior potencial
 de conversão no ano.
 
+**Prioridade confirmada pela Lilly (6 de agosto de 2026):** SEO, GEO e a
+compreensão de quem lê a página vêm antes de qualquer decisão visual. Conteúdo
+precisa ser fácil de entender, sem complicação — texto rastreável, claro, sem
+depender de imagem ou design elaborado para passar a informação. Qualquer
+proposta de redesenho ou reformulação visual deve ser avaliada contra esse
+critério antes de ser considerada.
+
 **Monetização discutida e ativa:**
 
 - Google AdSense — script instalado, site na fila de revisão
@@ -81,6 +88,25 @@ Itens que a Lilly aprovou mas que ainda não foram implementados.
 - **Descrição:** transformar os blocos "onde ganha × onde complica" e "One-Stop papel × online" em cartões visuais, hoje em formato de lista.
 - **Estado:** o Kai entregou imagens; não foram instaladas.
 - **Risco:** baixo, é ajuste visual localizado.
+
+### Mockup visual tipo infográfico para a página da Amazon
+
+- **Descrição:** a Lilly recebeu um mockup (poster/infográfico) para
+  `amazon-furusato-nozei.html`, com paleta verde/amarelo, formato "6 passos"
+  ilustrado, tabela comparativa e simulação de tela de checkout.
+- **Estado:** só uma imagem de referência recebida, nada implementado.
+- **Avaliação do Sonnet:** não recomendado implementar como está. A paleta
+  foge da identidade visual aprovada (vermelho/preto/verde discreto), e o
+  formato é mais pôster do que texto corrido — o que reduz o conteúdo
+  rastreável que o site prioriza para SEO e GEO. A simulação de tela de
+  checkout da Amazon tem o mesmo risco de marca de terceiro que já foi
+  descartado para as capturas do Rakuten (ver seção 6).
+- **O que pode valer a pena aproveitar:** o resumo visual "6 passos" e a
+  tabela comparativa Amazon × site convencional, adaptados à paleta real do
+  site, como complemento ao texto já existente — não como substituição da
+  página.
+- **Dúvida pendente:** a Lilly ainda não decidiu. Não implementar sem
+  autorização explícita.
 
 ### Glossário em formato recolhível
 
