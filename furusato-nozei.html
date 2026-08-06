@@ -413,7 +413,7 @@
 .fu-step-valor{font-size:1rem;font-weight:750;font-variant-numeric:tabular-nums;}
 
 .fu-calc-nota{
-  margin:16px 0 0;font-size:.78rem;color:var(--color-text-faint);line-height:1.5;
+  margin:16px 0 0;font-size:.78rem;color:var(--color-red-dark);line-height:1.5;
 }
 
 /* faixa verde do resultado */
@@ -1717,7 +1717,7 @@ function compartilharResultado(){
 // compartilha a ferramenta em si (sem depender de ter calculado antes)
 function compartilharCalculadora(btn){
   var url = window.location.origin + window.location.pathname;
-  var texto = '🎁 Descobri uma calculadora gratuita que mostra quanto dá pra doar no Furusato Nozei sem perder dinheiro. É em português e leva 1 minuto 👉 ' + url;
+  var texto = '🎁 *Quase ninguém fala disso, mas você sabia que pode usar o Furusato Nozei para receber presentes pela Rakuten, Amazon e outras plataformas, aproveitando parte do imposto que já pagaria no Japão?* 💰\n\nVocê já paga imposto no Japão de qualquer maneira… então, por que não aproveitar esse benefício?\n\nDescubra em 1 minuto quanto pode doar sem ultrapassar seu limite. Calcule agora, gratuitamente e em português 🧮👇\n' + url;
   if (navigator.share) {
     navigator.share({ title: 'Calculadora de Furusato Nozei', text: texto }).catch(function(){});
     return;
