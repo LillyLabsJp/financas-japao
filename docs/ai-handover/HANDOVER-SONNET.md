@@ -1,7 +1,7 @@
 # HANDOVER — Finanças no Japão
 
 Documento operacional para continuidade do projeto em uma nova conversa.
-Última atualização: 5 de agosto de 2026.
+Última atualização: 6 de agosto de 2026.
 
 ---
 
@@ -57,7 +57,7 @@ Há cache de CDN. Depois do deploy, use um parâmetro de consulta
 | Público ou privado | **NÃO CONFIRMADO** — verificar antes de assumir |
 | Branch principal | `main` |
 | Branch ativa | `main` |
-| Último commit | `37a1949` — *"Telas reais nos seis cards do passo a passo do Rakuten"* — 5 ago 2026, 08:23 |
+| Último commit | `02f9e21` — *"Adiciona página \"Onde fazer Furusato Nozei?\" — fecha o cluster de 6 páginas"* — 6 ago 2026 |
 
 ### Como o ambiente funciona
 
@@ -184,6 +184,14 @@ financas-japao/
 ├── privacidade.html                    Política de privacidade
 ├── conceito-visual-novo.html           Rascunho interno — bloqueado no robots.txt
 │
+│  ── Cluster Furusato Nozei (criado em 6 ago 2026) ──
+├── o-que-e-furusato-nozei.html         Página pilar de entrada do cluster
+├── melhores-presentes-furusato-nozei.html  Categorias de presente
+├── one-stop-furusato-nozei.html        Guia do formulário One-Stop, campo a campo
+├── furusato-nozei-vale-a-pena.html     Quando compensa fazer a doação
+├── como-conferir-desconto-furusato-nozei.html  Onde ver a dedução no jūminzei
+├── onde-fazer-furusato-nozei.html      Comparativo Amazon/Rakuten/Satofull/Furunavi/Furusato Choice
+│
 ├── style.css                           CSS compartilhado de todo o site
 ├── main.js                             JS do cabeçalho (menu, submenu, busca)
 ├── calculadora-remessa.js              JS da calculadora de remessa
@@ -224,9 +232,42 @@ Todas confirmadas no repositório. Todas usam o mesmo cabeçalho e rodapé.
 | `contato.html` | `/contato.html` | Contato | Publicada |
 | `privacidade.html` | `/privacidade.html` | Privacidade e AdSense | Publicada |
 | `conceito-visual-novo.html` | — | Rascunho interno | **Não indexável.** Não linkar, não divulgar |
+| `o-que-e-furusato-nozei.html` | `/o-que-e-furusato-nozei.html` | Pilar do cluster, explica o sistema do zero | Publicada, indexação solicitada |
+| `melhores-presentes-furusato-nozei.html` | `/melhores-presentes-furusato-nozei.html` | Categorias de presente, sem apontar para município específico | Publicada, indexação solicitada |
+| `one-stop-furusato-nozei.html` | `/one-stop-furusato-nozei.html` | Formulário One-Stop campo a campo, bilíngue | Publicada, indexação solicitada |
+| `furusato-nozei-vale-a-pena.html` | `/furusato-nozei-vale-a-pena.html` | Quando compensa, regra dos ¥2.000 | Publicada, indexação solicitada |
+| `como-conferir-desconto-furusato-nozei.html` | `/como-conferir-desconto-furusato-nozei.html` | Onde ver a dedução no aviso do jūminzei | Publicada, indexação solicitada |
+| `onde-fazer-furusato-nozei.html` | `/onde-fazer-furusato-nozei.html` | Comparativo das 5 plataformas | Publicada, indexação solicitada |
 
 Correções pequenas e delimitadas podem ser feitas direto. **Redesenho, mudança
 de estrutura ou de conteúdo fiscal exige autorização.**
+
+### Cluster Furusato Nozei — contexto
+
+Construído em 6 de agosto de 2026 a partir de conteúdo bruto fornecido pela
+Lilly (pacotes de um designer externo, "Kai"). **Regra seguida em todas as 6
+páginas:** o HTML/CSS self-styled dos pacotes nunca foi usado como está — cada
+página foi reconstruída do zero usando o cabeçalho, rodapé e `style.css` reais
+do site, reaproveitando apenas texto (revisado), estrutura de conteúdo e
+imagens/ícones SVG (recoloridos de `#E52323`/`#0C1F3A`/azul para a paleta real:
+`#e02b25`/`#16181d`/`#00a866`, sem azul). Todas as 6 páginas foram: validadas
+por parser HTML (tags balanceadas), checadas por script para imagens e links
+internos existentes, adicionadas ao `sitemap.xml`, linkadas a partir de pelo
+menos duas outras páginas do cluster, e tiveram indexação solicitada
+manualmente no Search Console.
+
+Bug corrigido nesse processo: `img/modelo-notificacao-juminzei.svg` (usado em
+`como-conferir-desconto-furusato-nozei.html`) tinha um `<rect>` sem
+`fill="none"`, que preenchia de preto sólido e escondia o texto japonês por
+baixo — corrigido no commit `b236450`.
+
+Decisão replicada do `furusato-nozei.html`: a tabela comparativa de
+plataformas em `onde-fazer-furusato-nozei.html` **não** tem botões "Ir ao
+site" para Furusato Choice, Satofull e Furunavi — só Amazon e Rakuten têm link
+de afiliado ativo. Satofull e Furunavi retornam bloqueio de acesso (403/Access
+Denied) quando acessados fora de um fluxo autenticado; Furusato Choice carrega
+normalmente, mas foi mantido fora dos links por consistência com a decisão já
+tomada na página pilar.
 
 ---
 
@@ -357,7 +398,7 @@ valor positivo ou confirmação. Não trocar os papéis.
 - **Largura máxima:** `.container` até 1180 px.
 - **Cantos:** 10 a 18 px conforme o componente.
 - **Botões:** `.btn` vermelho preenchido; `.btn-secondary` contornado.
-- **Cabeçalho:** logo circular + submenu "Impostos" + botão Calculadora + busca. Igual nas 11 páginas, controlado por `main.js`.
+- **Cabeçalho:** logo circular + submenu "Impostos" + botão Calculadora + busca. Igual nas 17 páginas publicadas (as 11 originais + as 6 do cluster), controlado por `main.js`. Em 6 ago 2026, o símbolo do logo (o ícone dentro do `.logo-marca`) foi trocado em todas as 17 páginas — trocou a "casinha" por um traço estilizado tipo monte/onda, mesmas cores (`#e02b25`/`#16181d`). Markup novo: `<svg class="logo-marca" viewBox="0 0 256 256">` com `<circle>` + `<path>` de traço. O texto "FINANÇAS NO JAPÃO" ao lado não mudou.
 - **Breakpoints usados:** 1100, 1000, 900, 860, 760, 720, 640, 560, 520, 420 px.
 - **Mobile:** a tabela comparativa vira cartões empilhados por CSS puro, sem duplicar markup.
 
@@ -514,24 +555,39 @@ Não pedir que ela reconte algo que está no código ou nestes documentos.
 
 - Página Rakuten completa e publicada, com os seis cards em WebP.
 - Home refeita com hero fotográfico, nove ícones e seção de conteúdo.
-- Cabeçalho unificado nas 11 páginas, com submenu funcionando no toque.
+- Cabeçalho unificado nas 17 páginas, com submenu funcionando no toque.
 - Script do AdSense instalado em todas as páginas, com anúncios automáticos desativados.
 - Amazon Associates ativa: tag `financasnojap-22` nos links.
 - Rakuten Afiliados ativo: link na página do Rakuten e na tabela comparativa.
 - E-mail de contato e rodapé padronizados.
+- **Cluster Furusato Nozei completo (6 ago 2026):** 6 páginas novas construídas,
+  validadas, publicadas, adicionadas ao sitemap, interligadas e com indexação
+  solicitada — ver seção 6 e 7 para detalhes.
+- Símbolo do logo trocado nas 17 páginas (6 ago 2026).
+- Na tabela comparativa de `furusato-nozei.html`, removidos os botões "Ir ao
+  site" de Furusato Choice/Satofull/Furunavi — só Amazon e Rakuten mantêm link
+  ativo (decisão explícita da Lilly, replicada em `onde-fazer-furusato-nozei.html`).
+- Links quebrados do Furumado/FurusatoPASS removidos de `amazon-furusato-nozei.html`
+  (retornavam 403/Access Denied fora do fluxo autenticado de doação).
 
 ### Pendência técnica
 
-> Nenhuma pendência técnica conhecida na página Rakuten no momento deste handover.
+> Nenhuma pendência técnica conhecida no momento deste handover.
 
 Única observação em aberto: os três arquivos com diferença de quebra de linha
 (`CNAME`, `calculadora-remessa.js`, `robots.txt`). Ver a seção 3.
 
+Ainda não construído do material do "Kai": nenhuma pendência — as 6 páginas do
+pacote foram todas concluídas. `o-que-e-furusato-nozei.html` ainda usa uma
+imagem placeholder no hero (não é a foto real) — flagged, nunca resolvido,
+baixa prioridade.
+
 ### Aguardando terceiros — não é tarefa
 
 - **AdSense:** site com status "Preparando" na fila de revisão do Google. Quando aprovar, criar e posicionar os blocos à mão.
-- **Indexação:** 4 de 11 páginas indexadas na última verificação; as demais foram enviadas manualmente ao Search Console.
+- **Indexação:** as 6 páginas do cluster Furusato Nozei tiveram indexação solicitada manualmente no Search Console em 6 ago 2026 (fila de rastreamento prioritário — não é instantâneo). Status das demais páginas não reconferido nesta sessão.
 - **Amazon Associates:** precisa de 3 vendas qualificadas até o fim de janeiro de 2027 para manter a conta.
+- **Vídeo sobre furusato nozei:** maior prioridade do roadmap (seção 7 do ROADMAP-E-IDEIAS.md). Roteiro e gráficos já prontos, fora do repositório. Depende só da Lilly gravar a narração.
 
 ---
 
@@ -539,17 +595,19 @@ Não pedir que ela reconte algo que está no código ou nestes documentos.
 
 | | |
 |---|---|
-| Data | 5 de agosto de 2026 |
-| Horário | ~08:25 JST |
+| Data | 6 de agosto de 2026 |
 | Branch | `main` |
-| Commit | `37a1949` |
-| Mensagem | Telas reais nos seis cards do passo a passo do Rakuten |
-| URL verificada | https://financasnojapao.com/rakuten-furusato-nozei.html |
-| Testes | 6 imagens carregando (`naturalWidth > 0`), 3 colunas no desktop, 1 coluna no celular, 6 títulos em HTML, estrutura HTML balanceada |
+| Commit | `02f9e21` |
+| Mensagem | Adiciona página "Onde fazer Furusato Nozei?" — fecha o cluster de 6 páginas |
+| URLs verificadas | as 6 páginas do cluster (ver seção 7), conferidas ao vivo via `javascript_tool` (título, H1, imagens carregando) |
+| Indexação | Solicitada manualmente no Search Console para as 6 páginas do cluster, em 6 ago 2026 |
 
-**Limitação da verificação:** o renderizador do navegador automatizado estava
-instável; a conferência foi feita por medição via JavaScript, não por captura
-de tela. A verificação visual final é da Lilly.
+Commits desta sessão, em ordem: `cc83b9a` (Melhores presentes) → `590be84`/`a6c2e5e`/`418f6a2` (One-Stop) → `acabcb5`/`e46fbd5` (Amazon: links de afiliado, remoção de links quebrados) → `ea15fde` (tabela comparativa) → `913ecb8` (logo) → `895de5e` (Vale a pena) → `32c7d40`/`b236450` (Como conferir o desconto + correção do SVG preto) → `02f9e21` (Onde fazer).
+
+**Limitação da verificação:** o renderizador do navegador automatizado é
+instável para screenshot; a conferência é feita por medição via JavaScript
+(`document.title`, `naturalWidth`, `getAttribute`), não por captura de tela.
+A verificação visual final é da Lilly.
 
 ---
 

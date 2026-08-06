@@ -65,11 +65,31 @@ Itens que a Lilly aprovou mas que ainda não foram implementados.
 - **Estado:** bloqueado até a aprovação do Google. Não é possível criar bloco antes.
 - **Decisão tomada:** anúncios automáticos ficam desativados.
 
-### Página dos melhores presentes — `APROVADA`
+### Página dos melhores presentes — `CONCLUÍDA`
 
 - **Descrição:** página sobre como escolher presentes, mantendo a pessoa no site e conduzindo aos links de afiliado.
-- **Estado:** discutida em detalhe, nunca construída.
-- **Observação:** links precisam apontar para página de coleção, nunca para município específico — norma do Sōmushō.
+- **Estado:** construída e publicada em 6 de agosto de 2026 — `melhores-presentes-furusato-nozei.html`.
+- **Observação:** links apontam para página de coleção, nunca para município específico — norma do Sōmushō.
+
+---
+
+## 1.1 Cluster Furusato Nozei — concluído em 6 de agosto de 2026
+
+`CONCLUÍDA`
+
+As 6 páginas de profundidade sobre furusato nozei, identificadas na seção 4
+como conteúdo nunca escrito, foram todas construídas, publicadas e
+interligadas na mesma sessão: `o-que-e-furusato-nozei.html` (pilar),
+`melhores-presentes-furusato-nozei.html`, `one-stop-furusato-nozei.html`,
+`furusato-nozei-vale-a-pena.html`, `como-conferir-desconto-furusato-nozei.html`
+e `onde-fazer-furusato-nozei.html`. Conteúdo bruto veio de pacotes do Kai
+(designer externo), sempre reconstruído no template real do site — nunca
+usado com o HTML/CSS self-styled original. Indexação solicitada manualmente
+no Search Console para as 6 páginas. Detalhes técnicos completos em
+`HANDOVER-SONNET.md`, seções 6 e 7.
+
+Próximo item da ordem de prioridade (seção 7 abaixo): o vídeo sobre furusato
+nozei, que depende da Lilly gravar a narração.
 
 ---
 
@@ -133,11 +153,14 @@ Itens que a Lilly aprovou mas que ainda não foram implementados.
 
 ### Conteúdo de profundidade ligado ao furusato
 
-Temas identificados como busca real, nunca escritos:
+Temas identificados como busca real:
 
-- One-Stop passo a passo, como página própria
-- Furusato com financiamento imobiliário
-- "Posso doar ganhando pouco?"
+- ~~One-Stop passo a passo, como página própria~~ — concluído, ver seção 1.1
+- ~~Furusato Nozei vale a pena / quando compensa~~ — concluído, ver seção 1.1
+- ~~Onde fazer / comparativo de plataformas~~ — concluído, ver seção 1.1
+- ~~Como conferir o desconto no jūminzei~~ — concluído, ver seção 1.1
+- Furusato com financiamento imobiliário — ainda não escrito
+- "Posso doar ganhando pouco?" — ainda não escrito (parcialmente coberto pela seção "quando não compensa" de `furusato-nozei-vale-a-pena.html`, mas não em profundidade)
 
 ---
 
