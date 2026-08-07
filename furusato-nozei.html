@@ -906,6 +906,8 @@
 
         <p class="fu-calc-nota"><b>Digite os valores sem ponto</b> (5700000, não 5.700.000). O bônus já entra como zero — se você recebe, é só preencher que o cálculo se ajusta. Dependentes: só conta quem tem 16 anos ou mais e está no seu nenmatsu chōsei. Cônjuge: marque sim se ganha menos de ¥1.030.000 por ano.</p>
 
+        <button class="btn btn-full" type="button" style="margin-top:16px;" onclick="rolarAteResultado=true; calcularLimite();">Calcular meu limite</button>
+
         <div class="fu-aviso-fin" id="aviso-financiamento">
           <strong>⚠️ Atenção: você marcou financiamento imobiliário.</strong>
           <p>O abatimento do financiamento (jūtaku rōn kōjo) já reduz o seu imposto de renda diretamente. Sobra menos imposto para o Furusato Nozei compensar, e <strong>o seu limite real pode ser bem menor que o calculado aqui</strong> — em alguns casos, quase zero.</p>
@@ -1037,7 +1039,7 @@
         <p class="hint" style="margin-top:10px;">Não considera financiamento imobiliário (jūtaku loan). Se você tem, o limite real pode ser diferente — consulte um contador.</p>
       </div>
 
-      <div class="leitor" id="resultado">
+      <div class="leitor" id="resultado" aria-live="polite">
         <div class="fu-resultado-faixa">
           <div class="fu-res-num">
             <span class="fu-res-rot">Seu limite estimado de doação é:</span>
