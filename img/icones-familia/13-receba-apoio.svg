@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96"
+  fill="none" role="img" aria-hidden="true">
+  <g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 59c11 0 17 4 25 10 5 4 10 6 17 6h11"/>
+    <path d="M82 59c-11 0-17 4-25 10"/>
+    <path d="M15 60l-5 12M81 60l5 12"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M36 40c0-7 8-10 12-4 4-6 12-3 12 4 0 9-12 17-12 17S36 49 36 40z"/>
+  </g>
+</svg>

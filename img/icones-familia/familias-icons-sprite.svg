@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="01-gravidez" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 18c-9 6-14 16-14 29 0 18 9 31 22 31 12 0 20-9 20-22 0-12-7-22-18-26"/>
+    <path d="M43 19c5 0 9-4 9-9"/>
+    <path d="M35 44c8-4 19-1 24 7"/>
+    <path d="M30 73c8-2 13-7 16-15"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M58 53c0-4 5-6 8-2 3-4 8-2 8 2 0 5-8 10-8 10s-8-5-8-10z"/>
+  </g>
+  </symbol>
+  <symbol id="02-auxilio-infantil" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="38" cy="41" r="17"/>
+    <path d="M29 38h.1M47 38h.1"/>
+    <path d="M32 47c4 3 8 3 12 0"/>
+    <path d="M38 24c0-5 4-8 8-6-1 4-4 6-8 6z"/>
+    <circle cx="65" cy="61" r="15"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M65 50v22M58 55h14M58 61h14"/>
+  </g>
+  </symbol>
+  <symbol id="03-licenca-maternidade" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="18" y="20" width="60" height="58" rx="8"/>
+    <path d="M18 35h60M31 14v12M65 14v12"/>
+    <circle cx="63" cy="58" r="10"/>
+    <path d="M63 52v7l5 3"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M31 51c0-4 5-6 8-2 3-4 8-2 8 2 0 5-8 10-8 10s-8-5-8-10z"/>
+  </g>
+  </symbol>
+  <symbol id="04-creche" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 72h62"/>
+    <path d="M24 72V37l24-15 24 15v35"/>
+    <path d="M35 72V54h26v18"/>
+    <circle cx="48" cy="40" r="6"/>
+    <path d="M16 67l-5-10 8-4 5 10"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M61 27l8-8 8 8"/>
+  </g>
+  </symbol>
+  <symbol id="05-saude-materno-infantil" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 18v23c0 10 7 17 17 17s17-7 17-17V18"/>
+    <path d="M20 18h14M54 18h14"/>
+    <path d="M44 58v5c0 9 7 16 16 16h3"/>
+    <circle cx="70" cy="69" r="8"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M63 33c0-4 5-6 8-2 3-4 8-2 8 2 0 5-8 10-8 10s-8-5-8-10z"/>
+  </g>
+  </symbol>
+  <symbol id="06-familia-monoparental" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="39" cy="29" r="10"/>
+    <circle cx="58" cy="48" r="8"/>
+    <path d="M23 75c1-16 7-27 16-27 8 0 13 7 15 18"/>
+    <path d="M48 76c1-11 5-19 10-19 6 0 10 8 11 19"/>
+    <path d="M21 23c-7 9-10 19-10 30 0 13 5 24 14 31"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M65 19c0-4 5-6 8-2 3-4 8-2 8 2 0 5-8 10-8 10s-8-5-8-10z"/>
+  </g>
+  </symbol>
+  <symbol id="07-apoio-educacional" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 39c9-5 20-5 30 0v34c-10-5-21-5-30 0z"/>
+    <path d="M78 39c-9-5-20-5-30 0v34c10-5 21-5 30 0z"/>
+    <path d="M48 39v34"/>
+    <path d="M29 26l19-10 19 10-19 10z"/>
+    <path d="M67 26v12"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M66 57v17M60 62h12M60 68h12"/>
+  </g>
+  </symbol>
+  <symbol id="08-reducao-impostos" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25 15h35l12 12v54H25z"/>
+    <path d="M60 15v15h15"/>
+    <path d="M34 41h20M34 50h15"/>
+    <circle cx="49" cy="64" r="10"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M49 58v12M44 61h10M44 65h10"/>
+    <path d="M72 53v22M65 68l7 7 7-7"/>
+  </g>
+  </symbol>
+  <symbol id="09-responda" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="24" y="19" width="48" height="62" rx="6"/>
+    <path d="M36 15h24v10H36z"/>
+    <path d="M35 40h26M35 51h20M35 62h14"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 66l5 5 10-12"/>
+  </g>
+  </symbol>
+  <symbol id="10-veja-beneficios" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="42" cy="41" r="20"/>
+    <path d="M57 56l20 20"/>
+    <path d="M35 41h14M42 34v14"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M58 24c0-4 5-6 8-2 3-4 8-2 8 2 0 5-8 10-8 10s-8-5-8-10z"/>
+  </g>
+  </symbol>
+  <symbol id="11-confirme-documentos" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25 15h35l12 12v54H25z"/>
+    <path d="M60 15v15h15"/>
+    <path d="M35 41h25M35 51h18"/>
+    <circle cx="60" cy="66" r="12"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M54 66l4 4 8-9"/>
+  </g>
+  </symbol>
+  <symbol id="12-solicite-orgao" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 38h66L48 18z"/>
+    <path d="M22 42v30M34 42v30M48 42v30M62 42v30M74 42v30"/>
+    <path d="M14 76h68M10 82h76"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="31" r="3"/>
+  </g>
+  </symbol>
+  <symbol id="13-receba-apoio" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 59c11 0 17 4 25 10 5 4 10 6 17 6h11"/>
+    <path d="M82 59c-11 0-17 4-25 10"/>
+    <path d="M15 60l-5 12M81 60l5 12"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M36 40c0-7 8-10 12-4 4-6 12-3 12 4 0 9-12 17-12 17S36 49 36 40z"/>
+  </g>
+  </symbol>
+  <symbol id="14-provavelmente-recebe" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="48" r="32"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 49l10 10 22-25"/>
+  </g>
+  </symbol>
+  <symbol id="15-precisa-confirmar" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="48" r="32"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 38c1-8 7-12 14-12 8 0 14 5 14 12 0 7-5 10-10 13-5 3-8 6-8 12"/>
+    <circle cx="48" cy="72" r="2"/>
+  </g>
+  </symbol>
+  <symbol id="16-prefeitura" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 40h48L41 20z"/>
+    <path d="M24 44v27M36 44v27M49 44v27M61 44v27"/>
+    <path d="M15 75h51"/>
+    <path d="M79 35c-7 0-12 5-12 12 0 10 12 25 12 25s12-15 12-25c0-7-5-12-12-12z"/>
+    <circle cx="79" cy="47" r="4"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="41" cy="32" r="3"/>
+  </g>
+  </symbol>
+  <symbol id="17-fontes-oficiais" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 15l22 8v22c0 16-9 28-22 36-13-8-22-20-22-36V23z"/>
+    <path d="M55 27h25v48H43V59"/>
+    <path d="M61 39h13M61 49h13M57 59h17"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 45l7 7 13-16"/>
+  </g>
+  </symbol>
+  <symbol id="18-linguagem-simples" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 31c9-5 19-5 29 0v39c-10-5-20-5-29 0z"/>
+    <path d="M74 31c-9-5-19-5-29 0v39c10-5 20-5 29 0z"/>
+    <path d="M45 31v39"/>
+    <path d="M25 44h12M25 53h10M55 44h12M55 53h10"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M65 16h15v12H70l-5 5z"/>
+  </g>
+  </symbol>
+  <symbol id="19-brasileiros-no-japao" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="31" cy="34" r="9"/>
+    <circle cx="63" cy="34" r="9"/>
+    <circle cx="47" cy="50" r="8"/>
+    <path d="M17 75c1-13 6-23 14-23 7 0 11 6 14 15"/>
+    <path d="M79 75c-1-13-6-23-14-23-7 0-11 6-14 15"/>
+    <path d="M35 77c1-10 5-18 12-18s11 8 12 18"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M65 14h18v14H71l-6 6z"/>
+  </g>
+  </symbol>
+  <symbol id="20-atualizado" viewBox="0 0 96 96">
+<g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M74 36a28 28 0 0 0-47-10l-7 7"/>
+    <path d="M20 22v11h11"/>
+    <path d="M22 60a28 28 0 0 0 47 10l7-7"/>
+    <path d="M76 74V63H65"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M36 49l8 8 17-20"/>
+  </g>
+  </symbol>
+</svg>

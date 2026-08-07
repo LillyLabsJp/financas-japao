@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96"
+  fill="none" role="img" aria-hidden="true">
+  <g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="48" r="32"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 38c1-8 7-12 14-12 8 0 14 5 14 12 0 7-5 10-10 13-5 3-8 6-8 12"/>
+    <circle cx="48" cy="72" r="2"/>
+  </g>
+</svg>

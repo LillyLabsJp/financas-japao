@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96"
+  fill="none" role="img" aria-hidden="true">
+  <g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="24" y="19" width="48" height="62" rx="6"/>
+    <path d="M36 15h24v10H36z"/>
+    <path d="M35 40h26M35 51h20M35 62h14"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 66l5 5 10-12"/>
+  </g>
+</svg>

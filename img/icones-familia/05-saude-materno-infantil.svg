@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96"
+  fill="none" role="img" aria-hidden="true">
+  <g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 18v23c0 10 7 17 17 17s17-7 17-17V18"/>
+    <path d="M20 18h14M54 18h14"/>
+    <path d="M44 58v5c0 9 7 16 16 16h3"/>
+    <circle cx="70" cy="69" r="8"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M63 33c0-4 5-6 8-2 3-4 8-2 8 2 0 5-8 10-8 10s-8-5-8-10z"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96"
+  fill="none" role="img" aria-hidden="true">
+  <g class="icon-main" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25 15h35l12 12v54H25z"/>
+    <path d="M60 15v15h15"/>
+    <path d="M34 41h20M34 50h15"/>
+    <circle cx="49" cy="64" r="10"/>
+  </g>
+  <g class="icon-accent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M49 58v12M44 61h10M44 65h10"/>
+    <path d="M72 53v22M65 68l7 7 7-7"/>
+  </g>
+</svg>
