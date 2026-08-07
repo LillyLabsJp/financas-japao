@@ -167,14 +167,17 @@
   <div class="container section">
     <p class="breadcrumb"><a href="/">Início</a> / Isenção do Nenkin por filho</p>
 
-    <div class="fam-hero">
+    <div class="fam-hero fam-hero--foto" style="background-image:url('img/hero-maes-familia.webp')">
       <div class="fam-hero-texto">
         <p class="categoria-etiqueta">Família</p>
         <span class="badge">🆕 Nova regra · outubro de 2026</span>
         <h1>Isenção do Nenkin pra quem tem bebê: a nova regra de outubro de 2026</h1>
         <p class="lead">A partir de <strong>1º de outubro de 2026</strong>, quem paga o Kokumin Nenkin por conta própria — autônoma, freelancer, estudante — pode deixar de pagar a contribuição por até 12 meses ao ter um filho pequeno, <strong>sem que isso reduza sua aposentadoria no futuro</strong>. É uma regra muito nova, e ainda pouca gente sabe que ela existe.</p>
+        <button type="button" class="btn-compartilhar-calc" onclick="compartilharPagina(this)">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+          <span>Compartilhar</span>
+        </button>
       </div>
-      <div class="fam-hero-visual fam-hero-visual--foto" style="background-image:url('img/hero-maes-familia.webp')" role="img" aria-label="Mãe segurando bebê no colo"></div>
     </div>
 
     <div class="fam-resposta">
@@ -323,6 +326,30 @@
   </div>
 </footer>
 
+<script>
+function compartilharPagina(btn){
+  var url = window.location.origin + window.location.pathname;
+  var texto = '🍼 *A partir de outubro de 2026, autônomos e freelancers no Japão podem ficar isentos do Nenkin por até 12 meses ao ter um filho* — sem reduzir a aposentadoria no futuro.\n\nÉ uma regra novíssima e ainda pouca gente sabe. Veja se você se enquadra, em português 👇\n' + url;
+  if (navigator.share) {
+    navigator.share({ title: 'Isenção do Nenkin pra quem tem bebê', text: texto }).catch(function(){});
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function(){
+      var s = btn.querySelector('span');
+      if (!s) return;
+      var o = s.getAttribute('data-o') || s.textContent;
+      s.setAttribute('data-o', o);
+      s.textContent = 'Link copiado!';
+      setTimeout(function(){ s.textContent = o; }, 1800);
+    }).catch(function(){
+      window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+    });
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+  }
+}
+</script>
 <script src="main.js"></script>
 </body>
 </html>

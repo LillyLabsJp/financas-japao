@@ -17,20 +17,8 @@
 <link rel="stylesheet" href="style.css?v=2026-08-07">
 
 <style>
-.aph-hero{
-  position:relative;border-radius:var(--radius);overflow:hidden;margin-top:18px;
-  min-height:340px;background:url('img/hero-maes-familia.webp') center right/cover no-repeat;
-  box-shadow:0 18px 44px rgba(22,24,29,.14);display:flex;align-items:center;
-}
-.aph-hero-conteudo{max-width:520px;padding:36px 32px;}
-.aph-hero-icon{width:44px;height:44px;color:var(--color-red);margin-bottom:14px;}
+.aph-hero-icon{width:44px;height:44px;color:var(--color-red);margin:2px 0 14px;display:block;}
 .aph-hero-icon .icon-accent{color:var(--color-accent-dark);}
-.aph-hero h1{margin:0 0 14px;}
-.aph-hero .lead{margin:0;}
-@media(max-width:760px){
-  .aph-hero{background-position:85% center;min-height:300px;}
-  .aph-hero-conteudo{max-width:100%;padding:26px 20px;background:linear-gradient(90deg,rgba(255,255,255,.94) 55%,rgba(255,255,255,0));}
-}
 </style>
 
 <meta property="og:type" content="article">
@@ -180,15 +168,19 @@
 <main id="conteudo">
   <div class="container section">
     <p class="breadcrumb"><a href="/">Início</a> / Auxílio-parto</p>
-    <p class="categoria-etiqueta">Família</p>
 
-    <div class="aph-hero">
-      <div class="aph-hero-conteudo">
+    <div class="fam-hero fam-hero--foto" style="background-image:url('img/hero-maes-familia.webp')">
+      <div class="fam-hero-texto">
+        <p class="categoria-etiqueta">Família</p>
         <svg class="aph-hero-icon" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <use href="img/icones-familia/familias-icons-sprite.svg#01-gravidez"></use>
         </svg>
         <h1>Auxílio-parto no Japão: quanto você recebe e como pedir</h1>
         <p class="lead">Toda mulher grávida no Japão tem direito a receber dinheiro do governo pra ajudar a pagar o parto — mesmo quem nunca trabalhou registrada, é autônoma, ou está desempregada. Esse benefício se chama <strong>auxílio-parto</strong> (Shussan Ikuji Ichijikin, 出産育児一時金).</p>
+        <button type="button" class="btn-compartilhar-calc" onclick="compartilharPagina(this)">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+          <span>Compartilhar</span>
+        </button>
       </div>
     </div>
 
@@ -340,6 +332,30 @@
   </div>
 </footer>
 
+<script>
+function compartilharPagina(btn){
+  var url = window.location.origin + window.location.pathname;
+  var texto = '👶 *Toda mulher grávida no Japão tem direito a receber ¥500.000 de auxílio-parto* — mesmo autônoma, mesmo sem emprego fixo.\n\nVeja quem tem direito, o prazo e como pedir, em português 👇\n' + url;
+  if (navigator.share) {
+    navigator.share({ title: 'Auxílio-parto no Japão', text: texto }).catch(function(){});
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function(){
+      var s = btn.querySelector('span');
+      if (!s) return;
+      var o = s.getAttribute('data-o') || s.textContent;
+      s.setAttribute('data-o', o);
+      s.textContent = 'Link copiado!';
+      setTimeout(function(){ s.textContent = o; }, 1800);
+    }).catch(function(){
+      window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+    });
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+  }
+}
+</script>
 <script src="main.js"></script>
 </body>
 </html>
