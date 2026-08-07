@@ -832,7 +832,7 @@ p { margin: 0 0 1em; }
   box-shadow:0 18px 44px rgba(22,24,29,.14);
 }
 .fam-hero--foto .fam-hero-texto{max-width:520px;padding:36px 32px;}
-@media(max-width:760px){
+@media(max-width:900px){
   .fam-hero.fam-hero--foto{min-height:300px;background-position:85% center;}
   .fam-hero--foto .fam-hero-texto{max-width:100%;padding:26px 20px;background:linear-gradient(90deg,rgba(255,255,255,.94) 55%,rgba(255,255,255,0));}
 }

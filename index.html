@@ -67,7 +67,7 @@
 .trust-ico{width:30px;height:30px;object-fit:contain;display:block;margin:0 auto 8px;}
 
 /* explicacoes curtas de cada tema */
-.temas{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px;}
+.temas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:8px;}
 .tema h3{font-size:1.05rem;margin:0 0 8px;letter-spacing:-.01em;}
 .tema h3 span{display:block;font-size:.74rem;font-weight:650;letter-spacing:.08em;
   text-transform:uppercase;color:var(--color-text-faint);margin-bottom:4px;}
@@ -104,7 +104,13 @@
         </li>
         <li><a href="aposentadoria-nenkin.html">Aposentadoria</a></li>
         <li><a href="remessa-japao-brasil.html">Remessa</a></li>
-        <li><a href="auxilio-parto-japao.html">Família</a></li>
+        <li class="tem-sub">
+          <a href="#" aria-haspopup="true" aria-expanded="false">Família <span class="seta">⌄</span></a>
+          <ul class="submenu">
+            <li><a href="auxilio-parto-japao.html">Auxílio-parto</a></li>
+            <li><a href="isencao-nenkin-bebe.html">Isenção do Nenkin por filho</a></li>
+          </ul>
+        </li>
         <li><a href="sobre.html">Sobre</a></li>
       </ul>
     </nav>
@@ -254,8 +260,8 @@
   <section class="section">
     <div class="container">
       <span class="eyebrow">Entenda antes de calcular</span>
-      <h2 class="section-title">Os três impostos que mais pesam no bolso de quem mora aqui</h2>
-      <p class="texto-longo" style="margin-bottom:32px;">Quem chega ao Japão descobre o sistema tributário aos poucos, quase sempre depois de levar um susto no holerite. Estes são os três pontos onde a diferença entre saber e não saber custa mais caro — e onde uma decisão simples pode devolver dinheiro para o seu bolso.</p>
+      <h2 class="section-title">Os pontos que mais pesam no bolso de quem mora aqui</h2>
+      <p class="texto-longo" style="margin-bottom:32px;">Quem chega ao Japão descobre o sistema tributário e a rede de benefícios aos poucos, quase sempre depois de levar um susto no holerite ou de perder um prazo. Estes são os pontos onde a diferença entre saber e não saber custa mais caro — e onde uma decisão simples pode devolver dinheiro para o seu bolso.</p>
 
       <div class="temas">
         <div class="tema">
@@ -277,6 +283,12 @@
           <p>Todo trabalhador no Japão contribui para a aposentadoria. Ao voltar definitivamente, é possível pedir o reembolso parcial — o <i lang="ja">dattai ichijikin</i>. Só que ele devolve uma fração do que foi pago, e não é sempre a melhor escolha.</p>
           <p>Existe acordo previdenciário entre Brasil e Japão: o tempo contribuído aqui pode ser <strong>somado ao tempo no INSS</strong>. Quem saca perde esse tempo para sempre. A diferença ao longo da vida pode passar de vários milhões de ienes.</p>
           <a href="aposentadoria-nenkin.html">Comparar as opções →</a>
+        </div>
+
+        <div class="tema">
+          <h3><span>Família</span>Benefícios que quase ninguém sabe que existem</h3>
+          <p>Toda mulher grávida no Japão tem direito a <strong>¥500.000</strong> de auxílio-parto — mesmo autônoma, mesmo sem emprego fixo. E a partir de outubro de 2026, autônomos e freelancers ganham uma isenção nova no Nenkin ao ter um filho, sem reduzir a aposentadoria.</p>
+          <a href="auxilio-parto-japao.html">Ver os benefícios →</a>
         </div>
       </div>
     </div>
