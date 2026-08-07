@@ -46,6 +46,19 @@
 
 html { scroll-behavior: smooth; }
 
+/* ancoras internas nao ficam escondidas atras do cabecalho sticky */
+[id] { scroll-margin-top: 88px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   margin: 0;
   font-family: var(--font-base);
@@ -163,6 +176,7 @@ p { margin: 0 0 1em; }
   color: var(--color-primary-dark);
   border-radius: var(--radius-sm);
   padding: 8px 12px;
+  min-height: 44px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -469,6 +483,8 @@ p { margin: 0 0 1em; }
   background: var(--color-warning-bg);
 }
 .callout h4 { margin-top: 0; }
+/* callouts que usavam h4 so pelo tamanho, corrigidos pra h3 (nivel certo dentro de uma secao h2) */
+.callout h3 { margin-top: 0; font-size: 1.05rem; line-height: 1.4; font-weight: 700; }
 
 /* FAQ */
 .faq-item {
@@ -569,6 +585,7 @@ p { margin: 0 0 1em; }
 }
 .site-footer ul { list-style: none; padding: 0; margin: 0; }
 .site-footer li { margin-bottom: 9px; }
+.site-footer li a { display: inline-block; padding: 6px 0; }
 .footer-bottom {
   border-top: 1px solid var(--color-border);
   padding-top: 24px;
@@ -614,7 +631,8 @@ p { margin: 0 0 1em; }
 .header-cta{display:inline-flex;align-items:center;gap:7px;}
 .fu-busca{
   background:none;border:none;cursor:pointer;color:var(--color-text);
-  padding:6px;display:flex;align-items:center;border-radius:8px;transition:var(--ease);
+  padding:12px;min-width:44px;min-height:44px;justify-content:center;
+  display:flex;align-items:center;border-radius:8px;transition:var(--ease);
 }
 .fu-busca:hover{background:var(--color-bg);color:var(--color-red);}
 
@@ -629,7 +647,7 @@ p { margin: 0 0 1em; }
 @media(max-width:900px){.fu-header-acoes .header-cta{display:none;}}
 /* no celular nao existe hover: o submenu abre pela classe que o main.js adiciona */
 .main-nav .tem-sub.aberto > .submenu{display:flex;}
-@media(hover:none){
+@media(max-width:900px),(hover:none){
   .main-nav .submenu{
     position:static;left:auto;min-width:0;box-shadow:none;
     border:none;border-left:2px solid var(--color-border);

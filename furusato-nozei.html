@@ -504,7 +504,7 @@
   background:var(--color-bg);border:1.5px solid var(--color-border);
   border-radius:16px;padding:26px 28px;color:var(--color-text);
 }
-.fu-afiliado-topo .fu-af-txt{flex:1;min-width:260px;}
+.fu-afiliado-topo .fu-af-txt{flex:1;min-width:min(260px,100%);}
 .fu-afiliado-topo .fu-af-txt h3{margin:0 0 8px;color:var(--color-text);font-size:1.15rem;}
 .fu-afiliado-topo .fu-af-txt p{margin:0;color:var(--color-text-muted);font-size:.95rem;line-height:1.6;}
 .fu-afiliado-topo .fu-af-acao{flex-shrink:0;max-width:250px;}
@@ -1463,7 +1463,7 @@
       <p>Quer preencher o formulário campo a campo, com os termos em japonês traduzidos? Veja o <a href="one-stop-furusato-nozei.html">guia completo do One-Stop</a>.</p>
 
       <div class="callout warning">
-        <h4>⚠ As 3 pegadinhas que derrubam todo mundo</h4>
+        <h3>⚠ As 3 pegadinhas que derrubam todo mundo</h3>
         <p><strong>1.</strong> Doou para 6 cidades ou mais? O One-Stop não vale — você precisa fazer a declaração de imposto (kakutei shinkoku).<br>
         <strong>2.</strong> Fez declaração de imposto por qualquer outro motivo (despesa médica, primeiro ano de financiamento da casa)? O One-Stop é <strong>cancelado automaticamente</strong> — inclua as doações na declaração, senão perde o desconto.<br>
         <strong>3.</strong> Esqueceu de mandar o formulário até 10 de janeiro? Ainda dá pra recuperar declarando no kakutei shinkoku até março.</p>
@@ -1765,6 +1765,13 @@ var esperaDigitacao;
     b.addEventListener('click', function(){
       document.querySelectorAll(seletor + ' .opcao').forEach(function(x){ x.classList.remove('ativa'); });
       b.classList.add('ativa');
+      // recalcula na hora — antes o toggle so trocava a cor e o resultado
+      // ficava desatualizado (e o aviso de financiamento nunca aparecia sozinho)
+      if (seletor === '#opcoes-conjuge-detalhada') {
+        calcularLimiteDetalhado();
+      } else if ((parseFloat(document.getElementById('renda-anual').value)||0) > 0) {
+        calcularLimite();
+      }
     });
   });
 });

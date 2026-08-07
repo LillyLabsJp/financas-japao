@@ -38,13 +38,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* fecha o submenu ao tocar fora ou apertar Esc */
+  function fechaTodosSubmenus() {
+    itensComSub.forEach(function (x) {
+      x.classList.remove("aberto");
+      var a = x.querySelector(":scope > a");
+      if (a) a.setAttribute("aria-expanded", "false");
+    });
+  }
   document.addEventListener("click", function (e) {
     if (e.target.closest(".main-nav .tem-sub")) return;
-    itensComSub.forEach(function (x) { x.classList.remove("aberto"); });
+    fechaTodosSubmenus();
   });
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
-    itensComSub.forEach(function (x) { x.classList.remove("aberto"); });
+    fechaTodosSubmenus();
     var campo = document.getElementById("fu-busca-campo");
     if (campo) campo.classList.remove("aberto");
   });

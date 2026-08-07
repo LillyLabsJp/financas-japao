@@ -193,11 +193,11 @@
         <div class="calc-fields-row">
           <div class="field">
             <label for="valor-jpy">Valor a enviar (em ienes, JPY)</label>
-            <input type="number" id="valor-jpy" name="valor-jpy" min="1" step="1" placeholder="Ex: 300000" required>
+            <input type="number" inputmode="numeric" id="valor-jpy" name="valor-jpy" min="1" step="1" placeholder="Ex: 300000" required>
           </div>
           <div class="field">
             <label for="cotacao-referencia">Cotação JPY → BRL usada</label>
-            <input type="number" id="cotacao-referencia" name="cotacao-referencia" min="0" step="0.000001">
+            <input type="number" inputmode="decimal" id="cotacao-referencia" name="cotacao-referencia" min="0" step="0.000001">
             <p class="hint" id="cotacao-status">Buscando cotação ao vivo...</p>
           </div>
         </div>
@@ -205,17 +205,19 @@
       </form>
 
       <div id="resultados-wrap" hidden>
-        <table class="results-table" aria-live="polite">
-          <thead>
-            <tr>
-              <th>Provedor</th>
-              <th>Você recebe (líquido)</th>
-              <th>Custo total estimado</th>
-              <th>Prazo típico</th>
-            </tr>
-          </thead>
-          <tbody id="resultados-corpo"></tbody>
-        </table>
+        <div style="overflow-x:auto;">
+          <table class="results-table" aria-live="polite">
+            <thead>
+              <tr>
+                <th>Provedor</th>
+                <th>Você recebe (líquido)</th>
+                <th>Custo total estimado</th>
+                <th>Prazo típico</th>
+              </tr>
+            </thead>
+            <tbody id="resultados-corpo"></tbody>
+          </table>
+        </div>
         <ul id="resultados-observacoes" style="margin-top:16px; padding-left:20px; font-size:0.9rem; color:var(--color-text-muted);"></ul>
         <p class="results-note">Estimativas baseadas em tarifas divulgadas publicamente por cada provedor (revisão manual de julho de 2026) e na cotação de câmbio informada acima. Valores reais podem variar conforme o método de pagamento, a velocidade de entrega escolhida e promoções vigentes. Confirme sempre no simulador oficial antes de enviar valores importantes.</p>
       </div>
@@ -224,6 +226,7 @@
     <h2>Como calculamos: metodologia e fontes</h2>
     <p>A cotação de câmbio usada na calculadora é buscada em tempo real, a cada vez que você abre esta página, em APIs públicas gratuitas (Frankfurter/ECB, com fallback para open.er-api.com), porque o câmbio muda a todo instante e não faria sentido deixá-lo fixo. Já as tarifas de cada provedor — que mudam com bem menos frequência — são revisadas manualmente e mantidas atualizadas nesta página:</p>
 
+    <div style="overflow-x:auto;">
     <table class="data-table">
       <thead>
         <tr>
@@ -255,9 +258,10 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <div class="callout warning">
-      <h4>Estes números são estimativas, não cotações garantidas</h4>
+      <h3>Estes números são estimativas, não cotações garantidas</h3>
       <p>As tarifas acima ajudam a comparar a ordem de grandeza do custo entre provedores. Elas podem mudar sem aviso prévio, variar conforme o valor enviado, o método de pagamento e promoções. Sempre confirme o valor exato no simulador oficial do provedor escolhido antes de fechar a operação.</p>
     </div>
 
