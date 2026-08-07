@@ -639,6 +639,9 @@ p { margin: 0 0 1em; }
   .main-nav .tem-sub.aberto > .submenu{display:flex;}
 }
 
+/* etiqueta de categoria, usada no topo de varias paginas de conteudo */
+.categoria-etiqueta{display:inline-block;font-weight:700;font-size:.76rem;letter-spacing:.03em;text-transform:uppercase;color:var(--color-accent-dark);background:#e3f7ec;padding:4px 10px;border-radius:6px;margin-bottom:13px;}
+
 /* ============ SELO DE CONFIANCA ============ */
 .fu-confianca{
   display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;
