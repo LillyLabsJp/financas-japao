@@ -815,6 +815,8 @@ p { margin: 0 0 1em; }
 .fam-hero{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;margin:20px 0 32px;}
 .fam-hero-texto h1{margin:12px 0 12px;}
 .fam-hero-texto .lead{margin:0;}
+.fam-hero-icon{width:44px;height:44px;color:var(--color-red);margin:2px 0 14px;display:block;}
+.fam-hero-icon .icon-accent{color:var(--color-accent-dark);}
 .fam-hero-visual{
   display:flex;align-items:center;justify-content:center;min-height:220px;
   background:var(--color-accent-soft);border-radius:var(--radius);padding:30px;
