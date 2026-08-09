@@ -224,6 +224,60 @@
       </div>
     </div>
 
+    <div class="calc-familia" id="calculadora">
+      <img src="img/calc-familia-ilustracao.webp" alt="" class="calc-familia-ilustracao">
+      <div class="calc-familia-conteudo">
+        <div class="calc-familia-topo">
+          <div class="calc-familia-eyebrow">Calcule o seu</div>
+          <button type="button" class="btn-compartilhar-calc" onclick="compartilharCalculadora(this)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+        <h3 class="calc-familia-titulo">Tem filhos pequenos no Japão?</h3>
+        <p class="calc-familia-sub">Calcule fácil aqui quanto você pode receber de ajuda do governo japonês.</p>
+
+        <div class="calc-familia-form" id="calcFilhosForm">
+          <div class="calc-filho-row">
+            <img src="img/icone-crianca-calculadora.webp" alt="" class="calc-filho-icone" width="34" height="34">
+            <span class="calc-filho-label">Filho 1</span>
+            <input type="number" inputmode="numeric" min="0" max="30" placeholder="Idade" class="calc-filho-idade" aria-label="Idade do filho 1">
+          </div>
+          <div class="calc-filho-row">
+            <img src="img/icone-crianca-calculadora.webp" alt="" class="calc-filho-icone" width="34" height="34">
+            <span class="calc-filho-label">Filho 2</span>
+            <input type="number" inputmode="numeric" min="0" max="30" placeholder="Idade" class="calc-filho-idade" aria-label="Idade do filho 2">
+          </div>
+        </div>
+        <button type="button" class="calc-familia-add" id="calcAddFilho">
+          <span aria-hidden="true">+</span> Adicionar filho
+        </button>
+        <p class="calc-familia-hint">Preencha do filho mais velho pro mais novo — a ordem muda o valor.</p>
+
+        <div class="calc-familia-extra">
+          <span>Tem filho de 19 a 22 anos que ainda depende de você?</span>
+          <div class="calc-stepper">
+            <button type="button" id="calcStepperMinus" aria-label="Diminuir">−</button>
+            <span id="calcStepperValue">0</span>
+            <button type="button" id="calcStepperPlus" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+
+        <p class="calc-familia-erro" id="calcFilhosErro" hidden>Preencha a idade de pelo menos um filho.</p>
+
+        <button type="button" class="calc-familia-btn" id="calcFilhosBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="12" y1="11" x2="12" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/><line x1="8" y1="16" x2="8" y2="16"/></svg>
+          Calcular
+        </button>
+
+        <div class="calc-familia-resultado" id="calcFilhosResultado" aria-live="polite" hidden>
+          <div class="calc-resultado-label">Você recebe aproximadamente</div>
+          <div class="calc-resultado-valor"><span id="calcResultadoNum">¥0</span> <small>por mês</small></div>
+          <p class="calc-resultado-aviso">Estimativa com base na idade que você informou. O corte oficial é 31 de março do ano fiscal japonês — perto dessa data, o valor exato pode variar.</p>
+        </div>
+      </div>
+    </div>
+
     <h2 id="quem-tem-direito">Quem tem direito ao auxílio infantil no Japão</h2>
     <div class="fam-elegibilidade">
       <div class="fam-eleg-card fam-eleg-sim">
@@ -405,6 +459,105 @@ function compartilharPagina(btn){
     window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
   }
 }
+
+function compartilharCalculadora(btn){
+  var url = window.location.origin + window.location.pathname + '#calculadora';
+  var texto = '👶 *Tem filhos pequenos no Japão?* Calcule fácil aqui quanto você pode receber de ajuda do governo japonês, por mês — sem teto de renda, não importa a nacionalidade.\n' + url;
+  if (navigator.share) {
+    navigator.share({ title: 'Calculadora do auxílio infantil no Japão', text: texto }).catch(function(){});
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function(){
+      var s = btn.querySelector('span');
+      if (!s) return;
+      var o = s.getAttribute('data-o') || s.textContent;
+      s.setAttribute('data-o', o);
+      s.textContent = 'Link copiado!';
+      setTimeout(function(){ s.textContent = o; }, 1800);
+    }).catch(function(){
+      window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+    });
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+  }
+}
+
+(function(){
+  var filhoCount = 2;
+  var dependentesVelhos = 0;
+
+  var form = document.getElementById('calcFilhosForm');
+  var addBtn = document.getElementById('calcAddFilho');
+  var stepperMinus = document.getElementById('calcStepperMinus');
+  var stepperPlus = document.getElementById('calcStepperPlus');
+  var stepperValue = document.getElementById('calcStepperValue');
+  var calcBtn = document.getElementById('calcFilhosBtn');
+  var erroEl = document.getElementById('calcFilhosErro');
+  var resultadoEl = document.getElementById('calcFilhosResultado');
+  var resultadoNum = document.getElementById('calcResultadoNum');
+
+  if (!form || !calcBtn) return;
+
+  addBtn.addEventListener('click', function(){
+    filhoCount++;
+    var row = document.createElement('div');
+    row.className = 'calc-filho-row';
+    row.innerHTML = '<img src="img/icone-crianca-calculadora.webp" alt="" class="calc-filho-icone" width="34" height="34">' +
+      '<span class="calc-filho-label">Filho ' + filhoCount + '</span>' +
+      '<input type="number" inputmode="numeric" min="0" max="30" placeholder="Idade" class="calc-filho-idade" aria-label="Idade do filho ' + filhoCount + '">';
+    form.appendChild(row);
+    row.querySelector('input').focus();
+  });
+
+  stepperMinus.addEventListener('click', function(){
+    if (dependentesVelhos > 0) dependentesVelhos--;
+    stepperValue.textContent = dependentesVelhos;
+  });
+  stepperPlus.addEventListener('click', function(){
+    if (dependentesVelhos < 10) dependentesVelhos++;
+    stepperValue.textContent = dependentesVelhos;
+  });
+
+  calcBtn.addEventListener('click', function(){
+    var inputs = form.querySelectorAll('.calc-filho-idade');
+    var idades = [];
+    inputs.forEach(function(inp){
+      var v = inp.value.trim();
+      if (v !== '') {
+        var n = parseInt(v, 10);
+        if (!isNaN(n) && n >= 0) idades.push(n);
+      }
+    });
+
+    if (idades.length === 0) {
+      erroEl.hidden = false;
+      resultadoEl.hidden = true;
+      return;
+    }
+    erroEl.hidden = true;
+
+    var total = 0;
+    idades.forEach(function(idade, i){
+      var posicao = dependentesVelhos + i + 1;
+      var valor = 0;
+      if (idade <= 18) {
+        if (posicao >= 3) {
+          valor = 30000;
+        } else if (idade < 3) {
+          valor = 15000;
+        } else {
+          valor = 10000;
+        }
+      }
+      total += valor;
+    });
+
+    resultadoNum.textContent = '¥' + total.toLocaleString('pt-BR');
+    resultadoEl.hidden = false;
+    resultadoEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+})();
 </script>
 <script src="main.js"></script>
 </body>

@@ -882,12 +882,90 @@ p { margin: 0 0 1em; }
 
 /* botao de compartilhar reutilizado nas paginas do cluster familia —
    fundo solido pra ler bem tanto sobre branco quanto sobre foto */
-.fam-hero-texto .btn-compartilhar-calc{
-  display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+.btn-compartilhar-calc{
+  display:inline-flex;align-items:center;gap:8px;
   background:#fff;border:1.5px solid var(--color-border);border-radius:999px;
   padding:9px 18px;font-family:inherit;font-size:.875rem;font-weight:650;
   color:var(--color-text);cursor:pointer;box-shadow:0 4px 14px rgba(22,24,29,.08);
   transition:background var(--ease),border-color var(--ease);
 }
-.fam-hero-texto .btn-compartilhar-calc:hover{border-color:var(--color-accent);color:var(--color-accent-dark);}
-.fam-hero-texto .btn-compartilhar-calc svg{flex-shrink:0;}
+.btn-compartilhar-calc:hover{border-color:var(--color-accent);color:var(--color-accent-dark);}
+.btn-compartilhar-calc svg{flex-shrink:0;}
+.fam-hero-texto .btn-compartilhar-calc{margin-top:20px;}
+
+/* calculadora do auxilio infantil — caixa em tom bege quente, com
+   ilustracao do Kai, diferente do verde-menta usado no resto do cluster */
+.calc-familia{
+  position:relative;overflow:hidden;border-radius:16px;margin:0 0 30px;
+  padding:26px 26px 28px;
+  background:linear-gradient(135deg,#faf3e7 0%,#f0dfc4 100%);
+}
+.calc-familia-ilustracao{
+  position:absolute;top:-10px;right:-30px;width:300px;max-width:46%;height:auto;
+  pointer-events:none;z-index:0;
+}
+.calc-familia-conteudo{position:relative;z-index:1;}
+.calc-familia-topo{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px;}
+.calc-familia-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--color-red);position:relative;padding-bottom:8px;
+}
+.calc-familia-eyebrow::after{
+  content:"";position:absolute;left:0;bottom:0;width:22px;height:2px;background:var(--color-red);
+}
+.calc-familia h3.calc-familia-titulo{margin:0 0 8px;font-size:1.4rem;color:#3d2e1a;max-width:420px;}
+.calc-familia-sub{margin:0 0 20px;font-size:.95rem;color:#6b5637;max-width:420px;}
+
+.calc-familia-form{display:flex;flex-direction:column;gap:10px;background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;}
+.calc-filho-row{display:flex;align-items:center;gap:10px;}
+.calc-filho-icone{width:34px;height:34px;border-radius:50%;background:#f5ecdd;flex-shrink:0;object-fit:contain;padding:3px;}
+.calc-filho-label{font-size:.85rem;color:#3d2e1a;min-width:60px;flex-shrink:0;}
+.calc-filho-idade{
+  flex:1;border:1px solid #e6d9bd;border-radius:8px;padding:9px 12px;
+  font-size:.9rem;color:#3d2e1a;background:#faf6ef;font-family:inherit;
+}
+.calc-filho-idade:focus{outline:2px solid var(--color-accent);outline-offset:1px;}
+
+.calc-familia-add{
+  display:flex;align-items:center;gap:6px;width:100%;justify-content:center;
+  background:none;border:1px dashed #d8c397;border-radius:10px;padding:11px;
+  font-family:inherit;font-size:.85rem;font-weight:650;color:var(--color-accent-dark);
+  cursor:pointer;margin-bottom:14px;
+}
+.calc-familia-add:hover{background:rgba(255,255,255,.5);}
+
+.calc-familia-hint{margin:-8px 0 14px;font-size:.76rem;color:#8a7856;}
+
+.calc-familia-extra{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:16px;
+}
+.calc-familia-extra span{font-size:.85rem;color:#3d2e1a;}
+.calc-stepper{display:flex;align-items:center;gap:0;border:1px solid #e6d9bd;border-radius:8px;overflow:hidden;flex-shrink:0;}
+.calc-stepper button{
+  width:32px;height:32px;background:#faf6ef;border:none;font-size:1.1rem;color:#3d2e1a;
+  cursor:pointer;line-height:1;
+}
+.calc-stepper button:hover{background:#f0e4cc;}
+.calc-stepper span{min-width:32px;text-align:center;font-size:.9rem;font-weight:650;color:#3d2e1a;}
+
+.calc-familia-btn{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(135deg,#20222a 0%,#14161b 100%);color:#fff;border:none;
+  border-radius:10px;padding:14px;font-family:inherit;font-size:.95rem;font-weight:650;
+  cursor:pointer;
+}
+.calc-familia-btn:hover{opacity:.92;}
+
+.calc-familia-resultado{background:#fff;border-radius:10px;padding:16px 18px;margin-top:14px;}
+.calc-familia-resultado .calc-resultado-label{font-size:.76rem;color:var(--color-text-muted);margin-bottom:2px;}
+.calc-familia-resultado .calc-resultado-valor{font-size:1.5rem;font-weight:700;color:var(--color-accent-dark);}
+.calc-familia-resultado .calc-resultado-valor small{font-size:.8rem;font-weight:500;color:var(--color-text-muted);}
+.calc-familia-resultado .calc-resultado-aviso{margin:8px 0 0;font-size:.76rem;color:var(--color-text-muted);}
+.calc-familia-erro{color:var(--color-red-dark);font-size:.82rem;margin:-4px 0 14px;}
+
+@media(max-width:640px){
+  .calc-familia{padding:22px 18px 24px;}
+  .calc-familia-ilustracao{width:180px;opacity:.55;}
+  .calc-familia-topo{flex-direction:column;}
+}
