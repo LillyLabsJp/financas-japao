@@ -4,5 +4,6 @@ Allow: /
 # paginas internas de rascunho / conceito nao devem ser rastreadas
 Disallow: /conceito-visual-novo.html
 Disallow: /og-source.html
+Disallow: /gerador-utm-facebook.html
 
 Sitemap: https://financasnojapao.com/sitemap.xml

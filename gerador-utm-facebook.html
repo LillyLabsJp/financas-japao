@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gerador de links UTM — Facebook (uso interno)</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{
+    --color-primary:#16181d;
+    --color-accent:#00a866;
+    --color-accent-dark:#00854f;
+    --color-bg:#f7f6f4;
+    --color-border:#e3e1dc;
+    --color-text:#2a2d34;
+    --color-text-muted:#5b616b;
+    --radius:16px;
+    --radius-sm:10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--color-bg);
+    color:var(--color-text);
+    margin:0;
+    padding:32px 16px;
+  }
+  .wrap{max-width:640px;margin:0 auto;}
+  h1{font-size:22px;margin-bottom:4px;color:var(--color-primary);}
+  .sub{color:var(--color-text-muted);font-size:14px;margin-bottom:28px;}
+  .card{
+    background:#fff;
+    border:1px solid var(--color-border);
+    border-radius:var(--radius);
+    padding:24px;
+    margin-bottom:20px;
+  }
+  label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;margin-top:16px;color:var(--color-primary);}
+  label:first-child{margin-top:0;}
+  select,input{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-sm);
+    font-size:14px;
+    font-family:inherit;
+    background:#fff;
+  }
+  .hint{font-size:12px;color:var(--color-text-muted);margin-top:4px;}
+  .output{
+    background:var(--color-bg);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-sm);
+    padding:14px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:13px;
+    word-break:break-all;
+    margin-top:20px;
+    min-height:20px;
+  }
+  button{
+    margin-top:12px;
+    background:var(--color-accent);
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:var(--radius-sm);
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  button:hover{background:var(--color-accent-dark);}
+  button.copied{background:var(--color-accent-dark);}
+  .row{display:flex;gap:12px;}
+  .row > div{flex:1;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Gerador de links UTM — Facebook</h1>
+  <p class="sub">Uso interno (Lilly + Kai). Não é parte pública do site — não linkar em lugar nenhum.</p>
+
+  <div class="card">
+    <label for="pagina">Página do site</label>
+    <select id="pagina">
+      <option value="index.html">Home</option>
+      <option value="furusato-nozei.html">Furusato Nozei (pilar + calculadora)</option>
+      <option value="o-que-e-furusato-nozei.html">O que é Furusato Nozei</option>
+      <option value="furusato-nozei-vale-a-pena.html">Furusato Nozei vale a pena?</option>
+      <option value="melhores-presentes-furusato-nozei.html">Melhores presentes Furusato</option>
+      <option value="como-conferir-desconto-furusato-nozei.html">Como conferir o desconto</option>
+      <option value="onde-fazer-furusato-nozei.html">Onde fazer Furusato Nozei</option>
+      <option value="amazon-furusato-nozei.html">Furusato via Amazon</option>
+      <option value="rakuten-furusato-nozei.html">Furusato via Rakuten</option>
+      <option value="one-stop-furusato-nozei.html">Sistema One-Stop</option>
+      <option value="auxilio-parto-japao.html">Auxílio-parto</option>
+      <option value="isencao-nenkin-bebe.html">Isenção do Nenkin (bebê)</option>
+      <option value="auxilio-infantil-japao.html">Auxílio infantil (Jidō Teate)</option>
+      <option value="licenca-parental-japao.html">Licença-parental</option>
+      <option value="reducao-jornada-japao.html">Redução de jornada</option>
+      <option value="aposentadoria-nenkin.html">Aposentadoria (Nenkin)</option>
+      <option value="dependentes-no-brasil.html">Dependentes no Brasil</option>
+      <option value="imposto-residencial-juminzei.html">Imposto residencial (Jūminzei)</option>
+      <option value="remessa-japao-brasil.html">Remessa Japão-Brasil</option>
+      <option value="sobre.html">Sobre</option>
+      <option value="contato.html">Contato</option>
+    </select>
+
+    <label for="campanha">Campanha (utm_campaign)</label>
+    <select id="campanha">
+      <option value="furusato">furusato</option>
+      <option value="familia">familia</option>
+      <option value="auxilio_parto">auxilio_parto</option>
+      <option value="isencao_nenkin">isencao_nenkin</option>
+      <option value="auxilio_infantil">auxilio_infantil</option>
+      <option value="licenca_parental">licenca_parental</option>
+      <option value="reducao_jornada">reducao_jornada</option>
+      <option value="geral">geral</option>
+      <option value="__custom__">Outra (digitar abaixo)</option>
+    </select>
+    <input type="text" id="campanha-custom" placeholder="nome_da_campanha" style="margin-top:8px;display:none;">
+
+    <label for="conteudo">Identificador do post (utm_content)</label>
+    <input type="text" id="conteudo" placeholder="ex: post_01_calculadora">
+    <p class="hint">Vira minúsculo e sem acento/espaço automaticamente. Sugestão: post_NN_descricao-curta.</p>
+
+    <label for="pagina-select">Página no Facebook</label>
+    <select id="pagina-fb">
+      <option value="oficial">Oficial (canal principal)</option>
+      <option value="olho">Olho (apoio pontual)</option>
+    </select>
+
+    <button onclick="gerar()">Gerar link</button>
+    <div class="output" id="output">O link aparece aqui</div>
+    <button id="btn-copiar" onclick="copiar()" style="display:none;">Copiar link</button>
+  </div>
+</div>
+
+<script>
+function sanitize(str){
+  return str
+    .normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g,'_')
+    .replace(/^_+|_+$/g,'');
+}
+
+document.getElementById('campanha').addEventListener('change', function(){
+  document.getElementById('campanha-custom').style.display = this.value === '__custom__' ? 'block' : 'none';
+});
+
+function gerar(){
+  var pagina = document.getElementById('pagina').value;
+  var campanhaSel = document.getElementById('campanha').value;
+  var campanha = campanhaSel === '__custom__'
+    ? sanitize(document.getElementById('campanha-custom').value)
+    : campanhaSel;
+  var conteudo = sanitize(document.getElementById('conteudo').value);
+  var contentSource = document.getElementById('pagina-fb').value === 'olho' ? '_olho' : '';
+
+  if(!campanha){ document.getElementById('output').textContent = 'Preencha a campanha.'; return; }
+  if(!conteudo){ document.getElementById('output').textContent = 'Preencha o identificador do post.'; return; }
+
+  var url = 'https://financasnojapao.com/' + pagina
+    + '?utm_source=facebook'
+    + '&utm_medium=organic_social'
+    + '&utm_campaign=' + campanha
+    + '&utm_content=' + conteudo + contentSource;
+
+  document.getElementById('output').textContent = url;
+  document.getElementById('btn-copiar').style.display = 'inline-block';
+  document.getElementById('btn-copiar').classList.remove('copied');
+  document.getElementById('btn-copiar').textContent = 'Copiar link';
+}
+
+function copiar(){
+  var texto = document.getElementById('output').textContent;
+  navigator.clipboard.writeText(texto).then(function(){
+    var btn = document.getElementById('btn-copiar');
+    btn.textContent = 'Copiado!';
+    btn.classList.add('copied');
+  });
+}
+</script>
+</body>
+</html>
