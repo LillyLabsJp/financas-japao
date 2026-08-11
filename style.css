@@ -896,6 +896,24 @@ p { margin: 0 0 1em; }
 .fam-fontes p{margin:0;font-size:.88rem;}
 .fam-fontes a{font-weight:650;}
 
+/* grade de cartoes de beneficio — usada na pagina-pilar do cluster familia */
+.fam-pilar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:0 0 34px;}
+.fam-pilar-card{
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-border);
+  border-radius:var(--radius);padding:24px 24px 22px;box-shadow:var(--shadow-rest);
+  transition:border-color var(--ease),box-shadow var(--ease);
+}
+.fam-pilar-card:hover{border-color:var(--color-accent);box-shadow:0 10px 26px rgba(22,24,29,.09);}
+.fam-pilar-tag{
+  display:inline-block;align-self:flex-start;font-size:.7rem;font-weight:700;
+  letter-spacing:.03em;text-transform:uppercase;color:var(--color-accent-dark);
+  background:var(--color-accent-soft);border-radius:999px;padding:4px 11px;margin-bottom:12px;
+}
+.fam-pilar-card h3{margin:0 0 8px;font-size:1.05rem;line-height:1.25;}
+.fam-pilar-card .fam-pilar-valor{font-size:.82rem;font-weight:700;color:var(--color-accent-dark);margin-bottom:8px;}
+.fam-pilar-card p{margin:0 0 16px;font-size:.87rem;color:var(--color-text-muted);flex:1;}
+.fam-pilar-card a{font-size:.88rem;font-weight:650;}
+
 /* botao de compartilhar reutilizado nas paginas do cluster familia —
    fundo solido pra ler bem tanto sobre branco quanto sobre foto */
 .btn-compartilhar-calc{
