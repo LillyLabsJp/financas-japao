@@ -36,7 +36,7 @@
 <meta property="og:image:height" content="941">
 <meta property="og:image:alt" content="Pessoa conferindo um holerite japonês com uma calculadora">
 <meta property="article:published_time" content="2026-08-12T09:00:00+09:00">
-<meta property="article:modified_time" content="2026-08-12T15:30:00+09:00">
+<meta property="article:modified_time" content="2026-08-12T16:15:00+09:00">
 <meta property="article:section" content="Salário e trabalho">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Holerite no Japão: como ler seu contracheque (給与明細書)">
@@ -67,15 +67,16 @@
     "logo": { "@type": "ImageObject", "url": "https://financasnojapao.com/favicon.svg" }
   },
   "datePublished": "2026-08-12T09:00:00+09:00",
-  "dateModified": "2026-08-12T15:30:00+09:00",
+  "dateModified": "2026-08-12T16:15:00+09:00",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://financasnojapao.com/entenda-seu-holerite-japao.html" },
   "articleSection": "Salário e trabalho",
-  "wordCount": 1738,
+  "wordCount": 1864,
   "inLanguage": "pt-BR",
   "citation": [
     { "@type": "CreativeWork", "name": "定時決定（算定基礎届） — Japan Pension Service", "url": "https://www.nenkin.go.jp/service/kounen/hokenryo/hoshu/20121017.html" },
     { "@type": "CreativeWork", "name": "源泉徴収のしかた — Agência Nacional de Impostos (NTA)", "url": "https://www.nta.go.jp/publication/pamph/gensen/shikata_r06/01.htm" },
-    { "@type": "CreativeWork", "name": "協会けんぽの介護保険料率について — Zenkoku Kenkō Hoken Kyōkai (Kyōkai Kenpo)", "url": "https://www.kyoukaikenpo.or.jp/g7/cat330/1995-298/" }
+    { "@type": "CreativeWork", "name": "協会けんぽの介護保険料率について — Zenkoku Kenkō Hoken Kyōkai (Kyōkai Kenpo)", "url": "https://www.kyoukaikenpo.or.jp/g7/cat330/1995-298/" },
+    { "@type": "CreativeWork", "name": "令和8年度保険料額表（東京支部）— Zenkoku Kenkō Hoken Kyōkai (Kyōkai Kenpo)", "url": "https://www.kyoukaikenpo.or.jp/assets/R8_13tokyo.pdf" }
   ]
 }
 </script>
@@ -168,7 +169,13 @@
         </li>
         <li><a href="aposentadoria-nenkin.html">Aposentadoria</a></li>
         <li><a href="remessa-japao-brasil.html">Remessa</a></li>
-        <li><a href="entenda-seu-holerite-japao.html" aria-current="page">Holerite</a></li>
+        <li class="tem-sub">
+          <a href="#" aria-haspopup="true" aria-expanded="false">Salário <span class="seta">⌄</span></a>
+          <ul class="submenu">
+            <li><a href="entenda-seu-holerite-japao.html" aria-current="page">Holerite, campo por campo</a></li>
+            <li><a href="meu-salario-no-japao.html">Quanto sobra do meu salário</a></li>
+          </ul>
+        </li>
         <li class="tem-sub">
           <a href="#" aria-haspopup="true" aria-expanded="false">Família <span class="seta">⌄</span></a>
           <ul class="submenu">
@@ -332,6 +339,11 @@
           <div class="holerite-explicacao"><b>Seguro de cuidados de longa duração, obrigatório a partir dos 40 anos.</b> Se a pessoa ainda não tem 40, esse campo aparece zerado ou nem aparece no holerite.</div>
 
           <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">子ども・子育て支援金</span><span class="romaji">kodomo kosodate shien-kin</span><span class="pt">Apoio à criação de filhos</span><span class="valor">¥345</span>
+          </button>
+          <div class="holerite-explicacao"><b>Desconto novo, cobrado desde abril/maio de 2026.</b> Financia benefícios como o <a href="auxilio-infantil-japao.html">auxílio infantil mensal (児童手当)</a>. É cobrado junto com o 健康保険, na mesma folha de pagamento — se seu holerite for de antes de 2026, esse campo simplesmente não existia.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
             <span class="jp">所得税</span><span class="romaji">shotokuzei</span><span class="pt">Imposto de renda</span><span class="valor">¥5.300</span>
           </button>
           <div class="holerite-explicacao"><b>Estimativa mensal do imposto de renda,</b> retida na fonte (源泉徴収). O valor exato do ano é ajustado em dezembro, no 年末調整 (ajuste de fim de ano).</div>
@@ -341,7 +353,7 @@
           </button>
           <div class="holerite-explicacao"><b>Imposto pago ao município, calculado sobre a renda do ano fiscal anterior.</b> No seu primeiro ano trabalhando no Japão, esse desconto normalmente não aparece — ele começa a partir de junho do segundo ano.</div>
         </div>
-        <div class="holerite-bloco-total"><span>控除合計 <em>(kōjo gōkei)</em> — Total de descontos</span><span>¥46.415</span></div>
+        <div class="holerite-bloco-total"><span>控除合計 <em>(kōjo gōkei)</em> — Total de descontos</span><span>¥46.760</span></div>
       </div>
 
     </div>
@@ -354,11 +366,11 @@
       </div>
       <div class="holerite-resumo-item holerite-resumo-item--descontos">
         <span class="label">控除合計 <em>(kōjo gōkei)</em> — Total de descontos</span>
-        <span class="valor">− ¥46.415</span>
+        <span class="valor">− ¥46.760</span>
       </div>
       <div class="holerite-resumo-item holerite-resumo-item--liquido">
         <span class="label">差引支給額 / 手取り <em>(sashihiki shikyūgaku / tedori)</em> — Valor líquido</span>
-        <span class="valor">¥258.885</span>
+        <span class="valor">¥258.540</span>
       </div>
     </div>
 
@@ -384,6 +396,7 @@
           <tr><td>標準報酬月額</td><td>hyōjun hōshū getsugaku</td><td>Base de cálculo do seguro social</td><td>Valor de referência usado pra calcular 厚生年金 e 健康保険, revisto uma vez por ano em setembro.</td></tr>
           <tr><td>雇用保険</td><td>koyō hoken</td><td>Seguro-desemprego</td><td>Contribuição pequena que dá direito a auxílio em caso de demissão.</td></tr>
           <tr><td>介護保険</td><td>kaigo hoken</td><td>Seguro de cuidados de longa duração</td><td>Contribuição obrigatória a partir dos 40 anos.</td></tr>
+          <tr><td>子ども・子育て支援金</td><td>kodomo kosodate shien-kin</td><td>Apoio à criação de filhos</td><td>Desconto novo desde abril/maio de 2026, financia benefícios como o auxílio infantil.</td></tr>
           <tr><td>所得税</td><td>shotokuzei</td><td>Imposto de renda</td><td>Estimativa mensal do imposto, retida na fonte.</td></tr>
           <tr><td>住民税</td><td>jūminzei</td><td>Imposto residencial</td><td>Imposto ao município, sobre a renda do ano anterior. Não é cobrado no primeiro ano.</td></tr>
           <tr><td>控除合計</td><td>kōjo gōkei</td><td>Total de descontos</td><td>Soma de todos os descontos do mês.</td></tr>
@@ -402,6 +415,7 @@
       <div class="holerite-motivo"><b>Você completou 40 anos</b>A partir dessa idade, começa o desconto do 介護保険 (kaigo hoken), o seguro de cuidados de longa duração.</div>
       <div class="holerite-motivo"><b>Mudança em dependentes</b>Ganhar ou perder um dependente muda o cálculo do imposto de renda e pode afetar o 家族手当 (kazoku teate). <a href="dependentes-no-brasil.html">Saiba mais sobre declarar dependentes →</a></div>
       <div class="holerite-motivo"><b>Bônus ou adicionais pontuais</b>Prêmios, comissões ou adicionais esporádicos aumentam o bruto só naquele mês.</div>
+      <div class="holerite-motivo"><b>Novo desconto: 子ども・子育て支援金</b>Desde abril/maio de 2026, um desconto novo passou a aparecer nos holerites, financiando benefícios como o <a href="auxilio-infantil-japao.html">auxílio infantil mensal</a>. Se seu holerite mudou de valor sem outra explicação aparente, pode ser isso.</div>
     </div>
     <p style="font-size:.85rem;color:var(--color-text-muted);margin:-18px 0 34px;">Isso é uma explicação geral, não um diagnóstico do seu caso — se algo parecer errado no seu holerite específico, o caminho mais seguro é perguntar direto pro RH da sua empresa.</p>
 
@@ -422,10 +436,11 @@
       <li><a href="https://www.nenkin.go.jp/service/kounen/hokenryo/hoshu/20121017.html" target="_blank" rel="noopener nofollow">Japan Pension Service — 定時決定（算定基礎届）</a>: revisão anual do 標準報酬月額.</li>
       <li><a href="https://www.nta.go.jp/publication/pamph/gensen/shikata_r06/01.htm" target="_blank" rel="noopener nofollow">Agência Nacional de Impostos (NTA) — 源泉徴収のしかた</a>: como funciona a retenção do imposto de renda na fonte.</li>
       <li><a href="https://www.kyoukaikenpo.or.jp/g7/cat330/1995-298/" target="_blank" rel="noopener nofollow">Kyōkai Kenpo — 介護保険料率について</a>: seguro de cuidados de longa duração a partir dos 40 anos.</li>
+      <li><a href="https://www.kyoukaikenpo.or.jp/assets/R8_13tokyo.pdf" target="_blank" rel="noopener nofollow">Kyōkai Kenpo — Tabela de alíquotas 2026 (filial Tóquio)</a>: alíquotas de 健康保険, 介護保険 e do novo 子ども・子育て支援金.</li>
     </ul>
     <p style="font-size:.9rem;color:var(--color-text-muted);">Os valores deste holerite são fictícios e só servem pra ilustrar o formato do documento. Cada empresa tem seus próprios adicionais e sua própria forma de organizar o holerite — o essencial (勤怠, 支給, 控除) costuma se repetir.</p>
 
-    <p style="margin-top:32px;">Quer entender melhor os descontos específicos? O <a href="imposto-residencial-juminzei.html">imposto residencial (jūminzei)</a> tem uma página própria explicando por que ele não pega no primeiro ano, e a <a href="aposentadoria-nenkin.html">página do nenkin</a> mostra quanto desse desconto você pode recuperar ao voltar pro Brasil.</p>
+    <p style="margin-top:32px;">Quer entender melhor os descontos específicos? O <a href="imposto-residencial-juminzei.html">imposto residencial (jūminzei)</a> tem uma página própria explicando por que ele não pega no primeiro ano, e a <a href="aposentadoria-nenkin.html">página do nenkin</a> mostra quanto desse desconto você pode recuperar ao voltar pro Brasil. E se quiser ver os valores estimados a partir do seu próprio salário, use a <a href="meu-salario-no-japao.html">calculadora de salário líquido</a>.</p>
 
   </div>
 </main>
@@ -446,6 +461,7 @@
           <li><a href="imposto-residencial-juminzei.html">Imposto residencial</a></li>
           <li><a href="dependentes-no-brasil.html">Dependentes no Brasil</a></li>
           <li><a href="entenda-seu-holerite-japao.html">Holerite</a></li>
+          <li><a href="meu-salario-no-japao.html">Meu salário no Japão</a></li>
         </ul>
       </div>
       <div>

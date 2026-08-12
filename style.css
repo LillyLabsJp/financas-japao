@@ -1112,3 +1112,33 @@ p { margin: 0 0 1em; }
   .holerite-campos{grid-template-columns:repeat(2,1fr);}
   .holerite-bloco-header{flex-direction:column;gap:2px;}
 }
+
+/* ===== Calculadora: Meu salário no Japão ===== */
+.calc-salario{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow-rest);margin:0 0 34px;}
+.calc-salario-form{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin-bottom:18px;}
+.calc-salario-campo{display:flex;flex-direction:column;gap:6px;}
+.calc-salario-campo label{font-size:.82rem;font-weight:650;color:var(--color-text);}
+.calc-salario-campo .ajuda{font-size:.74rem;color:var(--color-text-muted);font-weight:400;}
+.calc-salario-campo input[type="text"],
+.calc-salario-campo input[type="number"],
+.calc-salario-campo select{
+  border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:1rem;
+  font-family:inherit;background:var(--color-bg);color:var(--color-text);width:100%;
+}
+.calc-salario-campo input:focus,.calc-salario-campo select:focus{outline:2px solid var(--color-accent);outline-offset:1px;background:#fff;}
+.calc-salario-checkbox{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--color-text);margin-bottom:18px;}
+.calc-salario-checkbox input{width:17px;height:17px;accent-color:var(--color-accent-dark);flex-shrink:0;}
+.calc-salario-erro{color:var(--color-red-dark);font-size:.85rem;margin:-8px 0 14px;}
+
+.calc-salario-detalhe{display:none;border-top:1px solid var(--color-border);padding-top:18px;margin-top:4px;}
+.calc-salario-detalhe.aberta{display:block;}
+.calc-salario-linha{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dashed var(--color-border);font-size:.88rem;}
+.calc-salario-linha:last-of-type{border-bottom:none;}
+.calc-salario-linha .rotulo{color:var(--color-text);}
+.calc-salario-linha .rotulo .romaji{display:block;font-size:.72rem;font-style:italic;color:var(--color-text-faint);}
+.calc-salario-linha .valor{font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-red-dark);white-space:nowrap;}
+
+@media(max-width:640px){
+  .calc-salario{padding:20px 18px;}
+  .calc-salario-form{grid-template-columns:1fr;}
+}
