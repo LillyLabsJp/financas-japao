@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1E9NS612TP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1E9NS612TP');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holerite no Japão: como ler seu contracheque (給与明細書)</title>
+<meta name="description" content="Entenda cada campo do holerite japonês (給与明細書): os blocos 勤怠, 支給 e 控除, o que significa cada termo e por que o valor líquido muda de mês pra mês.">
+<link rel="canonical" href="https://financasnojapao.com/entenda-seu-holerite-japao.html">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="google-adsense-account" content="ca-pub-7619725083686359">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7619725083686359"
+        crossorigin="anonymous"></script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="inter-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero-holerite.webp" as="image" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=2026-08-12">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Finanças no Japão">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Holerite no Japão: como ler seu contracheque (給与明細書)">
+<meta property="og:description" content="Entenda cada campo do holerite japonês: os blocos 勤怠, 支給 e 控除, o que significa cada termo e por que o valor líquido muda de mês pra mês.">
+<meta property="og:url" content="https://financasnojapao.com/entenda-seu-holerite-japao.html">
+<meta property="og:image" content="https://financasnojapao.com/img/hero-holerite.webp">
+<meta property="og:image:width" content="1672">
+<meta property="og:image:height" content="941">
+<meta property="og:image:alt" content="Pessoa conferindo um holerite japonês com uma calculadora">
+<meta property="article:published_time" content="2026-08-12T09:00:00+09:00">
+<meta property="article:modified_time" content="2026-08-12T09:00:00+09:00">
+<meta property="article:section" content="Salário e trabalho">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Holerite no Japão: como ler seu contracheque (給与明細書)">
+<meta name="twitter:description" content="Os blocos 勤怠, 支給 e 控除 explicados campo por campo, em português.">
+<meta name="twitter:image" content="https://financasnojapao.com/img/hero-holerite.webp">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Holerite no Japão: como ler seu contracheque (給与明細書)",
+  "description": "Guia visual e interativo pra entender cada campo do holerite japonês — os blocos 勤怠 (frequência), 支給 (proventos) e 控除 (descontos), o que significa cada termo e por que o valor líquido muda de mês pra mês.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://financasnojapao.com/img/hero-holerite.webp",
+    "width": 1672,
+    "height": 941
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Lian Alves",
+    "url": "https://financasnojapao.com/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Finanças no Japão",
+    "url": "https://financasnojapao.com/",
+    "logo": { "@type": "ImageObject", "url": "https://financasnojapao.com/favicon.svg" }
+  },
+  "datePublished": "2026-08-12T09:00:00+09:00",
+  "dateModified": "2026-08-12T09:00:00+09:00",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://financasnojapao.com/entenda-seu-holerite-japao.html" },
+  "articleSection": "Salário e trabalho",
+  "wordCount": 1592,
+  "inLanguage": "pt-BR",
+  "citation": [
+    { "@type": "CreativeWork", "name": "定時決定（算定基礎届） — Japan Pension Service", "url": "https://www.nenkin.go.jp/service/kounen/hokenryo/hoshu/20121017.html" },
+    { "@type": "CreativeWork", "name": "源泉徴収のしかた — Agência Nacional de Impostos (NTA)", "url": "https://www.nta.go.jp/publication/pamph/gensen/shikata_r06/01.htm" },
+    { "@type": "CreativeWork", "name": "協会けんぽの介護保険料率について — Zenkoku Kenkō Hoken Kyōkai (Kyōkai Kenpo)", "url": "https://www.kyoukaikenpo.or.jp/g7/cat330/1995-298/" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://financasnojapao.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Holerite", "item": "https://financasnojapao.com/entenda-seu-holerite-japao.html" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é 健康保険 no holerite?",
+      "acceptedAnswer": { "@type": "Answer", "text": "É a contribuição do seguro-saúde público japonês, descontada todo mês. Com ele, você paga só 30% do custo em consultas e tratamentos médicos — o seguro cobre os outros 70%." }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é 厚生年金?",
+      "acceptedAnswer": { "@type": "Answer", "text": "É a previdência social pra quem trabalha registrado no Japão (diferente do Kokumin Nenkin, pago por autônomos). O valor descontado é baseado no seu 標準報酬月額 e garante direito a aposentadoria e outros benefícios no futuro." }
+    },
+    {
+      "@type": "Question",
+      "name": "O que significa 控除?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Significa \"dedução\" ou \"desconto\". No holerite, é o bloco que reúne tudo que é descontado do seu salário bruto — seguros sociais e impostos — antes de chegar no valor que cai na sua conta." }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual é a diferença entre 総支給額 e 差引支給額?",
+      "acceptedAnswer": { "@type": "Answer", "text": "総支給額 é o total bruto, tudo que a empresa paga antes de qualquer desconto. 差引支給額 (também chamado de 手取り) é o valor líquido, o que realmente cai na sua conta depois de descontados impostos e seguros." }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que o 住民税 pode não aparecer no meu primeiro período no Japão?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Porque o imposto residencial é calculado sobre a renda do ano fiscal anterior. Quem chegou há pouco tempo no Japão não tinha renda japonesa no ano anterior, então esse desconto só começa a aparecer a partir de junho do segundo ano." }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é 介護保険?",
+      "acceptedAnswer": { "@type": "Answer", "text": "É o seguro de cuidados de longa duração (para idosos), obrigatório a partir dos 40 anos. Se você ainda não tem 40 anos, esse desconto simplesmente não aparece no seu holerite." }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que meu salário líquido mudou mesmo com o mesmo salário-base?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Vários motivos possíveis: variação nas horas extras, revisão anual do 標準報酬月額 em setembro, início do 住民税, mudança em dependentes ou o início do desconto do 介護保険 ao completar 40 anos." }
+    },
+    {
+      "@type": "Question",
+      "name": "O que significa 手取り?",
+      "acceptedAnswer": { "@type": "Answer", "text": "É o termo coloquial pro valor líquido — o que realmente cai na sua conta depois de todos os descontos. É o mesmo valor que aparece como 差引支給額 no holerite." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo"><svg class="logo-marca" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="128" cy="58" r="31" fill="#e02b25"/><path d="M45 182 C68 182 78 131 128 131 C178 131 188 182 211 182" fill="none" stroke="#16181d" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="logo-texto"><b>FINANÇAS</b><i>NO JAPÃO</i></span></a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰ Menu</button>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="/">Início</a></li>
+        <li class="tem-sub">
+          <a href="#" aria-haspopup="true" aria-expanded="false">Impostos <span class="seta">⌄</span></a>
+          <ul class="submenu">
+            <li><a href="furusato-nozei.html">Furusato Nozei</a></li>
+            <li><a href="o-que-e-furusato-nozei.html">O que é Furusato Nozei?</a></li>
+            <li><a href="amazon-furusato-nozei.html">Furusato pela Amazon</a></li>
+            <li><a href="rakuten-furusato-nozei.html">Furusato pelo Rakuten</a></li>
+            <li><a href="onde-fazer-furusato-nozei.html">Onde fazer Furusato Nozei</a></li>
+            <li><a href="melhores-presentes-furusato-nozei.html">Melhores presentes</a></li>
+            <li><a href="furusato-nozei-vale-a-pena.html">Vale a pena?</a></li>
+            <li><a href="one-stop-furusato-nozei.html">One-Stop, passo a passo</a></li>
+            <li><a href="como-conferir-desconto-furusato-nozei.html">Como conferir o desconto</a></li>
+            <li><a href="imposto-residencial-juminzei.html">Imposto residencial</a></li>
+            <li><a href="dependentes-no-brasil.html">Dependentes no Brasil</a></li>
+          </ul>
+        </li>
+        <li><a href="aposentadoria-nenkin.html">Aposentadoria</a></li>
+        <li><a href="remessa-japao-brasil.html">Remessa</a></li>
+        <li><a href="entenda-seu-holerite-japao.html" aria-current="page">Holerite</a></li>
+        <li class="tem-sub">
+          <a href="#" aria-haspopup="true" aria-expanded="false">Família <span class="seta">⌄</span></a>
+          <ul class="submenu">
+            <li><a href="beneficios-familia-japao.html">Ver todos os benefícios</a></li>
+            <li><a href="auxilio-parto-japao.html">Auxílio-parto</a></li>
+            <li><a href="isencao-nenkin-bebe.html">Isenção do Nenkin por filho</a></li>
+            <li><a href="auxilio-infantil-japao.html">Auxílio infantil mensal</a></li>
+            <li><a href="licenca-parental-japao.html">Licença-parental</a></li>
+            <li><a href="reducao-jornada-japao.html">Redução de jornada</a></li>
+          </ul>
+        </li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+    <div class="fu-header-acoes">
+      <a class="btn btn-sm header-cta" href="furusato-nozei.html#calculadora">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="12" y1="11" x2="12" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/></svg>
+        Calculadora
+      </a>
+      <button type="button" class="fu-busca" aria-label="Buscar no site">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="fu-busca-campo" id="fu-busca-campo">
+    <div class="container">
+      <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener">
+        <input type="search" name="q" placeholder="Buscar no site — furusato, nenkin, imposto..." aria-label="Buscar no site">
+        <button type="submit" class="btn btn-sm">Buscar</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <div class="container section">
+    <p class="breadcrumb"><a href="/">Início</a> / Holerite</p>
+
+    <div class="holerite-hero holerite-hero--foto" style="background-image:url('img/hero-holerite.webp')">
+      <div class="holerite-hero-texto">
+        <p class="categoria-etiqueta">Salário e trabalho</p>
+        <h1>Holerite no Japão: como ler seu contracheque (給与明細書)</h1>
+        <p class="lead">O holerite japonês (給与明細書, <em>kyūyo meisaisho</em>) costuma ser organizado em três blocos principais: <strong>勤怠</strong> (frequência e horas trabalhadas), <strong>支給</strong> (valores pagos) e <strong>控除</strong> (descontos). Veja onde estão seu salário bruto, os descontos e o valor líquido — e entenda o que significa cada termo em japonês.</p>
+        <div class="holerite-hero-ctas">
+          <a href="#holerite-widget" class="btn">Explorar o holerite</a>
+          <a href="#holerite-widget" class="btn-secundario">Ver termos principais</a>
+          <button type="button" class="btn-compartilhar-calc" onclick="compartilharPagina(this)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Como é um holerite de verdade</h2>
+    <p class="lead-secundario">Este é um modelo real de holerite japonês (com valores fictícios), em japonês e com os termos traduzidos, pra você comparar com a versão interativa logo abaixo.</p>
+    <div class="holerite-exemplo-grid">
+      <div class="holerite-exemplo">
+        <img src="img/holerite-exemplo-jp.webp" alt="Exemplo de holerite japonês real, em japonês, mostrando os blocos 支給 (proventos), 控除 (descontos) e 勤怠 (frequência)" loading="lazy" width="1774" height="887">
+        <p class="holerite-exemplo-legenda">Modelo real, em japonês — como você vai ver o seu.</p>
+      </div>
+      <div class="holerite-exemplo">
+        <img src="img/holerite-exemplo-pt.webp" alt="Mesmo exemplo de holerite japonês, com os termos traduzidos para o português e valores em iene" loading="lazy" width="1774" height="887">
+        <p class="holerite-exemplo-legenda">O mesmo modelo, com os termos traduzidos pra português.</p>
+      </div>
+    </div>
+    <p class="holerite-exemplo-legenda" style="margin:-18px 0 34px;">Valores fictícios, só pra ilustrar o formato do documento.</p>
+
+    <div class="holerite-resposta">
+      <h2>Resposta rápida</h2>
+      <p>Antes de entrar em cada detalhe, localize estes 4 pontos no seu holerite — eles dão o resumo geral do mês:</p>
+      <div class="holerite-stats">
+        <div class="holerite-stat"><span class="jp">総支給額 / 支給合計</span><b>Total bruto</b></div>
+        <div class="holerite-stat"><span class="jp">控除合計 / 控除額合計</span><b>Total de descontos</b></div>
+        <div class="holerite-stat"><span class="jp">差引支給額 / 手取り</span><b>Valor líquido recebido</b></div>
+        <div class="holerite-stat"><span class="jp">勤怠</span><b>Dias e horas trabalhadas</b></div>
+      </div>
+      <p class="aviso-ficticio">Exemplo fictício, com fins didáticos. Os campos e valores variam conforme empresa, salário, cidade e situação pessoal — este holerite não representa nenhum caso real.</p>
+    </div>
+
+    <h2 id="holerite-widget">O holerite fictício, campo por campo</h2>
+    <p class="holerite-widget-legenda">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2 3.5M12 16.5v.1"/></svg>
+      Toque em qualquer campo colorido pra ver o que ele significa.
+    </p>
+
+    <div class="holerite-widget">
+
+      <div class="holerite-bloco holerite-bloco--kintai">
+        <div class="holerite-bloco-header"><span class="jp">勤怠</span><span class="pt">Frequência e horas trabalhadas</span></div>
+        <div class="holerite-campos">
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">出勤日数</span><span class="pt">Dias trabalhados</span><span class="valor">21 dias</span>
+          </button>
+          <div class="holerite-explicacao"><b>Dias em que você efetivamente trabalhou no mês.</b> Não conta feriados, folgas nem faltas — só os dias de comparecimento registrados no ponto.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">有給日数</span><span class="pt">Férias remuneradas usadas</span><span class="valor">2 dias</span>
+          </button>
+          <div class="holerite-explicacao"><b>Dias de férias remuneradas (有給休暇) usados nesse mês.</b> Usar esses dias não reduz seu salário, mas reduz o saldo de férias que você ainda tem disponível.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">残業時間</span><span class="pt">Horas extras</span><span class="valor">8,0 horas</span>
+          </button>
+          <div class="holerite-explicacao"><b>Total de horas trabalhadas além da jornada normal.</b> Esse número varia mês a mês e é a base de cálculo do 残業手当 (adicional de horas extras) no bloco de proventos.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">深夜時間</span><span class="pt">Horas noturnas</span><span class="valor">0,0 horas</span>
+          </button>
+          <div class="holerite-explicacao"><b>Horas trabalhadas entre 22h e 5h,</b> que têm um adicional à parte. Fica zerado nos meses em que você não trabalha nesse horário.</div>
+        </div>
+      </div>
+
+      <div class="holerite-bloco holerite-bloco--shikyu">
+        <div class="holerite-bloco-header"><span class="jp">支給</span><span class="pt">Valores pagos (proventos)</span></div>
+        <div class="holerite-campos">
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">基本給</span><span class="pt">Salário-base</span><span class="valor">¥280.000</span>
+          </button>
+          <div class="holerite-explicacao"><b>O valor fixo combinado no seu contrato,</b> antes de qualquer adicional ou desconto. É a base usada em vários outros cálculos do holerite.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">通勤手当</span><span class="pt">Auxílio-transporte</span><span class="valor">¥8.000</span>
+          </button>
+          <div class="holerite-explicacao"><b>Reembolso do custo de ida e volta ao trabalho.</b> Geralmente não entra na base do imposto de renda, mas entra na base do seguro social.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">家族手当</span><span class="pt">Auxílio-família</span><span class="valor">¥5.000</span>
+          </button>
+          <div class="holerite-explicacao"><b>Adicional pago por ter dependentes</b> (cônjuge, filhos). Nem toda empresa oferece — depende da política interna de cada uma.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">残業手当</span><span class="pt">Adicional de horas extras</span><span class="valor">¥12.300</span>
+          </button>
+          <div class="holerite-explicacao"><b>Valor pago pelas horas extras do bloco 勤怠,</b> com um adicional sobre o valor da hora normal — normalmente 25% a mais, ou mais ainda em horário noturno ou feriado.</div>
+        </div>
+        <div class="holerite-bloco-total"><span>総支給額 — Total bruto</span><span>¥305.300</span></div>
+      </div>
+
+      <div class="holerite-bloco holerite-bloco--kojo">
+        <div class="holerite-bloco-header"><span class="jp">控除</span><span class="pt">Descontos</span></div>
+        <div class="holerite-campos">
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">健康保険</span><span class="pt">Seguro-saúde</span><span class="valor">¥14.200</span>
+          </button>
+          <div class="holerite-explicacao"><b>Contribuição do seguro-saúde público.</b> Com ele, você paga só 30% do custo em consultas e tratamentos médicos — o seguro cobre o resto.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">厚生年金</span><span class="pt">Kōsei Nenkin (previdência)</span><span class="valor">¥26.000</span>
+          </button>
+          <div class="holerite-explicacao"><b>Contribuição da previdência para quem trabalha registrado.</b> O valor é baseado no seu 標準報酬月額, revisto uma vez por ano com base no salário de abril a junho, valendo de setembro até agosto do ano seguinte.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">雇用保険</span><span class="pt">Seguro-desemprego</span><span class="valor">¥915</span>
+          </button>
+          <div class="holerite-explicacao"><b>Contribuição pequena, calculada como porcentagem do salário bruto.</b> Dá direito a auxílio em caso de demissão ou de determinadas licenças.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">介護保険</span><span class="pt">Seguro de cuidados (40+)</span><span class="valor">¥0</span>
+          </button>
+          <div class="holerite-explicacao"><b>Seguro de cuidados de longa duração, obrigatório a partir dos 40 anos.</b> Se a pessoa ainda não tem 40, esse campo aparece zerado ou nem aparece no holerite.</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">所得税</span><span class="pt">Imposto de renda</span><span class="valor">¥5.300</span>
+          </button>
+          <div class="holerite-explicacao"><b>Estimativa mensal do imposto de renda,</b> retida na fonte (源泉徴収). O valor exato do ano é ajustado em dezembro, no 年末調整 (ajuste de fim de ano).</div>
+
+          <button type="button" class="holerite-campo" aria-expanded="false">
+            <span class="jp">住民税</span><span class="pt">Imposto residencial</span><span class="valor">¥0</span>
+          </button>
+          <div class="holerite-explicacao"><b>Imposto pago ao município, calculado sobre a renda do ano fiscal anterior.</b> No seu primeiro ano trabalhando no Japão, esse desconto normalmente não aparece — ele começa a partir de junho do segundo ano.</div>
+        </div>
+        <div class="holerite-bloco-total"><span>控除合計 — Total de descontos</span><span>¥46.415</span></div>
+      </div>
+
+    </div>
+
+    <h2 id="resumo-visual">Do bruto ao líquido</h2>
+    <div class="holerite-resumo">
+      <div class="holerite-resumo-item holerite-resumo-item--bruto">
+        <span class="label">総支給額 — Total bruto</span>
+        <span class="valor">¥305.300</span>
+      </div>
+      <div class="holerite-resumo-item holerite-resumo-item--descontos">
+        <span class="label">控除合計 — Total de descontos</span>
+        <span class="valor">− ¥46.415</span>
+      </div>
+      <div class="holerite-resumo-item holerite-resumo-item--liquido">
+        <span class="label">差引支給額 / 手取り — Valor líquido</span>
+        <span class="valor">¥258.885</span>
+      </div>
+    </div>
+
+    <h2 id="tabela-termos">Todos os termos, em uma tabela</h2>
+    <p class="lead-secundario">A mesma informação do widget acima, em formato de tabela — pra quem prefere ver tudo de uma vez ou pesquisar um termo específico.</p>
+    <div style="overflow-x:auto">
+      <table class="data-table">
+        <thead>
+          <tr><th>Termo japonês</th><th>Leitura</th><th>Em português</th><th>O que significa</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>出勤日数</td><td>shukkin nissū</td><td>Dias trabalhados</td><td>Dias que você efetivamente trabalhou no mês.</td></tr>
+          <tr><td>有給日数</td><td>yūkyū nissū</td><td>Férias remuneradas usadas</td><td>Dias de férias remuneradas tirados nesse mês.</td></tr>
+          <tr><td>残業時間</td><td>zangyō jikan</td><td>Horas extras</td><td>Horas trabalhadas além da jornada normal.</td></tr>
+          <tr><td>深夜時間</td><td>shinya jikan</td><td>Horas noturnas</td><td>Horas trabalhadas entre 22h e 5h.</td></tr>
+          <tr><td>基本給</td><td>kihonkyū</td><td>Salário-base</td><td>Valor fixo combinado em contrato.</td></tr>
+          <tr><td>通勤手当</td><td>tsūkin teate</td><td>Auxílio-transporte</td><td>Reembolso do custo de ida e volta ao trabalho.</td></tr>
+          <tr><td>家族手当</td><td>kazoku teate</td><td>Auxílio-família</td><td>Adicional pago por ter dependentes.</td></tr>
+          <tr><td>残業手当</td><td>zangyō teate</td><td>Adicional de horas extras</td><td>Pagamento pelas horas extras trabalhadas.</td></tr>
+          <tr><td>総支給額</td><td>sōshikyūgaku</td><td>Total bruto</td><td>Soma de tudo que a empresa paga, antes dos descontos.</td></tr>
+          <tr><td>健康保険</td><td>kenkō hoken</td><td>Seguro-saúde</td><td>Contribuição do seguro-saúde público.</td></tr>
+          <tr><td>厚生年金</td><td>kōsei nenkin</td><td>Previdência (Kōsei Nenkin)</td><td>Contribuição da aposentadoria pra quem trabalha registrado.</td></tr>
+          <tr><td>雇用保険</td><td>koyō hoken</td><td>Seguro-desemprego</td><td>Contribuição pequena que dá direito a auxílio em caso de demissão.</td></tr>
+          <tr><td>介護保険</td><td>kaigo hoken</td><td>Seguro de cuidados de longa duração</td><td>Contribuição obrigatória a partir dos 40 anos.</td></tr>
+          <tr><td>所得税</td><td>shotokuzei</td><td>Imposto de renda</td><td>Estimativa mensal do imposto, retida na fonte.</td></tr>
+          <tr><td>住民税</td><td>jūminzei</td><td>Imposto residencial</td><td>Imposto ao município, sobre a renda do ano anterior. Não é cobrado no primeiro ano.</td></tr>
+          <tr><td>控除合計</td><td>kōjo gōkei</td><td>Total de descontos</td><td>Soma de todos os descontos do mês.</td></tr>
+          <tr><td>差引支給額</td><td>sashihiki shikyūgaku</td><td>Valor líquido (手取り)</td><td>O que realmente cai na sua conta: bruto menos descontos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="por-que-mudou">Por que esse valor mudou?</h2>
+    <p class="lead-secundario">É normal o valor líquido variar de mês pra mês, mesmo com o mesmo salário-base. Os motivos mais comuns:</p>
+    <div class="holerite-motivos">
+      <div class="holerite-motivo"><b>Horas extras variaram</b>Mais ou menos 残業時間 no mês muda o 残業手当 pago — e o total bruto junto.</div>
+      <div class="holerite-motivo"><b>Faltas ou dias trabalhados mudaram</b>Menos dias de comparecimento pode reduzir o salário proporcional, dependendo do contrato.</div>
+      <div class="holerite-motivo"><b>Início do 住民税</b>A partir de junho do seu segundo ano no Japão, esse desconto passa a aparecer. <a href="imposto-residencial-juminzei.html">Veja como ele é calculado →</a></div>
+      <div class="holerite-motivo"><b>Revisão anual do 標準報酬月額</b>Toda empresa revisa a base de cálculo do seguro social em setembro, com base no salário de abril a junho — isso pode mudar o desconto do 厚生年金 e do 健康保険.</div>
+      <div class="holerite-motivo"><b>Você completou 40 anos</b>A partir dessa idade, começa o desconto do 介護保険 (seguro de cuidados de longa duração).</div>
+      <div class="holerite-motivo"><b>Mudança em dependentes</b>Ganhar ou perder um dependente muda o cálculo do imposto de renda e pode afetar o 家族手当. <a href="dependentes-no-brasil.html">Saiba mais sobre declarar dependentes →</a></div>
+      <div class="holerite-motivo"><b>Bônus ou adicionais pontuais</b>Prêmios, comissões ou adicionais esporádicos aumentam o bruto só naquele mês.</div>
+    </div>
+    <p style="font-size:.85rem;color:var(--color-text-muted);margin:-18px 0 34px;">Isso é uma explicação geral, não um diagnóstico do seu caso — se algo parecer errado no seu holerite específico, o caminho mais seguro é perguntar direto pro RH da sua empresa.</p>
+
+    <h2 id="faq">Perguntas frequentes</h2>
+    <div style="max-width:820px">
+      <details class="faq-item" open><summary>O que é 健康保険 no holerite?</summary><div class="faq-answer">É a contribuição do seguro-saúde público japonês, descontada todo mês. Com ele, você paga só 30% do custo em consultas e tratamentos médicos — o seguro cobre os outros 70%.</div></details>
+      <details class="faq-item"><summary>O que é 厚生年金?</summary><div class="faq-answer">É a previdência social pra quem trabalha registrado no Japão (diferente do Kokumin Nenkin, pago por autônomos). O valor descontado é baseado no seu 標準報酬月額 e garante direito a aposentadoria e outros benefícios no futuro.</div></details>
+      <details class="faq-item"><summary>O que significa 控除?</summary><div class="faq-answer">Significa "dedução" ou "desconto". No holerite, é o bloco que reúne tudo que é descontado do seu salário bruto — seguros sociais e impostos — antes de chegar no valor que cai na sua conta.</div></details>
+      <details class="faq-item"><summary>Qual é a diferença entre 総支給額 e 差引支給額?</summary><div class="faq-answer">総支給額 é o total bruto, tudo que a empresa paga antes de qualquer desconto. 差引支給額 (também chamado de 手取り) é o valor líquido, o que realmente cai na sua conta depois de descontados impostos e seguros.</div></details>
+      <details class="faq-item"><summary>Por que o 住民税 pode não aparecer no meu primeiro período no Japão?</summary><div class="faq-answer">Porque o imposto residencial é calculado sobre a renda do ano fiscal anterior. Quem chegou há pouco tempo no Japão não tinha renda japonesa no ano anterior, então esse desconto só começa a aparecer a partir de junho do segundo ano.</div></details>
+      <details class="faq-item"><summary>O que é 介護保険?</summary><div class="faq-answer">É o seguro de cuidados de longa duração (para idosos), obrigatório a partir dos 40 anos. Se você ainda não tem 40 anos, esse desconto simplesmente não aparece no seu holerite.</div></details>
+      <details class="faq-item"><summary>Por que meu salário líquido mudou mesmo com o mesmo salário-base?</summary><div class="faq-answer">Vários motivos possíveis: variação nas horas extras, revisão anual do 標準報酬月額 em setembro, início do 住民税, mudança em dependentes ou o início do desconto do 介護保険 ao completar 40 anos.</div></details>
+      <details class="faq-item"><summary>O que significa 手取り?</summary><div class="faq-answer">É o termo coloquial pro valor líquido — o que realmente cai na sua conta depois de todos os descontos. É o mesmo valor que aparece como 差引支給額 no holerite.</div></details>
+    </div>
+
+    <h2 id="fontes">Fontes oficiais</h2>
+    <ul>
+      <li><a href="https://www.nenkin.go.jp/service/kounen/hokenryo/hoshu/20121017.html" target="_blank" rel="noopener nofollow">Japan Pension Service — 定時決定（算定基礎届）</a>: revisão anual do 標準報酬月額.</li>
+      <li><a href="https://www.nta.go.jp/publication/pamph/gensen/shikata_r06/01.htm" target="_blank" rel="noopener nofollow">Agência Nacional de Impostos (NTA) — 源泉徴収のしかた</a>: como funciona a retenção do imposto de renda na fonte.</li>
+      <li><a href="https://www.kyoukaikenpo.or.jp/g7/cat330/1995-298/" target="_blank" rel="noopener nofollow">Kyōkai Kenpo — 介護保険料率について</a>: seguro de cuidados de longa duração a partir dos 40 anos.</li>
+    </ul>
+    <p style="font-size:.9rem;color:var(--color-text-muted);">Os valores deste holerite são fictícios e só servem pra ilustrar o formato do documento. Cada empresa tem seus próprios adicionais e sua própria forma de organizar o holerite — o essencial (勤怠, 支給, 控除) costuma se repetir.</p>
+
+    <p style="margin-top:32px;">Quer entender melhor os descontos específicos? O <a href="imposto-residencial-juminzei.html">imposto residencial (jūminzei)</a> tem uma página própria explicando por que ele não pega no primeiro ano, e a <a href="aposentadoria-nenkin.html">página do nenkin</a> mostra quanto desse desconto você pode recuperar ao voltar pro Brasil.</p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <h4>Finanças no Japão</h4>
+        <p>Calculadoras e conteúdo financeiro para brasileiros no Japão.</p>
+      </div>
+      <div>
+        <h4>Calculadoras</h4>
+        <ul>
+          <li><a href="remessa-japao-brasil.html">Remessa Japão-Brasil</a></li>
+          <li><a href="aposentadoria-nenkin.html">Nenkin</a></li>
+          <li><a href="furusato-nozei.html">Furusato Nozei</a></li>
+          <li><a href="imposto-residencial-juminzei.html">Imposto residencial</a></li>
+          <li><a href="dependentes-no-brasil.html">Dependentes no Brasil</a></li>
+          <li><a href="entenda-seu-holerite-japao.html">Holerite</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Família</h4>
+        <ul>
+          <li><a href="beneficios-familia-japao.html">Ver todos os benefícios</a></li>
+          <li><a href="auxilio-parto-japao.html">Auxílio-parto</a></li>
+          <li><a href="isencao-nenkin-bebe.html">Isenção do Nenkin por filho</a></li>
+          <li><a href="auxilio-infantil-japao.html">Auxílio infantil mensal</a></li>
+          <li><a href="licenca-parental-japao.html">Licença-parental</a></li>
+          <li><a href="reducao-jornada-japao.html">Redução de jornada</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="privacidade.html">Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Este site tem finalidade informativa e não substitui aconselhamento financeiro, contábil ou jurídico profissional. Confira sempre as fontes oficiais antes de tomar decisões financeiras. © 2026 Finanças no Japão. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function compartilharPagina(btn){
+  var url = window.location.origin + window.location.pathname;
+  var texto = '🧾 *Entenda seu holerite japonês, campo por campo* — 勤怠, 支給 e 控除 explicados em português 👇\n' + url;
+  if (navigator.share) {
+    navigator.share({ title: 'Holerite no Japão', text: texto }).catch(function(){});
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function(){
+      var s = btn.querySelector('span');
+      if (!s) return;
+      var o = s.getAttribute('data-o') || s.textContent;
+      s.setAttribute('data-o', o);
+      s.textContent = 'Link copiado!';
+      setTimeout(function(){ s.textContent = o; }, 1800);
+    }).catch(function(){
+      window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+    });
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+  }
+}
+
+document.querySelectorAll('.holerite-campo').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var painel = btn.nextElementSibling;
+    var aberto = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', aberto ? 'false' : 'true');
+    if (painel && painel.classList.contains('holerite-explicacao')) {
+      painel.classList.toggle('aberta');
+    }
+  });
+});
+</script>
+<script src="main.js"></script>
+</body>
+</html>

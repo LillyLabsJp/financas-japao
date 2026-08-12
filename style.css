@@ -1003,3 +1003,109 @@ p { margin: 0 0 1em; }
   .calc-familia-ilustracao{width:180px;opacity:.55;}
   .calc-familia-topo{flex-direction:column;}
 }
+
+/* ===================================================================
+   COMPONENTES DO HOLERITE — entenda-seu-holerite-japao.html
+   =================================================================== */
+
+.holerite-hero{
+  background:var(--color-primary);color:#fff;border-radius:var(--radius);
+  padding:44px 40px;margin:0 0 28px;position:relative;overflow:hidden;
+}
+.holerite-hero--foto{background-size:cover;background-position:center;}
+.holerite-hero--foto::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(22,24,29,.94) 0%,rgba(22,24,29,.72) 55%,rgba(22,24,29,.38) 100%);
+}
+.holerite-hero-texto{position:relative;z-index:1;}
+.holerite-hero .categoria-etiqueta{background:rgba(255,255,255,.12);color:#fff;}
+.holerite-hero h1{color:#fff;margin:0 0 14px;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.22;}
+.holerite-hero .lead{color:rgba(255,255,255,.85);font-size:1rem;max-width:660px;margin:0 0 20px;}
+.holerite-hero-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.holerite-hero-ctas .btn-secundario{
+  display:inline-flex;align-items:center;background:transparent;border:1.5px solid rgba(255,255,255,.35);
+  color:#fff;border-radius:999px;padding:11px 22px;font-family:inherit;font-size:.9375rem;font-weight:650;
+  text-decoration:none;transition:border-color var(--ease),background var(--ease);
+}
+.holerite-hero-ctas .btn-secundario:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.holerite-hero-texto .btn-compartilhar-calc{margin-top:0;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:#fff;}
+.holerite-hero-texto .btn-compartilhar-calc:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.16);}
+
+.holerite-exemplo{margin:0 0 34px;background:#fff;border:1px solid var(--color-border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-rest);}
+.holerite-exemplo img{width:100%;height:auto;border-radius:var(--radius-sm);display:block;}
+.holerite-exemplo-legenda{margin:12px 4px 0;font-size:.8rem;color:var(--color-text-muted);text-align:center;}
+.holerite-exemplo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 34px;}
+.holerite-exemplo-grid .holerite-exemplo{margin:0;}
+.lead-secundario{font-size:.95rem;color:var(--color-text-muted);max-width:760px;margin:0 0 16px;}
+@media(max-width:780px){.holerite-exemplo-grid{grid-template-columns:1fr;}}
+
+.holerite-motivos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:0 0 10px;}
+.holerite-motivo{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:16px 18px;font-size:.88rem;color:var(--color-text-muted);line-height:1.5;}
+.holerite-motivo b{display:block;margin-bottom:4px;color:var(--color-primary);font-size:.92rem;}
+.holerite-motivo a{font-weight:650;}
+
+.holerite-resposta{background:var(--color-accent-soft);border-radius:var(--radius);padding:26px 28px;margin:0 0 34px;}
+.holerite-resposta h2{margin:0 0 10px;font-size:1.05rem;}
+.holerite-resposta > p{margin:0 0 18px;color:var(--color-text);font-size:.92rem;max-width:760px;}
+.holerite-resposta .aviso-ficticio{font-size:.78rem;color:var(--color-text-muted);margin:16px 0 0;font-style:italic;}
+.holerite-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;}
+.holerite-stat{background:#fff;border-radius:var(--radius-sm);padding:13px 15px;border:1px solid var(--color-border);}
+.holerite-stat .jp{display:block;font-size:.72rem;color:var(--color-text-muted);margin-bottom:3px;}
+.holerite-stat b{display:block;font-size:.98rem;color:var(--color-accent-dark);}
+
+.holerite-widget-legenda{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--color-text-muted);margin:0 0 16px;}
+.holerite-widget-legenda svg{width:16px;height:16px;flex-shrink:0;color:var(--color-accent-dark);}
+
+.holerite-widget{margin:0 0 30px;}
+.holerite-bloco{border-radius:var(--radius);margin-bottom:16px;overflow:hidden;border:1px solid var(--color-border);background:#fff;box-shadow:var(--shadow-rest);}
+.holerite-bloco-header{display:flex;align-items:baseline;gap:10px;padding:15px 20px;color:#fff;}
+.holerite-bloco-header .jp{font-size:1.25rem;font-weight:800;letter-spacing:.01em;}
+.holerite-bloco-header .pt{font-size:.82rem;font-weight:650;opacity:.92;}
+.holerite-bloco--kintai .holerite-bloco-header{background:#5b616b;}
+.holerite-bloco--shikyu .holerite-bloco-header{background:var(--color-accent-dark);}
+.holerite-bloco--kojo .holerite-bloco-header{background:var(--color-red-dark);}
+
+.holerite-campos{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));background:var(--color-border);gap:1px;}
+.holerite-campo{
+  background:#fff;padding:13px 15px;text-align:left;border:none;cursor:pointer;font-family:inherit;
+  transition:background var(--ease);width:100%;
+}
+.holerite-campo:hover,.holerite-campo:focus-visible{background:var(--color-bg);outline:none;}
+.holerite-campo .jp{display:block;font-size:.8rem;font-weight:700;color:var(--color-text);}
+.holerite-campo .pt{display:block;font-size:.7rem;color:var(--color-text-muted);margin:2px 0 7px;}
+.holerite-campo .valor{display:block;font-size:.92rem;font-weight:700;font-variant-numeric:tabular-nums;}
+.holerite-bloco--shikyu .holerite-campo .valor{color:var(--color-accent-dark);}
+.holerite-bloco--kojo .holerite-campo .valor{color:var(--color-red-dark);}
+.holerite-bloco--kintai .holerite-campo .valor{color:var(--color-text);}
+.holerite-campo[aria-expanded="true"]{background:var(--color-bg);box-shadow:inset 0 -2px 0 var(--color-primary);}
+.holerite-campo .icone-toque{float:right;font-size:.7rem;color:var(--color-text-faint);}
+
+.holerite-explicacao{
+  grid-column:1/-1;background:var(--color-bg);padding:15px 20px;font-size:.85rem;color:var(--color-text);
+  border-top:1px solid var(--color-border);display:none;line-height:1.5;
+}
+.holerite-explicacao.aberta{display:block;}
+.holerite-explicacao b{color:var(--color-primary);}
+
+.holerite-bloco-total{
+  display:flex;justify-content:space-between;align-items:center;padding:13px 20px;
+  background:var(--color-bg);border-top:1px solid var(--color-border);font-weight:700;font-size:.92rem;
+}
+
+.holerite-resumo{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px;}
+.holerite-resumo-item{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius);padding:20px 16px;text-align:center;}
+.holerite-resumo-item .label{display:block;font-size:.74rem;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
+.holerite-resumo-item .valor{display:block;font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;}
+.holerite-resumo-item--bruto .valor{color:var(--color-accent-dark);}
+.holerite-resumo-item--descontos .valor{color:var(--color-red-dark);}
+.holerite-resumo-item--liquido{background:var(--color-primary);border-color:var(--color-primary);}
+.holerite-resumo-item--liquido .label{color:rgba(255,255,255,.7);}
+.holerite-resumo-item--liquido .valor{color:#fff;font-size:1.6rem;}
+
+@media(max-width:640px){
+  .holerite-hero{padding:32px 22px;}
+  .holerite-resposta{padding:22px 20px;}
+  .holerite-resumo{grid-template-columns:1fr;}
+  .holerite-campos{grid-template-columns:repeat(2,1fr);}
+  .holerite-bloco-header{flex-direction:column;gap:2px;}
+}
