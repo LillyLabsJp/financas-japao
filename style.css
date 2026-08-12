@@ -1142,3 +1142,45 @@ p { margin: 0 0 1em; }
   .calc-salario{padding:20px 18px;}
   .calc-salario-form{grid-template-columns:1fr;}
 }
+
+/* Working Holiday: icones nos cards de resposta rapida */
+.wh-stat-icon{width:22px;height:22px;color:var(--color-accent-dark);margin:0 auto 6px;display:block;}
+
+/* Working Holiday: linha do tempo com conector */
+.wh-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:8px 0 30px;}
+.wh-timeline-item{position:relative;background:#fff;border:1px solid var(--color-border);border-radius:14px;padding:18px 16px;}
+.wh-timeline-item:not(:first-child)::before{content:"";position:absolute;left:-22px;top:38px;width:22px;height:2px;background:var(--color-border);}
+.wh-timeline-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--color-red);color:#fff;margin-bottom:8px;}
+.wh-timeline-icon svg{width:14px;height:14px;}
+.wh-timeline-item h3{margin:0 0 4px;font-size:.92rem;}
+.wh-timeline-item p{margin:0;font-size:.82rem;color:var(--color-text-muted);}
+@media(max-width:800px){
+  .wh-timeline{grid-template-columns:1fr;}
+  .wh-timeline-item:not(:first-child)::before{left:18px;top:-22px;width:2px;height:22px;}
+}
+
+/* Working Holiday: cards "o que o visto permite" com icone */
+.wh-permite-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--color-accent-soft);color:var(--color-accent-dark);margin-bottom:10px;}
+.wh-permite-icon svg{width:18px;height:18px;}
+
+/* Working Holiday: comparacao em cards coloridos */
+.wh-comparacao{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 30px;}
+.wh-comp-card{border-radius:14px;padding:20px 22px;}
+.wh-comp-card.wh-comp-sim{background:var(--color-accent-soft);border:1px solid #c7ecd8;}
+.wh-comp-card.wh-comp-nao{background:var(--color-red-soft);border:1px solid #f5c9c6;}
+.wh-comp-card h3{margin:0 0 12px;font-size:.95rem;}
+.wh-comp-card.wh-comp-sim h3{color:var(--color-accent-dark);}
+.wh-comp-card.wh-comp-nao h3{color:var(--color-red-dark);}
+.wh-comp-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.wh-comp-card li{display:flex;align-items:flex-start;gap:8px;font-size:.87rem;}
+.wh-comp-card li svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;}
+.wh-comp-card.wh-comp-sim li svg{color:var(--color-accent-dark);}
+.wh-comp-card.wh-comp-nao li svg{color:var(--color-red-dark);}
+@media(max-width:640px){.wh-comparacao{grid-template-columns:1fr;}}
+
+/* Working Holiday: icone ilustrado 3D em destaque no callout */
+.wh-callout-icon{width:64px;height:auto;float:right;margin:-4px 0 10px 16px;border-radius:10px;}
+@media(max-width:640px){.wh-callout-icon{width:44px;}}
+
+/* Working Holiday: icone de check nas linhas da tabela de requisitos */
+.wh-req-icon{display:inline-flex;width:16px;height:16px;color:var(--color-accent-dark);margin-right:7px;vertical-align:-3px;}
