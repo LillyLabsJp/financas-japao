@@ -61,7 +61,7 @@
   "dateModified": "2026-08-12T20:00:00+09:00",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://financasnojapao.com/working-holiday-japao.html" },
   "articleSection": "Vistos e Imigração",
-  "wordCount": 1672,
+  "wordCount": 1673,
   "inLanguage": "pt-BR",
   "citation": [
     { "@type": "CreativeWork", "name": "Brasil e Japão criam programa de visto férias-trabalho a partir de 1º de dezembro de 2026 — Atlas Público (leitura do Diário Oficial da União)", "url": "https://atlaspublico.com.br/noticias/brasil-e-japao-criam-programa-de-visto-ferias-trabalho-a-75946" },
@@ -214,7 +214,7 @@
   <div class="container section">
     <p class="breadcrumb"><a href="/">Início</a> / Working Holiday no Japão</p>
 
-    <div class="holerite-hero holerite-hero--foto" style="background-image:url('img/hero-working-holiday.webp')">
+    <div class="holerite-hero holerite-hero--foto holerite-hero--foto-clara" style="background-image:url('img/hero-working-holiday.webp')">
       <div class="holerite-hero-texto">
         <p class="categoria-etiqueta">Vistos e imigração</p>
         <h1>Working Holiday Japão-Brasil: o novo visto para jovens brasileiros</h1>
@@ -222,6 +222,10 @@
         <div class="holerite-hero-ctas">
           <a href="#requisitos" class="btn">Ver requisitos</a>
           <a href="#o-que-falta" class="btn-secundario">O que ainda falta ser divulgado</a>
+          <button type="button" class="btn-compartilhar-calc" onclick="compartilharPagina(this)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+            <span>Compartilhar</span>
+          </button>
         </div>
       </div>
     </div>
@@ -420,6 +424,31 @@
     </div>
   </div>
 </main>
+
+<script>
+function compartilharPagina(btn){
+  var url = window.location.origin + window.location.pathname;
+  var texto = '✈️ *Working Holiday Japão-Brasil: o que se sabe sobre o novo visto para jovens brasileiros* — vigora a partir de 1º de dezembro de 2026 👇\n' + url;
+  if (navigator.share) {
+    navigator.share({ title: 'Working Holiday Japão-Brasil', text: texto }).catch(function(){});
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function(){
+      var s = btn.querySelector('span');
+      if (!s) return;
+      var o = s.getAttribute('data-o') || s.textContent;
+      s.setAttribute('data-o', o);
+      s.textContent = 'Link copiado!';
+      setTimeout(function(){ s.textContent = o; }, 1800);
+    }).catch(function(){
+      window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+    });
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+  }
+}
+</script>
 
 <footer class="site-footer">
   <div class="container">

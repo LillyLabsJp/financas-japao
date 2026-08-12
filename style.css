@@ -1017,6 +1017,10 @@ p { margin: 0 0 1em; }
   content:"";position:absolute;inset:0;
   background:linear-gradient(100deg,rgba(22,24,29,.94) 0%,rgba(22,24,29,.72) 55%,rgba(22,24,29,.38) 100%);
 }
+/* variante mais clara, usada na página do Working Holiday */
+.holerite-hero--foto-clara::before{
+  background:linear-gradient(100deg,rgba(22,24,29,.72) 0%,rgba(22,24,29,.5) 55%,rgba(22,24,29,.16) 100%);
+}
 .holerite-hero-texto{position:relative;z-index:1;}
 .holerite-hero .categoria-etiqueta{background:rgba(255,255,255,.12);color:#fff;}
 .holerite-hero h1{color:#fff;margin:0 0 14px;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.22;}
