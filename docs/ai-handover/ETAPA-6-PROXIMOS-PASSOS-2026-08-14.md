@@ -66,22 +66,81 @@ As duas mais curtas hoje são `index.html` (726) e `meu-salario-no-japao.html`
 Eram 2 páginas, não 11. Resolvido no commit `8e03502`. Detalhe em
 [Feito depois deste documento](#feito-depois-deste-documento).
 
-### 2. Bloco de fontes na `amazon-` e na `rakuten-`
+### 2. Bloco de fontes — são três, não duas, e a pior é o pilar
 
-São as duas únicas páginas de conteúdo do cluster Furusato sem ele.
-A `rakuten-` também não tem schema de FAQ, apesar de ter perguntas visíveis.
+**Reconferido em 14/08 arquivo por arquivo.** O item dizia "as duas únicas
+páginas do cluster Furusato sem bloco de fontes: `amazon-` e `rakuten-`".
+São três, e a que falta mais é a `furusato-nozei` — a página pilar.
+
+| Página | Bloco de fontes | Schema FAQ | Links `.go.jp` |
+|---|---|---|---|
+| `furusato-nozei` (pilar) | não | sim | 2 |
+| `rakuten-furusato-nozei` | não | **não** | 1 |
+| `amazon-furusato-nozei` | não | sim | **0** |
+
+As outras 22 páginas de conteúdo têm bloco de fontes. Confirmado.
+
+**Ordem de valor, que não é a ordem do item original:**
+
+1. **`amazon-`** é a mais grave: não tem bloco *e* não cita nenhuma fonte
+   oficial em lugar nenhum — zero links `.go.jp` na página inteira. É
+   exatamente o perfil de "conteúdo de baixo valor" que o AdSense recusou.
+2. **`furusato-nozei`** é a de maior alcance. Cita Sōmushō e NTA no corpo e tem
+   o selo `fu-conf-fonte`, mas termina no FAQ, sem bloco. É a página pilar: se
+   uma IA for citar uma página do site, é esta.
+3. **`rakuten-`** tem o selo "Fontes: Rakuten e Sōmushō" e uma citação no
+   schema, mas nenhum bloco. **Confirmado que não tem `FAQPage`** apesar de ter
+   seis perguntas visíveis — o item original estava certo nisso.
+
+**Cuidado com o detector aqui.** A `aposentadoria-nenkin` parece não ter bloco
+se você procurar por `<h2>Fontes`: ela usa `<div class="fontes">` com um
+`<strong>`, não um heading. Tem bloco. Qualquer varredura precisa cobrir as
+duas marcações — foi o quinto falso positivo evitado nesta série.
+
+Modelo de estrutura para copiar: `onde-fazer-furusato-nozei.html`, linha 460,
+que separa "Fontes oficiais" do que não deu para reconferir.
 
 ### 3. Títulos acima de 65 caracteres
 
-Quinze páginas. Piores: `imposto-residencial-juminzei` (106),
-`dependentes-no-brasil` (94), `furusato-nozei` (93), `aposentadoria-nenkin` (91).
+**Reconferido em 14/08: quinze, confirmado, e os números batem.** Piores:
+`imposto-residencial-juminzei` (106), `dependentes-no-brasil` (94),
+`furusato-nozei` (93), `aposentadoria-nenkin` (91), `remessa-japao-brasil` (86),
+`rakuten-furusato-nozei` (82).
 Corte não é penalidade de posição, é perda de clique. O sufixo
 `| Finanças no Japão` come 21 caracteres. **Decisão editorial da Lilly** — são
 páginas que já rankeiam. Lista completa na auditoria da Etapa 5.
 
 ### 4. Descriptions acima de 165 caracteres
 
-Quatorze páginas, listadas na auditoria da Etapa 5.
+**Reconferido em 14/08: quatorze, confirmado.** Piores:
+`imposto-residencial-juminzei` (247), `furusato-nozei` (231),
+`dependentes-no-brasil` (220), `aposentadoria-nenkin` (211),
+`remessa-japao-brasil` (207), `o-que-e-furusato-nozei` (203),
+`amazon-furusato-nozei` (200), `rakuten-furusato-nozei` (195),
+`beneficios-familia-japao` (190), `index` (189), `auxilio-mae-solo-japao` (186),
+`meu-salario-no-japao` (179), `isencao-nenkin-bebe` (166),
+`working-holiday-japao` (166).
+
+As duas últimas passam por 1 caractere — não vale sessão.
+
+## Resultado da reconferência de 14/08
+
+Os itens 2, 3 e 4 saíram da auditoria da Etapa 5 e nunca tinham sido
+revalidados. Foram medidos por código, arquivo por arquivo:
+
+| Item | O documento dizia | Verificado |
+|---|---|---|
+| 1. Resposta Rápida | 11 páginas | **2** — errado, e já feito |
+| 2. Bloco de fontes | 2 páginas | **3**, e a pior é o pilar |
+| 3. Títulos > 65 | 15 páginas | 15 — **certo**, números batem |
+| 4. Descriptions > 165 | 14 páginas | 14 — **certo**, números batem |
+| 5. Analytics | pendente de decisão | decidido e feito |
+
+**Leitura:** o detector errou onde procurava uma marcação de HTML (itens 1 e 2)
+e acertou onde só contava caracteres (itens 3 e 4). Faz sentido — contar
+caractere não depende de adivinhar como a página foi escrita. Regra prática
+para a próxima auditoria: **medida numérica pode confiar; presença de bloco
+tem que abrir o arquivo.**
 
 ### 5. ~~Google Analytics apontando para o lugar errado~~ — FEITO
 
