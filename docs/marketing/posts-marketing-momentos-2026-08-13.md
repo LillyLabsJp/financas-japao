@@ -4,9 +4,13 @@ Registro dos 3 testes aprovados (ver `ROADMAP-E-IDEIAS.md`, seção 1.2). UTM se
 
 ## 1. Working Holiday (aspiração/oportunidade) — JÁ PUBLICADO
 
-Foi pra Oficial em 12/08 e pra Comunidade (Olho) em 13/08.
+**Oficial (12/08):** publicado **sem UTM**. Não há link rastreável pra esse post — registrado assim de propósito, sem reconstruir retroativamente uma UTM que não foi usada.
 
-**⚠️ PENDENTE:** não tenho registro da URL/UTM que foi efetivamente usada nesses dois posts — não fui eu quem publicou, e isso não estava documentado em nenhum arquivo do repo antes de hoje. Preciso que a Lilly (ou o Kai) me passe o link exato que foi colado no Facebook, pra eu registrar aqui o que realmente aconteceu, não uma reconstrução. Fica em aberto de propósito em vez de inventar um valor.
+**Olho / Comunidade Recém-Chegados (13/08):**
+```
+https://financasnojapao.com/working-holiday-japao.html?utm_source=facebook&utm_medium=group&utm_campaign=working_holiday&utm_content=recem_chegados
+```
+Nota: usa `utm_medium=group` (não `organic_social`) e `utm_content=recem_chegados` (nome do grupo, não `post_NN`) — confirmado como o que foi efetivamente publicado, então registrado como está, mesmo divergindo do padrão do `utm-facebook.md`. Vale decidir, numa próxima conversa, se `utm_medium=group` devia entrar como valor padrão pra posts em grupo (diferente de Página oficial), já que não é bem "orgânico" e não é bem "pago".
 
 ## 2. Holerite (perda/confusão) — PRONTO, NÃO PUBLICADO
 
