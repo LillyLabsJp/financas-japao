@@ -76,15 +76,20 @@ São três, e a que falta mais é a `furusato-nozei` — a página pilar.
 |---|---|---|---|
 | `furusato-nozei` (pilar) | não | sim | 2 |
 | `rakuten-furusato-nozei` | não | **não** | 1 |
-| `amazon-furusato-nozei` | não | sim | **0** |
+| ~~`amazon-furusato-nozei`~~ | **FEITO** | sim | 0 → **4** |
 
 As outras 22 páginas de conteúdo têm bloco de fontes. Confirmado.
 
 **Ordem de valor, que não é a ordem do item original:**
 
-1. **`amazon-`** é a mais grave: não tem bloco *e* não cita nenhuma fonte
-   oficial em lugar nenhum — zero links `.go.jp` na página inteira. É
-   exatamente o perfil de "conteúdo de baixo valor" que o AdSense recusou.
+1. ~~**`amazon-`** é a mais grave~~ — **feito em 14/08.** Era a única página do
+   site sem nenhuma fonte oficial: zero links `.go.jp` na página inteira, o
+   perfil exato de "conteúdo de baixo valor". Ganhou bloco de fontes com quatro
+   links oficiais (Sōmushō ×3, NTA ×1), todos abertos e conferidos na data.
+   O bloco também separa o que é norma do governo do que é afirmação da
+   própria Amazon, declara que o guia da Amazon não pôde ser reconferido em
+   14/08 — a página não abre para leitura automatizada — e marca os três
+   perfis de limite como estimativa, não valor oficial.
 2. **`furusato-nozei`** é a de maior alcance. Cita Sōmushō e NTA no corpo e tem
    o selo `fu-conf-fonte`, mas termina no FAQ, sem bloco. É a página pilar: se
    uma IA for citar uma página do site, é esta.
