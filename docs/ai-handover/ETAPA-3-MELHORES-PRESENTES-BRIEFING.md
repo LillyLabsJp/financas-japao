@@ -171,3 +171,63 @@ usado na página da Amazon em 30/07/2026. Não é preciso abrir cada produto.
 
 Se ao fim da coleta houver menos de 8 exemplos confirmados, **publicar com menos**.
 A Lilly já aprovou esse princípio: estrutura durável primeiro, exemplos como ilustração.
+
+---
+
+## RECEITA DE EXTRAÇÃO QUE FUNCIONA — testada em 13/08/2026
+
+O Claude in Chrome renderiza o ranking do Rakuten sem problema. E o custo é baixíssimo
+**desde que não se leia a página**: basta rodar JavaScript e devolver só os campos.
+Testado em `ranking/rice/`: 150 links de produto, 60 preços, extração em ~200 tokens.
+
+Passo 1 — `navigate` para a URL do ranking da categoria.
+Passo 2 — `javascript_tool` com este código (não usar `get_page_text`, não tirar screenshot):
+
+```js
+const out=[];
+document.querySelectorAll('li,div').forEach(el=>{
+ const a=el.querySelector(':scope a[href*="item.rakuten.co.jp"]');
+ if(!a||out.length>=8)return;
+ const t=(a.textContent||'').replace(/\s+/g,' ').trim();
+ if(t.length<15)return;
+ const p=(el.innerText.match(/([0-9][0-9,]{2,})円/)||[])[1];
+ const shop=(a.href.match(/item\.rakuten\.co\.jp\/([^/]+)/)||[])[1];
+ if(!p)return;
+ if(out.some(o=>o.t===t.slice(0,60)))return;
+ out.push({t:t.slice(0,60),p,shop});
+});
+JSON.stringify(out)
+```
+
+Se der timeout de 45s na primeira chamada, repetir — a segunda passa (a página termina
+de montar enquanto isso). Não colocar `await setTimeout` dentro: estoura o limite do CDP.
+
+### O código da loja identifica o município — e isso é ouro
+
+O `shop` vem no formato `fPPMMM-nome`, onde os **dois primeiros dígitos são o código
+oficial da província (JIS)** e o nome no fim é o município. Exemplos reais colhidos
+no ranking de arroz em 13/08/2026:
+
+| shop | município | província | doação |
+|---|---|---|---|
+| `f434281-takamori` | Takamori | Kumamoto (43) | ¥5.500 |
+| `f063223-nishikawa` | Nishikawa | Yamagata (06) | ¥7.000 |
+| `f152021-nagaoka` | Nagaoka | Niigata (15) | ¥7.000 |
+| `f413453-kamimine` | Kamimine | Saga (41) | ¥6.400 |
+| `f434418-mifune` | Mifune | Kumamoto (43) | ¥10.000 |
+| `f406091-aka` | Aka | Fukuoka (40) | ¥6.000 |
+
+Ou seja: **nome do presente, valor da doação e município saem todos da mesma extração**,
+sem abrir uma única página de produto. É exatamente o conjunto de campos que o briefing
+pede. Conferir o par código→província contra a tabela oficial antes de publicar.
+
+Observação editorial colhida de brinde: vários títulos de arroz trazem
+「新米先行予約受付中」 (pré-venda da nova safra) e 「発送時期が選べる」 (dá para escolher
+o mês de envio). Isso confirma, com evidência, duas seções previstas — sazonalidade
+e entrega parcelada — e vale como gancho verificado.
+
+### Orçamento realista revisado
+
+Com esta receita, cada categoria custa ~1 navigate + 1 ou 2 javascript_tool ≈ poucos
+milhares de tokens. Sete categorias mais dois especiais cabem tranquilamente numa sessão,
+sobrando espaço de sobra para escrever a página. **A Etapa 3 é viável numa sessão só.**
