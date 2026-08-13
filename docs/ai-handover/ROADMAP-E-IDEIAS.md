@@ -71,6 +71,16 @@ Itens que a Lilly aprovou mas que ainda não foram implementados.
 - **Estado:** construída e publicada em 6 de agosto de 2026 — `melhores-presentes-furusato-nozei.html`.
 - **Observação:** links apontam para página de coleção, nunca para município específico — norma do Sōmushō.
 
+### Padrão de hero "keyword + hook/revelação" nas outras páginas — `APROVADA, ROLLOUT PENDENTE`
+
+- **Descrição:** trocar o H1 burocrático ("Auxílio pra X no Japão: quanto você recebe") por um formato de duas partes — pergunta/gancho com a keyword ainda preservada (ex.: "Mãe solo no Japão?") seguida de uma linha de promessa/revelação ("Veja o que você pode receber além do auxílio infantil"), com CTA levando pro conteúdo. Testado e aprovado em 13 de agosto de 2026 na página `auxilio-mae-solo-japao.html`.
+- **Por que funciona sem prejudicar SEO/GEO:** a keyword continua na primeira linha do H1, e o bloco "Resposta rápida" logo abaixo já entrega a resposta direta e completa — o hero vira só o gancho, quem responde de verdade é o bloco seguinte. `<title>` e meta description continuam descritivos, sem mudança.
+- **Rollout recomendado (avaliação do Sonnet, aceita pela Lilly):** por etapas, não tudo de uma vez.
+  1. Páginas ainda não indexadas primeiro (risco zero).
+  2. Páginas indexadas mas fora do cluster furusato, uma de cada vez.
+  3. Cluster furusato (o que mais importa pra outubro–dezembro) por último, com mais cautela — trocar uma página, observar impressões/CTR no Search Console antes de seguir pra próxima.
+- **Estado:** aprovado o padrão, mas a aplicação nas outras páginas explicitamente adiada. **Não implementar em outras páginas sem instrução explícita da Lilly na conversa, página por página.**
+
 ---
 
 ## 1.1 Cluster Furusato Nozei — concluído em 6 de agosto de 2026
