@@ -170,7 +170,7 @@ p { margin: 0 0 1em; }
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 28px;
+  gap: 16px;
   margin: 0;
   padding: 0;
 }
@@ -182,6 +182,9 @@ p { margin: 0 0 1em; }
   font-weight: 500;
   transition: color var(--ease);
 }
+/* com 9 itens de primeiro nivel o rotulo nao pode quebrar em duas linhas,
+   senao a seta do submenu fica orfa embaixo do texto */
+.main-nav > ul > li > a { white-space: nowrap; font-size: 0.88rem; }
 .main-nav a:hover { color: var(--color-primary-dark); }
 .main-nav a[aria-current="page"] { color: var(--color-primary-dark); font-weight: 600; }
 
@@ -202,13 +205,19 @@ p { margin: 0 0 1em; }
   font-family: inherit;
 }
 
-@media (max-width: 900px) {
+/* o header pode usar mais largura que o corpo do site: com 9 itens de menu
+   os 1200px do container padrao nao bastam */
+@media (min-width: 1280px) { .site-header .container { max-width: 1320px; } }
+
+/* abaixo de 1280px o menu de 9 itens nao cabe numa linha: vira sanduiche */
+@media (max-width: 1279px) {
   .main-nav { display: none; width: 100%; order: 3; }
   .main-nav.is-open { display: block; }
   .site-header .container { flex-wrap: wrap; }
   .nav-toggle { display: inline-block; }
   .main-nav ul { flex-direction: column; gap: 2px; padding: 8px 0 14px; }
   .main-nav a { display: block; padding: 10px 0; }
+  .main-nav > ul > li > a { font-size: 0.95rem; }
 }
 
 /* Hero */
@@ -682,7 +691,7 @@ p { margin: 0 0 1em; }
 @media(max-width:900px){.fu-header-acoes .header-cta{display:none;}}
 /* no celular nao existe hover: o submenu abre pela classe que o main.js adiciona */
 .main-nav .tem-sub.aberto > .submenu{display:flex;}
-@media(max-width:900px),(hover:none){
+@media(max-width:1279px),(hover:none){
   .main-nav .submenu{
     position:static;left:auto;min-width:0;box-shadow:none;
     border:none;border-left:2px solid var(--color-border);
