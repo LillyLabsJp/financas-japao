@@ -123,3 +123,51 @@ literal — células com "Confirmar antes: Municípios, entrega e caminho do One
 naquele momento. O julgamento de fundo (página curta, 691 palavras, comparação pouco
 conclusiva) segue de pé, mas a evidência citada era inventada. A Etapa 4 tem que começar
 lendo a página de verdade, e a Etapa 5 tem que reavaliar `onde-fazer` do zero.
+
+---
+
+## Teste de viabilidade da verificação — feito em 13/08/2026
+
+**Resultado: `web_fetch` NÃO consegue ver o catálogo do Rakuten Furusato.**
+
+Testado: `https://event.rakuten.co.jp/furusato/ranking/` (ranking geral TOP 100).
+A resposta traz só a moldura do site — menu, categorias, links de faixa de preço,
+lista de províncias, banners. **Zero produtos.** A página devolve literalmente
+「ご使用のブラウザでJavaScriptが無効なため、一部の機能をご利用できません」
+(“seu navegador está com JavaScript desativado, parte das funções não está disponível”).
+A lista de produtos é montada por JavaScript no cliente.
+
+Consequência: qualquer verificação de oferta real precisa passar pelo **Claude in Chrome**,
+que renderiza a página de verdade. Isso funciona, mas é caro em contexto — cada página de
+ranking ou de produto lida consome bastante. Planejar a sessão da Etapa 3 contando com isso.
+
+### Caminho recomendado para a próxima sessão
+
+Ordem sugerida, do mais barato ao mais caro, parando quando tiver material suficiente:
+
+1. **Ranking por categoria via Chrome**, não o TOP 100 geral. As URLs já estão mapeadas e
+   são estáveis — dão exatamente as categorias que a página precisa:
+   - carne: `https://event.rakuten.co.jp/furusato/ranking/meat/`
+   - frutos do mar: `.../ranking/seafood/`
+   - arroz: `.../ranking/rice/`
+   - frutas: `.../ranking/fruit/`
+   - papel higiênico: `.../ranking/toilet-paper/`
+   - lenço de papel: `.../ranking/tissue-paper/`
+   - entrega no dia seguinte: `.../ranking/saikyo-delivery/`
+2. Duas páginas de especial que servem direto a duas seções previstas da página:
+   - **定期便 / entregas parceladas**: `https://event.rakuten.co.jp/furusato/special/regular/`
+     (resolve “melhor para receber em várias entregas”, com oferta real)
+   - **お手頃返礼品 / valor baixo**: `.../special/affordable/`
+     (resolve “melhor para quem tem limite pequeno”)
+   - existe também `.../special/calendar/` (“ふるさと納税年間計画”), que é o ponto de partida
+     natural para o **calendário de sazonalidade** — o ativo mais durável da página.
+3. Só depois, se sobrar orçamento, conferir produto a produto.
+
+### Regra operacional
+
+Ler o ranking de uma categoria com o Chrome e extrair **nome, município e valor da doação**
+já é verificação suficiente para o padrão editorial do site — é o mesmo nível de evidência
+usado na página da Amazon em 30/07/2026. Não é preciso abrir cada produto.
+
+Se ao fim da coleta houver menos de 8 exemplos confirmados, **publicar com menos**.
+A Lilly já aprovou esse princípio: estrutura durável primeiro, exemplos como ilustração.
