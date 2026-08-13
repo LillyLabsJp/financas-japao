@@ -65,12 +65,6 @@ Itens que a Lilly aprovou mas que ainda não foram implementados.
 - **Estado:** bloqueado até a aprovação do Google. Não é possível criar bloco antes.
 - **Decisão tomada:** anúncios automáticos ficam desativados.
 
-### Página dos melhores presentes — `CONCLUÍDA`
-
-- **Descrição:** página sobre como escolher presentes, mantendo a pessoa no site e conduzindo aos links de afiliado.
-- **Estado:** construída e publicada em 6 de agosto de 2026 — `melhores-presentes-furusato-nozei.html`.
-- **Observação:** links apontam para página de coleção, nunca para município específico — norma do Sōmushō.
-
 ### Padrão de hero "keyword + hook/revelação" nas outras páginas — `APROVADA, ROLLOUT PENDENTE`
 
 - **Descrição:** trocar o H1 burocrático ("Auxílio pra X no Japão: quanto você recebe") por um formato de duas partes — pergunta/gancho com a keyword ainda preservada (ex.: "Mãe solo no Japão?") seguida de uma linha de promessa/revelação ("Veja o que você pode receber além do auxílio infantil"), com CTA levando pro conteúdo. Testado e aprovado em 13 de agosto de 2026 na página `auxilio-mae-solo-japao.html`.
@@ -83,23 +77,86 @@ Itens que a Lilly aprovou mas que ainda não foram implementados.
 
 ---
 
+## 1.2 Direção estratégica — Marketing de Momentos (Facebook)
+
+`DIREÇÃO ESTRATÉGICA — NÃO É LISTA DE TAREFAS`
+
+Nasceu de uma pesquisa comportamental do Haiku em 19 grupos brasileiros no
+Facebook (13 de agosto de 2026), discutida entre a Lilly e o Kai. Pesquisa
+bruta salva em `docs/ai-handover/PESQUISA-HAIKU-COMPORTAMENTAL-2026-08-13.txt`.
+
+**A virada de raciocínio:** o Facebook não deve ser organizado pelas
+categorias do site (impostos, benefícios, salário). Deve ser organizado pelo
+momento de vida em que o dinheiro aparece sem a pessoa estar procurando por
+dinheiro — chegada ao Japão, primeiro salário, carta da prefeitura, filho,
+mudança de emprego/visto, volta ao Brasil, entre outros.
+
+**O que muda, concretamente, por enquanto:** só a camada de aquisição e
+apresentação no Facebook. Holerite continua sendo holerite, benefício de
+família continua sendo benefício de família, Working Holiday continua sendo
+Working Holiday — muda como a gente encontra a pessoa, não o que já foi
+construído.
+
+**Alerta de qualidade, confirmado por leitura completa do documento:** o
+relatório do Haiku continha números inventados, não sustentados pela própria
+metodologia dele ("47% ganham menos", "80% não entendem a carta", "conversão
+60%+", "3x mais engagement"). Nenhum desses números — nem variações deles —
+vai para qualquer publicação. Mesmo padrão já aplicado a frases sem
+comprovação descartadas anteriormente (seção 6).
+
+**Experimento aprovado pra rodar primeiro**, antes de qualquer expansão de
+site — 3 testes, cada um mapeado numa motivação humana diferente, usando só
+páginas que já existem, com post, grupo e UTM próprios:
+
+1. Working Holiday → aspiração/oportunidade ("Você poderia passar até 1 ano
+   no Japão?")
+2. Holerite → perda/confusão ("Seu salário veio menor do que você
+   esperava?")
+3. Família/benefícios → proteção/descoberta ("Vai ter bebê no Japão? Veja o
+   que pode ter direito.")
+
+**O que medir:** não só cliques — cliques rastreados por UTM, sessões no
+site, comportamento depois do clique (ficou e explorou outra página, ou
+saiu), e sinais de compartilhamento disponíveis no Facebook.
+
+**Fora de escopo, explicitamente:** qualquer monetização envolvendo serviços
+jurídicos, financeiros, empréstimo, consultoria ou intermediação — apareceram
+na pesquisa do Haiku ("conexão com advogado", "intermediação com lender",
+"consultoria via chat", "gestão de patrimônio"). É negócio regulado,
+categoricamente diferente do que o site faz hoje (conteúdo, ferramenta
+digital, AdSense, afiliados). Fica fora até eventual pesquisa regulatória
+separada — não é decisão de conteúdo.
+
+**As 10 ferramentas/páginas sugeridas pelo relatório do Haiku** (decodificador
+de holerite, simulador de salário líquido, banco de dados de salários, mapa
+de custo de vida, assistente de cartas, etc.) ficam registradas como ideias,
+não como tarefas.
+
+**Nova regra de produto, proposta pelo Kai:** antes de criar uma página nova
+porque imaginamos que existe demanda, procurar evidência de que brasileiros
+estão realmente tentando resolver aquele problema — grupo, busca, pergunta
+recorrente — não só intuição.
+
+**Próximo passo:** rodar os 3 testes, medir, só então decidir se o framework
+"momentos de vida" vira algo maior do que uma camada de marketing.
+
+**Checagem de monetização (Sonnet):** hoje a única receita realmente ativa do
+site vem de Amazon Associates e Rakuten Afiliados, os dois presos ao cluster
+furusato — AdSense ainda está bloqueado esperando aprovação do Google. Nenhum
+dos 3 testes aponta pra furusato, e isso está correto: a divulgação de
+furusato em grupo já foi deliberadamente congelada até outubro por causa da
+janela de 24h do cookie de afiliado (ver seção 5). Então este experimento não
+gera ¥ agora — o retorno dele é framework validado e audiência aquecida pra
+apontar pro furusato em setembro/outubro, e pro AdSense quando aprovar. Vale
+manter isso claro: é investimento em aquisição, não receita imediata.
+
 ## 1.1 Cluster Furusato Nozei — concluído em 6 de agosto de 2026
 
-`CONCLUÍDA`
-
-As 6 páginas de profundidade sobre furusato nozei, identificadas na seção 4
-como conteúdo nunca escrito, foram todas construídas, publicadas e
-interligadas na mesma sessão: `o-que-e-furusato-nozei.html` (pilar),
-`melhores-presentes-furusato-nozei.html`, `one-stop-furusato-nozei.html`,
-`furusato-nozei-vale-a-pena.html`, `como-conferir-desconto-furusato-nozei.html`
-e `onde-fazer-furusato-nozei.html`. Conteúdo bruto veio de pacotes do Kai
-(designer externo), sempre reconstruído no template real do site — nunca
-usado com o HTML/CSS self-styled original. Indexação solicitada manualmente
-no Search Console para as 6 páginas. Detalhes técnicos completos em
-`HANDOVER-SONNET.md`, seções 6 e 7.
-
-Próximo item da ordem de prioridade (seção 7 abaixo): o vídeo sobre furusato
-nozei, que depende da Lilly gravar a narração.
+`CONCLUÍDA` — histórico completo movido para
+`docs/ai-handover/arquivo/ROADMAP-ARQUIVO.md`. Resumo: as 6 páginas de
+profundidade sobre furusato nozei foram construídas, publicadas, interligadas
+e indexadas. Próximo item da ordem de prioridade (seção 7 abaixo): o vídeo
+sobre furusato nozei, que depende da Lilly gravar a narração.
 
 ---
 
@@ -187,35 +244,11 @@ Temas identificados como busca real:
 
 ## 6. Ideias descartadas ou substituídas
 
-### Carrossel horizontal nas categorias de presente — `DESCARTADA`
-
-- **Original:** sugestão de carrossel estilo Netflix.
-- **Decisão:** grade fixa, 4 colunas no desktop e 2 no celular, todos os itens visíveis.
-- **Motivo:** carrossel esconde metade dos itens no celular e prejudica a leitura pelo buscador.
-
-### Capturas reais das telas do Rakuten — `SUBSTITUÍDA`
-
-- **Original:** usar capturas do site do Rakuten no passo a passo.
-- **Decisão:** recriações próprias.
-- **Motivo:** interface e marca de terceiro.
-- **Solução atual:** seis imagens WebP recriadas, com o texto de introdução dizendo explicitamente que são recriações.
-
-### Link externo nos termos japoneses — `SUBSTITUÍDA`
-
-- **Original:** linkar 「ワンストップ特例制度」 para a página japonesa do Rakuten.
-- **Decisão:** âncora interna para a seção One-Stop da própria página.
-- **Motivo:** mandar o leitor para uma página em japonês é o oposto do que a página se propõe a fazer.
-
-### Redirecionamento 301 de `/index.html` para `/` — `DESCARTADA`
-
-- **Motivo:** GitHub Pages não permite configurar redirecionamento de servidor. E é desnecessário: as duas URLs servem exatamente o mesmo arquivo.
-- **Solução atual:** canonical apontando para a raiz, sitemap com apenas `/`, e todos os links internos usando `/`.
-
-### Frases sem comprovação — `DESCARTADAS`
-
-Propostas que chegaram em revisões externas e foram recusadas por não terem
-base verificável: "milhares de brasileiros já utilizam", "100% legal e seguro",
-"100% fontes citadas", "o maior catálogo do Japão".
+`DESCARTADAS/SUBSTITUÍDAS` — histórico completo movido para
+`docs/ai-handover/arquivo/ROADMAP-ARQUIVO.md` (carrossel de presentes,
+capturas do Rakuten, link externo em termo japonês, redirect 301 de
+`/index.html`, frases sem comprovação). Mantido aqui só pra não repetir essas
+sugestões: nenhuma delas volta a ser considerada sem motivo novo.
 
 ---
 

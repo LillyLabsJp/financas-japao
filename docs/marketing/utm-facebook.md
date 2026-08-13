@@ -35,6 +35,8 @@ Usar sempre um destes (criar um novo só quando abrir uma vertical nova):
 - `auxilio_infantil`
 - `licenca_parental`
 - `reducao_jornada`
+- `holerite`
+- `working_holiday`
 - `geral` — posts institucionais, sobre a página, etc.
 
 ### Padrão de `utm_content`
@@ -71,3 +73,7 @@ https://financasnojapao.com/auxilio-infantil-japao.html?utm_source=facebook&utm_
 ## Ferramenta pra gerar os links sem errar
 
 Arquivo `gerador-utm-facebook.html` (na raiz do repositório, não indexado, não publicado no menu do site) — abre no navegador, escolhe a página e a campanha em dropdown, digita o identificador do post, e ele monta a URL certa automaticamente, já corrigindo acentos/espaços/maiúsculas.
+
+## Nota — 13/08/2026
+
+GA4 confirmado instalado em todas as páginas (`G-1E9NS612TP`). O item "Verificação pendente" acima ficou resolvido; mantido no documento só como histórico de quando isso foi checado.
