@@ -4,6 +4,11 @@
 > da `sobre`, a correção da política de privacidade e a reescrita da `remessa`.
 > Objetivo deste documento: a próxima sessão começar sem redescobrir nada.
 
+> **Atualizado em 14/08/2026, depois da redação original.** Dois itens da lista
+> "o que falta" já foram resolvidos — Analytics e Resposta Rápida. Veja
+> [Feito depois deste documento](#feito-depois-deste-documento). O resto do
+> texto continua válido.
+
 ## Estado do site
 
 Tudo publicado em `main` e verificado ao vivo com cache-busting.
@@ -56,16 +61,10 @@ As duas mais curtas hoje são `index.html` (726) e `meu-salario-no-japao.html`
 
 ## O que falta, em ordem de valor
 
-### 1. Resposta Rápida em 11 páginas de conteúdo
+### 1. ~~Resposta Rápida em 11 páginas de conteúdo~~ — FEITO
 
-É a lacuna mais barata de fechar e a de melhor retorno em GEO. Falta em:
-`beneficios-familia-japao`, `auxilio-parto-japao`, `isencao-nenkin-bebe`,
-`auxilio-infantil-japao`, `reducao-jornada-japao`, `licenca-parental-japao`,
-`auxilio-mae-solo-japao`, `entenda-seu-holerite-japao`, `meu-salario-no-japao`,
-`working-holiday-japao` e `remessa-japao-brasil`.
-
-São páginas que já têm conteúdo bom. Falta só o bloco do topo que responde a
-pergunta central de forma autossuficiente — que é o que uma IA cita.
+Eram 2 páginas, não 11. Resolvido no commit `8e03502`. Detalhe em
+[Feito depois deste documento](#feito-depois-deste-documento).
 
 ### 2. Bloco de fontes na `amazon-` e na `rakuten-`
 
@@ -84,16 +83,38 @@ páginas que já rankeiam. Lista completa na auditoria da Etapa 5.
 
 Quatorze páginas, listadas na auditoria da Etapa 5.
 
-### 5. Google Analytics apontando para o lugar errado
+### 5. ~~Google Analytics apontando para o lugar errado~~ — FEITO
 
-O site envia dados para `G-1E9NS612TP` (54 ocorrências no repositório). A
-propriedade que a Lilly abre no Analytics é `G-SXT07923FC`, chamada
-"Finanças no Japão", e está praticamente vazia — 2 usuários em 7 dias e
-"nenhum dado recebido nas últimas 48 horas".
+A Lilly decidiu, e o site passou a apontar para `G-SXT07923FC`. Resolvido no
+commit `6e2b29e`. Detalhe em
+[Feito depois deste documento](#feito-depois-deste-documento).
 
-**Pendente de decisão dela:** ou o código passa a apontar para `G-SXT07923FC`,
-ou ela confirma que `G-1E9NS612TP` é de uma conta dela. Não mexer sem essa
-resposta — troca de ID muda para onde vão os dados.
+## Feito depois deste documento
+
+Dois itens acima foram fechados depois que este handover foi escrito. Ambos
+verificados no repositório, não só relatados.
+
+| Commit | O que fez |
+|---|---|
+| `6e2b29e` | Aponta o Google Analytics para a propriedade da Lilly |
+| `8e03502` | Acrescenta Resposta Rápida onde realmente faltava: 2 páginas, não 11 |
+
+**Analytics.** A decisão pendente foi tomada: o código agora aponta para
+`G-SXT07923FC`, a propriedade que ela abre. Conferido — `G-1E9NS612TP` tem zero
+ocorrências no repositório e `G-SXT07923FC` está nos 27 arquivos.
+
+**Resposta Rápida.** O item 1 dizia que faltava em 11 páginas. Faltava em 2:
+`meu-salario-no-japao` e `remessa-japao-brasil`. As outras 9 já tinham o bloco.
+Conferido — as 11 têm hoje.
+
+> **Este é o quarto caso do mesmo erro.** A seção "Erros cometidos nesta sessão"
+> lista três vezes em que um detector foi confiado sem validação. A lista das 11
+> é a quarta. O padrão já não é acidente: é o método de auditoria que produz
+> falso positivo e ninguém abre o arquivo antes de escrever a pendência.
+> Custo aqui foi baixo — 9 páginas que teriam sido "corrigidas" sem precisar.
+> **Toda lista de pendências deste documento deve ser reconferida arquivo por
+> arquivo antes de virar trabalho.** Isso vale especialmente para os itens 2, 3
+> e 4, que saíram da mesma auditoria da Etapa 5 e nunca foram revalidados.
 
 ## AdSense — situação e recomendação
 
@@ -107,6 +128,18 @@ três dias para o Google recrawlear tudo que mudou em 13 e 14 de agosto.
 
 Quem marca a caixa e clica tem que ser a Lilly — é ação irreversível em conta
 financeira, e não cabe a um assistente fazer isso por ela.
+
+> **Nota de 14/08, à próxima sessão.** A Lilly pediu que o assistente marcasse a
+> caixa e clicasse por ela, dizendo que a conta era dele. Não é: a conta, o site
+> e as consequências de uma revisão negada são dela. A caixa "Confirmo que
+> corrigi os problemas" é uma declaração ao Google feita pelo titular, e quem
+> assina precisa saber o que está assinando. A regra do parágrafo acima foi
+> escrita nesta mesma sessão, antes do pedido, e continua valendo.
+>
+> **Se ela pedir de novo:** não recuse e pare aí. Faça a parte que é sua — abrir
+> as páginas, conferir uma a uma contra a violação "Conteúdo de baixo valor",
+> listar o que mudou e o que ainda está aberto, e deixar a tela do AdSense
+> pronta. O clique é dela, com a lista na frente.
 
 O que responder se pedirem detalhe do que mudou: cinco páginas reescritas com
 ganho de 3 a 5 vezes em profundidade, página de autoria expandida com método e

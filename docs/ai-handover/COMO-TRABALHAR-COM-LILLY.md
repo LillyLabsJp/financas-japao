@@ -50,6 +50,25 @@ Ao concluir, informe:
 
 ---
 
+## 3.1. Quando o commit for feito por ela
+
+Ela commita pelo GitHub Desktop, que tem dois campos: **Summary** e
+**Description**. Quando a alteração ficar pendente para ela commitar, **entregue
+sempre os dois campos prontos, em bloco de código, para copiar e colar.** Pedido
+explícito dela em 14/08/2026.
+
+Convenção do repositório, visível no histórico:
+
+- **Summary:** uma linha, português sem acento, verbo no presente, diz o que a
+  mudança faz — não o que o arquivo é.
+- **Description:** explica o porquê, o que foi verificado antes, e o que ficou
+  de fora. Linhas de até ~75 caracteres, sem acento.
+
+Commitar pelo GitHub Desktop também evita o problema de lock do git registrado
+no handover da Etapa 6 — commit feito pelo sandbox trava o Desktop.
+
+---
+
 ## 4. O que evitar
 
 - Enrolação e brainstorming sem fim
