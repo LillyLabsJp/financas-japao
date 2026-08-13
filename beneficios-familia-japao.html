@@ -38,7 +38,7 @@
 <meta property="og:image:height" content="941">
 <meta property="og:image:alt" content="Benefícios para família no Japão: guia completo com todos os auxílios">
 <meta property="article:published_time" content="2026-08-12T09:00:00+09:00">
-<meta property="article:modified_time" content="2026-08-13T10:00:00+09:00">
+<meta property="article:modified_time" content="2026-08-13T11:00:00+09:00">
 <meta property="article:section" content="Família">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Benefícios para família no Japão: guia completo">
@@ -69,10 +69,10 @@
     "logo": { "@type": "ImageObject", "url": "https://financasnojapao.com/favicon.svg" }
   },
   "datePublished": "2026-08-12T09:00:00+09:00",
-  "dateModified": "2026-08-13T10:00:00+09:00",
+  "dateModified": "2026-08-13T11:00:00+09:00",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://financasnojapao.com/beneficios-familia-japao.html" },
   "articleSection": "Família",
-  "wordCount": 1154,
+  "wordCount": 1166,
   "inLanguage": "pt-BR",
   "citation": [
     { "@type": "CreativeWork", "name": "育児休業等給付について — Ministério da Saúde, Trabalho e Bem-Estar (MHLW)", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000135090_00001.html" },
@@ -241,8 +241,9 @@
           <p class="fam-quiz-pnum">Pergunta 1</p>
           <h3>Você está grávida ou já tem filho?</h3>
           <div class="fam-quiz-opcoes">
-            <button type="button" class="fam-quiz-opcao" data-campo="situacao" data-valor="gravida">Estou grávida</button>
-            <button type="button" class="fam-quiz-opcao" data-campo="situacao" data-valor="tenho-filho">Tenho filho(a)</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="situacao" data-valor="gravida">Estou grávida, ainda sem filhos</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="situacao" data-valor="tenho-filho">Tenho filho(a), não estou grávida</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="situacao" data-valor="gravida-e-filho">Estou grávida e já tenho filho(a)</button>
           </div>
         </div>
 
@@ -540,6 +541,10 @@ function compartilharPagina(btn){
   var respostas = {};
   var historico = [];
 
+  function gravidaAtual(){
+    return respostas.situacao === 'gravida' || respostas.situacao === 'gravida-e-filho';
+  }
+
   function idadeEfetiva(){
     if(respostas.situacao === 'gravida') return 'menos-1';
     return respostas.idade;
@@ -547,10 +552,14 @@ function compartilharPagina(btn){
 
   function proximoStep(atual){
     if(atual === 'situacao'){
+      // "gravida" (sem filhos ainda) não tem filho nascido pra perguntar idade —
+      // "tenho-filho" e "gravida-e-filho" precisam da idade do filho já nascido.
       return respostas.situacao === 'gravida' ? 'trabalho' : 'idade';
     }
     if(atual === 'idade'){
-      return respostas.idade === '18-mais' ? 'saida' : 'trabalho';
+      // Só encerra cedo se a pessoa NÃO estiver grávida agora — quem tá grávida
+      // e tem um filho de 18+ ainda pode ter direito ao auxílio-parto.
+      return (respostas.idade === '18-mais' && !gravidaAtual()) ? 'saida' : 'trabalho';
     }
     if(atual === 'trabalho') return 'seguro';
     if(atual === 'seguro'){
@@ -623,8 +632,11 @@ function compartilharPagina(btn){
 
   function renderizarResultado(){
     var idade = idadeEfetiva();
-    var jovem = (idade === 'menos-1' || idade === '1-2');
-    var qualquerFilho = (idade === 'menos-1' || idade === '1-2' || idade === '3-17');
+    var gravida = gravidaAtual();
+    // Grávida conta como "tem filho jovem" pros benefícios ligados ao próximo
+    // bebê, mesmo que já tenha outro filho mais velho (ex: 18+) respondido acima.
+    var jovem = gravida || (idade === 'menos-1' || idade === '1-2');
+    var qualquerFilho = gravida || (idade === 'menos-1' || idade === '1-2' || idade === '3-17');
     var html = '';
     var count = 0;
 
