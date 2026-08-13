@@ -12,17 +12,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* ---- submenu: no computador abre no hover (CSS), no celular precisa
-         responder ao toque, senao simplesmente nao abre ---- */
+  /* ---- submenu: na barra larga abre no hover (CSS); quando o menu vira
+         sanduiche (celular, tablet e notebook estreito) ele precisa
+         responder ao clique, senao simplesmente nao abre ---- */
   var itensComSub = document.querySelectorAll(".main-nav .tem-sub");
+
+  // o menu esta em modo acordeao sempre que o botao sanduiche esta visivel.
+  // testar o botao, e nao a largura, mantem o JS em sincronia com o CSS
+  // mesmo que o breakpoint mude depois.
+  function menuEmAcordeao() {
+    if (!window.matchMedia("(hover: hover)").matches) return true;
+    if (!toggle) return false;
+    return window.getComputedStyle(toggle).display !== "none";
+  }
+
   itensComSub.forEach(function (item) {
     var gatilho = item.querySelector(":scope > a");
     if (!gatilho) return;
 
     gatilho.addEventListener("click", function (e) {
-      // so intercepta quando o hover nao esta disponivel (toque)
-      var temHover = window.matchMedia("(hover: hover)").matches;
-      if (temHover) return;
+      // na barra larga o CSS ja resolve pelo hover; nao intercepta
+      if (!menuEmAcordeao()) return;
       e.preventDefault();
       var aberto = item.classList.contains("aberto");
       itensComSub.forEach(function (x) {
