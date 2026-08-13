@@ -38,7 +38,7 @@
 <meta property="og:image:height" content="941">
 <meta property="og:image:alt" content="Benefícios para família no Japão: guia completo com todos os auxílios">
 <meta property="article:published_time" content="2026-08-12T09:00:00+09:00">
-<meta property="article:modified_time" content="2026-08-12T09:00:00+09:00">
+<meta property="article:modified_time" content="2026-08-13T10:00:00+09:00">
 <meta property="article:section" content="Família">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Benefícios para família no Japão: guia completo">
@@ -69,10 +69,10 @@
     "logo": { "@type": "ImageObject", "url": "https://financasnojapao.com/favicon.svg" }
   },
   "datePublished": "2026-08-12T09:00:00+09:00",
-  "dateModified": "2026-08-12T09:00:00+09:00",
+  "dateModified": "2026-08-13T10:00:00+09:00",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://financasnojapao.com/beneficios-familia-japao.html" },
   "articleSection": "Família",
-  "wordCount": 1350,
+  "wordCount": 1154,
   "inLanguage": "pt-BR",
   "citation": [
     { "@type": "CreativeWork", "name": "育児休業等給付について — Ministério da Saúde, Trabalho e Bem-Estar (MHLW)", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000135090_00001.html" },
@@ -225,6 +225,89 @@
         <div class="fam-stat"><b>5</b><span>benefícios cobertos neste guia</span></div>
         <div class="fam-stat"><b>¥500.000</b><span>auxílio-parto, pago uma vez</span></div>
         <div class="fam-stat"><b>Até 80%</b><span>do salário, na licença-parental dividida</span></div>
+      </div>
+    </div>
+
+    <div class="fam-quiz" id="famQuiz">
+      <div class="fam-quiz-topo">
+        <p class="fam-quiz-eyebrow">🧭 Descubra o que pode valer para você</p>
+        <p class="fam-quiz-sub">Leva menos de 1 minuto. Sem cadastro, nada é salvo.</p>
+      </div>
+
+      <div class="fam-quiz-progresso" aria-hidden="true"><div class="fam-quiz-barra" id="famQuizBarra"></div></div>
+
+      <form id="famQuizForm">
+        <div class="fam-quiz-pergunta" data-step="situacao">
+          <p class="fam-quiz-pnum">Pergunta 1</p>
+          <h3>Você está grávida ou já tem filho?</h3>
+          <div class="fam-quiz-opcoes">
+            <button type="button" class="fam-quiz-opcao" data-campo="situacao" data-valor="gravida">Estou grávida</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="situacao" data-valor="tenho-filho">Tenho filho(a)</button>
+          </div>
+        </div>
+
+        <div class="fam-quiz-pergunta" data-step="idade" hidden>
+          <p class="fam-quiz-pnum">Pergunta 2</p>
+          <h3>Qual a idade do seu filho mais novo?</h3>
+          <div class="fam-quiz-opcoes">
+            <button type="button" class="fam-quiz-opcao" data-campo="idade" data-valor="menos-1">Menos de 1 ano</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="idade" data-valor="1-2">1 a 2 anos</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="idade" data-valor="3-17">3 a 17 anos</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="idade" data-valor="18-mais">18 anos ou mais</button>
+          </div>
+        </div>
+
+        <div class="fam-quiz-pergunta" data-step="trabalho" hidden>
+          <p class="fam-quiz-pnum">Pergunta <span class="fam-quiz-pnum-dyn">3</span></p>
+          <h3>Como você trabalha hoje?</h3>
+          <div class="fam-quiz-opcoes">
+            <button type="button" class="fam-quiz-opcao" data-campo="trabalho" data-valor="empregada">Empregada registrada</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="trabalho" data-valor="autonoma">Autônoma / freelancer</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="trabalho" data-valor="sem-trabalho">Não estou trabalhando</button>
+          </div>
+        </div>
+
+        <div class="fam-quiz-pergunta" data-step="seguro" hidden>
+          <p class="fam-quiz-pnum">Pergunta <span class="fam-quiz-pnum-dyn">4</span></p>
+          <h3>Você está inscrita no seguro-saúde japonês?</h3>
+          <div class="fam-quiz-opcoes">
+            <button type="button" class="fam-quiz-opcao" data-campo="seguro" data-valor="sim">Sim</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="seguro" data-valor="nao">Não / não sei</button>
+          </div>
+        </div>
+
+        <div class="fam-quiz-pergunta" data-step="tempoEmpresa" hidden>
+          <p class="fam-quiz-pnum">Pergunta <span class="fam-quiz-pnum-dyn">5</span></p>
+          <h3>Há quanto tempo você trabalha registrada nessa empresa, com seguro-emprego?</h3>
+          <div class="fam-quiz-opcoes">
+            <button type="button" class="fam-quiz-opcao" data-campo="tempoEmpresa" data-valor="menos-1ano">Menos de 1 ano</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="tempoEmpresa" data-valor="1ano-mais">1 ano ou mais</button>
+          </div>
+        </div>
+
+        <div class="fam-quiz-pergunta" data-step="situacaoAtual" hidden>
+          <p class="fam-quiz-pnum">Pergunta <span class="fam-quiz-pnum-dyn">6</span></p>
+          <h3>Qual sua situação agora?</h3>
+          <div class="fam-quiz-opcoes">
+            <button type="button" class="fam-quiz-opcao" data-campo="situacaoAtual" data-valor="licenca">Estou de licença parental</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="situacaoAtual" data-valor="jornada-reduzida">Voltei em jornada reduzida</button>
+            <button type="button" class="fam-quiz-opcao" data-campo="situacaoAtual" data-valor="nenhum">Nenhum dos dois ainda</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="fam-quiz-voltar-linha">
+        <button type="button" class="fam-quiz-voltar" id="famQuizVoltar" hidden>← Voltar</button>
+      </div>
+
+      <div class="fam-quiz-saida" id="famQuizSaida" hidden>
+        <p>Esses benefícios são voltados pra quem está grávida ou tem filho até 17 anos. Se for esse o seu caso mais adiante, volte aqui — e enquanto isso, dá uma olhada nos <a href="#resumo">5 benefícios completos</a> pra já ir se familiarizando.</p>
+      </div>
+
+      <div class="fam-quiz-resultado" id="famQuizResultado" hidden aria-live="polite">
+        <h3 id="famQuizResultadoTitulo">Encontramos alguns benefícios que podem valer para você</h3>
+        <div class="fam-quiz-cards" id="famQuizCards"></div>
+        <button type="button" class="fam-quiz-recomecar" id="famQuizRecomecar">Refazer o quiz</button>
       </div>
     </div>
 
@@ -441,6 +524,168 @@ function compartilharPagina(btn){
     window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
   }
 }
+
+(function(){
+  var form = document.getElementById('famQuizForm');
+  if(!form) return;
+  var perguntas = Array.prototype.slice.call(form.querySelectorAll('.fam-quiz-pergunta'));
+  var barra = document.getElementById('famQuizBarra');
+  var voltarBtn = document.getElementById('famQuizVoltar');
+  var saidaBox = document.getElementById('famQuizSaida');
+  var resultadoBox = document.getElementById('famQuizResultado');
+  var cardsBox = document.getElementById('famQuizCards');
+  var tituloResultado = document.getElementById('famQuizResultadoTitulo');
+  var recomecarBtn = document.getElementById('famQuizRecomecar');
+
+  var respostas = {};
+  var historico = [];
+
+  function idadeEfetiva(){
+    if(respostas.situacao === 'gravida') return 'menos-1';
+    return respostas.idade;
+  }
+
+  function proximoStep(atual){
+    if(atual === 'situacao'){
+      return respostas.situacao === 'gravida' ? 'trabalho' : 'idade';
+    }
+    if(atual === 'idade'){
+      return respostas.idade === '18-mais' ? 'saida' : 'trabalho';
+    }
+    if(atual === 'trabalho') return 'seguro';
+    if(atual === 'seguro'){
+      return respostas.trabalho === 'empregada' ? 'tempoEmpresa' : 'resultado';
+    }
+    if(atual === 'tempoEmpresa'){
+      var idade = idadeEfetiva();
+      var jovem = (idade === 'menos-1' || idade === '1-2');
+      return (respostas.tempoEmpresa === '1ano-mais' && jovem) ? 'situacaoAtual' : 'resultado';
+    }
+    return 'resultado';
+  }
+
+  function mostrarStep(step){
+    perguntas.forEach(function(p){
+      var ehEssa = (p.getAttribute('data-step') === step);
+      p.hidden = !ehEssa;
+      if(ehEssa){
+        var pnum = p.querySelector('.fam-quiz-pnum');
+        if(pnum) pnum.textContent = 'Pergunta ' + (historico.length + 1);
+      }
+    });
+    saidaBox.hidden = (step !== 'saida');
+    resultadoBox.hidden = (step !== 'resultado');
+    voltarBtn.hidden = (historico.length === 0);
+    if(step === 'resultado') renderizarResultado();
+    var pct = (step === 'resultado' || step === 'saida') ? 100 : Math.min(96, 16 + historico.length * 17);
+    barra.style.width = pct + '%';
+  }
+
+  perguntas.forEach(function(p){
+    p.querySelectorAll('.fam-quiz-opcao').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var campo = btn.getAttribute('data-campo');
+        var valor = btn.getAttribute('data-valor');
+        respostas[campo] = valor;
+        p.querySelectorAll('.fam-quiz-opcao').forEach(function(b){ b.classList.remove('selecionada'); });
+        btn.classList.add('selecionada');
+        var atual = p.getAttribute('data-step');
+        historico.push(atual);
+        var prox = proximoStep(atual);
+        setTimeout(function(){ mostrarStep(prox); }, 150);
+      });
+    });
+  });
+
+  voltarBtn.addEventListener('click', function(){
+    if(historico.length === 0) return;
+    var anterior = historico.pop();
+    mostrarStep(anterior);
+  });
+
+  recomecarBtn.addEventListener('click', function(){
+    respostas = {};
+    historico = [];
+    perguntas.forEach(function(p){
+      p.querySelectorAll('.fam-quiz-opcao').forEach(function(b){ b.classList.remove('selecionada'); });
+    });
+    mostrarStep('situacao');
+  });
+
+  function card(tipo, valor, titulo, texto, link, linkTexto){
+    return '<div class="fam-quiz-card fam-quiz-card--' + tipo + '">' +
+      (valor ? '<span class="fam-quiz-card-valor">' + valor + '</span>' : '') +
+      (titulo ? '<span class="fam-quiz-card-titulo">' + titulo + '</span>' : '') +
+      '<p>' + texto + '</p>' +
+      '<a href="' + link + '">' + linkTexto + ' →</a>' +
+    '</div>';
+  }
+
+  function renderizarResultado(){
+    var idade = idadeEfetiva();
+    var jovem = (idade === 'menos-1' || idade === '1-2');
+    var qualquerFilho = (idade === 'menos-1' || idade === '1-2' || idade === '3-17');
+    var html = '';
+    var count = 0;
+
+    if(qualquerFilho){
+      if(respostas.seguro === 'sim'){
+        html += card('ok', '¥500.000', 'Auxílio-parto',
+          'Pago pelo seguro-saúde no nascimento do bebê. Você tem até 2 anos após o parto pra pedir.',
+          'auxilio-parto-japao.html', 'Ver como pedir');
+      } else {
+        html += card('aviso', '', 'Auxílio-parto',
+          'Esse benefício depende de estar inscrita no seguro-saúde japonês — confirme sua situação antes de contar com ele.',
+          'auxilio-parto-japao.html', 'Ver como funciona');
+      }
+      count++;
+    }
+
+    if(respostas.trabalho === 'autonoma' && qualquerFilho){
+      html += card('ok', '', 'Isenção do Nenkin por filho',
+        'A partir de 1º de outubro de 2026, quem paga o Kokumin Nenkin por conta própria pode ficar até 12 meses sem pagar, sem reduzir a aposentadoria futura.',
+        'isencao-nenkin-bebe.html', 'Ver as regras');
+      count++;
+    }
+
+    if(qualquerFilho){
+      html += card('ok', '¥10.000 a ¥15.000/mês', 'Auxílio infantil (Jidō Teate)',
+        'Cai direto na conta, 6 vezes por ano, até os 18 anos — sem depender de quanto você ganha.',
+        'auxilio-infantil-japao.html#calculadora', 'Calcular quanto você recebe');
+      count++;
+    }
+
+    if(respostas.trabalho === 'empregada' && jovem){
+      if(respostas.tempoEmpresa === '1ano-mais'){
+        html += card('ok', '67% a 80%', 'Licença-parental',
+          'Com seu tempo de empresa, esse benefício costuma se aplicar. Cobre parte do salário durante a licença.',
+          'licenca-parental-japao.html', 'Ver as regras');
+      } else if(respostas.tempoEmpresa === 'menos-1ano'){
+        html += card('aviso', '', 'Licença-parental',
+          'Costuma exigir 12 meses de empresa antes de começar — ainda não é o seu caso, mas guarde a página pra quando completar.',
+          'licenca-parental-japao.html', 'Ver as regras');
+      }
+      count++;
+    }
+
+    if(respostas.trabalho === 'empregada' && respostas.tempoEmpresa === '1ano-mais' && jovem && respostas.situacaoAtual !== 'licenca'){
+      html += card('ok', 'Até 10%', 'Redução de jornada',
+        'Se você reduziu (ou vai reduzir) a carga horária pra cuidar do seu filho, pode ter direito a essa compensação salarial.',
+        'reducao-jornada-japao.html', 'Entender o benefício');
+      count++;
+    }
+
+    if(count > 0){
+      tituloResultado.textContent = 'Encontramos ' + count + (count === 1 ? ' benefício que pode' : ' pontos que podem') + ' valer para você';
+      cardsBox.innerHTML = html;
+    } else {
+      tituloResultado.textContent = 'Não identificamos benefícios diretos com essas respostas';
+      cardsBox.innerHTML = '<p style="font-size:.9rem;color:var(--color-text-muted)">Isso pode acontecer se sua situação for bem específica. Dá uma olhada nos <a href="#resumo">5 benefícios completos</a> — um deles pode se aplicar de um jeito que o quiz não capturou.</p>';
+    }
+  }
+
+  mostrarStep('situacao');
+})();
 </script>
 <script src="main.js"></script>
 </body>
