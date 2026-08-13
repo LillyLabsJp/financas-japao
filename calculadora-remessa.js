@@ -53,7 +53,7 @@
   var FALLBACK_RATE = 0.0311; // 1 JPY em BRL (referencia de 28/07/2026)
   var FALLBACK_RATE_DATE = "28/07/2026";
 
-  var PROVIDERS_ATUALIZADO_EM = "julho de 2026";
+  var PROVIDERS_ATUALIZADO_EM = "13/08/2026";
 
   var PROVIDERS = [
     {
