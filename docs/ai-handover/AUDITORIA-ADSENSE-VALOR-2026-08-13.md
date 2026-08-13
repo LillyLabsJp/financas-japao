@@ -18,6 +18,14 @@
 > precisa ser tratada como provisória. Fica valendo a lição menor e verdadeira
 > — citação literal se confere por trecho curto e distintivo, não pela frase
 > inteira reconstruída de memória.
+>
+> **Situação atual da linha 32 (Etapa 4, concluída em 13/08/2026).** A página
+> foi reescrita e publicada: 691 → ~2.900 palavras, com tese própria (o portal
+> muda menos do que o marketing sugere), seção própria sobre o One-Stop online,
+> a mudança de regra de outubro de 2026 apurada na fonte primária do 総務省, e
+> bloco de fontes que declara o que **não** deu para reconferir (Satofull e
+> Furunavi bloquearam o acesso). A nota B está superada — a linha precisa ser
+> reavaliada do zero na Etapa 5, junto com as outras três páginas reescritas.
 
 ## Método
 
