@@ -216,6 +216,13 @@
 .onp-destino td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;}
 .onp-destino tr.total td{background:var(--color-accent-soft);font-weight:800;}
 .onp-legenda{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:8px;vertical-align:baseline;}
+/* no celular os dois segmentos menores nao comportam texto: a barra vira
+   so proporcao visual e os numeros ficam na tabela logo abaixo */
+@media(max-width:640px){
+  .onp-destino-barra{height:26px;}
+  .onp-destino-barra span{font-size:0;}
+  .onp-destino th,.onp-destino td{padding:11px 12px;font-size:.84rem;}
+}
 
 /* ---- o que NAO e ---- */
 .onp-naoe{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
