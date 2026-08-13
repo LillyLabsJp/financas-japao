@@ -117,11 +117,22 @@ mesmo de ser indexado.
 
 ## Erro conhecido da auditoria original, a corrigir na Etapa 5
 
-Na auditoria de 13/08/2026 o Opus atribuiu a `onde-fazer-furusato-nozei.html` uma citação
+> **RETIFICADO em 13/08/2026, no início da Etapa 4. O texto abaixo estava errado.**
+> A página foi lida na íntegra e a evidência **existe**: a tabela de comparação tem uma
+> coluna com o cabeçalho **"Conferir antes"** e a célula da linha da Amazon é, literalmente,
+> **"Municípios, entrega e caminho do One-Stop"**. O que houve foi erro de transcrição de
+> uma palavra do cabeçalho — *Confirmar* em vez de *Conferir* — e a busca de verificação
+> foi feita pela palavra errada, devolvendo zero ocorrências e criando um falso positivo
+> de invenção. Não houve citação inventada, e não há motivo para supor que a página não
+> tivesse sido lida. A lição que sobra é a menor e verdadeira: conferir citação por trecho
+> curto e distintivo, nunca pela frase inteira reconstruída de memória — e desconfiar de
+> um "zero ocorrências" antes de concluir que a fonte foi fabricada.
+
+~~Na auditoria de 13/08/2026 o Opus atribuiu a `onde-fazer-furusato-nozei.html` uma citação
 literal — células com "Confirmar antes: Municípios, entrega e caminho do One-Stop" — que
 **não existe no arquivo**. Foi verificado: zero ocorrências. A página nunca tinha sido lida
 naquele momento. O julgamento de fundo (página curta, 691 palavras, comparação pouco
-conclusiva) segue de pé, mas a evidência citada era inventada. A Etapa 4 tem que começar
+conclusiva) segue de pé, mas a evidência citada era inventada.~~ A Etapa 4 tem que começar
 lendo a página de verdade, e a Etapa 5 tem que reavaliar `onde-fazer` do zero.
 
 ---

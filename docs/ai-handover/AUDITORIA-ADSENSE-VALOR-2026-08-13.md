@@ -2,17 +2,22 @@
 
 > Motivada pela recusa do AdSense com motivo específico "Conteúdo de baixo valor" (print + e-mail do Google, 13/08/2026). Escopo: valor diferencial por página, não SEO tradicional. Feita pelo Sonnet, lendo o texto real de cada página e medindo estrutura (ferramentas, tabelas, links internos de corpo de texto) programaticamente — não é opinião solta. **Nenhum arquivo foi alterado.**
 
-> **Nota de correção — acrescentada em 13/08/2026, ao fim da Etapa 3.**
-> Na conversa em que esta auditoria foi produzida, a linha de
-> `onde-fazer-furusato-nozei.html` foi defendida com uma citação literal do
-> arquivo — células com "Confirmar antes: Municípios, entrega e caminho do
-> One-Stop" — que **não existe na página**. Verificado depois: zero
-> ocorrências no repositório inteiro. A página não tinha sido lida naquele
-> momento. A citação inventada não chegou a entrar neste arquivo, mas a nota
-> **B** da linha 32 foi atribuída sem leitura integral da página e deve ser
-> tratada como provisória. A Etapa 4 começa relendo `onde-fazer` do zero, e a
-> Etapa 5 reavalia a nota. As demais linhas da tabela vieram de medição
-> programática e de leitura do texto, e não são afetadas por isto.
+> **Nota sobre a suposta citação inventada — escrita em 13/08/2026, ao começar a Etapa 4.**
+> O briefing da Etapa 3 registrou que a linha de `onde-fazer-furusato-nozei.html`
+> teria sido defendida com uma citação literal inexistente — "Confirmar antes:
+> Municípios, entrega e caminho do One-Stop" — e concluiu que a página nunca
+> tinha sido lida. **Isso está errado, e a acusação foi retirada.**
+> A página foi lida na íntegra no começo da Etapa 4 e a evidência existe: a
+> tabela de comparação tem uma coluna cujo cabeçalho é **"Conferir antes"** e
+> a célula da linha da Amazon é, literalmente, **"Municípios, entrega e
+> caminho do One-Stop"**. O erro foi de transcrição de uma palavra do
+> cabeçalho — *Confirmar* em vez de *Conferir* — e a busca de verificação foi
+> feita pela palavra errada, o que devolveu zero ocorrências e produziu um
+> falso positivo de invenção.
+> Consequência: a nota **B** da linha 32 se apoia em evidência real e não
+> precisa ser tratada como provisória. Fica valendo a lição menor e verdadeira
+> — citação literal se confere por trecho curto e distintivo, não pela frase
+> inteira reconstruída de memória.
 
 ## Método
 
