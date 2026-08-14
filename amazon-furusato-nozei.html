@@ -114,7 +114,7 @@
    Só entra como preenchimento ou filete. Texto em cima dele é o navy da
    Amazon (6,34:1, passa). O botão continua verde — verde é o sinal de
    clique do site inteiro e não muda numa página só. */
-:root{--amz-laranja:#FF9900;--amz-navy:#232F3E;}
+:root{--amz-laranja:#FF9900;--amz-navy:#232F3E;--amz-areia:#FFF6E5;--amz-ambar:#8a5200;}
 
 .passos{display:grid;grid-template-columns:1fr;gap:14px;margin:28px 0;}
 @media (min-width:640px){.passos{grid-template-columns:1fr 1fr 1fr;}}
@@ -147,13 +147,19 @@
    style.css só nesta página — o arquivo global não é tocado. */
 .categoria-etiqueta{color:var(--amz-navy);background:var(--amz-laranja);}
 
+/* Resposta Rápida na paleta Amazon. Fundo âmbar claro, filete laranja.
+   O link interno passa para o vermelho escuro: sobre o verde antigo ele
+   dava 4,14:1 e já reprovava; sobre este fundo o escuro dá 6,02:1. */
+.resposta-rapida{border-left-color:var(--amz-laranja);background:var(--amz-areia);}
+.resposta-rapida a{color:var(--color-red-dark);}
+
 /* Toque 1: filete laranja no topo do hero. É a primeira coisa na tela. */
-.hero-amazon{background:linear-gradient(135deg,#eaf6f0 0%,#eef4f8 100%);border:1px solid var(--color-border);border-top:5px solid var(--amz-laranja);border-radius:14px;padding:30px 28px;margin:22px 0 26px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.hero-amazon{background:linear-gradient(135deg,#FFF6E5 0%,#FFEFD4 100%);border:1px solid #f2ddb8;border-top:5px solid var(--amz-laranja);border-radius:14px;padding:30px 28px;margin:22px 0 26px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
 .hero-amazon-conteudo{flex:1 1 280px;min-width:min(240px,100%);}
-.hero-amazon .eyebrow{display:block;font-weight:700;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--color-accent-dark);margin-bottom:6px;}
-.hero-amazon h2{color:var(--color-primary-dark);margin:0 0 10px;font-size:1.7rem;line-height:1.2;}
-.hero-amazon h2 span{color:var(--color-accent-dark);}
-.hero-amazon p{color:var(--color-text-muted);margin:0;font-size:.98rem;max-width:420px;}
+.hero-amazon .eyebrow{display:block;font-weight:700;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--amz-ambar);margin-bottom:6px;}
+.hero-amazon h2{color:var(--amz-navy);margin:0 0 10px;font-size:1.7rem;line-height:1.2;}
+.hero-amazon h2 span{color:var(--amz-ambar);}
+.hero-amazon p{color:#5c5142;margin:0;font-size:.98rem;max-width:420px;}
 .hero-amazon .hero-ilustracao{flex:0 0 220px;width:220px;max-width:100%;height:auto;}
 @media (max-width:640px){.hero-amazon{flex-direction:column;text-align:center;}.hero-amazon p{margin:0 auto;}}
 
