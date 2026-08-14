@@ -74,7 +74,7 @@ São três, e a que falta mais é a `furusato-nozei` — a página pilar.
 
 | Página | Bloco de fontes | Schema FAQ | Links `.go.jp` |
 |---|---|---|---|
-| `furusato-nozei` (pilar) | não | sim | 2 |
+| ~~`furusato-nozei`~~ (pilar) | **FEITO** | sim | 2 → **5** |
 | ~~`rakuten-furusato-nozei`~~ | **FEITO** | **FEITO** | 1 → **4** |
 | ~~`amazon-furusato-nozei`~~ | **FEITO** | sim | 0 → **4** |
 
@@ -90,9 +90,21 @@ As outras 22 páginas de conteúdo têm bloco de fontes. Confirmado.
    própria Amazon, declara que o guia da Amazon não pôde ser reconferido em
    14/08 — a página não abre para leitura automatizada — e marca os três
    perfis de limite como estimativa, não valor oficial.
-2. **`furusato-nozei`** é a de maior alcance. Cita Sōmushō e NTA no corpo e tem
-   o selo `fu-conf-fonte`, mas termina no FAQ, sem bloco. É a página pilar: se
-   uma IA for citar uma página do site, é esta.
+2. ~~**`furusato-nozei`**~~ — **feito em 14/08.** Citava só as home pages do
+   Sōmushō e do NTA; passou a ter os quatro links profundos, o mesmo conjunto
+   das outras duas. O bloco também abre o método da calculadora — premissa de
+   15% de seguro social, margem de segurança, arredondamento para baixo de
+   propósito, e o que ela **não** cobre. E declara que a renda digitada não sai
+   do navegador, o que foi conferido no código antes de escrever: nenhum
+   `fetch`, nenhum XHR, nenhum evento de Analytics com os valores.
+
+**O item 2 está fechado.** As três páginas têm bloco de fontes.
+
+> **Achado que não foi tratado:** o pilar é a única página do cluster que **não
+> menciona a mudança de outubro de 2026** — zero ocorrências, enquanto a
+> `onde-fazer` dedica uma seção a ela. É conteúdo fiscal, que pela regra 13 do
+> `HANDOVER-SONNET` precisa de revisão específica, então ficou registrado em
+> vez de escrito.
 3. ~~**`rakuten-`**~~ — **feito em 14/08.** Ganhou o mesmo bloco de fontes da
    `amazon-`, com quatro links oficiais. O `FAQPage` que faltava foi gerado a
    partir das perguntas visíveis: eram **oito**, não seis — o item original

@@ -676,6 +676,15 @@
 .botao-rede:hover{background:rgba(255,255,255,.12);text-decoration:none;}
 .botao-rede.facebook{color:#8fb8ff;}
 .botao-rede.x{color:#d7dee2;}
+
+.fontes{background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;margin:30px 0;font-size:.9rem;}
+.fontes > strong{color:var(--color-primary-dark);}
+.fontes h3{font-size:.95rem;color:var(--color-primary-dark);margin:18px 0 0;}
+.fontes h3:first-of-type{margin-top:12px;}
+.fontes ul{margin:8px 0 0;padding-left:20px;}
+.fontes li{margin-bottom:7px;color:var(--color-text-muted);}
+.fontes p{margin:10px 0 0;color:var(--color-text-muted);}
+.fontes .fontes-nota{font-size:.86rem;color:var(--color-text-faint);}
 </style>
 
 <script type="application/ld+json">
@@ -1633,6 +1642,31 @@
         <summary>Qual a diferença entre a simulação simples e a detalhada?</summary>
         <p class="resposta">A simples pede só sua renda anual e estima o seguro social em 15%. A detalhada usa os valores reais impressos no seu gensen chōshūhyō, sem estimar nada — resultado mais preciso. Use a detalhada se já tiver o documento em mãos (chega em dezembro/janeiro).</p>
       </details>
+    </div>
+
+    <div class="fontes">
+      <strong>Fontes consultadas, como a calculadora funciona e o que não deu para reconferir</strong>
+
+      <h3>Fontes oficiais</h3>
+      <ul>
+        <li><a href="https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/080430_2_kojin.html" target="_blank" rel="noopener nofollow">総務省 (Sōmushō) — Portal oficial do Furusato Nozei</a>: o funcionamento do sistema, o teto de 30% do valor da doação para o presente e o limite de cinco municípios do One-Stop, que conta cidades e não doações.</li>
+        <li><a href="https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html" target="_blank" rel="noopener nofollow">総務省 — Como funciona o abatimento no imposto</a>: a fórmula usada por esta calculadora. De lá vêm as três parcelas do cálculo, os ¥2.000 fixos que ficam por sua conta, o teto de 40% da renda para o abatimento no imposto de renda e o de 30% para a parcela básica do imposto residencial. De lá também vem o prazo de 15 de março para a declaração, e a regra de que quem usa o One-Stop não tem abatimento no imposto de renda — o valor inteiro sai do imposto residencial do ano seguinte.</li>
+        <li><a href="https://www.nta.go.jp/taxes/shiraberu/shinkoku/tokushu/keisubetsu/furusato.htm" target="_blank" rel="noopener nofollow">国税庁 (NTA) — Para quem fez Furusato Nozei</a>, consultado em 14 de agosto de 2026: quando o One-Stop deixa de valer e é preciso declarar, e o uso do Myna Portal para puxar os comprovantes direto na declaração.</li>
+        <li><a href="https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/topics/" target="_blank" rel="noopener nofollow">総務省 — Tópicos e comunicados sobre o Furusato Nozei</a>: os avisos que fixam as regras de cada período, incluindo a proibição de pontos que vale para todos os portais desde 1º de outubro de 2025.</li>
+      </ul>
+
+      <h3>Como a calculadora chega ao número</h3>
+      <p>A <strong>simulação simples</strong> aplica a fórmula oficial do Sōmushō assumindo assalariado com seguro social de 15% da renda, sem outras deduções, e ainda aplica uma margem de segurança. A <strong>simulação detalhada</strong> troca essa estimativa pelos valores reais do seu gensen chōshūhyō, então erra menos.</p>
+      <p>Nos dois casos o resultado sai <strong>arredondado para baixo, de propósito</strong>. Preferimos que você doe um pouco abaixo do seu limite real a um pouco acima — passar do limite significa pagar do próprio bolso, e esse erro custa dinheiro. Por isso o número daqui costuma ser menor que o de outras calculadoras.</p>
+      <p class="fontes-nota">O que a calculadora <strong>não</strong> cobre: financiamento imobiliário (jūtaku rōn kōjo), despesa médica alta, renda que não seja salário e outras deduções. Todos derrubam o limite, alguns muito. Se você tem financiamento, confirme na sua prefeitura antes de doar valores altos. Este site não é consultoria contábil.</p>
+
+      <h3>O que não deu para reconferir</h3>
+      <p class="fontes-nota">Os catálogos e as telas dos portais mudam sem aviso e não foram reconferidos em 14 de agosto de 2026. Também não afirmamos aqui quantos municípios ou quantos presentes cada portal tem: são números divulgados pelos próprios portais, mudam toda semana e não conseguimos verificá-los de forma independente. A comparação entre portais, sem link de afiliado, está em <a href="onde-fazer-furusato-nozei.html">onde fazer Furusato Nozei</a>.</p>
+
+      <h3>Transparência</h3>
+      <p class="fontes-nota">Esta página tem links de afiliado, sinalizados onde aparecem. A comissão não muda o que está escrito nem o número que a calculadora entrega: o valor doado e o desconto no imposto são idênticos em qualquer portal, por norma do governo, e a calculadora não sabe por onde você vai doar. O cálculo acontece inteiro no seu navegador: <strong>a renda que você digita não é enviada para nenhum servidor</strong> — nem para o nosso, que nem existe, já que o site é estático. O site usa Google Analytics para contar visitas, como está descrito na <a href="privacidade.html">política de privacidade</a>, mas os valores que você digita aqui não entram nisso.</p>
+
+      <p>Última atualização das fontes: 14 de agosto de 2026.</p>
     </div>
 
     <div class="author-box">
