@@ -31,14 +31,14 @@
 <meta property="og:title" content="Furusato Nozei pela Amazon: guia completo em português (2026)">
 <meta property="og:description" content="Como doar via Furusato Nozei direto pela Amazon Japão, passo a passo, em português. Achar produtos, doar e resolver o One-Stop sem sair do app que você já usa.">
 <meta property="og:url" content="https://financasnojapao.com/amazon-furusato-nozei.html">
-<meta property="og:image" content="https://financasnojapao.com/og-image.jpg">
+<meta property="og:image" content="https://financasnojapao.com/img/og-amazon.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Finanças no Japão — Furusato Nozei pela Amazon">
+<meta property="og:image:alt" content="Caixa de entrega aberta com melão, wagyu, morangos, arroz e caranguejo, ao lado de um notebook mostrando uma loja de furusato nozei">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Furusato Nozei pela Amazon: guia completo em português (2026)">
 <meta name="twitter:description" content="Como doar via Furusato Nozei direto pela Amazon Japão, passo a passo, em português.">
-<meta name="twitter:image" content="https://financasnojapao.com/og-image.jpg">
+<meta name="twitter:image" content="https://financasnojapao.com/img/og-amazon.jpg">
 
 <script type="application/ld+json">
 {
@@ -143,9 +143,6 @@
 
 .faq-item .resposta{padding:0 0 16px;color:var(--color-text-muted);font-size:.93rem;margin:0;}
 
-/* Etiqueta de categoria em laranja, no topo. Sobrescreve o verde do
-   style.css só nesta página — o arquivo global não é tocado. */
-.categoria-etiqueta{color:var(--amz-navy);background:var(--amz-laranja);}
 
 /* Resposta Rápida na paleta Amazon. Fundo âmbar claro, filete laranja.
    O link interno passa para o vermelho escuro: sobre o verde antigo ele
@@ -153,15 +150,6 @@
 .resposta-rapida{border-left-color:var(--amz-laranja);background:var(--amz-areia);}
 .resposta-rapida a{color:var(--color-red-dark);}
 
-/* Toque 1: filete laranja no topo do hero. É a primeira coisa na tela. */
-.hero-amazon{background:linear-gradient(135deg,#FFF6E5 0%,#FFEFD4 100%);border:1px solid #f2ddb8;border-top:5px solid var(--amz-laranja);border-radius:14px;padding:30px 28px;margin:22px 0 26px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
-.hero-amazon-conteudo{flex:1 1 280px;min-width:min(240px,100%);}
-.hero-amazon .eyebrow{display:block;font-weight:700;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--amz-ambar);margin-bottom:6px;}
-.hero-amazon h2{color:var(--amz-navy);margin:0 0 10px;font-size:1.7rem;line-height:1.2;}
-.hero-amazon h2 span{color:var(--amz-ambar);}
-.hero-amazon p{color:#5c5142;margin:0;font-size:.98rem;max-width:420px;}
-.hero-amazon .hero-ilustracao{flex:0 0 220px;width:220px;max-width:100%;height:auto;}
-@media (max-width:640px){.hero-amazon{flex-direction:column;text-align:center;}.hero-amazon p{margin:0 auto;}}
 
 .indice{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:16px 22px;margin:0 0 32px;font-size:.9rem;}
 .indice strong{color:var(--color-primary-dark);display:block;margin-bottom:8px;}
@@ -187,6 +175,15 @@
 .passos-steps{display:grid;grid-template-columns:1fr;gap:10px;align-items:start;margin:24px 0;}
 @media (min-width:760px){.passos-steps{grid-template-columns:1fr auto 1fr auto 1fr;}}
 .passo-step{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;overflow:hidden;}
+/* O .eyebrow do style.css e vermelho. Neste hero vai ambar Amazon:
+   sobre a area clara da foto o laranja puro daria 2,14:1. */
+.rk-hero-foto .eyebrow{color:var(--amz-ambar);}
+
+/* Nao existe regra .lead no style.css — a rakuten define a dela dentro
+   do proprio arquivo. Sem isto o paragrafo do hero ficaria sem cor,
+   sem largura maxima e sem entrelinha. */
+.rk-hero .lead{color:var(--color-text-muted);max-width:60ch;line-height:1.6;}
+
 /* Toque 2: faixa do passo em laranja Amazon, com texto no navy da Amazon.
    Dá 6,34:1 — passa. Laranja com texto branco daria 2,14:1 e reprovaria. */
 .step-header{background:var(--amz-laranja);color:var(--amz-navy);font-weight:800;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;}
@@ -352,11 +349,43 @@
 </header>
 
 <main id="conteudo">
+  <section class="rk-hero rk-hero-foto">
+    <img class="rk-hero-bg" src="img/hero-amazon.webp?v=1" alt="Caixa de papelão aberta sobre uma mesa de madeira, com melão, arroz, carne wagyu, morangos e pernas de caranguejo dentro, ao lado de um notebook e um celular mostrando uma loja de presentes de furusato nozei" width="1563" height="1006" loading="eager" fetchpriority="high" decoding="async">
+    <div class="container">
+      <div class="rk-hero-txt">
+        <span class="eyebrow">Guia completo 2026</span>
+        <h1>Furusato Nozei pela Amazon: guia completo em português</h1>
+        <p class="lead">Mesma conta, mesmo cartão e mesmo endereço que você já usa pra comprar qualquer coisa — só que parte do que você gasta vira imposto que você já ia pagar de qualquer jeito.</p>
+
+        <ul class="rk-hero-lista">
+          <li>Sem cadastro novo: é a conta Amazon que você já tem</li>
+          <li>Passo a passo em português, com as telas explicadas</li>
+          <li>One-Stop da Amazon: os três caminhos online</li>
+          <li>Regras de 2026, com fontes oficiais</li>
+        </ul>
+
+        <div class="fu-ctas">
+          <a class="btn" href="furusato-nozei.html#calculadora">Calcular meu limite</a>
+          <a class="btn-secondary" href="https://www.amazon.co.jp/fmc/furusato?tag=financasnojap-22" target="_blank" rel="sponsored nofollow noopener">Abrir Amazon Furusato</a>
+        </div>
+        <p class="rk-af-nota">Link de afiliado: você não paga nada a mais por usar nossos links.</p>
+
+        <div class="fu-confianca">
+          <span class="fu-conf-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l8 3.5v6c0 5-3.4 9.4-8 10.5-4.6-1.1-8-5.5-8-10.5v-6L12 2z"/><path d="M10.4 15.2l-3-3 1.4-1.4 1.6 1.6 4.4-4.4 1.4 1.4-5.8 5.8z" fill="#fff"/></svg>
+            Revisado em 30 de julho de 2026
+          </span>
+          <span class="fu-conf-sep"></span>
+          <span class="fu-conf-item fu-conf-fonte">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3L2.5 8v1.6h19V8L12 3zm-7 4.9h2v7.6H5V7.9zm4 0h2v7.6H9V7.9zm4 0h2v7.6h-2V7.9zm4 0h2v7.6h-2V7.9zM3 17.2h18V19H3v-1.8z"/></svg>
+            <span><b>Fontes:</b> Amazon, Sōmushō e NTA</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="container section">    <p class="breadcrumb"><a href="/">Início</a> / <a href="furusato-nozei.html">Furusato Nozei</a> / Pela Amazon</p>
-    <span class="updated-badge">🕒 Guia revisado em 30 de julho de 2026, com base no guia oficial da Amazon</span>
-    <p class="categoria-etiqueta">Impostos</p>
-    <h1>Furusato Nozei pela Amazon: guia completo em português</h1>
-    <p class="lead">A Amazon Japão tem uma <a href="https://www.amazon.co.jp/fmc/furusato?tag=financasnojap-22" target="_blank" rel="sponsored nofollow noopener">seção própria de Furusato Nozei</a>, integrada com a conta que você já usa — mas o guia oficial só existe em japonês e inglês. Aqui está tudo explicado em português, sem juridiquês, baseado no guia oficial da própria Amazon.</p>
     <p class="fu-disclosure">Esta página contém links de afiliado da Amazon. Se você doar por eles, o site recebe uma pequena comissão — sem custo adicional pra você.</p>
 
 
@@ -365,58 +394,6 @@
         <h2>Como doar furusato nozei pela Amazon?</h2>
         <p><strong>A Amazon Japão tem uma <a href="https://www.amazon.co.jp/fmc/furusato?tag=financasnojap-22" target="_blank" rel="sponsored nofollow noopener">área própria de furusato nozei</a> que usa a conta, o endereço e o pagamento que você já tem.</strong> É o caminho mais curto para quem já compra lá: não precisa de cadastro novo nem preencher endereço em japonês de novo.</p><p>O catálogo é menor que o dos portais especializados, mas o processo é o mesmo de uma compra comum — com um passo a mais: marcar que você quer receber o formulário do One-Stop.</p>
       </div>
-    <div class="hero-amazon">
-      <div class="hero-amazon-conteudo">
-        <span class="eyebrow">Como usar</span>
-        <h2>Amazon <span>Furusato Nozei</span></h2>
-        <p>Mesma conta, mesmo cartão, mesmo endereço que você já usa pra comprar qualquer coisa — só que parte do que você gasta vira imposto que você já ia pagar de qualquer jeito.</p>
-      </div>
-      <svg class="hero-ilustracao" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de uma pessoa recebendo uma caixa de presente do Furusato Nozei, com um caranguejo, uvas e carne flutuando ao redor">
-        <circle cx="62" cy="56" r="30" fill="#fbe0d9"/>
-        <g transform="translate(62,56)">
-          <ellipse cx="0" cy="2" rx="13" ry="9" fill="#e2795a"/>
-          <path d="M-13 -2 Q-22 -12 -18 -18" stroke="#e2795a" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <path d="M13 -2 Q22 -12 18 -18" stroke="#e2795a" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <circle cx="-18" cy="-19" r="4" fill="#e2795a"/>
-          <circle cx="18" cy="-19" r="4" fill="#e2795a"/>
-          <path d="M-11 8 L-17 14 M-4 11 L-7 18 M4 11 L7 18 M11 8 L17 14" stroke="#e2795a" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="-5" cy="0" r="1.6" fill="#fff"/>
-          <circle cx="5" cy="0" r="1.6" fill="#fff"/>
-        </g>
-        <circle cx="336" cy="48" r="27" fill="#e9def5"/>
-        <g transform="translate(336,44)">
-          <path d="M0 -10 L0 -2" stroke="#8a6bb0" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="-7" cy="2" r="5.5" fill="#9b7bc2"/>
-          <circle cx="0" cy="0" r="5.5" fill="#9b7bc2"/>
-          <circle cx="7" cy="2" r="5.5" fill="#9b7bc2"/>
-          <circle cx="-4" cy="10" r="5.5" fill="#9b7bc2"/>
-          <circle cx="4" cy="10" r="5.5" fill="#9b7bc2"/>
-          <circle cx="0" cy="18" r="5.5" fill="#9b7bc2"/>
-          <path d="M-2 -10 Q4 -14 8 -9" stroke="#3f9d5c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        </g>
-        <circle cx="330" cy="140" r="26" fill="#fbe0d9"/>
-        <g transform="translate(330,140)">
-          <path d="M-10 -6 Q-14 -14 -4 -16 Q10 -18 12 -8 Q14 2 4 6 Q-4 10 -10 4 Z" fill="#d97a5f"/>
-          <path d="M8 6 L18 15" stroke="#e9c9a5" stroke-width="5" stroke-linecap="round"/>
-          <path d="M4 8 Q8 12 6 15" stroke="#c76a4d" stroke-width="2" fill="none"/>
-        </g>
-        <ellipse cx="200" cy="176" rx="70" ry="8" fill="#0b3d59" opacity="0.08"/>
-        <rect x="182" y="140" width="14" height="32" rx="6" fill="#0b3d59"/>
-        <rect x="204" y="140" width="14" height="32" rx="6" fill="#0b3d59"/>
-        <path d="M170 96 Q170 76 200 76 Q230 76 230 96 L228 148 Q200 158 172 148 Z" fill="#1f9d6b"/>
-        <path d="M175 100 Q152 108 150 128" stroke="#1f9d6b" stroke-width="12" fill="none" stroke-linecap="round"/>
-        <path d="M225 100 Q248 108 250 128" stroke="#1f9d6b" stroke-width="12" fill="none" stroke-linecap="round"/>
-        <circle cx="200" cy="58" r="24" fill="#f5ece0"/>
-        <path d="M178 52 Q200 34 222 52 Q222 40 200 38 Q178 40 178 52 Z" fill="#0b3d59"/>
-        <circle cx="192" cy="60" r="2.2" fill="#0b3d59"/>
-        <circle cx="208" cy="60" r="2.2" fill="#0b3d59"/>
-        <path d="M191 68 Q200 74 209 68" stroke="#0b3d59" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <rect x="176" y="122" width="48" height="38" rx="4" fill="#ffffff" stroke="#0b3d59" stroke-width="2.5"/>
-        <rect x="176" y="122" width="48" height="14" fill="#e3f7ec" stroke="#0b3d59" stroke-width="2.5"/>
-        <rect x="196" y="122" width="8" height="38" fill="#1f9d6b"/>
-        <path d="M188 122 Q192 108 200 122 Q208 108 212 122" fill="none" stroke="#1f9d6b" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-    </div>
 
     <nav class="indice" aria-label="Índice da página">
       <strong>Nesta página:</strong>
