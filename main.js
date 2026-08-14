@@ -89,3 +89,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+/* ============ COMPARTILHAR PAGINA ============
+   Monta os links de compartilhamento a partir da URL atual, sem
+   carregar script de rede nenhuma. Cada pagina traz o proprio texto
+   em data-share-texto. Se o navegador tiver o menu nativo de
+   compartilhar, o botao "Copiar link" usa ele; se nao, copia mesmo. */
+document.addEventListener("DOMContentLoaded", function () {
+  var caixas = document.querySelectorAll(".fu-share");
+  if (!caixas.length) return;
+
+  var url = location.href.split("?")[0].split("#")[0];
+  var urlEnc = encodeURIComponent(url);
+
+  Array.prototype.forEach.call(caixas, function (caixa) {
+    var texto = caixa.getAttribute("data-share-texto") || document.title;
+    var msgEnc = encodeURIComponent(texto + " " + url);
+
+    var destinos = {
+      whatsapp: "https://wa.me/?text=" + msgEnc,
+      line: "https://line.me/R/msg/text/?" + msgEnc,
+      facebook: "https://www.facebook.com/sharer/sharer.php?u=" + urlEnc
+    };
+
+    Array.prototype.forEach.call(caixa.querySelectorAll("[data-share]"), function (el) {
+      var rede = el.getAttribute("data-share");
+      if (destinos[rede]) { el.href = destinos[rede]; return; }
+      if (rede !== "copiar") return;
+
+      el.addEventListener("click", function () {
+        var rotulo = el.querySelector(".fu-share-rotulo") || el;
+        var original = rotulo.textContent;
+        function avisar(msg) {
+          rotulo.textContent = msg;
+          setTimeout(function () { rotulo.textContent = original; }, 2000);
+        }
+        if (navigator.share) {
+          navigator.share({ title: document.title, text: texto, url: url }).catch(function () {});
+          return;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () { avisar("Copiado!"); },
+                                                  function () { avisar("Copie da barra"); });
+        } else {
+          avisar("Copie da barra");
+        }
+      });
+    });
+  });
+});

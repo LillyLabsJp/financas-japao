@@ -1254,3 +1254,33 @@ p { margin: 0 0 1em; }
   .fam-quiz-opcoes{flex-direction:column;}
   .fam-quiz-opcao{width:100%;text-align:center;}
 }
+
+/* ============ COMPARTILHAR PAGINA ============
+   Componente reutilizavel. Links simples, sem SDK de rede nenhuma:
+   nada de script de terceiro, nada de cookie, nada a acrescentar na
+   politica de privacidade. Cada pagina define o proprio texto no
+   atributo data-share-texto do container. */
+.fu-share{
+  border:1px solid var(--color-border);border-radius:12px;
+  background:var(--color-bg);padding:16px 20px;margin:30px 0;
+}
+.fu-share-titulo{margin:0 0 10px;font-size:.9rem;color:var(--color-text-muted);}
+.fu-share-botoes{display:flex;gap:8px;flex-wrap:wrap;}
+.fu-share-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 14px;border-radius:8px;min-height:42px;
+  font-family:inherit;font-weight:700;font-size:.85rem;
+  text-decoration:none;cursor:pointer;
+  border:1px solid var(--color-border);background:#fff;color:var(--color-text);
+}
+.fu-share-btn:hover{text-decoration:none;border-color:var(--color-text-faint);}
+.fu-share-btn svg{width:17px;height:17px;flex-shrink:0;}
+.fu-share-btn.whatsapp{color:#0b6b5d;}
+.fu-share-btn.line{color:#04773b;}
+.fu-share-btn.facebook{color:#1b4f9c;}
+.fu-share-btn.copiar{color:var(--color-text-muted);}
+.fu-share-btn:focus-visible{outline:2px solid var(--color-red);outline-offset:2px;}
+@media(max-width:520px){
+  .fu-share-botoes{display:grid;grid-template-columns:1fr 1fr;}
+  .fu-share-btn{justify-content:center;}
+}
