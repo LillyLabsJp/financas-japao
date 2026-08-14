@@ -75,7 +75,7 @@ São três, e a que falta mais é a `furusato-nozei` — a página pilar.
 | Página | Bloco de fontes | Schema FAQ | Links `.go.jp` |
 |---|---|---|---|
 | `furusato-nozei` (pilar) | não | sim | 2 |
-| `rakuten-furusato-nozei` | não | **não** | 1 |
+| ~~`rakuten-furusato-nozei`~~ | **FEITO** | **FEITO** | 1 → **4** |
 | ~~`amazon-furusato-nozei`~~ | **FEITO** | sim | 0 → **4** |
 
 As outras 22 páginas de conteúdo têm bloco de fontes. Confirmado.
@@ -93,9 +93,12 @@ As outras 22 páginas de conteúdo têm bloco de fontes. Confirmado.
 2. **`furusato-nozei`** é a de maior alcance. Cita Sōmushō e NTA no corpo e tem
    o selo `fu-conf-fonte`, mas termina no FAQ, sem bloco. É a página pilar: se
    uma IA for citar uma página do site, é esta.
-3. **`rakuten-`** tem o selo "Fontes: Rakuten e Sōmushō" e uma citação no
-   schema, mas nenhum bloco. **Confirmado que não tem `FAQPage`** apesar de ter
-   seis perguntas visíveis — o item original estava certo nisso.
+3. ~~**`rakuten-`**~~ — **feito em 14/08.** Ganhou o mesmo bloco de fontes da
+   `amazon-`, com quatro links oficiais. O `FAQPage` que faltava foi gerado a
+   partir das perguntas visíveis: eram **oito**, não seis — o item original
+   contou errado. Schema conferido contra o HTML, as oito batem na ordem.
+
+**Sobra só o pilar `furusato-nozei`.** É o único do cluster sem bloco de fontes.
 
 **Cuidado com o detector aqui.** A `aposentadoria-nenkin` parece não ter bloco
 se você procurar por `<h2>Fontes`: ela usa `<div class="fontes">` com um
