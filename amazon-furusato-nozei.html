@@ -184,6 +184,20 @@
    sem largura maxima e sem entrelinha. */
 .rk-hero .lead{color:var(--color-text-muted);max-width:60ch;line-height:1.6;}
 
+/* <picture> nao pode gerar caixa propria, senao o posicionamento
+   absoluto do .rk-hero-bg passa a valer em relacao a ela. */
+.rk-hero-foto picture{display:contents;}
+
+/* No celular o texto vai para baixo da foto, e esta foto tem 56% de
+   fundo liso na esquerda de proposito — e ali que o texto entra no
+   desktop. Sem tratamento, o celular mostrava uma foto enorme com
+   metade vazia. O <source> troca por um corte fechado no assunto, mais
+   baixo e 35 KB mais leve. O teto de altura evita que a foto coma a
+   tela antes de aparecer qualquer palavra. */
+@media(max-width:860px){
+  .rk-hero-foto .rk-hero-bg{max-height:44vh;object-fit:cover;object-position:center;}
+}
+
 /* Toque 2: faixa do passo em laranja Amazon, com texto no navy da Amazon.
    Dá 6,34:1 — passa. Laranja com texto branco daria 2,14:1 e reprovaria. */
 .step-header{background:var(--amz-laranja);color:var(--amz-navy);font-weight:800;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;}
@@ -350,7 +364,10 @@
 
 <main id="conteudo">
   <section class="rk-hero rk-hero-foto">
-    <img class="rk-hero-bg" src="img/hero-amazon.webp?v=1" alt="Caixa de papelão aberta sobre uma mesa de madeira, com melão, arroz, carne wagyu, morangos e pernas de caranguejo dentro, ao lado de um notebook e um celular mostrando uma loja de presentes de furusato nozei" width="1563" height="1006" loading="eager" fetchpriority="high" decoding="async">
+    <picture>
+      <source media="(max-width:860px)" srcset="img/hero-amazon-mobile.webp?v=1" width="900" height="500">
+      <img class="rk-hero-bg" src="img/hero-amazon.webp?v=1" alt="Caixa de papelão aberta sobre uma mesa de madeira, com melão, arroz, carne wagyu, morangos e pernas de caranguejo dentro, ao lado de um notebook e um celular mostrando uma loja de presentes de furusato nozei" width="1563" height="1006" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
     <div class="container">
       <div class="rk-hero-txt">
         <span class="eyebrow">Guia completo 2026</span>
