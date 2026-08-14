@@ -7,3 +7,6 @@ Disallow: /og-source.html
 Disallow: /gerador-utm-facebook.html
 
 Sitemap: https://financasnojapao.com/sitemap.xml
+
+# indice em markdown para modelos de linguagem (convencao llmstxt.org)
+# https://financasnojapao.com/llms.txt
