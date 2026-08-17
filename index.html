@@ -25,6 +25,19 @@
 <link rel="preload" href="inter-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css?v=2026-08-13b">
 
+<style>
+/* No celular o texto sai de cima da foto e vai para baixo dela. Esta
+   imagem tem metade da largura em fundo limpo de proposito — e ali que
+   o texto entra no computador. Sem tratamento, o celular mostrava uma
+   foto grande com metade vazia. O <source> troca por um corte fechado
+   no assunto, e o teto de altura evita que ela ocupe a tela toda antes
+   da primeira palavra. */
+.rk-hero-foto picture{display:contents;}
+@media(max-width:860px){
+  .rk-hero-foto .rk-hero-bg{max-height:38vh;object-fit:cover;object-position:center;}
+}
+</style>
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Finanças no Japão">
 <meta property="og:locale" content="pt_BR">
@@ -163,7 +176,10 @@
 </header>
 
 <section class="hero rk-hero-foto">
-  <img class="rk-hero-bg" src="img/hero-home-2026.webp?v=1" alt="Mesa clara com notebook mostrando um painel financeiro, calculadora, caderno, maneki-neko e daruma, com o monte Fuji, um pagode e um torii ao fundo entre cerejeiras" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async">
+  <picture>
+    <source media="(max-width:860px)" srcset="img/hero-home-2026-mobile.webp?v=1" width="900" height="500">
+    <img class="rk-hero-bg" src="img/hero-home-2026.webp?v=1" alt="Mesa clara com notebook mostrando um painel financeiro, calculadora, caderno, maneki-neko e daruma, com o monte Fuji, um pagode e um torii ao fundo entre cerejeiras" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async">
+  </picture>
   <div class="container">
     <div class="rk-hero-txt">
       <div>
