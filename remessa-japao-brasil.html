@@ -25,6 +25,30 @@
 <link rel="preload" href="inter-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css?v=2026-08-13b">
 
+<style>
+/* Hero desta pagina, dois ajustes.
+
+   1. Altura minima. A foto e dimensionada pela altura do bloco
+      (height:100%, width:auto). Como este hero tem pouco conteudo, o
+      bloco ficava com 408px e a foto saia com 725px de largura,
+      comecando no meio da tela — o texto ficava todo no branco, com
+      uma emenda dura entre o branco e a foto.
+
+   2. Degrade branco por cima. Esta foto tem 33% de area limpa a
+      esquerda, contra 46% e 51% das outras. O degrade dissolve a
+      transicao e garante base clara para o texto ate onde ele vai. */
+.rk-hero-foto{min-height:600px;display:flex;align-items:center;}
+.rk-hero-foto > .container{width:100%;}
+.rk-hero-foto::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,#fff 0%,#fff 26%,rgba(255,255,255,.92) 42%,rgba(255,255,255,0) 62%);
+}
+@media(max-width:860px){
+  .rk-hero-foto{min-height:0;display:block;}
+  .rk-hero-foto::after{display:none;}
+}
+</style>
+
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Finanças no Japão">
 <meta property="og:locale" content="pt_BR">
