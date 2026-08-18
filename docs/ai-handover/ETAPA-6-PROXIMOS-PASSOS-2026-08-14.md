@@ -272,3 +272,65 @@ Modelo importa menos que método — nesta sessão os erros vieram de afirmar se
 abrir o arquivo, não do tamanho do modelo. O que economiza sessão é contexto:
 continuar na mesma conversa enquanto ela render, e escrever um handover como
 este antes de trocar.
+
+---
+
+## Estado em 17 de agosto de 2026 — leia antes de começar
+
+**A pasta do projeto mudou de lugar.** Saiu de
+`C:\Users\lilia\OneDrive\Documentos\GitHub\financas-japao` e passou a ser
+`C:\Users\lilia\GitHub\financas-japao`. O motivo: o repositório estava dentro do
+OneDrive, que tentava sincronizar os 1.600 arquivos da pasta `.git` a cada
+commit. É causa provável da lentidão do computador dela e dos `index.lock` que
+travaram o GitHub Desktop várias vezes. **Trabalhe pela pasta nova.**
+
+### Situação em 19/08 — mudança concluída
+
+As travas do Git **foram resolvidas**. Descoberta útil: neste ambiente o sandbox
+consegue **renomear** arquivos dentro do repositório, mas **não apagar**. Como o
+Git escreve trocando `arquivo.lock` por `arquivo` — e essa troca exige apagar o
+destino — qualquer escrita do Git falha e deixa uma trava nova. A saída foi
+mover as travas para `.git/_lixo_pode_apagar/`. Essa pasta tem três arquivos
+vazios e é inofensiva; se algum dia der para apagar, pode ir.
+
+**Consequência prática, importante:** o sandbox **não consegue fazer commit**
+neste repositório, e também **não tem credencial para enviar ao GitHub** — elas
+ficam no Gerenciador de Credenciais do Windows. O fluxo do projeto continua
+sendo o documentado: o assistente edita, a Lilly commita e envia pelo GitHub
+Desktop.
+
+Tentei operar o GitHub Desktop por controle de tela e não funcionou: o sistema
+concede acesso ao aplicativo com o nome "GitHub Desktop" mas o reconhece como
+"Githubdesktop" na hora de clicar, e recusa. Não insistir por esse caminho.
+
+**Pendências cosméticas:** dois `financas-japao` na lista do GitHub Desktop (o
+velho e o novo), e a pasta antiga no OneDrive, que pode ser apagada — conferido
+em 19/08 que não há nela nenhum arquivo, commit ou alteração que não esteja no
+GitHub.
+
+### AdSense
+
+Revisão **pedida em 16/08**, domingo. Aguardando resposta por e-mail. A
+conferência que embasou o pedido está em `CONFERENCIA-ADSENSE-2026-08-14.md`.
+
+### O que segue em aberto no site
+
+- Botões de compartilhar do pilar ainda são os antigos (Facebook e X). Os novos,
+  com WhatsApp e LINE, só estão na `amazon-` e na `rakuten-`.
+- O pilar não menciona a mudança de outubro de 2026. Conteúdo fiscal, precisa de
+  revisão específica pela regra 13.
+- 15 títulos acima de 65 caracteres e 14 descriptions acima de 165. Decisão
+  editorial da Lilly.
+- Quatro padrões de hero no site. A home e a `remessa` entraram no
+  `.rk-hero-foto` em 17/08; sobram `fam-hero--foto` (7 páginas), `hero-grid`
+  (6) e `holerite-hero` (3).
+- Guia "como usar a Wise" com link de afiliado, separado do comparador de
+  remessa, que fica sem afiliado. Ideia aprovada em conversa, não começada.
+  **Não fazer página fina só para pendurar afiliado** — o site foi recusado por
+  conteúdo de baixo valor há quatro dias.
+
+### Regra que se repetiu a semana toda
+
+Seis vezes uma busca por texto literal quase virou afirmação errada — Resposta
+Rápida, bloco de fontes, FAQ do Rakuten, `.passo .num`, assinatura da `sobre`,
+âncoras da `remessa`. **Antes de afirmar que algo falta, abra o arquivo.**
