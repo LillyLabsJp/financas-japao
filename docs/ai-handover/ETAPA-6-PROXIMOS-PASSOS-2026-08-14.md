@@ -284,29 +284,48 @@ OneDrive, que tentava sincronizar os 1.600 arquivos da pasta `.git` a cada
 commit. É causa provável da lentidão do computador dela e dos `index.lock` que
 travaram o GitHub Desktop várias vezes. **Trabalhe pela pasta nova.**
 
-### Situação em 19/08 — mudança concluída
+### Situação em 19/08 — mudança de pasta CONCLUÍDA
 
-As travas do Git **foram resolvidas**. Descoberta útil: neste ambiente o sandbox
-consegue **renomear** arquivos dentro do repositório, mas **não apagar**. Como o
-Git escreve trocando `arquivo.lock` por `arquivo` — e essa troca exige apagar o
-destino — qualquer escrita do Git falha e deixa uma trava nova. A saída foi
-mover as travas para `.git/_lixo_pode_apagar/`. Essa pasta tem três arquivos
-vazios e é inofensiva; se algum dia der para apagar, pode ir.
+**O projeto agora vive em `C:\Users\lilia\GitHub\financas-japao`, fora do
+OneDrive. A pasta antiga foi apagada.** Confirmado: `C:\Users\lilia\OneDrive\
+Documentos\GitHub` está vazia, 0 bytes. O repositório antigo também foi removido
+da lista do GitHub Desktop.
 
-**Consequência prática, importante:** o sandbox **não consegue fazer commit**
-neste repositório, e também **não tem credencial para enviar ao GitHub** — elas
-ficam no Gerenciador de Credenciais do Windows. O fluxo do projeto continua
-sendo o documentado: o assistente edita, a Lilly commita e envia pelo GitHub
-Desktop.
+Antes de apagar foi conferido que a cópia antiga estava no mesmo commit, com zero
+commits não enviados, zero alterações não commitadas, zero arquivos ignorados, e
+nenhum arquivo que não existisse também na pasta nova.
 
-Tentei operar o GitHub Desktop por controle de tela e não funcionou: o sistema
-concede acesso ao aplicativo com o nome "GitHub Desktop" mas o reconhece como
-"Githubdesktop" na hora de clicar, e recusa. Não insistir por esse caminho.
+#### Duas descobertas técnicas que valem para as próximas sessões
 
-**Pendências cosméticas:** dois `financas-japao` na lista do GitHub Desktop (o
-velho e o novo), e a pasta antiga no OneDrive, que pode ser apagada — conferido
-em 19/08 que não há nela nenhum arquivo, commit ou alteração que não esteja no
-GitHub.
+**1. Neste ambiente, renomear funciona e apagar não — até pedir permissão.**
+Foi a chave de tudo. O Git grava trocando `arquivo.lock` pelo arquivo final, e
+essa troca exige apagar o destino; sem permissão de exclusão, toda escrita do Git
+falha e deixa uma trava nova. A solução é chamar `allow_cowork_file_delete`
+apontando para um arquivo **dentro da pasta montada** — aí a exclusão é liberada
+para a pasta inteira e o Git volta a funcionar normalmente. Se um dia o Git
+travar de novo com "another git process seems to be running", é isso.
+
+**2. As pastas do sistema estão em japonês por baixo.** O caminho real é
+`C:\Users\lilia\OneDrive\ドキュメント\...`, mas o Explorador mostra
+"Documentos". Foi por isso que apagar pelo Explorador dava "item não encontrado"
+repetidamente — o Windows procurava um caminho que não existe. Não é defeito da
+pasta nem erro da Lilly. Pelo terminal, com o caminho real, funciona.
+
+**3. O OneDrive recria a pasta vazia depois de apagada.** Aconteceu duas vezes;
+na terceira parou. Se reaparecer uma pasta `financas-japao` vazia no OneDrive, é
+resíduo de sincronização, não o projeto voltando.
+
+#### O que o sandbox consegue e o que não consegue
+
+- **Consegue:** editar, montar pastas, apagar (depois de liberar a permissão),
+  e **fazer commit**.
+- **Não consegue: enviar ao GitHub.** As credenciais ficam no Gerenciador de
+  Credenciais do Windows, fora do alcance do sandbox. O `git push` falha com
+  "could not read Username for https://github.com". O envio continua sendo um
+  clique da Lilly no GitHub Desktop.
+- **Não consegue operar o GitHub Desktop por controle de tela.** O sistema
+  concede acesso ao aplicativo com o nome "GitHub Desktop" mas o reconhece como
+  "Githubdesktop" na hora de clicar, e recusa. Não insistir por esse caminho.
 
 ### AdSense
 
@@ -328,6 +347,74 @@ conferência que embasou o pedido está em `CONFERENCIA-ADSENSE-2026-08-14.md`.
   remessa, que fica sem afiliado. Ideia aprovada em conversa, não começada.
   **Não fazer página fina só para pendurar afiliado** — o site foi recusado por
   conteúdo de baixo valor há quatro dias.
+
+### Onde o projeto parou — 19 de agosto de 2026
+
+**Nada em execução. Nenhuma pendência técnica bloqueando.** O site está no ar e
+correto: 29 páginas, 129 imagens, HTML sem erro de estrutura em nenhuma página,
+computador e GitHub no mesmo commit.
+
+**Esperando resposta do AdSense.** Revisão pedida em 16/08. Chega por e-mail,
+entre dias e algumas semanas. Se for negada, o motivo virá mais específico do
+que "conteúdo de baixo valor" — e é esse motivo que deve guiar o trabalho
+seguinte, não palpite.
+
+**Enquanto espera, o gargalo real é audiência, não conteúdo.** Medido no Search
+Console em 19/08: 22 páginas indexadas, "detectada mas não indexada" em **zero**
+— ou seja, o Google não está recusando nada. Em 28 dias: 25 cliques, 354
+impressões, CTR 7,1%, posição média 7,4. O site é bom e quase não aparece. Isso
+não se resolve com mais páginas nem com reescrita de título.
+
+**Cuidado com relatórios de terceiros.** O relatório do Haiku de 13/08 continha
+erros que valem lembrar: usou dados do Analytics de quando ele ainda apontava
+para a propriedade errada; tratou como "problema crítico" o fato de as consultas
+listadas terem zero cliques, quando o Search Console só mostra uma fração das
+consultas; e projetou receita de 1.500 a 7.500 dólares por mês, cerca de cem
+vezes acima do que 300 cliques mensais rendem. A recomendação de criar 20 a 50
+artigos é a mais arriscada de todas, quatro dias depois de uma recusa por
+conteúdo de baixo valor.
+
+### O que continua pendente
+
+Em ordem de valor, nenhuma urgente:
+
+1. **Botões de compartilhar no pilar** ainda são os antigos, só Facebook e X. Os
+   novos, com WhatsApp e LINE, estão apenas na `amazon-` e na `rakuten-`.
+   Mecânico, o componente `.fu-share` já existe no `style.css`.
+2. **Outubro de 2026 ausente no pilar.** `furusato-nozei.html` é a única página
+   do cluster que não menciona a mudança de critérios. Conteúdo fiscal, precisa
+   de revisão específica pela regra 13.
+3. **Guia "como usar a Wise"**, separado do comparador de remessa. A ideia foi
+   aprovada em conversa: o comparador fica **sem** afiliado, o guia carrega o
+   link. Wise e Brastel têm programa de afiliados, confirmado. **Não fazer
+   página fina só para pendurar o link** — precisa ser guia de verdade, no nível
+   da `amazon-`.
+4. **15 títulos acima de 65 caracteres e 14 descriptions acima de 165.** Decisão
+   editorial da Lilly, em páginas que já ranqueiam.
+5. **Quatro padrões de hero no site.** A home e a `remessa` entraram no
+   `.rk-hero-foto` em 17/08. Sobram `fam-hero--foto` (7 páginas), `hero-grid`
+   (6) e `holerite-hero` (3). O `.rk-hero-foto` é o melhor: usa imagem de
+   verdade, com texto alternativo e carregamento prioritário.
+6. **Guardar as imagens originais do Kai** em tamanho cheio, fora do repositório.
+   Hoje só existem as versões WebP já comprimidas e cortadas. Quando o hero da
+   home precisou de um corte diferente para o celular, foi a original que
+   resolveu.
+
+### Regras aprendidas sobre imagem, que economizam retrabalho
+
+- **Hero e imagem social não compartilham corte.** O hero precisa de metade
+  limpa de um lado, porque o texto entra por cima; a `og:image` precisa do
+  assunto centrado, em 1200x630. Reaproveitar um pelo outro produz imagem
+  quebrada nos dois.
+- **O Facebook não processa WebP em prévia de link.** Onze páginas usavam WebP
+  como `og:image` e nenhuma mostrava imagem ao ser compartilhada. Hoje todas
+  usam JPEG.
+- **A prévia fica congelada na mensagem já enviada.** Depurar no Facebook só
+  afeta compartilhamentos novos.
+- **No celular o texto sai de cima da foto.** Foto com metade vazia vira uma
+  imagem grande e vazia. A solução é `<picture>` com um corte fechado até 860px.
+- **A foto é dimensionada pela altura do bloco.** Hero com pouco conteúdo produz
+  foto estreita e emenda dura no meio da tela. Resolve com altura mínima.
 
 ### Regra que se repetiu a semana toda
 
