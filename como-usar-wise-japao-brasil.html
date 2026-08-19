@@ -88,12 +88,12 @@
     {
       "@type": "Question",
       "name": "Preciso de conta bancária japonesa pra pagar pela Wise?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Pra pagar por transferência bancária (furikomi), sim: a Wise exige que o dinheiro venha de uma conta no seu próprio nome, transferida pro código de banco 0200 (ワイズ・ペイメンツ・ジャパン). Se você já tiver saldo em ienes dentro da própria conta Wise, pode pagar direto com esse saldo, sem precisar de um furikomi novo." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Só se for pagar por transferência bancária (furikomi): a Wise exige que o dinheiro venha de uma conta no seu próprio nome, transferida pro código de banco 0200 (ワイズ・ペイメンツ・ジャパン). As outras opções são pagar com saldo que você já tem na conta Wise ou com cartão de débito emitido no Japão, também no seu nome. Cartão de crédito, dinheiro em espécie e pagamento vindo de conta de terceiro não são aceitos." }
     },
     {
       "@type": "Question",
       "name": "Quanto tempo demora pra chegar no Brasil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Depende da forma de pagamento. Pagando com saldo que você já tem na Wise, a própria empresa afirma que a maioria das transferências chega em poucos minutos. Pagando por furikomi, o prazo é maior, porque primeiro o furikomi precisa cair na conta da Wise no Japão — o que a Wise diz levar até 2 dias úteis — pra só depois a transferência internacional começar a valer." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Depende da forma de pagamento e da conversão. As páginas oficiais da Wise documentam um prazo de 0 a 2 dias úteis para o pagamento chegar até ela, dependendo de como você paga — pagar com saldo que você já tem na conta pula essa espera. Depois de receber e converter o valor, a Wise informa que costuma levar 1 dia útil para cair na conta de quem recebe no Brasil, e a conversão em si pode levar até 2 dias úteis. Isso não significa que toda transferência demora dias: a estimativa mostrada no momento da confirmação, dentro do app ou do simulador, é sempre a mais precisa — pode ser bem mais rápida que esses prazos gerais." }
     },
     {
       "@type": "Question",
@@ -102,13 +102,13 @@
     },
     {
       "@type": "Question",
-      "name": "Que documento a Wise aceita pra verificar minha identidade?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Segundo o Centro de Suporte da Wise, um dos três: passaporte (só a página com foto), carteira de identidade em formato cartão (frente e verso) ou carteira de motorista física (não digital, e não disponível para residentes da União Europeia). A foto precisa estar nítida, com nome completo, data de nascimento e número do documento visíveis e sem cortes." }
+      "name": "Quais documentos a Wise aceita pra verificar minha identidade no Japão?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Depende da sua situação. Cidadão japonês pode usar o cartão My Number, a carteira de motorista japonesa ou o passaporte japonês emitido antes de fevereiro de 2020. Residente permanente pode usar o cartão My Number, a carteira de motorista japonesa ou o cartão de residência (zairyu card). Quem tem visto de longa duração pode usar o cartão My Number ou o zairyu card. Em alguns casos a Wise também pede um documento do My Number — o próprio cartão, um Juminhyo emitido nos últimos seis meses ou o aviso de notificação do My Number — a menos que você já tenha enviado o cartão My Number como documento de identidade. Nome, data de nascimento e endereço precisam ser exatamente iguais no documento, no documento do My Number e no seu perfil da Wise; a análise costuma levar cerca de um dia útil." }
     },
     {
       "@type": "Question",
       "name": "O nome de quem recebe precisa ser igual ao da conta ou do Pix?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A Wise pede o nome completo do titular da conta que vai receber. Não encontramos, nas páginas oficiais da Wise, uma frase específica confirmando que o nome digitado precisa bater exatamente com o CPF — mas é uma prática comum dos bancos brasileiros rejeitar ou devolver um Pix ou TED quando o nome não confere com o CPF da conta. Vale conferir o nome exatamente como está no documento de quem recebe, sem apelido nem abreviação." }
+      "acceptedAnswer": { "@type": "Answer", "text": "A Wise pede o nome completo do titular da conta que vai receber. Confira com atenção o nome completo, o CPF ou CNPJ, os dados bancários (banco, agência e número) ou a chave Pix antes de enviar — um erro em qualquer um desses dados pode atrasar ou impedir que a transferência chegue." }
     }
   ]
 }
@@ -298,7 +298,7 @@
 
     <div class="resposta-rapida">
       <h2>Como faço para mandar dinheiro do Japão pro Brasil usando a Wise?</h2>
-      <p><strong>Você cria a conta, verifica sua identidade com um documento, cadastra os dados de quem recebe no Brasil, vê a tarifa e o câmbio antes de confirmar, e paga em ienes — com saldo que já tem na Wise ou por transferência bancária (furikomi).</strong> Pagando com saldo, a própria Wise afirma que a maior parte das transferências chega em minutos; pagando por furikomi, o prazo é maior, porque o furikomi precisa cair na Wise primeiro.</p>
+      <p><strong>Você cria a conta, verifica sua identidade com um documento — a exigência exata depende da sua situação no Japão —, cadastra os dados de quem recebe no Brasil, vê a tarifa e o câmbio antes de confirmar, e paga em ienes: com saldo que já tem na Wise, por transferência bancária (furikomi) ou com cartão de débito japonês.</strong> As páginas oficiais da Wise documentam prazos em dias úteis, não em minutos — pagar com saldo pula a espera do furikomi, mas o prazo final depende da conversão e do banco recebedor. A estimativa mostrada no momento da confirmação é sempre a mais precisa.</p>
       <p>Esta página não tem link de afiliado nesta versão — o guia existe pra ensinar a usar o app, independente de qualquer comissão.</p>
     </div>
 
@@ -336,9 +336,9 @@
       <h2>Antes de começar, separe isto</h2>
       <p>Leva uns 10 minutos no cadastro se você já tiver tudo em mãos.</p>
       <div class="w-check-grid">
-        <div class="w-check-item"><span class="tick">✓</span><p>Documento de identidade válido — passaporte (página da foto), carteira de identidade (frente e verso) ou carteira de motorista física.</p></div>
+        <div class="w-check-item"><span class="tick">✓</span><p>Documento de identidade de acordo com sua situação no Japão — cidadão japonês, residente permanente ou visto de longa duração aceitam documentos diferentes (veja a lista completa no passo 1) — e, em alguns casos, também um documento do My Number.</p></div>
         <div class="w-check-item"><span class="tick">✓</span><p>Dados de quem recebe no Brasil — nome completo, CPF ou CNPJ, e conta bancária ou chave Pix.</p></div>
-        <div class="w-check-item"><span class="tick">✓</span><p>Conta bancária japonesa no seu nome, se for pagar por transferência (furikomi) — ou saldo em ienes já na conta Wise.</p></div>
+        <div class="w-check-item"><span class="tick">✓</span><p>Conta bancária japonesa no seu nome (furikomi) ou cartão de débito japonês no seu nome — ou saldo em ienes já na conta Wise. Cartão de crédito, dinheiro em espécie e pagamento de conta de terceiro não são aceitos.</p></div>
         <div class="w-check-item"><span class="tick">✓</span><p>O valor que você quer enviar, em ienes, e alguns minutos livres pra conferir a cotação antes de confirmar.</p></div>
       </div>
     </section>
@@ -351,12 +351,13 @@
         <li class="w-passo">
           <span class="w-passo-num">1</span>
           <h3>Criar a conta e verificar identidade</h3>
-          <p>O cadastro pede e-mail, senha e alguns dados pessoais. Depois vem a verificação: a Wise aceita passaporte (só a página com foto), carteira de identidade em formato cartão (frente e verso) ou carteira de motorista física — não digital, e essa opção não vale para residentes da União Europeia. A foto do documento precisa estar nítida, com nome, data de nascimento e número visíveis, sem corte.</p>
+          <p>O cadastro pede e-mail, senha e alguns dados pessoais. O documento aceito na verificação depende da sua situação no Japão: cidadão japonês pode usar o cartão My Number, a carteira de motorista japonesa ou o passaporte japonês (emitido antes de fevereiro de 2020); residente permanente pode usar o cartão My Number, a carteira de motorista japonesa ou o cartão de residência (zairyu card); quem tem visto de longa duração pode usar o cartão My Number ou o zairyu card.</p>
+          <p>Em alguns casos a Wise também pede um documento do My Number — o próprio cartão, um Juminhyo emitido nos últimos seis meses ou o aviso de notificação do My Number — a menos que você já tenha enviado o cartão My Number como documento de identidade. Nome, data de nascimento e endereço precisam ser exatamente iguais no documento, no documento do My Number e no seu perfil da Wise; endereço divergente é uma causa comum de atraso. A análise costuma levar cerca de um dia útil, com resposta por e-mail.</p>
         </li>
         <li class="w-passo">
           <span class="w-passo-num">2</span>
           <h3>Cadastrar quem recebe no Brasil</h3>
-          <p>Você informa o nome completo do titular, o CPF (11 dígitos) ou CNPJ (14 dígitos), e os dados da conta — banco, agência e número — ou, como alternativa mais rápida, uma chave Pix. Vale conferir o nome exatamente como está no documento: é prática comum dos bancos brasileiros devolver um Pix ou TED quando o nome digitado não bate com o CPF da conta.</p>
+          <p>Você informa o nome completo do titular, o CPF (11 dígitos) ou CNPJ (14 dígitos), e os dados da conta — banco, agência e número — ou, como alternativa mais rápida, uma chave Pix. Confira com cuidado cada um desses dados antes de avançar: um erro no nome, no CPF/CNPJ, nos dados bancários ou na chave Pix pode atrasar ou impedir que o dinheiro chegue.</p>
         </li>
         <li class="w-passo">
           <span class="w-passo-num">3</span>
@@ -366,12 +367,12 @@
         <li class="w-passo">
           <span class="w-passo-num">4</span>
           <h3>Pagar em ienes</h3>
-          <p>Duas formas: com saldo que você já tem dentro da própria conta Wise (o mais rápido), ou por transferência bancária (furikomi) para a conta japonesa da Wise, código de banco <strong>0200</strong> (ワイズ・ペイメンツ・ジャパン). Nesse segundo caso, o dinheiro precisa sair de uma conta no seu próprio nome — a Wise recusa furikomi feito por terceiros — e a própria empresa informa um prazo de até 2 dias úteis para o furikomi ser reconhecido.</p>
+          <p>Você paga em ienes de um destes jeitos: com saldo que já tem dentro da própria conta Wise, por transferência bancária (furikomi) para a conta japonesa dela — código de banco <strong>0200</strong> (ワイズ・ペイメンツ・ジャパン) — ou com cartão de débito emitido no Japão, sempre no seu nome. Cartão de crédito, dinheiro em espécie e pagamento vindo de conta de terceiro não são aceitos. Pagar com saldo pula a espera do furikomi; pagando por furikomi ou débito, a Wise documenta um prazo de até 2 dias úteis só para o pagamento chegar até ela, antes mesmo da transferência internacional começar a valer.</p>
         </li>
         <li class="w-passo">
           <span class="w-passo-num">5</span>
           <h3>Acompanhar até cair no Brasil</h3>
-          <p>Pagando com saldo, a Wise afirma que a maioria das transferências chega em poucos minutos. Pagando por furikomi, o prazo real inclui o tempo de compensação do furikomi mencionado no passo anterior — por isso costuma demorar mais do que pagar com saldo direto.</p>
+          <p>Depois que a Wise recebe o pagamento e converte o valor, as páginas oficiais dela informam que costuma levar 1 dia útil para o dinheiro cair na conta de quem recebe no Brasil — a conversão em si pode levar até 2 dias úteis. Pagar com saldo elimina a espera do furikomi do passo anterior, mas não garante chegada em minutos: o prazo final depende da conversão e do banco recebedor. A estimativa exibida no momento da confirmação, dentro do app, é sempre a mais precisa — pode ser mais rápida do que esses prazos gerais.</p>
         </li>
       </ol>
     </section>
@@ -388,24 +389,24 @@
 
     <section id="exemplo-custo">
       <h2>Exemplo real de custo</h2>
-      <p>Consultado direto na simulação oficial da Wise em <strong>19 de agosto de 2026</strong>, para o envio de <strong>200.000 JPY</strong> do Japão para o Brasil:</p>
+      <p>Consultado direto na simulação oficial da Wise em <strong>19 de agosto de 2026</strong>, pagando por transferência bancária (furikomi), para o envio de <strong>200.000 JPY</strong> do Japão para o Brasil:</p>
 
       <div class="w-resumo">
         <div class="w-resumo-rota">🇯🇵 Japão → 🇧🇷 Brasil</div>
         <div class="w-resumo-linha"><span>Valor enviado</span><b>¥ 200.000</b></div>
         <div class="w-resumo-linha"><span>Tarifa — pagando com saldo Wise</span><b>¥ 2.589</b></div>
         <div class="w-resumo-linha"><span>Tarifa — pagando por furikomi</span><b>¥ 2.697</b></div>
-        <div class="w-resumo-linha"><span>Câmbio usado na consulta</span><b>1 JPY = 0,032274 BRL</b></div>
-        <div class="w-resumo-total"><span class="lbl">Chega ao destinatário</span><span class="val">depende da cotação no momento do envio</span></div>
+        <div class="w-resumo-linha"><span>Câmbio efetivo (VET) na consulta</span><b>1 JPY = 0,032301 BRL</b></div>
+        <div class="w-resumo-total"><span class="lbl">Chega ao destinatário (pagando por furikomi)</span><span class="val">R$ 6.460,11 nesta consulta — muda a cada nova simulação</span></div>
       </div>
-      <p class="w-resumo-nota">Consulta feita em 19/08/2026, pagamento com saldo Wise. Tarifa e câmbio mudam a cada poucos minutos — o valor final em reais é sempre o que aparece na sua simulação, não o desta página. Não convertemos o valor final em reais aqui porque a própria Wise não exibe esse número como texto fixo — só no simulador ao vivo.</p>
+      <p class="w-resumo-nota">Consulta feita em 19/08/2026, no simulador oficial da Wise, pagando por transferência bancária (furikomi). Tarifa, câmbio e o valor recebido mudam a cada nova consulta — o número que vale é sempre o que aparece na sua própria simulação, não o desta página.</p>
     </section>
 
     <section id="erros-comuns">
       <h2>Erros comuns que custam dinheiro</h2>
       <div class="callout warning">
-        <h4>Nome não bate com o CPF</h4>
-        <p>É uma prática comum dos bancos brasileiros recusar ou devolver um Pix ou TED quando o nome cadastrado não confere com o CPF da conta — confira antes de enviar.</p>
+        <h4>Dados de quem recebe com erro</h4>
+        <p>Confira com atenção o nome completo, o CPF ou CNPJ, os dados bancários (banco, agência e número) ou a chave Pix antes de enviar. Um erro em qualquer um desses dados pode atrasar ou impedir que a transferência chegue.</p>
       </div>
       <div class="callout warning">
         <h4>Confirmar sem ver a cotação</h4>
@@ -414,6 +415,10 @@
       <div class="callout warning">
         <h4>Fazer o furikomi de uma conta que não é sua</h4>
         <p>A Wise exige que o dinheiro venha de uma conta bancária no seu próprio nome. Furikomi de conta de terceiro pode ser recusado.</p>
+      </div>
+      <div class="callout warning">
+        <h4>Tentar pagar com cartão de crédito ou dinheiro</h4>
+        <p>A Wise não aceita cartão de crédito, dinheiro em espécie nem pagamento vindo de conta de terceiro para pagar em ienes. Use saldo da própria conta Wise, furikomi ou cartão de débito, sempre no seu nome.</p>
       </div>
       <div class="callout warning">
         <h4>Achar que o furikomi cai na hora</h4>
@@ -429,23 +434,23 @@
       </div>
       <div class="faq-item">
         <h3>Preciso de conta bancária japonesa pra pagar pela Wise?</h3>
-        <p>Pra pagar por transferência bancária (furikomi), sim: a Wise exige que o dinheiro venha de uma conta no seu próprio nome, transferida pro código de banco 0200 (ワイズ・ペイメンツ・ジャパン). Se você já tiver saldo em ienes dentro da própria conta Wise, pode pagar direto com esse saldo, sem precisar de um furikomi novo.</p>
+        <p>Só se for pagar por transferência bancária (furikomi): a Wise exige que o dinheiro venha de uma conta no seu próprio nome, transferida pro código de banco 0200 (ワイズ・ペイメンツ・ジャパン). As outras opções são pagar com saldo que você já tem na conta Wise ou com cartão de débito emitido no Japão, também no seu nome. Cartão de crédito, dinheiro em espécie e pagamento vindo de conta de terceiro não são aceitos.</p>
       </div>
       <div class="faq-item">
         <h3>Quanto tempo demora pra chegar no Brasil?</h3>
-        <p>Depende da forma de pagamento. Pagando com saldo que você já tem na Wise, a própria empresa afirma que a maioria das transferências chega em poucos minutos. Pagando por furikomi, o prazo é maior, porque primeiro o furikomi precisa cair na conta da Wise no Japão — o que a Wise diz levar até 2 dias úteis — pra só depois a transferência internacional começar a valer.</p>
+        <p>Depende da forma de pagamento e da conversão. As páginas oficiais da Wise documentam um prazo de 0 a 2 dias úteis para o pagamento chegar até ela, dependendo de como você paga — pagar com saldo que você já tem na conta pula essa espera. Depois de receber e converter o valor, a Wise informa que costuma levar 1 dia útil para cair na conta de quem recebe no Brasil, e a conversão em si pode levar até 2 dias úteis. Isso não significa que toda transferência demora dias: a estimativa mostrada no momento da confirmação, dentro do app ou do simulador, é sempre a mais precisa — pode ser bem mais rápida que esses prazos gerais.</p>
       </div>
       <div class="faq-item">
         <h3>A Wise cobra alguma coisa a mais pra receber no Brasil?</h3>
         <p>Nas fontes oficiais que consultamos, não encontramos cobrança adicional documentada para quem recebe via conta bancária ou Pix no Brasil, separada da tarifa mostrada no momento do envio. Ainda assim, confirme o valor final exibido na sua simulação antes de confirmar — é o número que vale, não o exemplo desta página.</p>
       </div>
       <div class="faq-item">
-        <h3>Que documento a Wise aceita pra verificar minha identidade?</h3>
-        <p>Segundo o Centro de Suporte da Wise, um dos três: passaporte (só a página com foto), carteira de identidade em formato cartão (frente e verso) ou carteira de motorista física (não digital, e não disponível para residentes da União Europeia). A foto precisa estar nítida, com nome completo, data de nascimento e número do documento visíveis e sem cortes.</p>
+        <h3>Quais documentos a Wise aceita pra verificar minha identidade no Japão?</h3>
+        <p>Depende da sua situação. Cidadão japonês pode usar o cartão My Number, a carteira de motorista japonesa ou o passaporte japonês emitido antes de fevereiro de 2020. Residente permanente pode usar o cartão My Number, a carteira de motorista japonesa ou o cartão de residência (zairyu card). Quem tem visto de longa duração pode usar o cartão My Number ou o zairyu card. Em alguns casos a Wise também pede um documento do My Number — o próprio cartão, um Juminhyo emitido nos últimos seis meses ou o aviso de notificação do My Number — a menos que você já tenha enviado o cartão My Number como documento de identidade. Nome, data de nascimento e endereço precisam ser exatamente iguais no documento, no documento do My Number e no seu perfil da Wise; a análise costuma levar cerca de um dia útil.</p>
       </div>
       <div class="faq-item">
         <h3>O nome de quem recebe precisa ser igual ao da conta ou do Pix?</h3>
-        <p>A Wise pede o nome completo do titular da conta que vai receber. Não encontramos, nas páginas oficiais da Wise, uma frase específica confirmando que o nome digitado precisa bater exatamente com o CPF — mas é uma prática comum dos bancos brasileiros rejeitar ou devolver um Pix ou TED quando o nome não confere com o CPF da conta. Vale conferir o nome exatamente como está no documento de quem recebe, sem apelido nem abreviação.</p>
+        <p>A Wise pede o nome completo do titular da conta que vai receber. Confira com atenção o nome completo, o CPF ou CNPJ, os dados bancários (banco, agência e número) ou a chave Pix antes de enviar — um erro em qualquer um desses dados pode atrasar ou impedir que a transferência chegue.</p>
       </div>
     </section>
 
@@ -476,15 +481,16 @@
 
       <h3>Fontes oficiais</h3>
       <ul>
-        <li><a href="https://wise.com/br/send-money/send-money-to-brazil-from-japan" target="_blank" rel="noopener nofollow">Wise — Simulador oficial de envio Japão → Brasil</a>, consultado em 19 de agosto de 2026: a tarifa e o câmbio do exemplo desta página vêm dessa simulação, para 200.000 JPY.</li>
-        <li><a href="https://wise.com/pt/help/articles/2949801/como-a-wise-verifica-a-minha-identidade" target="_blank" rel="noopener nofollow">Wise — Como a Wise verifica a minha identidade</a>, consultado em 19 de agosto de 2026: os documentos aceitos na verificação.</li>
-        <li><a href="https://wise.com/pt/help/articles/2932353/transferencias-em-brl" target="_blank" rel="noopener nofollow">Wise — Transferências em BRL</a>, consultado em 19 de agosto de 2026: os dados exigidos pra cadastrar quem recebe no Brasil.</li>
+        <li><a href="https://wise.com/br/send-money/send-money-to-brazil-from-japan" target="_blank" rel="noopener nofollow">Wise — Simulador oficial de envio Japão → Brasil</a>, consultado em 19 de agosto de 2026: a tarifa, o câmbio e o valor recebido do exemplo desta página vêm dessa simulação, para 200.000 JPY pagos por furikomi.</li>
+        <li><a href="https://wise.com/help/articles/2968293/getting-verified-in-japan" target="_blank" rel="noopener nofollow">Wise — Getting verified in Japan</a>, consultado em 19 de agosto de 2026: os documentos aceitos por cidadão japonês, residente permanente e visto de longa duração, a exigência do documento do My Number e o prazo de análise.</li>
+        <li><a href="https://wise.com/pt/help/articles/2932353/transferencias-em-brl" target="_blank" rel="noopener nofollow">Wise — Transferências em BRL</a>, consultado em 19 de agosto de 2026: os dados exigidos pra cadastrar quem recebe no Brasil e o prazo documentado de entrega depois da conversão.</li>
         <li><a href="https://wise.com/help/articles/4aS54s32KbEkl1KMonAjJV/paying-to-our-wise-jpy-pay-in-account" target="_blank" rel="noopener nofollow">Wise — Paying to our Wise JPY pay-in account</a>, consultado em 19 de agosto de 2026: o código de banco 0200, a exigência de o furikomi vir de conta no seu próprio nome, e o prazo de até 2 dias úteis.</li>
+        <li><a href="https://www.wise.com/help/articles/2932156/guide-to-jpy-transfers" target="_blank" rel="noopener nofollow">Wise — Guide to JPY transfers</a>, consultado em 19 de agosto de 2026: as formas de pagamento aceitas (transferência bancária ou cartão de débito) e não aceitas (cartão de crédito, dinheiro, conta de terceiro) pra fundear transferências em ienes.</li>
       </ul>
 
       <h3>O que não deu para confirmar em fonte oficial</h3>
-      <p class="fontes-nota">A regra de que o nome do destinatário precisa bater exatamente com o CPF não está escrita, com essas palavras, em nenhuma página oficial da Wise que conseguimos abrir — tratamos como prática comum dos bancos brasileiros, não como política documentada da Wise. Também não encontramos, em fonte oficial, uma tarifa adicional cobrada de quem recebe no Brasil — se ela existir, é possível que só apareça dentro do próprio simulador, que muda a cada consulta.</p>
-      <p class="fontes-nota">O valor final em reais do exemplo desta página não foi reproduzido como número fixo, porque a própria Wise não o exibe como texto — só dentro do simulador ao vivo, que muda a cada poucos minutos. Use sempre o número que aparece na sua simulação, não o desta página.</p>
+      <p class="fontes-nota">Não encontramos, em fonte oficial, uma tarifa fixa adicional cobrada de quem recebe no Brasil, separada da tarifa mostrada no momento do envio — se ela existir, é possível que só apareça dentro do próprio simulador, que muda a cada consulta.</p>
+      <p class="fontes-nota">O simulador mostrou, na consulta desta correção, uma estimativa de entrega de poucos minutos para o envio específico de 200.000 JPY por furikomi — mas essa estimativa não está documentada como regra geral nas páginas oficiais de JPY e BRL, que falam em dias úteis. Por isso, tratamos a estimativa exibida no app ou no simulador como a mais confiável a cada consulta, sem prometer um prazo fixo nesta página.</p>
 
       <h3>Transparência</h3>
       <p class="fontes-nota" id="afiliado">Esta versão do guia não tem link de afiliado.</p>
