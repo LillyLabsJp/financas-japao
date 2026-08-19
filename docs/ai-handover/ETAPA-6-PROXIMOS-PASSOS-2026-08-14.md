@@ -277,6 +277,30 @@ este antes de trocar.
 
 ## Estado em 17 de agosto de 2026 — leia antes de começar
 
+> ## ⚠ Antes de qualquer coisa: valide antes de afirmar
+>
+> **Este é o erro mais frequente do assistente neste projeto. Aconteceu seis
+> vezes em uma única semana.** Em todas elas, uma busca por texto literal
+> devolveu zero resultados e virou a afirmação de que algo faltava no site — e
+> em todas o conteúdo estava lá, escrito de outro jeito.
+>
+> Os seis casos: Resposta Rápida "faltando" em 11 páginas (faltava em 2, as
+> outras usavam as classes `fam-resposta` e `holerite-resposta`); bloco de
+> fontes "ausente" na `aposentadoria-nenkin` (usa `<div class="fontes">` em vez
+> de um título); FAQ do Rakuten com "seis perguntas" (são oito); CSS `.passo
+> .num` que eu estilizei sem ver que não tinha markup usando; assinatura
+> "ausente" na `sobre` (diz "Escrito **e mantido** por"); e âncoras `#custos` e
+> `#calculadora` na `remessa` que eu citei antes de existirem.
+>
+> **A regra:** medida numérica pode confiar — contar caracteres não depende de
+> adivinhar como a página foi escrita. **Presença de bloco, de classe, de
+> âncora ou de seção exige abrir o arquivo.** Nunca escreva "falta X na página
+> Y" a partir de um `grep` sem confirmar lendo.
+>
+> Isso vale especialmente para as pendências listadas mais abaixo: várias
+> vieram de auditorias antigas e nunca foram revalidadas.
+
+
 **A pasta do projeto mudou de lugar.** Saiu de
 `C:\Users\lilia\OneDrive\Documentos\GitHub\financas-japao` e passou a ser
 `C:\Users\lilia\GitHub\financas-japao`. O motivo: o repositório estava dentro do
@@ -418,6 +442,5 @@ Em ordem de valor, nenhuma urgente:
 
 ### Regra que se repetiu a semana toda
 
-Seis vezes uma busca por texto literal quase virou afirmação errada — Resposta
-Rápida, bloco de fontes, FAQ do Rakuten, `.passo .num`, assinatura da `sobre`,
-âncoras da `remessa`. **Antes de afirmar que algo falta, abra o arquivo.**
+Está no aviso do topo desta seção, com os seis casos. **Antes de afirmar que
+algo falta, abra o arquivo.**
