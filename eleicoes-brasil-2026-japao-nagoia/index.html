@@ -30,7 +30,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eleições 2026, consulado de Nagoia: onde votar em Gifu, Toyohashi, Suzuka, Takaoka e Hiroshima</title>
-<meta name="description" content="Não haverá votação na cidade de Nagoia. Datas, horário e os 5 locais da jurisdição do Consulado-Geral em Nagoia — Gifu, Toyohashi, Suzuka, Takaoka e Hiroshima — e como consultar sua seção.">
+<meta name="description" content="Não haverá votação na cidade de Nagoia: o local agora é em Gifu. Datas, os 5 locais do Consulado em Nagoia (Gifu, Toyohashi, Suzuka, Takaoka, Hiroshima), como chegar e documentos.">
 <link rel="canonical" href="https://financasnojapao.com/eleicoes-brasil-2026-japao-nagoia/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -43,7 +43,7 @@
 <meta property="og:title" content="Eleições 2026: onde votar na jurisdição do Consulado em Nagoia">
 <meta property="og:description" content="Não haverá local de votação na cidade de Nagoia. Consulte seu local e sua seção antes de sair. Gifu, Toyohashi, Suzuka, Takaoka e Hiroshima — domingo, 4 de outubro, das 8h às 17h.">
 <meta property="og:url" content="https://financasnojapao.com/eleicoes-brasil-2026-japao-nagoia/">
-<meta property="og:image" content="https://financasnojapao.com/img/og-eleicoes-2026-nagoia.jpg">
+<meta property="og:image" content="https://financasnojapao.com/img/og-eleicoes-2026-nagoia.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Eleições 2026: onde votar na jurisdição do Consulado em Nagoia. Não haverá local de votação na cidade de Nagoia.">
@@ -53,7 +53,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Eleições 2026: onde votar na jurisdição do Consulado em Nagoia">
 <meta name="twitter:description" content="Não haverá local de votação na cidade de Nagoia. Consulte seu local e sua seção antes de sair.">
-<meta name="twitter:image" content="https://financasnojapao.com/img/og-eleicoes-2026-nagoia.jpg">
+<meta name="twitter:image" content="https://financasnojapao.com/img/og-eleicoes-2026-nagoia.jpg?v=2">
 
 <script type="application/ld+json">
 {
@@ -63,7 +63,7 @@
   "description": "Datas, horário e os cinco locais de votação da jurisdição do Consulado-Geral do Brasil em Nagoia para as eleições presidenciais de 2026, com links oficiais para consultar o local e a seção de cada eleitor.",
   "image": {
     "@type": "ImageObject",
-    "url": "https://financasnojapao.com/img/og-eleicoes-2026-nagoia.jpg",
+    "url": "https://financasnojapao.com/img/og-eleicoes-2026-nagoia.jpg?v=2",
     "width": 1200,
     "height": 630
   },
@@ -103,49 +103,195 @@
 </script>
 
 <style>
-/* Estilos locais so desta pagina (prefixo el-). Usa as variaveis do style.css. */
+/* Estilos locais so desta pagina (prefixo el-).
+   Tema especial Eleicoes 2026: cores do Brasil. Cabecalho e rodape
+   continuam os do site. Titulos em Inter extra-negrito, sem fonte externa. */
+:root{
+  --br-verde:#009c3b; --br-verde-esc:#006b2d; --br-verde-claro:#eaf6ee;
+  --br-amarelo:#ffdf00; --br-amarelo-claro:#fff8cc;
+  --br-azul:#002776; --br-azul-med:#1f4aa8;
+  --el-titulo:var(--font-base);
+}
 .container.el-topo{padding:22px 32px 72px;}
-.el-topo h1{font-size:clamp(1.6rem,3.6vw,2.5rem);line-height:1.15;margin:10px 0 14px;}
-.el-topo .categoria-etiqueta{margin-bottom:0;}
-.el-alerta{border:2px solid var(--color-red);background:var(--color-red-soft);border-radius:14px;padding:16px 18px;margin:0 0 12px;}
-.el-alerta p{margin:0;font-size:1.05rem;line-height:1.5;color:var(--color-text);}
-.el-alerta strong{color:var(--color-red-dark);font-weight:800;}
-.el-alerta .btn{margin-top:14px;}
+.el-topo .breadcrumb{margin-bottom:12px;}
+
+/* HERO verde */
+.el-hero{position:relative;background:linear-gradient(135deg,var(--br-verde) 0%,var(--br-verde-esc) 100%);color:#fff;border-radius:22px;padding:26px 28px 34px;overflow:hidden;}
+.el-hero::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;border-radius:50%;background:var(--br-amarelo);opacity:.16;pointer-events:none;}
+.el-tag{display:inline-block;background:var(--br-amarelo);color:var(--br-azul);font-weight:800;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:5px 10px;margin:0;}
+.el-hero h1{font-family:var(--el-titulo);font-weight:900;text-transform:uppercase;color:#fff;font-size:clamp(1.55rem,4vw,2.7rem);line-height:1.08;letter-spacing:-.01em;margin:12px 0 18px;position:relative;z-index:1;}
+.el-hero h1 span{color:var(--br-amarelo);}
+.el-alerta{position:relative;z-index:1;background:#fff;color:var(--br-azul);border-radius:16px;padding:16px 18px 18px;border-left:8px solid var(--br-amarelo);box-shadow:0 10px 28px rgba(0,39,118,.22);}
+.el-alerta p{margin:0;font-size:1.05rem;line-height:1.55;color:var(--br-azul);}
+.el-alerta strong{font-weight:800;background:var(--br-amarelo);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:1px 4px;border-radius:3px;}
+.el-faixa{display:flex;height:10px;border-radius:0 0 22px 22px;overflow:hidden;margin:-10px 0 12px;position:relative;}
+.el-faixa i{flex:1;}
+.el-faixa i:nth-child(1){background:var(--br-verde-esc);} .el-faixa i:nth-child(2){background:var(--br-verde);}
+.el-faixa i:nth-child(3){background:var(--br-amarelo);} .el-faixa i:nth-child(4){background:#f2c200;}
+.el-faixa i:nth-child(5){background:var(--br-azul-med);} .el-faixa i:nth-child(6){background:var(--br-azul);}
+
+/* botoes */
+.el-btn,.el-btn2,.el-btn-mapa{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:10px 20px;border-radius:12px;font-weight:800;font-size:1rem;line-height:1.3;text-align:center;text-decoration:none;transition:transform var(--ease),box-shadow var(--ease),background var(--ease);}
+.el-btn{background:var(--br-amarelo);color:var(--br-azul);border:2px solid var(--br-amarelo);box-shadow:0 3px 0 #c9ad00;}
+.el-btn:hover{color:var(--br-azul);background:#ffe733;text-decoration:none;transform:translateY(-1px);}
+.el-btn2{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.75);}
+.el-btn2:hover{color:var(--br-azul);background:#fff;text-decoration:none;}
+.el-btn-mapa{width:100%;min-height:46px;background:var(--br-verde-esc);color:#fff;border:2px solid var(--br-verde-esc);font-size:.95rem;}
+.el-btn-mapa:hover{background:var(--br-verde);border-color:var(--br-verde);color:#fff;text-decoration:none;}
+.el-btn:focus-visible,.el-btn2:focus-visible,.el-btn-mapa:focus-visible{outline:3px solid var(--br-azul-med);outline-offset:2px;}
+.el-alerta .el-btn{margin-top:14px;}
+
 .el-meta{font-size:.84rem;color:var(--color-text-muted);margin:0 0 6px;}
 .el-meta a{color:var(--color-text-muted);}
-.el-secao{margin-top:44px;}
-.el-secao > h2{font-size:clamp(1.35rem,2.6vw,1.9rem);margin:0 0 14px;}
-.el-datas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 12px;}
-.el-data{background:#fff;border:1px solid var(--color-border);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow-rest);}
-.el-data-turno{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--color-text-muted);margin-bottom:4px;}
-.el-data b{display:block;font-size:1.2rem;line-height:1.3;color:var(--color-primary-dark);}
-.el-data-hora{display:block;margin-top:4px;font-weight:650;}
-.el-data-nota{display:block;margin-top:6px;font-size:.84rem;color:var(--color-text-muted);}
-.el-onde{background:#fff;border:2px solid var(--color-primary);border-radius:var(--radius);padding:22px 22px 20px;box-shadow:var(--shadow-rest);}
-.el-onde h2{margin:0 0 8px;font-size:clamp(1.35rem,2.6vw,1.9rem);}
-.el-onde > p{margin:0 0 16px;}
+
+/* secoes */
+.el-secao{margin-top:46px;}
+.el-secao > h2,.el-onde h2{font-family:var(--el-titulo);font-weight:900;text-transform:uppercase;letter-spacing:-.005em;color:var(--br-azul);font-size:clamp(1.35rem,2.8vw,1.9rem);line-height:1.1;margin:0 0 16px;}
+.el-secao > h2::after{content:"";display:block;width:56px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--br-verde) 0 50%,var(--br-amarelo) 50% 100%);margin-top:8px;}
+
+.el-datas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 14px;}
+.el-data{background:#fff;border:1px solid var(--color-border);border-left:8px solid var(--br-amarelo);border-radius:14px;padding:16px 20px;box-shadow:var(--shadow-rest);}
+.el-data-2{border-left-color:var(--br-azul-med);}
+.el-data-turno{display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--br-verde-esc);margin-bottom:2px;}
+.el-data b{display:block;font-weight:900;font-size:1.3rem;line-height:1.2;color:var(--br-azul);letter-spacing:-.015em;}
+.el-data-hora{display:block;margin-top:4px;font-weight:700;color:var(--color-text);}
+.el-nota-voto{background:var(--br-amarelo-claro);border-radius:12px;padding:12px 16px;margin:0;color:var(--br-azul);}
+
+.el-onde{background:var(--br-azul);color:#fff;border-radius:22px;padding:26px 26px 24px;box-shadow:0 12px 30px rgba(0,39,118,.20);}
+.el-onde h2{color:var(--br-amarelo);}
+.el-onde > p{margin:0 0 18px;color:#e8edf8;}
+.el-onde > p strong{color:#fff;}
 .el-botoes{display:flex;gap:12px;flex-wrap:wrap;}
-.el-botoes .btn,.el-botoes .btn-secondary{flex:1 1 260px;text-align:center;padding:10px 20px;line-height:1.3;}
+.el-botoes a{flex:1 1 260px;}
+
 .el-locais{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;list-style:none;padding:0;margin:0;}
-.el-local{background:#fff;border:1px solid var(--color-border);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;box-shadow:var(--shadow-rest);}
-.el-local-cidade{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 4px;font-size:1.2rem;font-weight:800;color:var(--color-primary-dark);}
-.el-novo{display:inline-block;background:var(--color-accent-soft);color:var(--color-accent-dark);border:1px solid #c7ecd8;border-radius:999px;padding:2px 10px;font-size:.74rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;}
+.el-local{background:#fff;border:1px solid var(--color-border);border-top:6px solid var(--br-verde);border-radius:14px;padding:16px 18px 16px;display:flex;flex-direction:column;box-shadow:var(--shadow-rest);}
+.el-local-cidade{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 2px;font-weight:900;font-size:1.3rem;line-height:1.2;letter-spacing:-.015em;text-transform:uppercase;color:var(--br-azul);}
+.el-novo{display:inline-block;font-family:var(--font-base);background:var(--br-amarelo);color:var(--br-azul);border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;}
 .el-local-nome{margin:0 0 14px;color:var(--color-text);font-size:.95rem;line-height:1.45;flex:1;}
-.el-local .btn-secondary{width:100%;}
+
 .el-check{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
-.el-check li{position:relative;background:#fff;border:1px solid var(--color-border);border-radius:12px;padding:14px 16px 14px 50px;line-height:1.55;}
-.el-check li::before{content:"";position:absolute;left:16px;top:15px;width:20px;height:20px;border-radius:6px;border:2px solid var(--color-accent-dark);background:var(--color-accent-soft);}
-.el-check li::after{content:"";position:absolute;left:23px;top:18px;width:6px;height:11px;border:solid var(--color-accent-dark);border-width:0 2.5px 2.5px 0;transform:rotate(45deg);}
+.el-check li{position:relative;background:#fff;border:1px solid #cfe8d7;border-radius:12px;padding:14px 16px 14px 52px;line-height:1.55;}
+.el-check li::before{content:"";position:absolute;left:15px;top:14px;width:24px;height:24px;border-radius:50%;background:var(--br-verde);}
+.el-check li::after{content:"";position:absolute;left:24px;top:18px;width:6px;height:11px;border:solid var(--br-amarelo);border-width:0 3px 3px 0;transform:rotate(45deg);}
+
+.el-fontes{background:var(--br-verde-claro);border:1px solid #cfe8d7;border-top:6px solid var(--br-verde);border-radius:18px;padding:22px 24px;}
+.el-fontes > h2{font-size:1.5rem;}
 .el-fontes-lista{margin:0 0 14px;padding-left:1.2em;}
-.el-fontes-lista li{margin-bottom:6px;font-size:.92rem;}
-.el-fontes-box{margin-top:14px;}
-.el-fontes-box h3{margin:0 0 8px;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-muted);}
-.el-atualizado{font-weight:700;color:var(--color-primary-dark);font-size:1rem !important;margin-bottom:10px !important;}
+.el-fontes-lista li{margin-bottom:6px;font-size:.95rem;}
+.el-fontes-lista a{color:var(--br-azul);font-weight:700;}
+.el-fontes-box{margin-top:14px;background:#fff;border-radius:12px;padding:14px 16px;border-left:6px solid var(--br-amarelo);}
+.el-fontes-box h3{margin:0 0 6px;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--br-verde-esc);}
+.el-fontes-box p{margin:0;font-size:.92rem;}
+.el-atualizado{display:inline-block;font-weight:800;color:var(--br-azul);background:var(--br-amarelo);border-radius:8px;padding:6px 12px;margin:0 0 14px;}
+
 @media(max-width:640px){
-  .container.el-topo{padding:14px 20px 56px;}
+  .container.el-topo{padding:12px 16px 56px;}
+  .el-hero{padding:18px 18px 28px;border-radius:18px;}
+  .el-hero h1{font-size:1.5rem;margin:10px 0 14px;}
+  .el-faixa{border-radius:0 0 18px 18px;}
   .el-datas{grid-template-columns:1fr;}
-  .el-onde{padding:18px 16px;}
-  .el-secao{margin-top:36px;}
+  .el-onde{padding:22px 18px 20px;border-radius:18px;}
+  .el-secao{margin-top:38px;}
+  .el-fontes{padding:18px 16px;}
+}
+
+/* ===== v3: header com bandeiras, ilustracao e atalhos ===== */
+.el-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;align-items:center;}
+.el-hero-txt{position:relative;z-index:1;min-width:0;}
+.el-hero-topo{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.el-bandeiras{display:flex;gap:6px;}
+.el-bandeiras svg{width:40px;height:28px;border-radius:5px;box-shadow:0 2px 6px rgba(0,0,0,.25);display:block;}
+.el-sub{position:relative;z-index:1;margin:0 0 16px;color:#eaf6ee;font-size:1.02rem;line-height:1.5;}
+.el-hero-ilu{position:relative;z-index:1;}
+.el-hero-ilu svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 24px rgba(0,39,118,.28));}
+.el-aviso-gifu{position:relative;z-index:1;display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;background:var(--br-azul);color:#fff;border-radius:12px;padding:12px 14px;font-size:.95rem;line-height:1.45;}
+.el-aviso-gifu b{color:var(--br-amarelo);}
+.el-aviso-gifu a{color:#fff;font-weight:800;white-space:nowrap;}
+.el-aviso-gifu a:hover{color:var(--br-amarelo);}
+.el-aviso-gifu .el-ico{flex:0 0 22px;width:22px;height:22px;color:var(--br-amarelo);margin-top:1px;}
+
+.el-atalhos{list-style:none;padding:0;margin:18px 0 14px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
+.el-atalhos a{display:flex;flex-direction:column;align-items:center;gap:7px;text-decoration:none;color:var(--br-azul);font-weight:800;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;text-align:center;padding:12px 6px 10px;border-radius:14px;background:#fff;border:1px solid var(--color-border);box-shadow:var(--shadow-rest);transition:transform var(--ease),border-color var(--ease);}
+.el-atalhos a:hover{transform:translateY(-2px);border-color:var(--br-verde);color:var(--br-azul);}
+.el-atalhos span.el-ico-bola{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--br-verde-claro);color:var(--br-verde-esc);}
+.el-atalhos li:nth-child(even) span.el-ico-bola{background:#e6ecf8;color:var(--br-azul);}
+.el-atalhos li.el-at-gifu span.el-ico-bola{background:var(--br-amarelo);color:var(--br-azul);}
+.el-atalhos svg{width:24px;height:24px;}
+
+/* destaque Gifu (Nagoia) */
+.el-gifu{background:#fff;border:2px solid var(--br-verde);border-radius:22px;overflow:hidden;box-shadow:0 10px 26px rgba(0,107,45,.12);}
+.el-gifu-topo{background:linear-gradient(135deg,var(--br-verde) 0%,var(--br-verde-esc) 100%);color:#fff;padding:22px 24px 20px;}
+.el-gifu-topo h2{font-weight:900;text-transform:uppercase;letter-spacing:-.005em;color:#fff;font-size:clamp(1.35rem,2.8vw,1.9rem);line-height:1.1;margin:8px 0 10px;}
+.el-gifu-topo h2 span{color:var(--br-amarelo);}
+.el-gifu-topo p{margin:0;color:#eaf6ee;}
+.el-gifu-topo blockquote{margin:12px 0 0;padding:10px 14px;border-left:5px solid var(--br-amarelo);background:rgba(0,0,0,.14);border-radius:0 10px 10px 0;color:#fff;font-size:.95rem;}
+.el-gifu-corpo{padding:20px 24px 24px;}
+.el-gifu-corpo h3{font-weight:900;font-size:1.05rem;text-transform:uppercase;letter-spacing:.01em;color:var(--br-azul);margin:22px 0 10px;}
+.el-gifu-corpo h3:first-child{margin-top:0;}
+.el-end{background:var(--br-amarelo-claro);border-radius:12px;padding:12px 16px;margin:0;font-weight:700;color:var(--br-azul);}
+.el-end small{display:block;font-weight:600;color:var(--color-text-muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;}
+.el-onibus{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.el-bus{border:1px solid var(--color-border);border-radius:14px;padding:14px 16px;background:#fff;}
+.el-bus h4{margin:0 0 10px;font-size:.95rem;color:var(--br-verde-esc);display:flex;align-items:center;gap:8px;}
+.el-bus h4 svg{width:20px;height:20px;flex:0 0 20px;}
+.el-op{border-top:1px dashed var(--color-border);padding-top:10px;margin-top:10px;font-size:.92rem;line-height:1.5;}
+.el-op:first-of-type{border-top:0;padding-top:0;margin-top:0;}
+.el-op b{color:var(--br-azul);}
+.el-pill{display:inline-block;background:var(--br-azul);color:#fff;border-radius:6px;padding:1px 7px;font-size:.78rem;font-weight:800;margin-right:4px;}
+.el-tarifa{display:inline-block;margin-top:10px;background:var(--br-verde-claro);color:var(--br-verde-esc);border-radius:999px;padding:4px 12px;font-weight:800;font-size:.85rem;}
+.el-lista{margin:0;padding-left:1.2em;}
+.el-lista li{margin-bottom:6px;line-height:1.5;}
+.el-park{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+.el-park li{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--color-border);border-radius:12px;padding:10px 12px;}
+.el-park b.el-p{flex:0 0 38px;height:38px;border-radius:8px;background:var(--br-azul);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;}
+.el-park span{font-size:.92rem;line-height:1.45;}
+.el-park span strong{display:block;color:var(--br-azul);}
+.el-alerta-verm{background:var(--br-amarelo-claro);border-left:6px solid var(--br-amarelo);border-radius:0 12px 12px 0;padding:12px 14px;margin:12px 0 0;font-size:.92rem;}
+.el-mini{font-size:.82rem;color:var(--color-text-muted);margin:14px 0 0;}
+.el-link-gifu{display:inline-block;margin-top:10px;font-weight:800;font-size:.9rem;color:var(--br-verde-esc);}
+
+/* documentos e na secao */
+.el-docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,42vw),1fr));gap:10px;list-style:none;padding:0;margin:0 0 14px;}
+.el-docs li{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--color-border);border-left:6px solid var(--br-verde);border-radius:12px;padding:12px 14px;font-weight:650;line-height:1.35;}
+.el-docs li > svg{width:22px;height:22px;flex:0 0 22px;color:var(--br-verde-esc);}
+.el-docs li small{display:block;font-weight:500;color:var(--color-text-muted);font-size:.82rem;}
+.el-cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.el-card2{background:#fff;border:1px solid var(--color-border);border-radius:14px;padding:16px 18px;}
+.el-card2 h3{margin:0 0 8px;font-size:1rem;font-weight:900;color:var(--br-azul);text-transform:uppercase;letter-spacing:.01em;display:flex;gap:8px;align-items:center;}
+.el-card2 h3 svg{width:22px;height:22px;flex:0 0 22px;color:var(--br-verde-esc);}
+.el-card2 p{margin:0;font-size:.94rem;line-height:1.55;}
+.el-card2.el-proibido{border-top:5px solid #c62828;}
+.el-card2.el-proibido h3 svg{color:#c62828;}
+.el-card2.el-amarelo{border-top:5px solid var(--br-amarelo);}
+.el-card2.el-verde{border-top:5px solid var(--br-verde);}
+.el-card2.el-azul{border-top:5px solid var(--br-azul-med);}
+.el-passos{counter-reset:p;list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+.el-passos li{counter-increment:p;position:relative;padding:4px 0 4px 40px;font-size:.94rem;line-height:1.45;}
+.el-passos li::before{content:counter(p);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--br-amarelo);color:var(--br-azul);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+.el-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0;}
+.el-tags li{background:var(--br-verde-claro);color:var(--br-verde-esc);border-radius:8px;padding:4px 10px;font-size:.84rem;font-weight:700;}
+.el-card2 .el-nota80{margin-top:10px;background:var(--br-amarelo-claro);border-radius:8px;padding:8px 10px;font-size:.88rem;}
+.el-just{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:0 0 12px;}
+.el-just div{background:var(--br-azul);color:#fff;border-radius:14px;padding:14px 16px;}
+.el-just span{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:#c9d6f2;font-weight:800;}
+.el-just b{display:block;font-size:1.15rem;color:var(--br-amarelo);margin-top:2px;}
+
+@media(max-width:900px){
+  .el-hero{grid-template-columns:1fr;}
+  .el-hero-ilu{display:none;}
+  .el-atalhos{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:640px){
+  .el-bandeiras svg{width:32px;height:22px;}
+  .el-sub{display:none;}
+  .el-onibus,.el-cards2,.el-just{grid-template-columns:1fr;}
+  .el-gifu-topo,.el-gifu-corpo{padding-left:16px;padding-right:16px;}
+  .el-atalhos{gap:8px;}
+  .el-atalhos a{font-size:.68rem;padding:8px 4px 8px;}
+  .el-docs li{padding:10px 10px;font-size:.9rem;gap:8px;}
+  .el-docs li > svg{display:none;}
+  .el-atalhos span.el-ico-bola{width:40px;height:40px;}
 }
 </style>
 </head>
@@ -229,13 +375,44 @@
   <div class="container section el-topo">
     <p class="breadcrumb"><a href="/">Início</a> / Eleições 2026 — jurisdição de Nagoia</p>
 
-    <p class="categoria-etiqueta">Serviço · Eleições 2026</p>
-    <h1>Eleições 2026: onde votar na jurisdição do Consulado-Geral do Brasil em Nagoia</h1>
-
-    <div class="el-alerta" role="note">
-      <p><strong>Não haverá local de votação na cidade de Nagoia.</strong> Antes de abrir um mapa, consulte o local e a seção de votação atribuídos a você.</p>
-      <a class="btn" href="#onde-voce-vota">Descubra onde você vota</a>
-    </div>
+    <header class="el-hero">
+      <div class="el-hero-txt">
+        <div class="el-hero-topo">
+          <p class="el-tag">Eleições 2026 · Exterior</p>
+          <span class="el-bandeiras" aria-hidden="true"><svg viewBox="0 0 40 28" aria-hidden="true"><rect width="40" height="28" fill="#009c3b"/><path d="M20 3.5 36 14 20 24.5 4 14Z" fill="#ffdf00"/><circle cx="20" cy="14" r="6.3" fill="#002776"/><path d="M13.9 12.6c4.2-.9 8.8-.3 12.2 1.9" stroke="#fff" stroke-width="1.2" fill="none"/></svg><svg viewBox="0 0 40 28" aria-hidden="true"><rect width="40" height="28" fill="#fff"/><circle cx="20" cy="14" r="7.6" fill="#bc002d"/></svg></span>
+        </div>
+        <h1>Eleições 2026: onde votar na jurisdição do <span>Consulado-Geral do Brasil em Nagoia</span></h1>
+        <p class="el-sub">Datas, os cinco locais, como chegar a Gifu e o que conferir antes de sair de casa.</p>
+        <div class="el-alerta" role="note">
+          <p><strong>Não haverá local de votação na cidade de Nagoia.</strong> Antes de abrir um mapa, consulte o local e a seção de votação atribuídos a você.</p>
+          <a class="el-btn" href="#onde-voce-vota">Descubra onde você vota ↓</a>
+        </div>
+        <p class="el-aviso-gifu"><svg class="el-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg><span><b>Novo em 2026:</b> o local que antes funcionava em Nagoia passou para <b>Gifu</b> (Gifu Memorial Center). <a href="#gifu">Como chegar ↓</a></span></p>
+      </div>
+      <div class="el-hero-ilu" aria-hidden="false"><svg viewBox="0 0 340 280" role="img" aria-label="Ilustração de urna de votação e celular com o e-Título">
+  <circle cx="200" cy="130" r="120" fill="#27a64a" opacity=".55"/>
+  <g transform="translate(212 18)"><rect x="0" y="0" width="3" height="120" fill="#ffdf00"/><rect x="3" y="4" width="66" height="46" rx="3" fill="#009c3b"/><path d="M36 9 64 27 36 45 8 27Z" fill="#ffdf00"/><circle cx="36" cy="27" r="10" fill="#002776"/></g>
+  <g transform="translate(252 42)"><rect x="0" y="0" width="3" height="104" fill="#ffdf00"/><rect x="3" y="4" width="62" height="42" rx="3" fill="#fff"/><circle cx="34" cy="25" r="11" fill="#bc002d"/></g>
+  <rect x="30" y="126" width="170" height="130" rx="10" fill="#fff"/>
+  <rect x="30" y="126" width="170" height="26" rx="10" fill="#e8edf5"/>
+  <rect x="78" y="134" width="74" height="8" rx="4" fill="#16181d" opacity=".75"/>
+  <g transform="translate(86 76) rotate(-6)"><rect width="62" height="70" rx="4" fill="#fff" stroke="#dfe5ef"/><rect x="8" y="10" width="46" height="32" rx="2" fill="#009c3b"/><path d="M31 14 50 26 31 38 12 26Z" fill="#ffdf00"/><circle cx="31" cy="26" r="7" fill="#002776"/></g>
+  <text x="115" y="206" text-anchor="middle" font-family="Inter var,Arial,sans-serif" font-weight="900" font-size="24" fill="#002776">VOTAÇÃO</text>
+  <rect x="62" y="220" width="30" height="4" rx="2" fill="#009c3b"/><text x="115" y="226" text-anchor="middle" font-family="Inter var,Arial,sans-serif" font-weight="800" font-size="11" letter-spacing="2" fill="#002776">BRASIL</text><rect x="138" y="220" width="30" height="4" rx="2" fill="#ffdf00"/>
+  <g transform="translate(212 110)"><rect width="88" height="160" rx="14" fill="#002776"/><rect x="6" y="8" width="76" height="144" rx="9" fill="#1f4aa8"/><text x="44" y="34" text-anchor="middle" font-family="Inter var,Arial,sans-serif" font-weight="800" font-size="12" fill="#fff">e-Título</text><rect x="14" y="44" width="60" height="84" rx="7" fill="#fff"/><circle cx="44" cy="68" r="11" fill="#b9c6e4"/><rect x="24" y="86" width="40" height="5" rx="2.5" fill="#d3dbee"/><rect x="28" y="96" width="32" height="5" rx="2.5" fill="#d3dbee"/><circle cx="44" cy="116" r="8" fill="#009c3b"/><path d="M40 116l3 3 5-6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg></div>
+    </header>
+    <div class="el-faixa" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <nav aria-label="Nesta página">
+      <ul class="el-atalhos">
+        <li><a href="#datas"><span class="el-ico-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M8 14h2M12 14h2M16 14h0M8 17h2M12 17h2"/></svg></span>Datas</a></li>
+        <li><a href="#onde-voce-vota"><span class="el-ico-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>Sua seção</a></li>
+        <li><a href="#locais"><span class="el-ico-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg></span>Locais</a></li>
+        <li class="el-at-gifu"><a href="#gifu"><span class="el-ico-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14.5" r=".6"/><circle cx="16" cy="14.5" r=".6"/></svg></span>Gifu (Nagoia)</a></li>
+        <li><a href="#documentos"><span class="el-ico-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14 10h4M14 13h3"/></svg></span>Documentos</a></li>
+        <li><a href="#na-secao"><span class="el-ico-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span>No dia</a></li>
+      </ul>
+    </nav>
     <p class="el-meta">Atualizado em <time datetime="2026-09-29">29 de setembro de 2026</time> · Página informativa, não oficial. Orientações podem mudar — confira sempre nos <a href="#fontes">canais oficiais</a>.</p>
 
     <!-- 1. DATAS -->
@@ -247,13 +424,13 @@
           <b>Domingo, 4 de outubro de 2026</b>
           <span class="el-data-hora">Das 8h às 17h (horário do Japão)</span>
         </div>
-        <div class="el-data">
+        <div class="el-data el-data-2">
           <span class="el-data-turno">2º turno — somente se houver</span>
           <b>Domingo, 25 de outubro de 2026</b>
           <span class="el-data-hora">Das 8h às 17h (horário do Japão)</span>
         </div>
       </div>
-      <p>Para eleitores no exterior, a votação é para <strong>presidente e vice-presidente da República</strong>.</p>
+      <p class="el-nota-voto">Para eleitores no exterior, a votação é para <strong>presidente e vice-presidente da República</strong>.</p>
     </section>
 
     <!-- 2. ONDE VOCE VOTA -->
@@ -261,8 +438,8 @@
       <h2 id="onde-titulo">Descubra onde VOCÊ vota</h2>
       <p>Os cinco locais listados abaixo <strong>não são opções de livre escolha</strong>. Cada eleitor tem um local e uma seção eleitoral atribuídos. Consulte os seus nos canais oficiais do TSE antes de planejar o trajeto.</p>
       <div class="el-botoes">
-        <a class="btn" href="https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral" target="_blank" rel="noopener">Autoatendimento Eleitoral do TSE</a>
-        <a class="btn-secondary" href="https://www.tse.jus.br/servicos-eleitorais/servicos/aplicativo-e-titulo" target="_blank" rel="noopener">e-Título: informações oficiais</a>
+        <a class="el-btn" href="https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral" target="_blank" rel="noopener">Autoatendimento Eleitoral do TSE</a>
+        <a class="el-btn2" href="https://www.tse.jus.br/servicos-eleitorais/servicos/aplicativo-e-titulo" target="_blank" rel="noopener">e-Título: informações oficiais</a>
       </div>
     </section>
 
@@ -273,31 +450,97 @@
       <ul class="el-locais">
         <li class="el-local">
           <p class="el-local-cidade">Gifu <span class="el-novo">Novo local</span></p>
-          <p class="el-local-nome">Gifu Memorial Center, Deai Dome e Fureai Dome</p>
-          <a class="btn-secondary btn-sm" href="https://maps.app.goo.gl/y43Fnj2WjDdhSNFs7" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <p class="el-local-nome">Gifu Memorial Center, Deai Dome e Fureai Dome<br><a class="el-link-gifu" href="#gifu">Substitui o local de Nagoia · como chegar ↓</a></p>
+          <a class="el-btn-mapa" href="https://maps.app.goo.gl/y43Fnj2WjDdhSNFs7" target="_blank" rel="noopener">Abrir no Google Maps</a>
         </li>
         <li class="el-local">
           <p class="el-local-cidade">Toyohashi</p>
           <p class="el-local-nome">Prefeitura de Toyohashi</p>
-          <a class="btn-secondary btn-sm" href="https://maps.app.goo.gl/pWK4oQybH8cgxD7XA" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <a class="el-btn-mapa" href="https://maps.app.goo.gl/pWK4oQybH8cgxD7XA" target="_blank" rel="noopener">Abrir no Google Maps</a>
         </li>
         <li class="el-local">
           <p class="el-local-cidade">Suzuka <span class="el-novo">Novo local</span></p>
           <p class="el-local-nome">AGF Suzuka Arena</p>
-          <a class="btn-secondary btn-sm" href="https://maps.app.goo.gl/h8aUSrEtTCotJbcv9" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <a class="el-btn-mapa" href="https://maps.app.goo.gl/h8aUSrEtTCotJbcv9" target="_blank" rel="noopener">Abrir no Google Maps</a>
         </li>
         <li class="el-local">
           <p class="el-local-cidade">Takaoka</p>
           <p class="el-local-nome">Empresa Yukawa Jinzai Service KK</p>
-          <a class="btn-secondary btn-sm" href="https://maps.app.goo.gl/zQ51qUcEqAzttZ4V8" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <a class="el-btn-mapa" href="https://maps.app.goo.gl/zQ51qUcEqAzttZ4V8" target="_blank" rel="noopener">Abrir no Google Maps</a>
         </li>
         <li class="el-local">
           <p class="el-local-cidade">Hiroshima</p>
           <p class="el-local-nome">Hiroshima City International House (Ryugakusei Kaikan)</p>
-          <a class="btn-secondary btn-sm" href="https://maps.app.goo.gl/vxzXWJ5x7sDyQnBP8" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <a class="el-btn-mapa" href="https://maps.app.goo.gl/vxzXWJ5x7sDyQnBP8" target="_blank" rel="noopener">Abrir no Google Maps</a>
         </li>
       </ul>
-      <p class="el-meta" style="margin-top:12px">Gifu e Suzuka estão identificados como novos locais no material divulgado pelo Consulado-Geral do Brasil em Nagoia. Para como chegar e estacionamento, siga as orientações do <a href="https://www.facebook.com/ConsBrasNagoiaTemporario" target="_blank" rel="noopener">perfil oficial do consulado</a>.</p>
+      <p class="el-meta" style="margin-top:12px">Gifu e Suzuka estão identificados como novos locais no material divulgado pelo Consulado-Geral do Brasil em Nagoia. Para os mapas de acesso e estacionamento de cada local, siga o <a href="https://www.facebook.com/ConsBrasNagoiaTemporario" target="_blank" rel="noopener">perfil oficial temporário do consulado</a>.</p>
+    </section>
+
+    <!-- 3b. GIFU (NAGOIA) -->
+    <section class="el-secao el-gifu" id="gifu" aria-labelledby="gifu-titulo">
+      <div class="el-gifu-topo">
+        <p class="el-tag">Atenção, quem votava em Nagoia</p>
+        <h2 id="gifu-titulo">Em 2026, o local de Nagoia fica em <span>Gifu</span></h2>
+        <p>O polo de votação que atendia a cidade de Nagoia foi transferido para o <strong>Gifu Memorial Center</strong> (Deai Dome e Fureai Dome), na cidade de Gifu. Confirme sua seção antes: seu local pode ser outro da lista.</p>
+        <blockquote>Segundo o consulado, “não haverá local de votação na cidade de Nagoia, por conta da ausência de espaços adequados disponíveis, em razão dos Jogos Asiáticos”.</blockquote>
+      </div>
+      <div class="el-gifu-corpo">
+        <p class="el-end"><small>Endereço</small>〒502-0817 Gifu-ken Gifu-shi Nagarafukumitsu Ono 2675-28</p>
+        <a class="el-btn-mapa" style="margin-top:10px" href="https://maps.app.goo.gl/y43Fnj2WjDdhSNFs7" target="_blank" rel="noopener">Abrir Gifu Memorial Center no Google Maps</a>
+
+        <h3>De ônibus (recomendado)</h3>
+        <div class="el-onibus">
+          <div class="el-bus">
+            <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14.5" r=".6"/><circle cx="16" cy="14.5" r=".6"/></svg> Saindo da estação JR Gifu</h4>
+            <div class="el-op"><b>Opção 1 · Plataforma 10</b><br>Linhas <span class="el-pill">K50</span><span class="el-pill">K61</span><br>Desça no ponto <b>Memorial Seimon Mae</b>, em frente à entrada principal.</div>
+            <div class="el-op"><b>Opção 2 · Plataforma 11</b><br>Qualquer linha.<br>Desça no ponto <b>Gifu Memorial Center Kita</b>, a 600 m da entrada principal.</div>
+            <span class="el-tarifa">¥250</span>
+          </div>
+          <div class="el-bus">
+            <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14.5" r=".6"/><circle cx="16" cy="14.5" r=".6"/></svg> Saindo da estação Meitetsu Gifu</h4>
+            <div class="el-op"><b>Plataforma 4</b><br>Linhas <span class="el-pill">City Loop</span><span class="el-pill">N37</span><br>Desça no ponto <b>Gifu Memorial Center Kita</b>, a 600 m da entrada principal.</div>
+            <span class="el-tarifa">¥250</span>
+          </div>
+        </div>
+
+        <h3>Como usar o ônibus</h3>
+        <ol class="el-lista">
+          <li>Suba pela porta traseira e pegue o ticket numerado ou toque o IC Card.</li>
+          <li>Fique sentado durante o trajeto e aperte o botão de parada antes do ponto.</li>
+          <li>Só se levante com o ônibus parado e as portas abertas; saia pela porta dianteira.</li>
+          <li>Toque o IC Card ou coloque o ticket e o valor exato (¥250) na máquina.</li>
+          <li>Precisa de troco? A máquina ao lado do motorista troca <strong>somente notas de ¥1.000</strong>.</li>
+        </ol>
+
+        <h3>Estacionamento</h3>
+        <p class="el-alerta-verm"><strong>Há previsão de lotação.</strong> Os estacionamentos próximos são pagos, aceitam <strong>apenas dinheiro</strong> (moedas ou notas de ¥1.000) e não são exclusivos para as eleições. Se puder, vá de transporte público.</p>
+        <ul class="el-park" style="margin-top:10px">
+          <li><b class="el-p">P1</b><span><strong>Sunsun Deck Parking</strong>No próprio local de votação.</span></li>
+          <li><b class="el-p">P2</b><span><strong>Meadow Kita</strong>Cerca de 15 minutos a pé até o local.</span></li>
+          <li><b class="el-p">P3</b><span><strong>Event Mura</strong>Cerca de 5 minutos a pé até a entrada.</span></li>
+          <li><b class="el-p">P4</b><span><strong>Memorial Center Minami</strong>Cerca de 15 minutos a pé até o local.</span></li>
+        </ul>
+        <p class="el-mini"><strong>Não estacione</strong> em vias públicas, mercados, drogarias, restaurantes, lojas de conveniência, entorno de plantações ou propriedades privadas. Informações de acesso e estacionamento conforme o material do Consulado-Geral do Brasil em Nagoia; confira atualizações no perfil oficial.</p>
+      </div>
+    </section>
+
+    <!-- 4a. DOCUMENTOS -->
+    <section class="el-secao" id="documentos" aria-labelledby="docs-titulo">
+      <h2 id="docs-titulo">Documentos aceitos</h2>
+      <p>Apresente <strong>um</strong> documento oficial com foto:</p>
+      <ul class="el-docs">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14 10h4M14 13h3"/></svg><span>RG ou CIN<small>carteira de identidade</small></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14 10h4M14 13h3"/></svg><span>Passaporte brasileiro<small>mesmo vencido</small></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14 10h4M14 13h3"/></svg><span>CNH brasileira<small>mesmo vencida</small></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14 10h4M14 13h3"/></svg><span>Carteira profissional<small>OAB, CRM, COREN, CREA etc.</small></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14 10h4M14 13h3"/></svg><span>Carteira de trabalho<small>modelo físico</small></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><span>e-Título com foto<small>só se tiver biometria e mostrar a foto</small></span></li>
+      </ul>
+      <div class="el-cards2">
+        <div class="el-card2 el-amarelo"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h0"/></svg> Documento muito antigo?</h3><p>Leve também um documento complementar com foto, como <strong>zairyu card</strong>, <strong>My Number</strong> ou passaporte estrangeiro.</p></div>
+        <div class="el-card2 el-amarelo"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h5"/></svg> Mudou de nome?</h3><p>Leve também uma certidão que comprove a mudança.</p></div>
+      </div>
     </section>
 
     <!-- 4. CHECKLIST -->
@@ -305,14 +548,49 @@
       <h2 id="checklist-titulo">Checklist para o dia da votação</h2>
       <ul class="el-check">
         <li>Confirme o <strong>seu local e a sua seção eleitoral</strong>.</li>
-        <li>Leve <strong>documento oficial com foto</strong>, como RG, passaporte brasileiro ou CNH brasileira.</li>
+        <li>Leve <strong>documento oficial com foto</strong>, como RG, passaporte brasileiro ou CNH brasileira (<a href="#documentos">ver lista</a>).</li>
         <li>O e-Título só serve sozinho para identificação se <strong>mostrar a foto do eleitor</strong>. Captura de tela não substitui o aplicativo aberto.</li>
         <li>Se for usar o e-Título, recomendamos instalar, fazer o primeiro acesso e conferir os dados <strong>até sábado, 3 de outubro</strong>, para evitar imprevistos.</li>
-        <li>Planeje o trajeto e considere que <strong>a manhã tende a ser mais movimentada</strong>, segundo o consulado.</li>
+        <li>Planeje o trajeto e, se puder, <strong>evite o período da manhã</strong>, que é o mais movimentado, segundo o consulado.</li>
       </ul>
     </section>
 
-    <div class="fu-share" data-share-texto="Eleições 2026 na jurisdição do Consulado em Nagoia: não haverá votação na cidade de Nagoia. Datas, os 5 locais e como consultar sua seção:">
+    <!-- 5. NA SECAO -->
+    <section class="el-secao" id="na-secao" aria-labelledby="secao-titulo">
+      <h2 id="secao-titulo">Na seção eleitoral</h2>
+      <div class="el-cards2">
+        <div class="el-card2 el-verde"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg> Celular</h3><p>Pode levar. Antes de entrar na cabine, <strong>desligue</strong> e deixe no lugar indicado pela mesária ou pelo mesário.</p></div>
+        <div class="el-card2 el-proibido"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="3.5"/><path d="M3 3l18 18"/></svg> Proibido fotografar ou filmar</h3><p>Não é permitido registrar a urna ou o voto com celular ou qualquer outro aparelho. Segundo a Justiça Eleitoral, violar o sigilo do voto pode gerar pena de até <strong>dois anos de detenção</strong>.</p></div>
+        <div class="el-card2 el-azul"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h5"/></svg> Colinha em papel</h3><p>Como o celular não pode ser usado na cabine, leve anotado <strong>em papel</strong> o número em que pretende votar.</p></div>
+        <div class="el-card2 el-verde"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M8 10V4h8v6M7 14h10"/></svg> Passo a passo</h3>
+          <ol class="el-passos">
+            <li>Apresente o documento oficial com foto.</li>
+            <li>Faça a identificação biométrica.</li>
+            <li>Vá até a cabine e digite o número.</li>
+            <li>Confira na tela o número e a foto.</li>
+            <li>Aperte <strong>CONFIRMA</strong>.</li>
+          </ol>
+        </div>
+        <div class="el-card2 el-amarelo"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="8" r="2.5"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14 20c0-2.5 1.5-4.5 3-4.5s4 1.5 4 4.5"/></svg> Quem tem prioridade</h3>
+          <ul class="el-tags"><li>60 anos ou mais</li><li>Pessoas com deficiência</li><li>Mobilidade reduzida</li><li>Gestantes</li><li>Lactantes</li><li>Criança de colo</li><li>Candidatos</li><li>Quem trabalha pela Justiça Eleitoral</li><li>Policiais militares em serviço</li></ul>
+          <p class="el-nota80"><strong>80 anos ou mais:</strong> preferência especial, independentemente da hora de chegada.</p>
+        </div>
+        <div class="el-card2 el-proibido"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg> Regras no local</h3><p><strong>Não pode:</strong> abordar eleitores, pedir votos, distribuir material de campanha ou fazer manifestação em grupo. <strong>Pode:</strong> manifestação individual e silenciosa (camiseta, adesivo, boné, broche), sem atrapalhar a votação.</p></div>
+      </div>
+    </section>
+
+    <!-- 6. NAO VAI VOTAR -->
+    <section class="el-secao" id="justificativa" aria-labelledby="just-titulo">
+      <h2 id="just-titulo">Não vai conseguir votar?</h2>
+      <p>Justifique no próprio dia pelo <strong>e-Título</strong> ou, depois das votações, pelo Autoatendimento Eleitoral, dentro destes prazos:</p>
+      <div class="el-just">
+        <div><span>1º turno</span><b>até 3/12/2026</b></div>
+        <div><span>2º turno (se houver)</span><b>até 8/1/2027</b></div>
+      </div>
+      <p class="el-nota-voto"><strong>Voto em trânsito não é possível no exterior.</strong> Não é possível votar em outro local diferente do seu.</p>
+    </section>
+
+    <div class="fu-share" data-share-texto="Eleições 2026: não haverá votação na cidade de Nagoia — o local agora é em Gifu. Datas, os 5 locais da jurisdição, como chegar e documentos:">
       <p class="fu-share-titulo">Compartilhe com quem também vota pela jurisdição de Nagoia:</p>
       <div class="fu-share-botoes">
         <a class="fu-share-btn whatsapp" data-share="whatsapp" href="#" target="_blank" rel="noopener nofollow">
@@ -335,14 +613,15 @@
     </div>
 
     <!-- 5. FONTES -->
-    <section class="el-secao fam-fontes" id="fontes" aria-labelledby="fontes-titulo" style="display:block">
-      <h2 id="fontes-titulo" style="font-size:1.25rem;margin:0 0 12px">Fontes oficiais</h2>
+    <section class="el-secao el-fontes" id="fontes" aria-labelledby="fontes-titulo">
+      <h2 id="fontes-titulo">Fontes oficiais</h2>
       <p class="el-atualizado">Atualizado em <time datetime="2026-09-29">29 de setembro de 2026</time></p>
       <ul class="el-fontes-lista">
         <li><a href="https://www.facebook.com/ConsBrasNagoiaTemporario" target="_blank" rel="noopener nofollow">Consulado-Geral do Brasil em Nagoia — perfil oficial</a></li>
         <li><a href="https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral" target="_blank" rel="noopener nofollow">Autoatendimento Eleitoral — TSE</a></li>
         <li><a href="https://www.tse.jus.br/servicos-eleitorais/servicos/aplicativo-e-titulo" target="_blank" rel="noopener nofollow">Aplicativo e-Título — TSE</a></li>
       </ul>
+      <p style="font-size:.88rem;margin:0 0 6px">Documentos, regras na seção e prioridades: materiais de orientação da Justiça Eleitoral para as Eleições 2026. Acesso a Gifu, estacionamentos e prazos de justificativa: material do Consulado-Geral do Brasil em Nagoia.</p>
       <div class="el-fontes-box">
         <h3>Aviso importante</h3>
         <p>Esta página é um resumo informativo feito pelo Finanças no Japão a partir do material divulgado pelo Consulado-Geral do Brasil em Nagoia e pelo TSE. <strong>Não é um canal oficial</strong> da Justiça Eleitoral nem do consulado. Datas, locais e orientações podem mudar a qualquer momento: <strong>confira sempre as informações diretamente nos órgãos oficiais</strong> antes de sair de casa.</p>
