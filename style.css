@@ -189,7 +189,7 @@ p { margin: 0 0 1em; }
 .main-nav a[aria-current="page"] { color: var(--color-primary-dark); font-weight: 600; }
 
 .header-cta { flex-shrink: 0; }
-@media (max-width: 1024px) { .header-cta { display: none; } }
+@media (max-width: 1100px) { .header-cta { display: none; } }
 
 .nav-toggle {
   display: none;
@@ -205,10 +205,10 @@ p { margin: 0 0 1em; }
   font-family: inherit;
 }
 
-/* abaixo de 1024px o menu de 6 itens nao cabe numa linha: vira sanduiche
-   (margem de seguranca sobre o minimo calculado, que fica entre 950-985px
-   dependendo da largura da seta ⌄, glifo fora da Inter var) */
-@media (max-width: 1024px) {
+/* abaixo de 1100px o menu de 7 itens nao cabe numa linha: vira sanduiche
+   (medido em 07/10/2026: comeca a vazar em ~1060px; 1100px deixa ~40px de
+   margem para a seta ⌄, glifo fora da Inter var, que varia por sistema) */
+@media (max-width: 1100px) {
   .main-nav { display: none; width: 100%; order: 3; }
   .main-nav.is-open { display: block; }
   .site-header .container { flex-wrap: wrap; }
