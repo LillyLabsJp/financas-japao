@@ -84,7 +84,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Planejador de Kakeibo em português",
-  "description": "Monta o plano do mês pelo método Kakeibo: renda líquida, poupança decidida antes de gastar, remessa, gastos fixos e gastos anuais divididos por 12. Mostra quanto sobra por mês e por semana e gera uma folha A4 para imprimir.",
+  "description": "Kakeibo em português: monta o plano do mês a partir do salário líquido, com poupança decidida antes de gastar, remessa, gastos fixos e gastos anuais divididos por 12; registra os gastos por semana nas 4 categorias e fecha o mês com as 4 perguntas. Gera uma folha A4 para imprimir.",
   "url": "https://financasnojapao.com/kakeibo-japao.html#planejador",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Qualquer navegador",
@@ -97,7 +97,9 @@
     "Poupança e remessa reservadas antes dos gastos",
     "Gastos anuais divididos por 12",
     "Limite de gasto por semana",
-    "Folha A4 para imprimir, com as 4 categorias e as 4 perguntas"
+    "Registro de gastos por semana nas 4 categorias",
+    "Fechamento do mês com as 4 perguntas",
+    "Folha A4 para imprimir ou salvar em PDF"
   ]
 }
 </script>
@@ -118,101 +120,568 @@
 </script>
 
 <style>
-/* ===== Kakeibo (kakeibo-japao.html) — classes kk-, so desta pagina ===== */
-.kk-hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.85fr);gap:36px;align-items:center;position:relative;z-index:1;}
-.kk-caderno{position:relative;background:#fff;color:var(--color-text);border-radius:12px;padding:18px 18px 16px;transform:rotate(2.5deg);box-shadow:0 18px 40px rgba(0,0,0,.35);max-width:300px;justify-self:center;width:100%;
-  background-image:linear-gradient(90deg,transparent 22px,rgba(224,43,37,.35) 22px,rgba(224,43,37,.35) 23px,transparent 23px);}
-.kk-caderno::before{content:"";position:absolute;top:-7px;left:24px;right:24px;height:14px;background:repeating-linear-gradient(90deg,#16181d 0 4px,transparent 4px 18px);border-radius:3px;opacity:.85;}
-.kk-caderno-topo{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0 10px 14px;border-bottom:2px solid var(--color-primary);margin-bottom:6px;}
-.kk-caderno-titulo{font-size:1.35rem;font-weight:800;letter-spacing:.08em;}
-.kk-caderno-mes{font-size:.85rem;font-weight:700;color:var(--color-text-muted);}
-.kk-caderno-linha{display:flex;justify-content:space-between;gap:10px;padding:7px 0 7px 14px;border-bottom:1px solid var(--color-border);font-size:.8rem;font-variant-numeric:tabular-nums;}
-.kk-caderno-linha span:last-child{font-weight:700;}
-.kk-caderno-linha--verde span:last-child{color:var(--color-accent-dark);}
-.kk-caderno-rodape{display:flex;justify-content:space-between;align-items:baseline;padding:10px 44px 0 14px;font-size:.78rem;color:var(--color-text-muted);}
-.kk-caderno-rodape b{font-size:1.15rem;color:var(--color-accent-dark);}
-.kk-caderno-carimbo{position:absolute;right:-14px;bottom:-16px;width:54px;height:54px;border:3px solid var(--color-red);border-radius:50%;color:var(--color-red);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;transform:rotate(-14deg);background:rgba(255,255,255,.92);}
+/* ===== Kakeibo (kakeibo-japao.html) — estilos so desta pagina, prefixo kk- ===== */
+.kk{
+  --kk-paper:#faf8f5; --kk-card:#fff; --kk-ink:#16181d; --kk-ink2:#2f343c; --kk-mut:#5c6169; --kk-faint:#8d939b;
+  --kk-line:#ece8e2; --kk-line2:#e0dbd3; --kk-green:#00854f; --kk-green2:#00a866; --kk-green-soft:#eaf6f0;
+  --kk-c1:#00854f; --kk-c2:#c98a1a; --kk-c3:#3a3f47; --kk-c4:#d2453f;
+  --kk-s1:#eaf6f0; --kk-s2:#fbf3e2; --kk-s3:#efeeec; --kk-s4:#fcecea;
+  --kk-r:18px; --kk-sh:0 1px 2px rgba(22,24,29,.04),0 8px 24px rgba(22,24,29,.06);
+  background:linear-gradient(180deg,var(--kk-paper) 0,var(--kk-paper) 720px,#fff 720px);
+}
+.kk [hidden]{display:none !important;}
+.kk-wrap{padding-top:22px;padding-bottom:40px;}
+.kk-bc{margin:0 0 6px;font-size:.85rem;color:var(--kk-faint);}
+.kk h2{font-size:clamp(1.6rem,2.6vw,2.15rem);line-height:1.18;letter-spacing:-.025em;margin:0 0 12px;}
+.kk h3{letter-spacing:-.015em;}
+.kk p{max-width:68ch;}
+.kk-ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.kk-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.kk-btn2{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit;}
+.kk .btn{display:inline-flex;align-items:center;gap:8px;}
+.kk-link{background:none;border:none;padding:4px 0;font:inherit;font-size:.84rem;font-weight:600;color:var(--color-link);cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.kk-kicker{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--kk-green);margin:0 0 10px;}
+.kk-lead{color:var(--kk-mut);font-size:1rem;margin:0 0 22px;}
+.kk-pequeno{font-size:.85rem;color:var(--kk-faint);}
 
-.kk-perguntas{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:4px 0 34px;}
-.kk-pergunta{background:#fff;border:1px solid var(--color-border);border-radius:14px;padding:20px 18px;display:flex;flex-direction:column;box-shadow:var(--shadow-rest);}
-.kk-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-primary);color:#fff;font-weight:800;font-size:.95rem;margin-bottom:12px;}
-.kk-pergunta h3{font-size:1.02rem;margin:0 0 8px;line-height:1.3;}
-.kk-pergunta p{font-size:.86rem;color:var(--color-text-muted);margin:0 0 14px;line-height:1.5;flex:1;}
-.kk-quando{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--color-accent-dark);}
+/* ---------- 1. HERO ---------- */
+.kk-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:56px;align-items:center;padding:30px 0 48px;}
+.kk-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--kk-green);margin:0 0 18px;}
+.kk-eyebrow::before{content:"";width:22px;height:2px;background:var(--kk-green2);border-radius:2px;}
+.kk-hero h1{font-size:clamp(2.2rem,4.4vw,3.5rem);line-height:1.06;letter-spacing:-.035em;font-weight:750;margin:0 0 20px;color:var(--kk-ink);}
+.kk-h1-marca{color:var(--kk-green);}
+.kk-hero-sub{font-size:1.14rem;line-height:1.6;color:var(--kk-mut);margin:0 0 30px;max-width:34em;}
+.kk-hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px;}
+.kk-hero-ctas .btn{min-height:52px;padding:0 26px;border-radius:999px;font-size:1.02rem;}
+.kk-hero-ctas .kk-btn2{min-height:52px;}
+.kk-micro{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--kk-mut);margin:0 0 6px;}
+.kk-micro .kk-ic{width:15px;height:15px;color:var(--kk-green);}
+.kk-byline{font-size:.8rem;color:var(--kk-faint);margin:0;}
+.kk-byline a{color:inherit;}
 
-.kk-categorias{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:4px 0 6px;}
-.kk-categoria{background:#fff;border:1px solid var(--color-border);border-top:4px solid var(--color-primary);border-radius:14px;padding:18px 18px 16px;}
-.kk-categoria h3{font-size:1.02rem;margin:0 0 6px;}
-.kk-categoria p{font-size:.86rem;color:var(--color-text-muted);margin:0;line-height:1.5;}
+/* composicao do caderno */
+.kk-vis{position:relative;padding:26px 0 104px 26px;}
+.kk-vis::before{content:"";position:absolute;inset:4% 2% 10% 10%;background:radial-gradient(closest-side,rgba(0,168,102,.10),transparent);z-index:0;}
+.kk-nb{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;background:#fffefc;border-radius:16px;box-shadow:0 1px 0 rgba(22,24,29,.04),0 24px 60px rgba(22,24,29,.13);border:1px solid var(--kk-line);transform:rotate(-1.2deg);}
+.kk-nb::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:28px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(22,24,29,.06) 45%,rgba(22,24,29,.09) 50%,rgba(22,24,29,.06) 55%,transparent);pointer-events:none;}
+.kk-nb-pg{padding:22px 22px 20px;background-image:repeating-linear-gradient(180deg,transparent 0 33px,#f1ede7 33px 34px);background-position:0 58px;}
+.kk-nb-cab{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;margin-bottom:6px;border-bottom:1.5px solid var(--kk-ink);}
+.kk-nb-cab b{font-size:1.02rem;font-weight:750;letter-spacing:.02em;}
+.kk-nb-cab span{font-size:.7rem;color:var(--kk-faint);font-weight:600;}
+.kk-nb-lista{list-style:none;margin:0;padding:0;}
+.kk-nb-lista li{display:grid;grid-template-columns:36px 8px 1fr auto;align-items:center;gap:8px;height:34px;font-size:.78rem;margin:0;}
+.kk-nb-lista time{font-size:.66rem;color:var(--kk-faint);font-variant-numeric:tabular-nums;}
+.kk-nb-lista i{width:7px;height:7px;border-radius:50%;}
+.kk-nb-lista b{font-weight:650;font-variant-numeric:tabular-nums;}
+.kk-c1{background:var(--kk-c1);} .kk-c2{background:var(--kk-c2);} .kk-c3{background:var(--kk-c3);} .kk-c4{background:var(--kk-c4);}
+.kk-nb-tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;padding-top:10px;border-top:1px dashed var(--kk-line2);font-size:.72rem;color:var(--kk-mut);}
+.kk-nb-tot b{font-size:.95rem;color:var(--kk-ink);font-variant-numeric:tabular-nums;}
+.kk-nb-cat{display:grid;grid-template-columns:24px 1fr auto;grid-template-rows:auto 6px;column-gap:9px;row-gap:5px;align-items:center;padding:7px 0;}
+.kk-nb-ic{grid-row:1/3;width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;}
+.kk-nb-ic .kk-ic{width:13px;height:13px;}
+.kk-nb-nome{font-size:.76rem;font-weight:600;}
+.kk-nb-cat b{font-size:.76rem;font-variant-numeric:tabular-nums;}
+.kk-nb-bar{grid-column:2/4;height:5px;border-radius:5px;background:#f0ece6;overflow:hidden;}
+.kk-nb-bar i{display:block;height:100%;border-radius:5px;}
+.kk-bg1{background:var(--kk-s1);color:var(--kk-c1);} .kk-bg2{background:var(--kk-s2);color:var(--kk-c2);}
+.kk-bg3{background:var(--kk-s3);color:var(--kk-c3);} .kk-bg4{background:var(--kk-s4);color:var(--kk-c4);}
+.kk-nb-bar .kk-bg1{background:var(--kk-c1);} .kk-nb-bar .kk-bg2{background:var(--kk-c2);} .kk-nb-bar .kk-bg3{background:var(--kk-c3);} .kk-nb-bar .kk-bg4{background:var(--kk-c4);}
+.kk-nb-meta{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--kk-green-soft);font-size:.72rem;color:var(--kk-mut);}
+.kk-nb-meta b{color:var(--kk-green);font-size:.9rem;font-variant-numeric:tabular-nums;}
+.kk-nb-meta em{grid-column:1/3;font-style:normal;display:flex;align-items:center;gap:4px;color:var(--kk-green);font-weight:600;font-size:.68rem;}
+.kk-nb-meta em .kk-ic{width:12px;height:12px;stroke-width:2.4;}
+.kk-flt{position:absolute;z-index:2;background:#fff;border:1px solid var(--kk-line);box-shadow:0 18px 40px rgba(22,24,29,.14);}
+.kk-flt-semana{left:-8px;bottom:0;width:250px;border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;}
+.kk-flt-rot{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--kk-mut);}
+.kk-flt-val{font-size:1.75rem;font-weight:780;letter-spacing:-.03em;color:var(--kk-ink);font-variant-numeric:tabular-nums;line-height:1.1;}
+.kk-flt-bar{height:8px;border-radius:8px;background:#efebe5;overflow:hidden;}
+.kk-flt-bar i{display:block;height:100%;background:var(--kk-green2);border-radius:8px;}
+.kk-flt-pe{display:flex;justify-content:space-between;font-size:.74rem;color:var(--kk-mut);}
+.kk-flt-pe strong{color:var(--kk-green);}
+.kk-flt-chip{right:-6px;top:4px;border-radius:999px;padding:8px 14px;font-size:.78rem;font-weight:650;color:var(--kk-green);display:flex;align-items:center;gap:6px;}
+.kk-flt-chip .kk-ic{width:14px;height:14px;stroke-width:2.4;}
 
-.kk-ajustes{grid-template-columns:repeat(3,1fr);}
+/* ---------- 2. DEMO ---------- */
+.kk-demo{background:#fff;border:1px solid var(--kk-line);border-radius:var(--kk-r);box-shadow:var(--kk-sh);padding:26px 28px 20px;margin:0 0 72px;}
+.kk-demo-tit{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--kk-mut);margin:0 0 16px;}
+.kk-flow{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:none;}
+.kk-flow li{position:relative;margin:0;padding:4px 22px 4px 0;display:flex;flex-direction:column;gap:2px;}
+.kk-flow li + li{padding-left:26px;border-left:1px solid var(--kk-line);}
+.kk-flow li:not(:last-child)::after{content:"";position:absolute;right:-6px;top:50%;width:10px;height:10px;border-top:1.5px solid var(--kk-line2);border-right:1.5px solid var(--kk-line2);transform:translateY(-50%) rotate(45deg);background:#fff;z-index:1;}
+.kk-flow-rot{font-size:.78rem;color:var(--kk-mut);font-weight:600;}
+.kk-flow b{font-size:1.6rem;font-weight:760;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--kk-ink);}
+.kk-flow small{font-size:.78rem;color:var(--kk-faint);}
+.kk-flow-fim b{color:var(--kk-green);}
+.kk .kk-demo-nota{font-size:.85rem;color:var(--kk-mut);margin:0;padding-top:14px;border-top:1px solid var(--kk-line);max-width:none;}
 
-/* planejador */
-.kk-plan{position:relative;}
-.kk-plan-acoes-topo{display:flex;gap:16px;justify-content:flex-end;margin:-6px 0 6px;}
-.kk-link-btn{background:none;border:none;padding:4px 0;font-family:inherit;font-size:.84rem;font-weight:650;color:var(--color-link);cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
-.kk-etapa{border:none;padding:0;margin:0 0 22px;min-width:0;}
-.kk-etapa legend{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.98rem;margin-bottom:12px;padding:0;}
-.kk-etapa-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--color-accent-soft);color:var(--color-accent-dark);font-size:.82rem;font-weight:800;}
-.kk-campos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-.kk-campos--4{grid-template-columns:repeat(4,1fr);}
-.kk-resultado{border-top:1px solid var(--color-border);padding-top:24px;margin-top:4px;}
-.kk-resumo{margin-bottom:18px;}
-.kk-semana{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--color-accent-soft);border-radius:var(--radius);padding:20px 18px;margin:0 0 20px;}
-.kk-semana-rotulo{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--color-accent-dark);}
-.kk-semana-valor{font-size:2.3rem;font-weight:800;color:var(--color-accent-dark);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.2;margin:4px 0;}
-.kk-semana-nota{font-size:.8rem;color:var(--color-text-muted);max-width:460px;}
-.kk-semana.negativo{background:var(--color-red-soft);}
-.kk-semana.negativo .kk-semana-rotulo,.kk-semana.negativo .kk-semana-valor{color:var(--color-red-dark);}
-.kk-alerta{margin:0 0 20px;}
-.kk-barra-titulo{font-size:.82rem;font-weight:700;margin:0 0 8px;}
-.kk-barra{display:flex;height:22px;border-radius:999px;overflow:hidden;background:var(--color-bg);margin:0 0 12px;}
-.kk-barra span{display:block;height:100%;transition:width var(--ease);}
-.kk-legenda{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.82rem;color:var(--color-text-muted);}
+/* ---------- secoes ---------- */
+.kk-sec{margin:0 0 88px;}
+.kk-sec-head{margin-bottom:28px;}
+.kk-sec-head > p:last-child{color:var(--kk-mut);font-size:1.02rem;margin:0;}
+.kk-sec-head--linha{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+
+/* ---------- 3. FERRAMENTA ---------- */
+.kk-app{background:#fff;border:1px solid var(--kk-line);border-radius:22px;box-shadow:0 2px 4px rgba(22,24,29,.03),0 24px 60px rgba(22,24,29,.08);overflow:hidden;}
+.kk-tabs{display:flex;gap:4px;padding:10px;background:var(--kk-paper);border-bottom:1px solid var(--kk-line);overflow-x:auto;}
+.kk-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 14px;border:none;border-radius:12px;background:transparent;font:inherit;font-size:.95rem;font-weight:600;color:var(--kk-mut);cursor:pointer;white-space:nowrap;transition:background var(--ease),color var(--ease);}
+.kk-tab:hover{color:var(--kk-ink);}
+.kk-tab[aria-selected="true"]{background:#fff;color:var(--kk-ink);box-shadow:0 1px 2px rgba(22,24,29,.06),0 4px 12px rgba(22,24,29,.06);}
+.kk-tab:focus-visible{outline:2px solid var(--kk-green2);outline-offset:2px;}
+.kk-tab-n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--kk-line);font-size:.78rem;font-weight:700;color:var(--kk-mut);}
+.kk-tab[aria-selected="true"] .kk-tab-n{background:var(--kk-ink);color:#fff;}
+.kk-painel{padding:30px 34px 32px;}
+.kk-painel:focus{outline:none;}
+
+/* progresso */
+.kk-prog{margin-bottom:26px;}
+.kk-prog-top{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:.84rem;font-weight:650;color:var(--kk-mut);}
+.kk-prog-bar{height:6px;border-radius:6px;background:var(--kk-line);overflow:hidden;}
+.kk-prog-bar i{display:block;height:100%;width:25%;background:var(--kk-green2);border-radius:6px;transition:width .35s ease;}
+.kk-prog-passos{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);font-size:.78rem;color:var(--kk-faint);}
+.kk-prog-passos li{margin:0;}
+.kk-prog-passos li.ativo{color:var(--kk-ink);font-weight:650;}
+.kk-prog-passos li.feito{color:var(--kk-green);}
+
+/* passos e campos */
+.kk-passo{border:none;margin:0;padding:0;min-width:0;}
+.kk-js .kk-passo:not(.ativo){display:none;}
+.kk-passo legend{font-size:1.35rem;font-weight:720;letter-spacing:-.02em;color:var(--kk-ink);padding:0;margin-bottom:6px;}
+.kk-passo legend:focus{outline:none;}
+.kk-passo-ajuda{color:var(--kk-mut);font-size:.95rem;margin:0 0 22px;}
+.kk-campos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 20px;}
+.kk-campo{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.kk-campo--largo{grid-column:span 1;}
+.kk-campo label,.kk-catsel legend{font-size:.86rem;font-weight:650;color:var(--kk-ink);}
+.kk-campo small{font-size:.76rem;color:var(--kk-faint);}
+.kk-campo input::placeholder,.kk-fim textarea::placeholder{color:#b3ada4;font-weight:500;}
+.kk-campo input,.kk-fim textarea{width:100%;box-sizing:border-box;font:inherit;font-size:1rem;color:var(--kk-ink);background:var(--kk-paper);border:1px solid var(--kk-line2);border-radius:12px;padding:12px 14px;min-height:50px;transition:border-color var(--ease),background var(--ease),box-shadow var(--ease);}
+.kk-campo input:focus,.kk-fim textarea:focus{outline:none;background:#fff;border-color:var(--kk-green2);box-shadow:0 0 0 3px rgba(0,168,102,.16);}
+.kk-yen{position:relative;}
+.kk-yen span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--kk-faint);font-weight:600;pointer-events:none;}
+.kk-yen input{padding-left:32px;font-variant-numeric:tabular-nums;font-weight:600;}
+.kk-anual-box{display:flex;flex-direction:column;justify-content:center;gap:2px;background:var(--kk-green-soft);border-radius:12px;padding:12px 16px;}
+.kk-anual-box span{font-size:.78rem;font-weight:650;color:var(--kk-green);}
+.kk-anual-box b{font-size:1.35rem;color:var(--kk-green);font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+.kk-wiz-nav{display:flex;justify-content:space-between;gap:12px;margin-top:30px;padding-top:22px;border-top:1px solid var(--kk-line);}
+.kk-wiz-nav .btn{margin-left:auto;min-height:48px;border-radius:999px;padding:0 24px;}
+
+/* resultado */
+.kk-res:focus{outline:none;}
+.kk-res-cab{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+.kk-res-cab h3{margin:0;font-size:1.35rem;}
+.kk-status{display:inline-flex;align-items:center;gap:7px;font-size:.84rem;font-weight:650;padding:7px 14px;border-radius:999px;}
+.kk-status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;}
+.kk-status--ok{background:var(--kk-green-soft);color:var(--kk-green);}
+.kk-status--apertado{background:#fbf3e2;color:#8a5a00;}
+.kk-status--neg{background:#fcecea;color:#b81f1a;}
+.kk-res-destaques{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-bottom:16px;}
+.kk-big{border-radius:18px;padding:22px 24px;display:flex;flex-direction:column;gap:4px;}
+.kk-big span{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.kk-big b{font-size:clamp(2rem,4vw,2.7rem);font-weight:780;letter-spacing:-.035em;font-variant-numeric:tabular-nums;line-height:1.1;}
+.kk-big small{font-size:.84rem;}
+.kk-big--mes{background:var(--kk-green-soft);color:var(--kk-green);}
+.kk-big--mes small{color:var(--kk-mut);}
+.kk-big--semana{background:#fff;border:1.5px solid var(--kk-line2);color:var(--kk-ink);}
+.kk-big--semana span,.kk-big--semana small{color:var(--kk-mut);}
+.kk-big.neg{background:#fcecea;color:#b81f1a;}
+.kk-res-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--kk-line);border-radius:16px;margin-bottom:18px;}
+.kk-res-mini > div{padding:16px 18px;display:flex;flex-direction:column;gap:3px;}
+.kk-res-mini > div + div{border-left:1px solid var(--kk-line);}
+.kk-res-mini span{display:flex;align-items:center;gap:7px;font-size:.82rem;color:var(--kk-mut);font-weight:600;}
+.kk-res-mini span .kk-ic{width:16px;height:16px;color:var(--kk-faint);}
+.kk-res-mini b{font-size:1.25rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--kk-ink);}
+.kk-res-mini small{font-size:.74rem;color:var(--kk-faint);}
+.kk-aviso{display:flex;gap:12px;align-items:flex-start;background:#fff8ec;border:1px solid #f3dfb4;border-radius:14px;padding:14px 16px;margin-bottom:18px;}
+.kk-aviso .kk-ic{color:#8a5a00;margin-top:3px;}
+.kk-aviso p{margin:0;font-size:.92rem;}
+.kk-barra-tit{font-size:.82rem;font-weight:650;color:var(--kk-mut);margin:0 0 8px;}
+.kk-barra{display:flex;height:12px;border-radius:12px;overflow:hidden;background:var(--kk-line);gap:2px;margin-bottom:12px;}
+.kk-barra span{display:block;height:100%;}
+.kk-legenda{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.82rem;color:var(--kk-mut);}
 .kk-legenda li{display:flex;align-items:center;gap:7px;margin:0;}
-.kk-legenda i{width:11px;height:11px;border-radius:3px;display:inline-block;flex-shrink:0;}
-.kk-legenda b{color:var(--color-text);font-variant-numeric:tabular-nums;}
-.kk-plan-acoes{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.kk-plan-acoes .btn{display:inline-flex;align-items:center;gap:8px;}
-.kk-plan-acoes-nota{font-size:.8rem;color:var(--color-text-muted);flex:1;min-width:220px;}
-.kk-vazio{font-size:.86rem;color:var(--color-text-muted);margin:0;border-top:1px dashed var(--color-border);padding-top:16px;}
-.kk-glossario td:first-child{font-weight:700;font-size:1rem;white-space:nowrap;}
-.kk-glossario td:nth-child(2){font-style:italic;color:var(--color-text-muted);white-space:nowrap;}
+.kk-legenda i{width:10px;height:10px;border-radius:3px;}
+.kk-legenda b{color:var(--kk-ink);font-variant-numeric:tabular-nums;}
+.kk-res-acoes{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--kk-line);}
+.kk-res-acoes .btn{min-height:48px;border-radius:999px;padding:0 24px;}
+
+/* painel 2 */
+.kk-vazio{text-align:center;padding:36px 12px;}
+.kk-vazio p{margin:0 auto 16px;color:var(--kk-mut);}
+.kk-mes-topo{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);min-width:0;gap:16px;margin-bottom:22px;}
+.kk-mes-resumo{border:1px solid var(--kk-line);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;}
+.kk-mes-rot{font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--kk-mut);}
+.kk-mes-nums{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.kk-mes-nums b{font-size:1.7rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+.kk-mes-nums span{font-size:.86rem;color:var(--kk-mut);}
+.kk-mes-pe{font-size:.86rem;font-weight:650;color:var(--kk-green);}
+.kk-mes-pe.neg{color:#b81f1a;}
+.kk-trilho{display:block;height:8px;border-radius:8px;background:var(--kk-line);overflow:hidden;}
+.kk-trilho i{display:block;height:100%;width:0;background:var(--kk-green2);border-radius:8px;transition:width .3s ease;}
+.kk-trilho i.alto{background:#e0a92a;} .kk-trilho i.passou{background:var(--kk-c4);}
+.kk-trilho--grosso{height:12px;border-radius:12px;}
+.kk-cats-mes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;}
+.kk-catm{min-width:0;display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;gap:4px 10px;border:1px solid var(--kk-line);border-radius:14px;padding:10px 12px;}
+.kk-catm-ic{grid-row:1/3;width:32px;height:32px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;}
+.kk-catm-nome{font-size:.8rem;font-weight:650;}
+.kk-catm b{font-size:.92rem;font-variant-numeric:tabular-nums;}
+.kk-catm small{grid-column:2/4;font-size:.72rem;color:var(--kk-faint);}
+.kk-semanas{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;}
+.kk-sem-btn{flex:1;min-width:104px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 14px;border:1px solid var(--kk-line);border-radius:14px;background:#fff;font:inherit;cursor:pointer;text-align:left;transition:border-color var(--ease),background var(--ease);}
+.kk-sem-btn b{font-size:.88rem;color:var(--kk-ink);}
+.kk-sem-btn span{font-size:.72rem;color:var(--kk-faint);}
+.kk-sem-btn em{font-style:normal;font-size:.78rem;font-weight:650;color:var(--kk-mut);font-variant-numeric:tabular-nums;}
+.kk-sem-btn[aria-selected="true"]{border-color:var(--kk-ink);box-shadow:inset 0 0 0 1px var(--kk-ink);}
+.kk-sem-btn.hoje span::after{content:" · agora";color:var(--kk-green);font-weight:650;}
+.kk-sem-btn:focus-visible{outline:2px solid var(--kk-green2);outline-offset:2px;}
+.kk-semana-card{border:1px solid var(--kk-line);border-radius:18px;padding:22px 22px 18px;}
+.kk-semana-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:12px;}
+.kk-semana-top h3{margin:0;font-size:1.15rem;}
+.kk-semana-datas{font-size:.82rem;color:var(--kk-faint);}
+.kk-semana-nums{text-align:right;}
+.kk-semana-nums b{display:block;font-size:1.5rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+.kk-semana-nums span{font-size:.82rem;color:var(--kk-mut);}
+.kk-semana-pe{font-size:.88rem;font-weight:650;color:var(--kk-green);margin:8px 0 18px;}
+.kk-semana-pe.neg{color:#b81f1a;}
+.kk-add{background:var(--kk-paper);border-radius:16px;padding:18px;margin-bottom:16px;}
+.kk-add-tit{font-size:.9rem;font-weight:700;margin:0 0 12px;}
+.kk-add-grid{display:grid;grid-template-columns:170px minmax(0,1fr) 170px;gap:12px;margin-bottom:14px;}
+.kk-add .kk-campo input{background:#fff;}
+.kk-catsel{border:none;padding:0;margin:0 0 14px;display:flex;flex-wrap:wrap;gap:8px;}
+.kk-catsel legend{margin-bottom:8px;padding:0;}
+.kk-catsel label{position:relative;cursor:pointer;}
+.kk-catsel input{position:absolute;opacity:0;width:1px;height:1px;}
+.kk-chip{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid var(--kk-line2);background:#fff;font-size:.86rem;font-weight:600;color:var(--kk-mut);transition:all var(--ease);}
+.kk-chip .kk-ic{width:15px;height:15px;}
+.kk-catsel input:focus-visible + .kk-chip{outline:2px solid var(--kk-green2);outline-offset:2px;}
+.kk-catsel input:checked + .kk-chip--1{background:var(--kk-s1);border-color:var(--kk-c1);color:var(--kk-c1);}
+.kk-catsel input:checked + .kk-chip--2{background:var(--kk-s2);border-color:var(--kk-c2);color:#8a5a00;}
+.kk-catsel input:checked + .kk-chip--3{background:var(--kk-s3);border-color:var(--kk-c3);color:var(--kk-c3);}
+.kk-catsel input:checked + .kk-chip--4{background:var(--kk-s4);border-color:var(--kk-c4);color:#b81f1a;}
+.kk-add-pe{display:flex;justify-content:flex-end;align-items:center;gap:14px;flex-wrap:wrap;}
+.kk-add-pe .btn{min-height:46px;border-radius:999px;padding:0 22px;}
+.kk-add-erro{margin:0 auto 0 0;font-size:.85rem;color:#b81f1a;}
+.kk-lista{list-style:none;margin:0;padding:0;}
+.kk-lista li{display:grid;grid-template-columns:30px minmax(0,1fr) auto 36px;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--kk-line);margin:0;}
+.kk-lista-ic{width:30px;height:30px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;}
+.kk-lista-ic .kk-ic{width:15px;height:15px;}
+.kk-lista-desc{display:flex;flex-direction:column;min-width:0;}
+.kk-lista-desc b{font-size:.92rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.kk-lista-desc span{font-size:.74rem;color:var(--kk-faint);}
+.kk-lista-val{font-weight:700;font-variant-numeric:tabular-nums;}
+.kk-lista-del{width:36px;height:36px;border:none;background:transparent;border-radius:10px;color:var(--kk-faint);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
+.kk-lista-del:hover,.kk-lista-del:focus-visible{background:#fcecea;color:#b81f1a;outline:none;}
+.kk-lista-vazia{font-size:.88rem;color:var(--kk-faint);margin:6px 0 0;text-align:center;}
+.kk-mes-acoes{display:flex;justify-content:flex-end;margin-top:20px;}
+.kk-mes-acoes .btn{min-height:48px;border-radius:999px;padding:0 24px;}
+
+/* painel 3 */
+.kk-fim-cab h3{margin:0 0 6px;font-size:1.35rem;}
+.kk-fim-cab p{color:var(--kk-mut);margin:0 0 22px;}
+.kk-fim{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.kk-fim li{margin:0;border:1px solid var(--kk-line);border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:4px;position:relative;}
+.kk-fim-n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--kk-ink);color:#fff;font-size:.8rem;font-weight:700;margin-bottom:6px;}
+.kk-fim-q{font-size:.92rem;font-weight:650;margin:0;color:var(--kk-ink);}
+.kk-fim b{font-size:1.6rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+.kk-fim small{font-size:.78rem;color:var(--kk-faint);}
+.kk-fim small.ok{color:var(--kk-green);font-weight:650;} .kk-fim small.neg{color:#b81f1a;font-weight:650;}
+.kk-fim-nota{grid-column:1/-1;}
+.kk-fim textarea{min-height:110px;resize:vertical;margin-top:6px;line-height:1.5;}
+
+/* rodape da ferramenta */
+.kk-app-pe{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 34px;background:var(--kk-paper);border-top:1px solid var(--kk-line);}
+.kk-app-priv{display:flex;align-items:center;gap:7px;margin:0;font-size:.82rem;color:var(--kk-mut);}
+.kk-app-priv .kk-ic{width:15px;height:15px;color:var(--kk-green);}
+.kk-app-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.kk-acao{display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:0 14px;border:1px solid var(--kk-line2);border-radius:999px;background:#fff;font:inherit;font-size:.86rem;font-weight:600;color:var(--kk-ink2);cursor:pointer;}
+.kk-acao .kk-ic{width:16px;height:16px;}
+.kk-acao:hover{border-color:var(--kk-faint);}
+.kk-acao:focus-visible{outline:2px solid var(--kk-green2);outline-offset:2px;}
+.kk-acao--perigo:hover{color:#b81f1a;border-color:#efb4b1;}
+.kk-confirma{flex-basis:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid #efb4b1;border-radius:14px;padding:12px 14px;}
+.kk-confirma[hidden]{display:none;}
+.kk-confirma p{margin:0;font-size:.9rem;}
+.kk-confirma div{display:flex;gap:8px;}
+.kk-confirma .kk-btn2{min-height:42px;padding:0 16px;font-size:.9rem;}
+
+/* ---------- 4. PERGUNTAS ---------- */
+.kk-perg{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;}
+.kk-perg::before{content:"";position:absolute;left:12.5%;right:12.5%;top:46px;height:2px;background:repeating-linear-gradient(90deg,var(--kk-line2) 0 8px,transparent 8px 14px);}
+.kk-perg li{margin:0;position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;}
+.kk-perg-fase{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--kk-faint);height:20px;margin-bottom:6px;}
+.kk-perg-n{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--kk-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:750;margin-bottom:16px;box-shadow:0 0 0 6px #fff;}
+.kk-perg li:nth-child(4) .kk-perg-n{background:var(--kk-ink);color:#fff;}
+.kk-perg h3{font-size:1.08rem;margin:0 0 8px;}
+.kk-perg p{font-size:.92rem;color:var(--kk-mut);margin:0;background:var(--kk-paper);border-radius:16px;padding:16px 18px;text-align:left;flex:1;width:100%;box-sizing:border-box;}
+
+/* ---------- 5. AJUSTES ---------- */
+.kk-ajustes{list-style:none;margin:0 0 36px;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:4px 48px;}
+.kk-ajustes li{display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--kk-line);margin:0;}
+.kk-aj-ic{width:42px;height:42px;border-radius:12px;background:var(--kk-paper);border:1px solid var(--kk-line);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--kk-ink2);}
+.kk-aj-ic .kk-ic{width:20px;height:20px;}
+.kk-ajustes h3{font-size:1.02rem;margin:2px 0 6px;}
+.kk-ajustes p{font-size:.93rem;color:var(--kk-mut);margin:0;}
+.kk-destaque{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;background:var(--kk-paper);border-radius:22px;padding:32px 34px;}
+.kk-destaque h3{font-size:1.3rem;margin:0 0 10px;}
+.kk-destaque p{font-size:.95rem;color:var(--kk-ink2);}
+.kk-destaque-lista{list-style:none;margin:0;padding:0;align-self:center;}
+.kk-destaque-lista li{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--kk-line2);margin:0;font-size:.9rem;}
+.kk-destaque-lista li:last-child{border-bottom:none;}
+.kk-destaque-lista b{font-size:.95rem;}
+.kk-destaque-lista span{color:var(--kk-mut);}
+
+/* ---------- 6. ARTIGO ---------- */
+.kk-artigo h2{margin-top:56px;}
+.kk-artigo-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start;}
+.kk-artigo-grid h2{margin-top:0;}
+.kk-artigo-txt p{font-size:1.02rem;margin:0 0 14px;}
+.kk-ficha{position:sticky;top:96px;background:var(--kk-paper);border-radius:18px;padding:22px 22px 10px;}
+.kk-ficha-tit{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--kk-mut);margin:0 0 8px;}
+.kk-ficha dl{margin:0;}
+.kk-ficha dl div{padding:11px 0;border-top:1px solid var(--kk-line2);}
+.kk-ficha dt{font-size:.74rem;color:var(--kk-faint);font-weight:600;}
+.kk-ficha dd{margin:2px 0 0;font-size:.95rem;font-weight:650;color:var(--kk-ink);}
+.kk-cats{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--kk-line);border-bottom:1px solid var(--kk-line);}
+.kk-cats li{margin:0;padding:22px 22px 22px 0;}
+.kk-cats li + li{padding-left:22px;border-left:1px solid var(--kk-line);}
+.kk-cats-ic{width:40px;height:40px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.kk-cats-ic .kk-ic{width:19px;height:19px;}
+.kk-cats h3{font-size:1.02rem;margin:0 0 6px;}
+.kk-cats p{font-size:.9rem;color:var(--kk-mut);margin:0;}
+.kk-nota-lateral{border-left:3px solid var(--kk-green2);padding:4px 0 4px 18px;color:var(--kk-ink2);font-size:.95rem;}
+.kk-tabela{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:.93rem;}
+.kk-tabela th{text-align:left;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--kk-mut);padding:12px 14px;border-bottom:1.5px solid var(--kk-ink);}
+.kk-tabela td{padding:13px 14px;border-bottom:1px solid var(--kk-line);vertical-align:top;}
+.kk-num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;}
+.kk-tr-forte td{font-weight:700;background:var(--kk-green-soft);}
+.kk-tr-forte .kk-num{color:var(--kk-green);}
+.kk-tabela--opcoes td:first-child{font-weight:650;}
+.kk-stat{display:grid;grid-template-columns:240px minmax(0,1fr);gap:36px;align-items:center;background:var(--kk-paper);border-radius:22px;padding:30px 34px;margin:40px 0 0;}
+.kk-stat-num b{display:block;font-size:2.4rem;letter-spacing:-.035em;font-variant-numeric:tabular-nums;color:var(--kk-ink);line-height:1.1;}
+.kk-stat-num span{font-size:.86rem;color:var(--kk-mut);}
+.kk-stat h3{margin:0 0 8px;font-size:1.15rem;}
+.kk-stat p{font-size:.94rem;color:var(--kk-ink2);margin:0 0 8px;}
+
+/* ---------- 7. GLOSSARIO ---------- */
+.kk-busca{position:relative;width:min(340px,100%);}
+.kk-busca .kk-ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--kk-faint);}
+.kk-busca input{width:100%;box-sizing:border-box;font:inherit;font-size:.95rem;border:1px solid var(--kk-line2);border-radius:999px;padding:12px 16px 12px 40px;background:#fff;}
+.kk-busca input:focus{outline:none;border-color:var(--kk-green2);box-shadow:0 0 0 3px rgba(0,168,102,.16);}
+.kk-gloss{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;margin:0;}
+.kk-gloss > div{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:baseline;padding:13px 0;border-top:1px solid var(--kk-line);}
+.kk-gloss dt{font-size:1.08rem;font-weight:700;color:var(--kk-ink);display:flex;flex-direction:column;}
+.kk-gloss dt span{font-size:.76rem;font-weight:500;font-style:italic;color:var(--kk-faint);}
+.kk-gloss dd{margin:0;font-size:.93rem;color:var(--kk-ink2);}
+.kk-gloss-vazio{color:var(--kk-faint);}
+
+/* ---------- 8/9 ---------- */
+.kk-faq{max-width:820px;}
+.kk-fim-pagina{margin-bottom:32px;}
+.kk-fim-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-bottom:36px;}
+.kk-fim-grid h2{font-size:1.35rem;}
+.kk-links{list-style:none;margin:0;padding:0;}
+.kk-links li{display:flex;flex-direction:column;padding:12px 0;border-top:1px solid var(--kk-line);margin:0;}
+.kk-links a{font-weight:650;}
+.kk-links span{font-size:.86rem;color:var(--kk-mut);}
+.kk-fontes{padding-left:18px;font-size:.9rem;}
+.kk-fontes li{margin-bottom:10px;}
 
 /* folha de impressao: escondida na tela */
 .kk-folha{display:none;}
 
-@media(max-width:1000px){
-  .kk-perguntas,.kk-categorias{grid-template-columns:repeat(2,1fr);}
-  .kk-campos--4{grid-template-columns:repeat(2,1fr);}
-  .kk-ajustes{grid-template-columns:repeat(2,1fr);}
+/* ---------- RESPONSIVO ---------- */
+@media(max-width:1060px){
+  .kk-hero{grid-template-columns:1fr;gap:28px;padding-bottom:36px;}
+  .kk-vis{max-width:620px;}
+  .kk-campos,.kk-campos--3{grid-template-columns:repeat(2,1fr);}
+  .kk-perg{grid-template-columns:repeat(2,1fr);row-gap:30px;}
+  .kk-perg::before{display:none;}
+  .kk-cats{grid-template-columns:repeat(2,1fr);}
+  .kk-cats li:nth-child(3){padding-left:0;border-left:none;}
+  .kk-cats li:nth-child(n+3){border-top:1px solid var(--kk-line);}
+  .kk-artigo-grid{grid-template-columns:1fr;gap:28px;}
+  .kk-ficha{position:static;}
+  .kk-mes-topo{grid-template-columns:minmax(0,1fr);}
 }
-@media(max-width:860px){
-  .kk-hero-grid{grid-template-columns:1fr;}
-  .kk-caderno{display:none;}
+@media(max-width:760px){
+  .kk-wrap{padding-top:14px;}
+  .kk-hero{padding-top:14px;}
+  .kk-hero-sub{font-size:1.04rem;}
+  .kk-vis{padding:8px 0 64px 0;}
+  .kk-nb{grid-template-columns:1fr 1fr;transform:none;}
+  .kk-nb-pg{padding:14px 12px;}
+  .kk-nb-lista li{grid-template-columns:7px 1fr auto;}
+  .kk-nb-lista time{display:none;}
+  .kk-nb-lista li,.kk-nb-nome,.kk-nb-cat b{font-size:.68rem;}
+  .kk-nb-meta{padding:8px;}
+  .kk-flt-semana{left:8px;bottom:0;width:210px;padding:12px 14px;}
+  .kk-flt-val{font-size:1.4rem;}
+  .kk-flt-chip{right:6px;top:-12px;}
+  .kk-demo{padding:20px 18px 16px;margin-bottom:56px;}
+  .kk-flow{grid-template-columns:1fr 1fr;row-gap:16px;}
+  .kk-flow li{padding:0 12px 0 0;}
+  .kk-flow li + li{padding-left:0;border-left:none;}
+  .kk-flow li:nth-child(even){padding-left:16px;border-left:1px solid var(--kk-line);}
+  .kk-flow li::after{display:none;}
+  .kk-flow b{font-size:1.3rem;}
+  .kk-sec{margin-bottom:64px;}
+  .kk-tab{font-size:.84rem;gap:7px;padding:0 10px;flex:0 0 auto;}
+  .kk-painel{padding:22px 18px 24px;}
+  .kk-campos,.kk-campos--3{grid-template-columns:1fr;gap:16px;}
+  .kk-prog-passos{display:none;}
+  .kk-res-destaques{grid-template-columns:1fr;}
+  .kk-res-mini{grid-template-columns:1fr;}
+  .kk-res-mini > div + div{border-left:none;border-top:1px solid var(--kk-line);}
+  .kk-res-acoes{flex-direction:column-reverse;}
+  .kk-res-acoes > *{justify-content:center;}
+  .kk-cats-mes{grid-template-columns:1fr 1fr;}
+  .kk-add-grid{grid-template-columns:1fr 1fr;}
+  .kk-campo--desc{grid-column:1/-1;order:-1;}
+  .kk-add-pe .btn{width:100%;justify-content:center;}
+  .kk-semana-card{padding:16px 14px 12px;}
+  .kk-fim{grid-template-columns:1fr;}
+  .kk-app-pe{padding:16px 18px;}
+  .kk-app-btns{width:100%;}
+  .kk-acao{flex:1;justify-content:center;padding:0 10px;font-size:.8rem;}
+  .kk-ajustes{grid-template-columns:1fr;}
+  .kk-destaque{grid-template-columns:1fr;gap:16px;padding:24px 20px;}
+  .kk-cats{grid-template-columns:1fr;}
+  .kk-cats li,.kk-cats li + li{padding:18px 0;border-left:none;}
+  .kk-cats li + li{border-top:1px solid var(--kk-line);}
+  .kk-stat{grid-template-columns:1fr;gap:14px;padding:24px 20px;}
+  .kk-gloss{grid-template-columns:1fr;}
+  .kk-gloss > div{grid-template-columns:120px 1fr;}
+  .kk-fim-grid{grid-template-columns:1fr;gap:28px;}
+  /* tabelas viram cartoes */
+  .kk-tabela thead{display:none;}
+  .kk-tabela,.kk-tabela tbody,.kk-tabela tr,.kk-tabela td{display:block;width:100%;box-sizing:border-box;}
+  .kk-tabela tr{border:1px solid var(--kk-line);border-radius:14px;padding:6px 14px;margin-bottom:10px;}
+  .kk-tabela td{border:none;padding:6px 0;display:grid;grid-template-columns:96px 1fr;gap:10px;}
+  .kk-tabela td::before{content:attr(data-label);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--kk-faint);padding-top:2px;}
+  .kk-tr-forte{background:var(--kk-green-soft);border-color:transparent !important;}
+  .kk-tr-forte td{background:transparent;}
 }
-@media(max-width:560px){
-  .kk-perguntas,.kk-categorias,.kk-campos,.kk-campos--4,.kk-ajustes{grid-template-columns:1fr;}
-  .kk-semana-valor{font-size:1.9rem;}
-  .kk-plan-acoes-topo{justify-content:flex-start;}
+
+@media(max-width:760px){
+  .kk-hero-ctas{flex-direction:column;align-items:stretch;}
+  .kk-hero-ctas .btn,.kk-hero-ctas .kk-btn2{justify-content:center;}
+  .kk-micro{align-items:flex-start;font-size:.84rem;}
+  .kk-micro .kk-ic{margin-top:3px;}
+  .kk-nb-cab{flex-direction:column;align-items:flex-start;gap:2px;}
+  .kk-nb-cab b{font-size:.92rem;}
+  .kk-nb-cab span{font-size:.62rem;}
+  .kk-nb-pg{background-position:0 64px;}
+  .kk-cats-mes{gap:8px;}
+  .kk-catm{grid-template-columns:28px minmax(0,1fr);padding:10px;gap:2px 8px;}
+  .kk-catm-ic{width:28px;height:28px;border-radius:8px;}
+  .kk-catm-nome{font-size:.74rem;line-height:1.25;}
+  .kk-catm b{grid-column:2;font-size:.9rem;}
+  .kk-catm small{display:none;}
+  .kk-mes-nums b{font-size:1.45rem;}
+  .kk-add-grid{grid-template-columns:minmax(0,1fr);}
+  .kk-campo--desc{order:0;}
+  .kk-catsel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .kk-catsel legend{grid-column:1/-1;}
+  .kk-chip{width:100%;box-sizing:border-box;justify-content:flex-start;font-size:.8rem;padding:9px 10px;}
+  .kk-app-btns{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;}
+  .kk-acao{width:100%;justify-content:center;font-size:.88rem;min-height:44px;}
+  .kk-confirma div{width:100%;}
+  .kk-confirma div > *{flex:1;justify-content:center;}
+  .kk-semana-nums b{font-size:1.3rem;}
+  .kk-wiz-nav .btn{flex:1;justify-content:center;}
+}
+@media(max-width:400px){
+  .kk-hero h1{font-size:2.05rem;}
+  .kk-flt-semana{width:190px;}
+  .kk-tab .kk-tab-n{display:none;}
+}
+@media (prefers-reduced-motion: reduce){
+  .kk *{transition:none !important;}
 }
 
 @media print{
-  @page{size:A4;margin:10mm 12mm;}
-  body{background:#fff !important;}
+  @page{size:A4;margin:10mm 11mm;}
+  html,body{background:#fff !important;}
   body > *:not(.kk-folha){display:none !important;}
-  .kk-folha{display:block !important;font-family:var(--font-base);color:#16181d;font-size:10.5pt;}
-  .kk-folha-titulo{font-size:18pt;font-weight:700;margin:0 0 2mm;letter-spacing:-.01em;line-height:1.2;}
-  .kk-folha-h{font-size:11.5pt;font-weight:700;margin:5mm 0 2mm;}
-  .kk-folha-sub{margin:0 0 4mm;color:#5c6169;font-size:9.5pt;}
-  .kk-folha table{width:100%;border-collapse:collapse;}
-  .kk-folha th,.kk-folha td{border:1px solid #bdb8b0;padding:1.8mm 2.5mm;text-align:left;vertical-align:top;}
-  .kk-folha th{background:#f4f2ef !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:9.5pt;}
-  .kk-folha .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
-  .kk-folha .destaque td{font-weight:700;}
-  .kk-folha-semanas td{height:11.5mm;}
-  .kk-folha-perguntas td{height:10.5mm;}
-  .kk-folha-pe{margin-top:5mm;font-size:8pt;color:#8d939b;}
+  .kk-folha{display:block !important;font-family:var(--font-base);color:#16181d;font-size:9.5pt;line-height:1.35;}
+  .kk-folha *{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-sizing:border-box;}
+  .kk-folha p{margin:0;}
+
+  .kf-topo{display:flex;justify-content:space-between;align-items:stretch;gap:5mm;background:#16181d;color:#fff;border-radius:4mm;padding:4mm 5mm;margin-bottom:4mm;position:relative;overflow:hidden;}
+  .kf-topo::after{content:"";position:absolute;right:-8mm;top:-10mm;width:30mm;height:30mm;border-radius:50%;background:#e02b25;opacity:.9;}
+  .kf-marca{display:flex;align-items:center;gap:4mm;position:relative;z-index:1;}
+  .kf-kanji{display:inline-flex;align-items:center;font-size:17pt;font-weight:800;letter-spacing:.06em;background:#fff;color:#16181d;border-radius:2.5mm;padding:2.2mm 3mm;line-height:1;white-space:nowrap;}
+  .kf-titulo{font-size:20pt;font-weight:800;letter-spacing:-.02em;line-height:1.1;}
+  .kf-sub{font-size:9pt;color:rgba(255,255,255,.75);margin-top:1.5mm !important;}
+  .kf-mes{display:flex;align-items:flex-end;gap:2mm;position:relative;z-index:1;margin-right:14mm;font-size:9pt;color:rgba(255,255,255,.8);}
+  .kf-mes b{display:block;width:30mm;border-bottom:1.5px solid #fff;height:9mm;}
+  .kf-carimbo{position:absolute;right:-17mm;top:50%;transform:translateY(-50%) rotate(-12deg);width:13mm;height:13mm;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13pt;color:#fff;}
+
+  .kf-h{display:flex;align-items:center;gap:2mm;font-size:11pt;font-weight:800;margin:0 0 2.2mm !important;letter-spacing:-.01em;}
+  .kf-h em{font-style:normal;font-weight:500;font-size:8.5pt;color:#8d939b;margin-left:1.5mm;}
+  .kf-n{display:inline-flex;align-items:center;justify-content:center;width:5.6mm;height:5.6mm;border-radius:50%;background:#16181d;color:#fff;font-size:8.5pt;font-weight:800;flex-shrink:0;}
+  .kf-n--2{margin-left:3mm;}
+
+  .kf-plano{display:grid;grid-template-columns:1.25fr 1fr;gap:4mm;margin-bottom:4.5mm;}
+  .kf-cartao{border:1px solid #e7e4df;border-radius:3.5mm;padding:3.5mm 4mm 2.5mm;background:#fbfaf8;}
+  .kf-linha{display:flex;align-items:baseline;gap:2mm;padding:1.6mm 0;font-size:9.5pt;}
+  .kf-linha i{flex:1;border-bottom:1.5px dotted #c9c5bf;transform:translateY(-1mm);}
+  .kf-linha b{font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .kf-linha--verde span,.kf-linha--verde b{color:#00854f;font-weight:700;}
+  .kf-lado{display:flex;flex-direction:column;gap:2.5mm;}
+  .kf-pill{border-radius:3.5mm;padding:2.6mm 4mm;display:flex;justify-content:space-between;align-items:center;gap:3mm;}
+  .kf-pill span{font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+  .kf-pill b{font-size:15pt;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap;}
+  .kf-pill--mes{background:#16181d;color:#fff;}
+  .kf-pill--semana{background:#e8faf1;color:#00854f;border:1.5px solid #00a866;}
+  .kf-cofre{border:1.5px dashed #00a866;border-radius:3.5mm;padding:2.4mm 3.5mm;flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .kf-cofre p{font-size:8.5pt;color:#5c6169;margin-bottom:2mm !important;}
+  .kf-cofre p b{color:#00854f;}
+  .kf-dots{display:flex;justify-content:space-between;}
+  .kf-dot{width:6.2mm;height:6.2mm;border-radius:50%;border:1.5px solid #00a866;background:#fff;}
+
+  .kf-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-bottom:2.5mm;}
+  .kf-cat{display:flex;align-items:center;gap:2mm;border-radius:3mm;padding:1.8mm 2.5mm;}
+  .kf-cat b{display:block;font-size:9pt;}
+  .kf-cat i{display:block;font-style:normal;font-size:7.5pt;color:#5c6169;}
+  .kf-ic{display:inline-flex;align-items:center;justify-content:center;width:6.4mm;height:6.4mm;border-radius:50%;flex-shrink:0;}
+  .kf-ic svg{width:3.8mm;height:3.8mm;}
+  .kf-ic--p{width:4.6mm;height:4.6mm;margin-right:1.2mm;vertical-align:-1.2mm;}
+  .kf-ic--p svg{width:2.9mm;height:2.9mm;}
+  .kf-cat--nec{background:#e8faf1;} .kf-cat--nec .kf-ic,.kf-th--nec .kf-ic{background:#00854f;color:#fff;}
+  .kf-cat--des{background:#fbf3e2;} .kf-cat--des .kf-ic,.kf-th--des .kf-ic{background:#c98a1a;color:#fff;}
+  .kf-cat--cul{background:#efedea;} .kf-cat--cul .kf-ic,.kf-th--cul .kf-ic{background:#16181d;color:#fff;}
+  .kf-cat--ext{background:#fcecea;} .kf-cat--ext .kf-ic,.kf-th--ext .kf-ic{background:#d2453f;color:#fff;}
+
+  .kf-tabela{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #d9d5cf;border-radius:3.5mm;overflow:hidden;margin-bottom:4.5mm;}
+  .kf-tabela th{background:#f4f2ef;font-size:8pt;font-weight:700;text-align:left;padding:2.2mm 2mm;vertical-align:middle;border-bottom:1px solid #d9d5cf;white-space:nowrap;}
+  .kf-tabela td{height:10.5mm;border-bottom:1px solid #ebe8e3;border-left:1px solid #ebe8e3;padding:1mm 2mm;vertical-align:middle;}
+  .kf-tabela tbody td{height:11.6mm;}
+  .kf-tabela th + th{border-left:1px solid #e2ded8;}
+  .kf-tabela tr:last-child td{border-bottom:none;}
+  .kf-th--nec{box-shadow:inset 0 -2px 0 #00854f;} .kf-th--des{box-shadow:inset 0 -2px 0 #c98a1a;}
+  .kf-th--cul{box-shadow:inset 0 -2px 0 #16181d;} .kf-th--ext{box-shadow:inset 0 -2px 0 #d2453f;}
+  .kf-th-sem{width:17mm;} .kf-th-ok{width:9mm;text-align:center !important;}
+  .kf-sem{border-left:none !important;}
+  .kf-sem{text-align:center;}
+  .kf-sem b{display:inline-flex;align-items:center;justify-content:center;min-width:5.4mm;height:5.4mm;border-radius:50%;background:#16181d;color:#fff;font-size:8pt;}
+  .kf-sem span{display:block;font-size:7pt;color:#8d939b;margin-top:.6mm;letter-spacing:-.02em;}
+  .kf-lim{font-size:8pt;color:#00854f;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;background:#f6fcf9;width:19mm;}
+  .kf-ok{text-align:center;}
+  .kf-box{display:inline-block;width:4mm;height:4mm;border:1.5px solid #00a866;border-radius:1mm;}
+  .kf-total td{background:#f4f2ef;height:9mm;}
+  .kf-total .kf-sem b{border-radius:2mm;padding:0 1.5mm;}
+  .kf-total .kf-lim{background:#e8faf1;}
+
+  .kf-pergs{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:3.5mm;}
+  .kf-perg{border:1px solid #e7e4df;border-radius:3.5mm;padding:2.8mm 3.5mm 1.5mm;border-left:3px solid #00a866;}
+  .kf-perg-val{font-size:12pt;font-weight:800;color:#16181d;font-variant-numeric:tabular-nums;margin:.5mm 0 0 !important;}
+  .kf-perg-txt{font-size:9pt;color:#2f343c;margin-top:1mm !important;white-space:pre-wrap;}
+  .kf-tabela td.kf-v{font-size:8.5pt;font-variant-numeric:tabular-nums;text-align:right;}
+  .kf-obj{font-size:8.5pt;color:#5c6169;margin-top:1.5mm !important;}
+  .kf-perg p{font-size:9pt;font-weight:700;margin-bottom:1mm !important;}
+  .kf-regua{display:block;height:8.2mm;border-bottom:1px solid #d9d5cf;}
+
+  .kf-pe{display:flex;justify-content:space-between;gap:4mm;font-size:7.5pt;color:#8d939b;border-top:1px solid #e7e4df;padding-top:2mm;}
 }
 </style>
 </head>
@@ -300,373 +769,475 @@
   </div>
 </header>
 
-<main id="conteudo">
-  <div class="container section">
-    <p class="breadcrumb"><a href="/">Início</a> / Kakeibo</p>
+<main id="conteudo" class="kk">
+  <div class="container kk-wrap">
+    <p class="breadcrumb kk-bc"><a href="/">Início</a> / Kakeibo</p>
 
-    <div class="holerite-hero kk-hero">
-      <div class="kk-hero-grid">
-        <div class="holerite-hero-texto">
-          <p class="categoria-etiqueta">Organização financeira</p>
-          <h1>Kakeibo: o método japonês de controlar gastos, feito pra quem vive no Japão</h1>
-          <p class="lead">O 家計簿 <em>(kakeibo)</em> é o caderno de contas da casa que as famílias japonesas usam há mais de 120 anos. Aqui você entende o método, adapta ao salário japonês — dia 25, jūminzei, bônus e remessa pro Brasil — e monta o seu plano do mês em português, pronto pra imprimir.</p>
-          <div class="holerite-hero-ctas">
-            <a href="#planejador" class="btn">Montar meu kakeibo</a>
-            <a href="#quatro-perguntas" class="btn-secundario">As 4 perguntas</a>
-            <button type="button" class="btn-compartilhar-calc" onclick="compartilharPagina(this)">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-              <span>Compartilhar</span>
-            </button>
-          </div>
+    <!-- 1. HERO -->
+    <section class="kk-hero" aria-labelledby="kk-h1">
+      <div class="kk-hero-txt">
+        <p class="kk-eyebrow">Método japonês para cuidar do dinheiro</p>
+        <h1 id="kk-h1"><span class="kk-h1-marca">Kakeibo:</span> seu dinheiro acaba antes do próximo salário?</h1>
+        <p class="kk-hero-sub">Monte seu kakeibo em português, descubra quanto pode gastar por semana e acompanhe o mês sem planilhas complicadas.</p>
+        <div class="kk-hero-ctas">
+          <a href="#planejador" class="btn">Começar meu kakeibo</a>
+          <a href="#metodo" class="btn-secondary kk-btn2">Entender o método</a>
         </div>
-        <div class="kk-caderno" aria-hidden="true">
-          <div class="kk-caderno-topo">
-            <span class="kk-caderno-titulo">家計簿</span>
-            <span class="kk-caderno-mes">10月</span>
-          </div>
-          <div class="kk-caderno-linha"><span>食費 スーパー</span><span>¥3,280</span></div>
-          <div class="kk-caderno-linha"><span>日用品 ドラッグストア</span><span>¥1,460</span></div>
-          <div class="kk-caderno-linha"><span>交通費</span><span>¥1,200</span></div>
-          <div class="kk-caderno-linha"><span>交際費 ランチ</span><span>¥1,800</span></div>
-          <div class="kk-caderno-linha kk-caderno-linha--verde"><span>貯金</span><span>¥30,000</span></div>
-          <div class="kk-caderno-rodape">
-            <span>今週の残り</span>
-            <b>¥5,960</b>
-          </div>
-          <span class="kk-caderno-carimbo">済</span>
-        </div>
-      </div>
-    </div>
-
-    <span class="updated-badge">🕒 Publicado em 9 de outubro de 2026</span>
-
-    <div class="holerite-resposta" style="margin-top:22px;">
-      <h2>Resposta rápida</h2>
-      <p><strong>Kakeibo (家計簿) é o caderno japonês de contas da casa, criado em 1904 pela jornalista Hani Motoko.</strong> O método tem uma regra central: no dia do pagamento você decide quanto vai guardar e quanto pode gastar, anota cada gasto por categoria durante o mês e, no fim, compara o plano com o que aconteceu. Tudo gira em torno de quatro perguntas: quanto eu tenho, quanto quero guardar, quanto estou gastando e como posso melhorar.</p>
-      <p>Pra quem mora no Japão, o kakeibo funciona melhor com três ajustes: o mês começa no dia do pagamento (em muitas empresas, dia 25), o plano usa o líquido do holerite, e os gastos anuais — passagem pro Brasil, carro, renovação do apartamento — são divididos por 12 e separados todo mês.</p>
-      <div class="fam-stats">
-        <div class="fam-stat">
-          <svg class="wh-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"/><path d="M4 17a3 3 0 0 1 3-3h12"/><line x1="8" y1="8" x2="14" y2="8"/></svg>
-          <b>1904</b><span>ano em que o kakeibo foi criado</span>
-        </div>
-        <div class="fam-stat">
-          <svg class="wh-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
-          <b>4 perguntas</b><span>no começo e no fim do mês</span>
-        </div>
-        <div class="fam-stat">
-          <svg class="wh-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18l-1.5 11h-15z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>
-          <b>¥110</b><span>preço de um kakeibo em loja de ¥100</span>
-        </div>
-      </div>
-    </div>
-
-    <h2 id="o-que-e">O que é o Kakeibo e de onde ele veio</h2>
-    <p>家計簿 <em>(kakeibo)</em> quer dizer, ao pé da letra, “livro de contas da casa”: 家計 <em>(kakei)</em> são as finanças da família e 簿 <em>(bo)</em> é o caderno de registro. No Japão a palavra é comum — quem anota os gastos tem um kakeibo, seja num caderno, numa planilha ou num aplicativo.</p>
-    <p>Como método, o kakeibo foi criado em 1904 por <strong>Hani Motoko</strong> (羽仁もと子), uma das primeiras mulheres jornalistas do Japão. No ano anterior ela tinha fundado a revista 家庭之友 <em>(Katei no Tomo)</em>, que depois virou 婦人之友 <em>(Fujin no Tomo)</em>. A ideia, ousada pra época: definir quanto entra e quanto sai <strong>antes</strong> do mês começar e viver dentro desse plano.</p>
-    <p>Mais de 120 anos depois, a editora 婦人之友社 ainda lança o caderno todo ano. A edição 2027 do 予算生活の家計簿 <em>(yosan seikatsu no kakeibo, “o kakeibo da vida com orçamento”)</em> chegou às livrarias em 6 de outubro de 2026, por ¥1.485.</p>
-    <p>Fora do Japão, o método ficou famoso numa versão simplificada, com quatro perguntas e quatro categorias de gasto. É a versão que a maioria dos sites em português explica, e é a melhor pra começar. Os cadernos japoneses usam mais categorias — o <a href="#glossario">glossário mais abaixo</a> ajuda você a ler um.</p>
-
-    <h2 id="quatro-perguntas">As 4 perguntas do Kakeibo</h2>
-    <p class="lead-secundario">O método inteiro gira em torno de quatro perguntas. As duas primeiras você responde no dia do pagamento; as duas últimas, durante e no fim do mês.</p>
-    <div class="kk-perguntas">
-      <div class="kk-pergunta">
-        <span class="kk-num">1</span>
-        <h3>Quanto dinheiro eu tenho?</h3>
-        <p>O valor que caiu de verdade na conta: o líquido do holerite (差引支給額), não o bruto. Some qualquer outra entrada do mês.</p>
-        <span class="kk-quando">No dia do pagamento</span>
-      </div>
-      <div class="kk-pergunta">
-        <span class="kk-num">2</span>
-        <h3>Quanto eu quero guardar?</h3>
-        <p>Decidido <strong>antes</strong> de gastar, não com o que sobrar. A poupança entra no plano como se fosse uma conta fixa.</p>
-        <span class="kk-quando">No dia do pagamento</span>
-      </div>
-      <div class="kk-pergunta">
-        <span class="kk-num">3</span>
-        <h3>Quanto eu estou gastando?</h3>
-        <p>Anote cada gasto no mesmo dia, separado por categoria. Escrever faz você perceber o gasto na hora — é a parte que muda o hábito.</p>
-        <span class="kk-quando">Todo dia, com revisão semanal</span>
-      </div>
-      <div class="kk-pergunta">
-        <span class="kk-num">4</span>
-        <h3>Como posso melhorar?</h3>
-        <p>Compare o plano com o que aconteceu. Sem culpa: a pergunta é o que você muda no mês que vem.</p>
-        <span class="kk-quando">No fim do mês</span>
-      </div>
-    </div>
-
-    <h2 id="quatro-categorias">As 4 categorias de gasto</h2>
-    <p class="lead-secundario">Na versão simplificada, todo gasto variável cai em uma de quatro caixas. Os exemplos abaixo são do dia a dia no Japão.</p>
-    <div class="kk-categorias">
-      <div class="kk-categoria">
-        <h3>Necessidades</h3>
-        <p>O que não dá pra cortar: mercado (スーパー), farmácia (ドラッグストア), produtos de limpeza e higiene, transporte do dia a dia.</p>
-      </div>
-      <div class="kk-categoria">
-        <h3>Desejos</h3>
-        <p>O que é bom, mas é escolha: konbini, delivery, comer fora (外食), roupa, compras por impulso na Amazon ou no Rakuten.</p>
-      </div>
-      <div class="kk-categoria">
-        <h3>Cultura</h3>
-        <p>O que alimenta a cabeça: livros, curso de japonês, aulas, cinema, museu, ingressos, assinaturas.</p>
-      </div>
-      <div class="kk-categoria">
-        <h3>Extras</h3>
-        <p>O que não estava previsto: conserto, remédio de última hora, presente de casamento (ご祝儀), uma multa.</p>
-      </div>
-    </div>
-    <div class="callout">
-      <p style="margin:0;"><strong>Aluguel, contas fixas e poupança não entram nas quatro caixas.</strong> Eles saem antes, no planejamento do dia do pagamento. As caixas são só pro dinheiro que sobra pra gastar no mês.</p>
-    </div>
-
-    <h2 id="adaptar">Kakeibo pra quem recebe no Japão: o que muda</h2>
-    <p class="lead-secundario">Os guias em português explicam o método pensando no salário brasileiro. No Japão, a lógica do mês é outra. Seis ajustes fazem diferença:</p>
-    <div class="holerite-motivos kk-ajustes">
-      <div class="holerite-motivo"><b>O mês começa no dia do pagamento</b>Em muitas empresas japonesas o salário cai no dia 25 (給料日, <em>kyūryōbi</em>). Seu mês do kakeibo vai de um pagamento até o próximo, não do dia 1 ao dia 30.</div>
-      <div class="holerite-motivo"><b>Planeje com o líquido</b>Use o 差引支給額 do holerite, depois de seguro social e imposto. Não sabe ler o seu? Veja o <a href="entenda-seu-holerite-japao.html">holerite campo por campo</a> ou <a href="meu-salario-no-japao.html">calcule quanto sobra</a>.</div>
-      <div class="holerite-motivo"><b>Hora extra não é base</b>Se o salário muda com 残業 <em>(zangyō)</em>, planeje com o mês mais fraco. O que vier a mais vai direto pra poupança ou pros gastos anuais.</div>
-      <div class="holerite-motivo"><b>Refaça o plano em junho</b>No segundo ano no Japão começa o jūminzei, descontado em 12 parcelas de junho a maio. O líquido cai — <a href="imposto-residencial-juminzei.html">entenda o imposto residencial</a>.</div>
-      <div class="holerite-motivo"><b>Remessa é conta fixa</b>Se você manda dinheiro pra família, trate como aluguel: sai no dia do pagamento. Veja <a href="remessa-japao-brasil.html">quanto custa cada serviço</a>.</div>
-      <div class="holerite-motivo"><b>Bônus fica fora do mês</b>O 賞与 <em>(shōyo)</em> não entra no orçamento mensal. Decida antes de receber pra onde ele vai: reserva, passagem, gastos do ano.</div>
-    </div>
-
-    <h3 id="gastos-anuais" style="margin-top:34px;">Os gastos anuais que quebram o orçamento</h3>
-    <p>O que mais estoura o kakeibo no Japão não é o konbini, e sim a conta grande que vem uma vez por ano: o 自動車税 <em>(jidōshazei)</em>, imposto do carro que chega em maio; o 車検 <em>(shaken)</em>, a inspeção do carro, que nos carros usados vence a cada dois anos; o 更新料 <em>(kōshinryō)</em>, a taxa de renovação do contrato do apartamento; a passagem pro Brasil; os presentes de fim de ano; a doação do <a href="furusato-nozei.html">Furusato Nozei</a>.</p>
-    <p>Os cadernos japoneses chamam isso de 特別費 <em>(tokubetsuhi, gastos especiais)</em>. A regra é simples: <strong>some tudo o que é anual, divida por 12 e separe esse valor todo mês</strong>, numa conta à parte. Quando a conta chegar, o dinheiro já está lá. O planejador abaixo faz essa divisão pra você.</p>
-
-    <h2 id="planejador">Monte seu kakeibo do mês</h2>
-    <p class="lead-secundario">Preencha no dia do pagamento. O planejador responde às duas primeiras perguntas e mostra quanto você pode gastar por semana. Os valores ficam salvos só neste navegador — nada é enviado pro site.</p>
-
-    <div class="calc-salario kk-plan" id="kk-plan">
-      <div class="kk-plan-acoes-topo">
-        <button type="button" class="kk-link-btn" id="kkExemplo">Preencher com um exemplo</button>
-        <button type="button" class="kk-link-btn" id="kkLimpar">Limpar</button>
+        <p class="kk-micro"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Grátis · Os dados ficam somente neste dispositivo</p>
+        <p class="kk-byline">Por <a href="sobre.html">Lian Alves</a> · Publicado em 9 de outubro de 2026</p>
       </div>
 
-      <fieldset class="kk-etapa">
-        <legend><span class="kk-etapa-num">1</span> Quanto entra no mês</legend>
-        <div class="kk-campos">
-          <div class="calc-salario-campo">
-            <label for="kkLiquido">Salário líquido (円)</label>
-            <input type="text" inputmode="numeric" id="kkLiquido" placeholder="Ex: 225000" aria-describedby="kkLiquidoAjuda">
-            <span class="ajuda" id="kkLiquidoAjuda">O 差引支給額 do holerite.</span>
+      <div class="kk-vis" aria-hidden="true">
+        <div class="kk-nb">
+          <div class="kk-nb-pg kk-nb-esq">
+            <div class="kk-nb-cab"><b>家計簿</b><span>Outubro · semana 2</span></div>
+            <ul class="kk-nb-lista">
+              <li><time>02/11</time><i class="kk-c1"></i><span>Mercado</span><b>¥3,280</b></li>
+              <li><time>02/11</time><i class="kk-c2"></i><span>Konbini</span><b>¥640</b></li>
+              <li><time>03/11</time><i class="kk-c1"></i><span>Farmácia</span><b>¥1,460</b></li>
+              <li><time>04/11</time><i class="kk-c3"></i><span>Livro de japonês</span><b>¥1,980</b></li>
+              <li><time>05/11</time><i class="kk-c2"></i><span>Almoço fora</span><b>¥1,380</b></li>
+            </ul>
+            <div class="kk-nb-tot"><span>Gasto na semana</span><b>¥8,740</b></div>
           </div>
-          <div class="calc-salario-campo">
-            <label for="kkOutras">Outras entradas (円)</label>
-            <input type="text" inputmode="numeric" id="kkOutras" placeholder="0">
-            <span class="ajuda">Renda extra, auxílio infantil etc.</span>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="kk-etapa">
-        <legend><span class="kk-etapa-num">2</span> Quanto sai antes de tudo</legend>
-        <div class="kk-campos">
-          <div class="calc-salario-campo">
-            <label for="kkPoupanca">Quero guardar (円)</label>
-            <input type="text" inputmode="numeric" id="kkPoupanca" placeholder="Ex: 30000">
-            <span class="ajuda">Decidido agora, não com o que sobrar.</span>
-          </div>
-          <div class="calc-salario-campo">
-            <label for="kkRemessa">Remessa pro Brasil (円)</label>
-            <input type="text" inputmode="numeric" id="kkRemessa" placeholder="0">
-            <span class="ajuda">Se você manda dinheiro todo mês.</span>
+          <div class="kk-nb-pg kk-nb-dir">
+            <div class="kk-nb-cab"><b>Categorias</b><span>no mês</span></div>
+            <div class="kk-nb-cat"><span class="kk-nb-ic kk-bg1"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h3l2.6 12.2h11l2-8.7H6.3"/></svg></span><span class="kk-nb-nome">Necessidades</span><b>¥21,560</b><span class="kk-nb-bar"><i class="kk-bg1" style="width:62%"></i></span></div>
+            <div class="kk-nb-cat"><span class="kk-nb-ic kk-bg2"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span><span class="kk-nb-nome">Desejos</span><b>¥8,420</b><span class="kk-nb-bar"><i class="kk-bg2" style="width:34%"></i></span></div>
+            <div class="kk-nb-cat"><span class="kk-nb-ic kk-bg3"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5C5.5 4 9 4 12 6c3-2 6.5-2 9-.5V19c-2.5-1.5-6-1.5-9 .5-3-2-6.5-2-9-.5z"/><line x1="12" y1="6" x2="12" y2="19.5"/></svg></span><span class="kk-nb-nome">Cultura</span><b>¥4,980</b><span class="kk-nb-bar"><i class="kk-bg3" style="width:21%"></i></span></div>
+            <div class="kk-nb-cat"><span class="kk-nb-ic kk-bg4"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></svg></span><span class="kk-nb-nome">Extras</span><b>¥1,500</b><span class="kk-nb-bar"><i class="kk-bg4" style="width:9%"></i></span></div>
+            <div class="kk-nb-meta"><span>Poupança do mês</span><b>¥30,000</b><em><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> guardado</em></div>
           </div>
         </div>
-      </fieldset>
-
-      <fieldset class="kk-etapa">
-        <legend><span class="kk-etapa-num">3</span> Gastos fixos do mês</legend>
-        <div class="kk-campos kk-campos--4">
-          <div class="calc-salario-campo">
-            <label for="kkAluguel">Aluguel (家賃)</label>
-            <input type="text" inputmode="numeric" id="kkAluguel" placeholder="0">
-          </div>
-          <div class="calc-salario-campo">
-            <label for="kkContas">Luz, gás e água</label>
-            <input type="text" inputmode="numeric" id="kkContas" placeholder="0">
-          </div>
-          <div class="calc-salario-campo">
-            <label for="kkCelular">Celular e internet</label>
-            <input type="text" inputmode="numeric" id="kkCelular" placeholder="0">
-          </div>
-          <div class="calc-salario-campo">
-            <label for="kkOutrosFixos">Outros fixos</label>
-            <input type="text" inputmode="numeric" id="kkOutrosFixos" placeholder="0">
-            <span class="ajuda">Seguro, parcela, escola.</span>
-          </div>
+        <div class="kk-flt kk-flt-semana">
+          <span class="kk-flt-rot">Limite desta semana</span>
+          <b class="kk-flt-val">¥13,700</b>
+          <span class="kk-flt-bar"><i style="width:64%"></i></span>
+          <span class="kk-flt-pe"><span>gastou ¥8,740</span><strong>restam ¥4,960</strong></span>
         </div>
-      </fieldset>
+        <div class="kk-flt kk-flt-chip"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Plano equilibrado</div>
+      </div>
+    </section>
 
-      <fieldset class="kk-etapa">
-        <legend><span class="kk-etapa-num">4</span> Gastos anuais (valor do ano inteiro)</legend>
-        <div class="kk-campos kk-campos--4">
-          <div class="calc-salario-campo">
-            <label for="kkPassagem">Viagem ao Brasil</label>
-            <input type="text" inputmode="numeric" id="kkPassagem" placeholder="0">
-          </div>
-          <div class="calc-salario-campo">
-            <label for="kkCarro">Carro no ano</label>
-            <input type="text" inputmode="numeric" id="kkCarro" placeholder="0">
-            <span class="ajuda">Imposto, shaken, seguro.</span>
-          </div>
-          <div class="calc-salario-campo">
-            <label for="kkMoradia">Renovação do apê</label>
-            <input type="text" inputmode="numeric" id="kkMoradia" placeholder="0">
-            <span class="ajuda">更新料, dividido pelos anos do contrato.</span>
-          </div>
-          <div class="calc-salario-campo">
-            <label for="kkOutrosAnuais">Outros do ano</label>
-            <input type="text" inputmode="numeric" id="kkOutrosAnuais" placeholder="0">
-            <span class="ajuda">Presentes, eventos, Furusato.</span>
-          </div>
-        </div>
-      </fieldset>
+    <!-- 2. DEMONSTRACAO -->
+    <section class="kk-demo" aria-label="Exemplo do resultado">
+      <p class="kk-demo-tit">Em cinco minutos, você sai com isto</p>
+      <ol class="kk-flow">
+        <li><span class="kk-flow-rot">Entra no mês</span><b>¥225.000</b><small>salário líquido</small></li>
+        <li><span class="kk-flow-rot">Já tem destino</span><b>¥166.000</b><small>poupança, remessa, fixos e anuais</small></li>
+        <li><span class="kk-flow-rot">Pode gastar</span><b>¥59.000</b><small>no mês, nas 4 categorias</small></li>
+        <li class="kk-flow-fim"><span class="kk-flow-rot">Por semana</span><b>¥13.700</b><small>o número que você acompanha</small></li>
+      </ol>
+      <p class="kk-demo-nota">Exemplo de quem mora sozinho, recebe ¥225.000 líquidos e manda ¥30.000 pro Brasil. <a href="#exemplo">Veja a conta completa</a>.</p>
+    </section>
 
-      <div class="kk-resultado" id="kkResultado" aria-live="polite" hidden>
-        <div class="holerite-resumo kk-resumo">
-          <div class="holerite-resumo-item holerite-resumo-item--bruto">
-            <span class="label">Entra no mês</span>
-            <span class="valor" id="kkTotalEntra">¥0</span>
-          </div>
-          <div class="holerite-resumo-item holerite-resumo-item--descontos">
-            <span class="label">Já tem destino</span>
-            <span class="valor" id="kkTotalDestino">− ¥0</span>
-          </div>
-          <div class="holerite-resumo-item holerite-resumo-item--liquido">
-            <span class="label">Pra gastar no mês</span>
-            <span class="valor" id="kkLivre">¥0</span>
-          </div>
+    <!-- 3. FERRAMENTA -->
+    <section id="planejador" class="kk-sec kk-tool-sec" aria-labelledby="kk-h-tool">
+      <div class="kk-sec-head">
+        <p class="kk-kicker">Ferramenta gratuita</p>
+        <h2 id="kk-h-tool">Monte seu kakeibo do mês</h2>
+        <p>Planeje no dia do pagamento, anote os gastos durante o mês e feche com as quatro perguntas. Tudo fica salvo só neste aparelho.</p>
+      </div>
+
+      <div class="kk-app" id="kkApp">
+        <div class="kk-tabs" role="tablist" aria-label="Etapas do kakeibo">
+          <button type="button" role="tab" class="kk-tab" id="kkTab1" aria-controls="kkPainel1" aria-selected="true"><span class="kk-tab-n">1</span>Planejar</button>
+          <button type="button" role="tab" class="kk-tab" id="kkTab2" aria-controls="kkPainel2" aria-selected="false" tabindex="-1"><span class="kk-tab-n">2</span>Acompanhar o mês</button>
+          <button type="button" role="tab" class="kk-tab" id="kkTab3" aria-controls="kkPainel3" aria-selected="false" tabindex="-1"><span class="kk-tab-n">3</span>Fechar o mês</button>
         </div>
 
-        <div class="kk-semana" id="kkSemanaBox">
-          <span class="kk-semana-rotulo">Seu limite por semana</span>
-          <span class="kk-semana-valor" id="kkSemana">¥0</span>
-          <span class="kk-semana-nota">pra dividir entre necessidades, desejos, cultura e extras — média de 4,3 semanas por mês, arredondado pra baixo</span>
+        <!-- PAINEL 1: PLANEJAR -->
+        <div class="kk-painel" role="tabpanel" id="kkPainel1" aria-labelledby="kkTab1">
+          <div class="kk-wiz" id="kkWiz">
+            <div class="kk-prog">
+              <div class="kk-prog-top"><span id="kkProgTxt">Etapa 1 de 4</span><button type="button" class="kk-link" id="kkExemplo">Preencher com um exemplo</button></div>
+              <div class="kk-prog-bar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-labelledby="kkProgTxt"><i id="kkProgFill"></i></div>
+              <ol class="kk-prog-passos" id="kkPassos">
+                <li class="ativo">Quanto entra</li><li>Quanto guardar</li><li>Gastos fixos</li><li>Gastos anuais</li>
+              </ol>
+            </div>
+
+            <fieldset class="kk-passo ativo" data-passo="1">
+              <legend tabindex="-1">Quanto entra no mês</legend>
+              <p class="kk-passo-ajuda">Use o valor que cai de verdade na conta: o 差引支給額 do holerite, depois de seguro social e imposto.</p>
+              <div class="kk-campos">
+                <div class="kk-campo"><label for="kkLiquido">Salário líquido</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkLiquido" placeholder="225,000" autocomplete="off" aria-describedby="kkLiquidoH"></div><small id="kkLiquidoH">O 差引支給額 do holerite</small></div>
+                <div class="kk-campo"><label for="kkOutras">Outras entradas</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkOutras" placeholder="0" autocomplete="off" aria-describedby="kkOutrasH"></div><small id="kkOutrasH">Renda extra, auxílio infantil</small></div>
+                <div class="kk-campo">
+                  <label for="kkPagamento">Data do pagamento</label>
+                  <input type="date" id="kkPagamento" aria-describedby="kkPagamentoH">
+                  <small id="kkPagamentoH">Seu mês do kakeibo começa aqui</small>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="kk-passo" data-passo="2">
+              <legend tabindex="-1">Quanto quero guardar</legend>
+              <p class="kk-passo-ajuda">No kakeibo, a poupança sai primeiro, como se fosse uma conta fixa. Decida agora, não com o que sobrar.</p>
+              <div class="kk-campos">
+                <div class="kk-campo"><label for="kkPoupanca">Meta de poupança</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkPoupanca" placeholder="30,000" autocomplete="off" aria-describedby="kkPoupancaH"></div><small id="kkPoupancaH">Quanto vai guardar este mês</small></div>
+                <div class="kk-campo"><label for="kkRemessa">Remessa para o Brasil</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkRemessa" placeholder="0" autocomplete="off" aria-describedby="kkRemessaH"></div><small id="kkRemessaH">Se você manda dinheiro todo mês</small></div>
+                <div class="kk-campo kk-campo--largo">
+                  <label for="kkObjetivo">Objetivo do mês</label>
+                  <input type="text" id="kkObjetivo" maxlength="80" placeholder="Ex: juntar pra passagem de dezembro" aria-describedby="kkObjetivoH">
+                  <small id="kkObjetivoH">Opcional. Aparece no fechamento e na folha impressa</small>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="kk-passo" data-passo="3">
+              <legend tabindex="-1">Gastos fixos do mês</legend>
+              <p class="kk-passo-ajuda">O que sai todo mês, com valor parecido. Deixe em branco o que não se aplica.</p>
+              <div class="kk-campos kk-campos--3">
+                <div class="kk-campo"><label for="kkMoradia">Moradia</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkMoradia" placeholder="0" autocomplete="off" aria-describedby="kkMoradiaH"></div><small id="kkMoradiaH">Aluguel (家賃)</small></div>
+                <div class="kk-campo"><label for="kkContas">Água, luz e gás</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkContas" placeholder="0" autocomplete="off" aria-describedby="kkContasH"></div><small id="kkContasH">Média das últimas contas</small></div>
+                <div class="kk-campo"><label for="kkCelular">Celular e internet</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkCelular" placeholder="0" autocomplete="off"></div></div>
+                <div class="kk-campo"><label for="kkTransporte">Transporte</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkTransporte" placeholder="0" autocomplete="off" aria-describedby="kkTransporteH"></div><small id="kkTransporteH">Passe, gasolina</small></div>
+                <div class="kk-campo"><label for="kkSeguros">Seguros e parcelas</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkSeguros" placeholder="0" autocomplete="off"></div></div>
+                <div class="kk-campo"><label for="kkOutrosFixos">Outros</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkOutrosFixos" placeholder="0" autocomplete="off" aria-describedby="kkOutrosFixosH"></div><small id="kkOutrosFixosH">Escola, academia</small></div>
+              </div>
+            </fieldset>
+
+            <fieldset class="kk-passo" data-passo="4">
+              <legend tabindex="-1">Gastos anuais</legend>
+              <p class="kk-passo-ajuda">Informe o valor do <strong>ano inteiro</strong>. O kakeibo divide por 12 e separa um pouco todo mês.</p>
+              <div class="kk-campos kk-campos--3">
+                <div class="kk-campo"><label for="kkCarro">Carro e shaken</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkCarro" placeholder="0" autocomplete="off" aria-describedby="kkCarroH"></div><small id="kkCarroH">Imposto, inspeção, seguro</small></div>
+                <div class="kk-campo"><label for="kkViagem">Viagem ao Brasil</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkViagem" placeholder="0" autocomplete="off"></div></div>
+                <div class="kk-campo"><label for="kkRenovacao">Renovação da moradia</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkRenovacao" placeholder="0" autocomplete="off" aria-describedby="kkRenovacaoH"></div><small id="kkRenovacaoH">更新料, por ano</small></div>
+                <div class="kk-campo"><label for="kkPresentes">Presentes e eventos</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkPresentes" placeholder="0" autocomplete="off" aria-describedby="kkPresentesH"></div><small id="kkPresentesH">Aniversários, fim de ano</small></div>
+                <div class="kk-campo"><label for="kkOutrosAnuais">Outros gastos anuais</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkOutrosAnuais" placeholder="0" autocomplete="off" aria-describedby="kkOutrosAnuaisH"></div><small id="kkOutrosAnuaisH">Furusato Nozei etc.</small></div>
+                <div class="kk-anual-box"><span>Separar por mês</span><b id="kkAnualMes">¥0</b></div>
+              </div>
+            </fieldset>
+
+            <div class="kk-wiz-nav">
+              <button type="button" class="btn-secondary kk-btn2" id="kkVoltar" hidden><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="11 6 5 12 11 18"/></svg> Voltar</button>
+              <button type="button" class="btn" id="kkProximo">Próximo <svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+            </div>
+          </div>
+
+          <div class="kk-res" id="kkRes" hidden tabindex="-1" aria-labelledby="kkResTit">
+            <div class="kk-res-cab">
+              <h3 id="kkResTit">Seu plano do mês</h3>
+              <span class="kk-status" id="kkStatus"></span>
+            </div>
+            <div class="kk-res-destaques">
+              <div class="kk-big kk-big--mes"><span>Pode gastar no mês</span><b id="kkLivre">¥0</b><small>nas quatro categorias</small></div>
+              <div class="kk-big kk-big--semana"><span>Limite por semana</span><b id="kkSemana">¥0</b><small id="kkSemanaNota">média de 4,3 semanas</small></div>
+            </div>
+            <div class="kk-res-mini">
+              <div><span><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a1 1 0 0 1-1-1z"/><path d="M4 7V6a2 2 0 0 1 2-2h10"/><circle cx="16" cy="13.5" r="1.2"/></svg> Renda disponível</span><b id="kkRenda">¥0</b></div>
+              <div><span><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8"/><polyline points="3 13 12 18 21 13"/></svg> Total comprometido</span><b id="kkComprometido">¥0</b><small>fixos e remessa</small></div>
+              <div><span><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></svg> Valor reservado</span><b id="kkReservado">¥0</b><small>poupança e anuais ÷ 12</small></div>
+            </div>
+            <div class="kk-aviso" id="kkAlerta" hidden>
+              <svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
+              <p><strong>Seu plano ultrapassa a renda em <span id="kkFalta">¥0</span>.</strong> Veja quais valores podem ser ajustados: a meta de poupança, um gasto fixo ou um gasto anual que pode ficar pra depois.</p>
+            </div>
+            <p class="kk-barra-tit">Pra onde vai cada iene</p>
+            <div class="kk-barra" id="kkBarra" role="img" aria-label="Divisão da renda do mês"></div>
+            <ul class="kk-legenda" id="kkLegenda"></ul>
+            <div class="kk-res-acoes">
+              <button type="button" class="btn-secondary kk-btn2" id="kkEditar"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><line x1="13.5" y1="6.5" x2="17.5" y2="10.5"/></svg> Editar plano</button>
+              <button type="button" class="btn" id="kkIrMes">Começar a acompanhar <svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+            </div>
+          </div>
         </div>
 
-        <div class="callout warning kk-alerta" id="kkAlerta" hidden>
-          <p style="margin:0;"><strong>Seu plano não fecha: faltam <span id="kkFalta">¥0</span>.</strong> Antes de começar o mês, reduza a meta de poupança, revise um gasto fixo ou adie um gasto anual. É exatamente essa conversa que o kakeibo quer provocar no dia do pagamento — não no fim do mês.</p>
+        <!-- PAINEL 2: ACOMPANHAR -->
+        <div class="kk-painel" role="tabpanel" id="kkPainel2" aria-labelledby="kkTab2" hidden>
+          <div class="kk-vazio" id="kkMesVazio">
+            <p><strong>Primeiro, monte o plano.</strong> O acompanhamento usa o seu limite por semana.</p>
+            <button type="button" class="btn" data-ir="1">Montar meu plano</button>
+          </div>
+          <div id="kkMesConteudo" hidden>
+            <div class="kk-mes-topo">
+              <div class="kk-mes-resumo">
+                <span class="kk-mes-rot">Este mês</span>
+                <div class="kk-mes-nums"><b id="kkMesGasto">¥0</b><span>de <span id="kkMesPlan">¥0</span> planejados</span></div>
+                <span class="kk-trilho"><i id="kkMesBarra"></i></span>
+                <span class="kk-mes-pe" id="kkMesResta">Restam ¥0</span>
+              </div>
+              <div class="kk-cats-mes" id="kkCatsMes"></div>
+            </div>
+
+            <div class="kk-semanas" role="tablist" aria-label="Semanas do mês" id="kkSemanas"></div>
+
+            <div class="kk-semana-card">
+              <div class="kk-semana-top">
+                <div>
+                  <h3 id="kkSemTit">Semana 1</h3>
+                  <span class="kk-semana-datas" id="kkSemDatas"></span>
+                </div>
+                <div class="kk-semana-nums"><b id="kkSemGasto">¥0</b><span>de <span id="kkSemLimite">¥0</span></span></div>
+              </div>
+              <span class="kk-trilho kk-trilho--grosso"><i id="kkSemBarra"></i></span>
+              <p class="kk-semana-pe" id="kkSemResta"></p>
+
+              <form class="kk-add" id="kkAdd" novalidate>
+                <p class="kk-add-tit">Anotar um gasto</p>
+                <div class="kk-add-grid">
+                  <div class="kk-campo"><label for="kkGData">Data</label><input type="date" id="kkGData" required></div>
+                  <div class="kk-campo kk-campo--desc"><label for="kkGDesc">Descrição</label><input type="text" id="kkGDesc" maxlength="60" placeholder="Ex: mercado" required></div>
+                  <div class="kk-campo"><label for="kkGValor">Valor</label><div class="kk-yen"><span aria-hidden="true">¥</span><input type="text" inputmode="numeric" id="kkGValor" placeholder="0" autocomplete="off" required></div></div>
+                </div>
+                <fieldset class="kk-catsel">
+                  <legend>Categoria</legend>
+                  <label><input type="radio" name="kkGCat" value="1" checked><span class="kk-chip kk-chip--1"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h3l2.6 12.2h11l2-8.7H6.3"/></svg> Necessidades</span></label>
+                  <label><input type="radio" name="kkGCat" value="2"><span class="kk-chip kk-chip--2"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg> Desejos</span></label>
+                  <label><input type="radio" name="kkGCat" value="3"><span class="kk-chip kk-chip--3"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5C5.5 4 9 4 12 6c3-2 6.5-2 9-.5V19c-2.5-1.5-6-1.5-9 .5-3-2-6.5-2-9-.5z"/><line x1="12" y1="6" x2="12" y2="19.5"/></svg> Cultura e crescimento</span></label>
+                  <label><input type="radio" name="kkGCat" value="4"><span class="kk-chip kk-chip--4"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></svg> Extras</span></label>
+                </fieldset>
+                <div class="kk-add-pe">
+                  <p class="kk-add-erro" id="kkAddErro" role="alert" hidden></p>
+                  <button type="submit" class="btn"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Adicionar gasto</button>
+                </div>
+              </form>
+
+              <ul class="kk-lista" id="kkLista" aria-live="polite"></ul>
+              <p class="kk-lista-vazia" id="kkListaVazia">Nenhum gasto anotado nesta semana ainda.</p>
+            </div>
+            <div class="kk-mes-acoes">
+              <button type="button" class="btn" data-ir="3">Fechar o mês <svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+            </div>
+          </div>
         </div>
 
-        <p class="kk-barra-titulo">Pra onde vai cada iene</p>
-        <div class="kk-barra" id="kkBarra" role="img" aria-label="Divisão da renda do mês"></div>
-        <ul class="kk-legenda" id="kkLegenda"></ul>
+        <!-- PAINEL 3: FECHAR -->
+        <div class="kk-painel" role="tabpanel" id="kkPainel3" aria-labelledby="kkTab3" hidden>
+          <div class="kk-fim-cab">
+            <h3>Fechamento do mês</h3>
+            <p>As quatro perguntas do kakeibo, com os números do seu mês. Sem culpa: a ideia é ajustar o próximo plano.</p>
+          </div>
+          <ol class="kk-fim">
+            <li><span class="kk-fim-n">1</span><p class="kk-fim-q">Quanto entrou?</p><b id="kkF1">¥0</b><small>salário líquido e outras entradas</small></li>
+            <li><span class="kk-fim-n">2</span><p class="kk-fim-q">Quanto eu queria guardar?</p><b id="kkF2">¥0</b><small id="kkF2Obj">meta de poupança do mês</small></li>
+            <li><span class="kk-fim-n">3</span><p class="kk-fim-q">Quanto realmente gastei?</p><b id="kkF3">¥0</b><small id="kkF3Nota">nas quatro categorias</small></li>
+            <li class="kk-fim-nota"><span class="kk-fim-n">4</span><label class="kk-fim-q" for="kkNota">O que posso melhorar no próximo mês?</label>
+              <textarea id="kkNota" maxlength="400" rows="4" placeholder="Ex: konbini passou do limite nas semanas de hora extra. Mês que vem, levar marmita."></textarea>
+              <small><span id="kkNotaCont">0</span>/400</small>
+            </li>
+          </ol>
+        </div>
 
-        <div class="kk-plan-acoes">
-          <button type="button" class="btn" id="kkImprimir">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 3 18 3 18 9"/><rect x="4" y="9" width="16" height="9" rx="2"/><rect x="7" y="14" width="10" height="7"/></svg>
-            Imprimir meu kakeibo
-          </button>
-          <span class="kk-plan-acoes-nota">Gera uma folha A4 com o plano, a tabela semanal das 4 categorias e as perguntas do fim do mês. Na janela de impressão, dá pra salvar em PDF.</span>
+        <div class="kk-app-pe">
+          <p class="kk-app-priv"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Os dados ficam só neste aparelho. Nada é enviado ao site.</p>
+          <div class="kk-app-btns">
+            <button type="button" class="kk-acao" id="kkImprimir"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 3 18 3 18 9"/><rect x="4" y="9" width="16" height="9" rx="2"/><rect x="7" y="14" width="10" height="7"/></svg> Imprimir ou salvar PDF</button>
+            <button type="button" class="kk-acao" id="kkNovoMes"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><polyline points="20 4 20 11 13 11"/></svg> Novo mês</button>
+            <button type="button" class="kk-acao kk-acao--perigo" id="kkLimpar"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 7 20 7"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></svg> Limpar dados</button>
+          </div>
+          <div class="kk-confirma" id="kkConfirma" role="alertdialog" aria-labelledby="kkConfirmaTxt" hidden>
+            <p id="kkConfirmaTxt"></p>
+            <div><button type="button" class="btn btn-sm" id="kkConfirmaSim"></button><button type="button" class="btn-secondary btn-sm kk-btn2" id="kkConfirmaNao">Cancelar</button></div>
+          </div>
         </div>
       </div>
-      <p class="kk-vazio" id="kkVazio">Comece pelo salário líquido. O resultado aparece aqui conforme você preenche.</p>
-    </div>
+    </section>
 
-    <h2 id="exemplo">Exemplo com números</h2>
-    <p class="lead-secundario">Um exemplo ilustrativo de quem mora sozinho, recebe ¥225.000 líquidos e manda dinheiro pra família. É o mesmo que o botão “Preencher com um exemplo” coloca no planejador.</p>
-    <div style="overflow-x:auto">
-      <table class="data-table">
-        <thead>
-          <tr><th>Linha do plano</th><th>Valor no mês</th><th>De onde vem</th></tr>
-        </thead>
+    <!-- 4. METODO: AS 4 PERGUNTAS -->
+    <section id="metodo" class="kk-sec" aria-labelledby="quatro-perguntas">
+      <div class="kk-sec-head">
+        <p class="kk-kicker">Como o método funciona</p>
+        <h2 id="quatro-perguntas">As 4 perguntas do Kakeibo</h2>
+        <p>O método inteiro gira em torno de quatro perguntas. As duas primeiras você responde no dia do pagamento; as duas últimas, durante e no fim do mês.</p>
+      </div>
+      <ol class="kk-perg">
+        <li><span class="kk-perg-fase">Dia do pagamento</span><span class="kk-perg-n">1</span><h3>Quanto dinheiro eu tenho?</h3><p>O valor que caiu de verdade na conta: o líquido do holerite (差引支給額), não o bruto. Some qualquer outra entrada do mês.</p></li>
+        <li><span class="kk-perg-fase">Dia do pagamento</span><span class="kk-perg-n">2</span><h3>Quanto eu quero guardar?</h3><p>Decidido <strong>antes</strong> de gastar, não com o que sobrar. A poupança entra no plano como se fosse uma conta fixa.</p></li>
+        <li><span class="kk-perg-fase">Durante o mês</span><span class="kk-perg-n">3</span><h3>Quanto eu estou gastando?</h3><p>Anote cada gasto no mesmo dia, separado por categoria. Escrever faz você perceber o gasto na hora — é a parte que muda o hábito.</p></li>
+        <li><span class="kk-perg-fase">Fim do mês</span><span class="kk-perg-n">4</span><h3>Como posso melhorar?</h3><p>Compare o plano com o que aconteceu. Sem culpa: a pergunta é o que você muda no mês que vem.</p></li>
+      </ol>
+    </section>
+
+    <!-- 5. ADAPTAR AO JAPAO -->
+    <section class="kk-sec" aria-labelledby="adaptar">
+      <div class="kk-sec-head">
+        <p class="kk-kicker">Vida no Japão</p>
+        <h2 id="adaptar">Kakeibo pra quem recebe no Japão: o que muda</h2>
+        <p>Os guias em português explicam o método pensando no salário brasileiro. No Japão, a lógica do mês é outra. Seis ajustes fazem diferença:</p>
+      </div>
+      <ul class="kk-ajustes">
+        <li><span class="kk-aj-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span><div><h3>O mês começa no dia do pagamento</h3><p>Em muitas empresas japonesas o salário cai no dia 25 (給料日, <em>kyūryōbi</em>). Seu mês do kakeibo vai de um pagamento até o próximo, não do dia 1 ao dia 30.</p></div></li>
+        <li><span class="kk-aj-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a1 1 0 0 1-1-1z"/><path d="M4 7V6a2 2 0 0 1 2-2h10"/><circle cx="16" cy="13.5" r="1.2"/></svg></span><div><h3>Planeje com o líquido</h3><p>Use o 差引支給額 do holerite, depois de seguro social e imposto. Não sabe ler o seu? Veja o <a href="entenda-seu-holerite-japao.html">holerite campo por campo</a> ou <a href="meu-salario-no-japao.html">calcule quanto sobra</a>.</p></div></li>
+        <li><span class="kk-aj-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><div><h3>Hora extra não é base</h3><p>Se o salário muda com 残業 <em>(zangyō)</em>, planeje com o mês mais fraco. O que vier a mais vai direto pra poupança ou pros gastos anuais.</p></div></li>
+        <li><span class="kk-aj-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l6 8 6-8"/><line x1="12" y1="12" x2="12" y2="20"/><line x1="7" y1="13" x2="17" y2="13"/><line x1="7" y1="16.5" x2="17" y2="16.5"/></svg></span><div><h3>Refaça o plano em junho</h3><p>No segundo ano no Japão começa o jūminzei, descontado em 12 parcelas de junho a maio. O líquido cai — <a href="imposto-residencial-juminzei.html">entenda o imposto residencial</a>.</p></div></li>
+        <li><span class="kk-aj-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><div><h3>Remessa é conta fixa</h3><p>Se você manda dinheiro pra família, trate como aluguel: sai no dia do pagamento. Veja <a href="remessa-japao-brasil.html">quanto custa cada serviço</a>.</p></div></li>
+        <li><span class="kk-aj-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c-2-4-6-4-6-1.5S10 8 12 8zm0 0c2-4 6-4 6-1.5S14 8 12 8z"/></svg></span><div><h3>Bônus fica fora do mês</h3><p>O 賞与 <em>(shōyo)</em> não entra no orçamento mensal. Decida antes de receber pra onde ele vai: reserva, passagem, gastos do ano.</p></div></li>
+      </ul>
+
+      <div class="kk-destaque" id="gastos-anuais">
+        <div class="kk-destaque-txt">
+          <h3>Os gastos anuais que quebram o orçamento</h3>
+          <p>O que mais estoura o kakeibo no Japão não é o konbini. É a conta grande que vem uma vez por ano.</p>
+          <p>Os cadernos japoneses chamam isso de 特別費 <em>(tokubetsuhi, gastos especiais)</em>. A regra: <strong>some tudo o que é anual, divida por 12 e separe esse valor todo mês</strong>, numa conta à parte. Quando a conta chegar, o dinheiro já está lá. A etapa 4 do planejador faz essa divisão.</p>
+        </div>
+        <ul class="kk-destaque-lista">
+          <li><b>自動車税</b><span><em>jidōshazei</em> — imposto do carro, chega em maio</span></li>
+          <li><b>車検</b><span><em>shaken</em> — inspeção do carro, nos usados vence a cada dois anos</span></li>
+          <li><b>更新料</b><span><em>kōshinryō</em> — taxa de renovação do contrato do apartamento</span></li>
+          <li><b>Passagem</b><span>a viagem pro Brasil</span></li>
+          <li><b>Presentes</b><span>aniversários e fim de ano</span></li>
+          <li><b>Furusato</b><span>a doação do <a href="furusato-nozei.html">Furusato Nozei</a></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. ARTIGO -->
+    <section class="kk-sec kk-artigo" aria-labelledby="o-que-e">
+      <div class="kk-artigo-grid">
+        <div class="kk-artigo-txt">
+          <p class="kk-kicker">A história</p>
+          <h2 id="o-que-e">O que é o Kakeibo e de onde ele veio</h2>
+          <p>家計簿 <em>(kakeibo)</em> quer dizer, ao pé da letra, “livro de contas da casa”: 家計 <em>(kakei)</em> são as finanças da família e 簿 <em>(bo)</em> é o caderno de registro.</p>
+          <p>No Japão a palavra é comum. Quem anota os gastos tem um kakeibo, seja num caderno, numa planilha ou num aplicativo.</p>
+          <p>Como método, o kakeibo foi criado em 1904 por <strong>Hani Motoko</strong> (羽仁もと子), uma das primeiras mulheres jornalistas do Japão. No ano anterior ela tinha fundado a revista 家庭之友 <em>(Katei no Tomo)</em>, que depois virou 婦人之友 <em>(Fujin no Tomo)</em>.</p>
+          <p>A ideia, ousada pra época: definir quanto entra e quanto sai <strong>antes</strong> do mês começar e viver dentro desse plano.</p>
+          <p>Mais de 120 anos depois, a editora 婦人之友社 ainda lança o caderno todo ano. A edição 2027 do 予算生活の家計簿 <em>(yosan seikatsu no kakeibo, “o kakeibo da vida com orçamento”)</em> chegou às livrarias em 6 de outubro de 2026, por ¥1.485.</p>
+          <p>Fora do Japão, o método ficou famoso numa versão simplificada, com quatro perguntas e quatro categorias de gasto. É a versão que a maioria dos sites em português explica, e é a melhor pra começar. Os cadernos japoneses usam mais categorias — o <a href="#glossario">glossário</a> ajuda você a ler um.</p>
+        </div>
+        <aside class="kk-ficha" aria-label="Kakeibo em resumo">
+          <p class="kk-ficha-tit">Em resumo</p>
+          <dl>
+            <div><dt>Nome</dt><dd>家計簿 · kakeibo</dd></div>
+            <div><dt>Criado em</dt><dd>1904</dd></div>
+            <div><dt>Por</dt><dd>Hani Motoko, jornalista</dd></div>
+            <div><dt>Ideia central</dt><dd>Planejar antes de gastar</dd></div>
+            <div><dt>Edição 2027</dt><dd>¥1.485, lançada em 6/10/2026</dd></div>
+            <div><dt>Versão simples</dt><dd>¥110 em loja de ¥100</dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <h2 id="quatro-categorias">As 4 categorias de gasto</h2>
+      <p class="kk-lead">Na versão simplificada, todo gasto variável cai em uma de quatro caixas. Os exemplos são do dia a dia no Japão.</p>
+      <ul class="kk-cats">
+        <li><span class="kk-cats-ic kk-bg1"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h3l2.6 12.2h11l2-8.7H6.3"/></svg></span><h3>Necessidades</h3><p>O que não dá pra cortar: mercado (スーパー), farmácia (ドラッグストア), produtos de limpeza e higiene, transporte do dia a dia.</p></li>
+        <li><span class="kk-cats-ic kk-bg2"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span><h3>Desejos</h3><p>O que é bom, mas é escolha: konbini, delivery, comer fora (外食), roupa, compras por impulso na Amazon ou no Rakuten.</p></li>
+        <li><span class="kk-cats-ic kk-bg3"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5C5.5 4 9 4 12 6c3-2 6.5-2 9-.5V19c-2.5-1.5-6-1.5-9 .5-3-2-6.5-2-9-.5z"/><line x1="12" y1="6" x2="12" y2="19.5"/></svg></span><h3>Cultura e crescimento</h3><p>O que alimenta a cabeça: livros, curso de japonês, aulas, cinema, museu, ingressos, assinaturas.</p></li>
+        <li><span class="kk-cats-ic kk-bg4"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></svg></span><h3>Extras</h3><p>O que não estava previsto: conserto, remédio de última hora, presente de casamento (ご祝儀), uma multa.</p></li>
+      </ul>
+      <p class="kk-nota-lateral"><strong>Aluguel, contas fixas e poupança não entram nas quatro caixas.</strong> Eles saem antes, no planejamento do dia do pagamento. As caixas são só pro dinheiro que sobra pra gastar no mês.</p>
+
+      <h2 id="exemplo">Exemplo com números</h2>
+      <p class="kk-lead">Um exemplo ilustrativo de quem mora sozinho, recebe ¥225.000 líquidos e manda dinheiro pra família. É o mesmo que o botão “Preencher com um exemplo” coloca no planejador.</p>
+      <table class="kk-tabela kk-tabela--exemplo">
+        <thead><tr><th>Linha do plano</th><th>Valor no mês</th><th>De onde vem</th></tr></thead>
         <tbody>
-          <tr><td>Salário líquido</td><td>¥225.000</td><td>差引支給額 do holerite</td></tr>
-          <tr><td>Poupança</td><td>− ¥30.000</td><td>Decidida no dia do pagamento</td></tr>
-          <tr><td>Remessa pro Brasil</td><td>− ¥30.000</td><td>Valor fixo pra família</td></tr>
-          <tr><td>Aluguel</td><td>− ¥55.000</td><td>Contrato do apartamento</td></tr>
-          <tr><td>Luz, gás e água</td><td>− ¥13.000</td><td>Média das últimas contas</td></tr>
-          <tr><td>Celular e internet</td><td>− ¥8.000</td><td>Plano atual</td></tr>
-          <tr><td>Gastos anuais ÷ 12</td><td>− ¥30.000</td><td>Viagem ao Brasil ¥240.000 + carro ¥120.000 = ¥360.000 no ano</td></tr>
-          <tr><td><strong>Pra gastar no mês</strong></td><td><strong>¥59.000</strong></td><td>Necessidades, desejos, cultura e extras</td></tr>
-          <tr><td><strong>Por semana</strong></td><td><strong>¥13.700</strong></td><td>¥59.000 ÷ 4,3 semanas, arredondado pra baixo</td></tr>
+          <tr><td data-label="Linha">Salário líquido</td><td data-label="Valor" class="kk-num">¥225.000</td><td data-label="Origem">差引支給額 do holerite</td></tr>
+          <tr><td data-label="Linha">Poupança</td><td data-label="Valor" class="kk-num">− ¥30.000</td><td data-label="Origem">Decidida no dia do pagamento</td></tr>
+          <tr><td data-label="Linha">Remessa pro Brasil</td><td data-label="Valor" class="kk-num">− ¥30.000</td><td data-label="Origem">Valor fixo pra família</td></tr>
+          <tr><td data-label="Linha">Aluguel</td><td data-label="Valor" class="kk-num">− ¥55.000</td><td data-label="Origem">Contrato do apartamento</td></tr>
+          <tr><td data-label="Linha">Luz, gás e água</td><td data-label="Valor" class="kk-num">− ¥13.000</td><td data-label="Origem">Média das últimas contas</td></tr>
+          <tr><td data-label="Linha">Celular e internet</td><td data-label="Valor" class="kk-num">− ¥8.000</td><td data-label="Origem">Plano atual</td></tr>
+          <tr><td data-label="Linha">Gastos anuais ÷ 12</td><td data-label="Valor" class="kk-num">− ¥30.000</td><td data-label="Origem">Viagem ao Brasil ¥240.000 + carro ¥120.000 = ¥360.000 no ano</td></tr>
+          <tr class="kk-tr-forte"><td data-label="Linha">Pra gastar no mês</td><td data-label="Valor" class="kk-num">¥59.000</td><td data-label="Origem">Necessidades, desejos, cultura e extras</td></tr>
+          <tr class="kk-tr-forte"><td data-label="Linha">Por semana</td><td data-label="Valor" class="kk-num">¥13.700</td><td data-label="Origem">¥59.000 ÷ 4,3 semanas, arredondado pra baixo</td></tr>
         </tbody>
       </table>
-    </div>
-    <p>Repare no que esse exemplo mostra: de ¥225.000, só ¥59.000 são realmente “livres”. Sem o kakeibo, a sensação é de que sobram ¥225.000 menos o aluguel — e a passagem pro Brasil vira cartão de crédito parcelado.</p>
+      <p>Repare no que esse exemplo mostra: de ¥225.000, só ¥59.000 são realmente “livres”. Sem o kakeibo, a sensação é de que sobram ¥225.000 menos o aluguel — e a passagem pro Brasil vira cartão de crédito parcelado.</p>
 
-    <h3 id="quanto-gasta">Quanto um solteiro gasta por mês no Japão?</h3>
-    <p>Pra ter uma referência: segundo a Pesquisa de Orçamento Familiar do governo japonês (家計調査, 総務省, ano de 2025), uma pessoa que mora sozinha e trabalha gasta em média <strong>cerca de ¥191.500 por mês</strong>. Comida é a maior linha, com cerca de ¥45.800; moradia aparece com cerca de ¥30.300 — um número baixo porque a média inclui quem mora em alojamento da empresa ou em imóvel próprio. Use a média só como referência: o seu kakeibo é que diz quanto <em>você</em> gasta.</p>
+      <div class="kk-stat" aria-labelledby="quanto-gasta">
+        <div class="kk-stat-num"><b>¥191.500</b><span>por mês, em média</span></div>
+        <div>
+          <h3 id="quanto-gasta">Quanto um solteiro gasta por mês no Japão?</h3>
+          <p>Segundo a Pesquisa de Orçamento Familiar do governo japonês (家計調査, 総務省, ano de 2025), uma pessoa que mora sozinha e trabalha gasta em média <strong>cerca de ¥191.500 por mês</strong>. Comida é a maior linha, com cerca de ¥45.800; moradia aparece com cerca de ¥30.300 — um número baixo porque a média inclui quem mora em alojamento da empresa ou em imóvel próprio.</p>
+          <p>Use a média só como referência: o seu kakeibo é que diz quanto <em>você</em> gasta.</p>
+        </div>
+      </div>
 
-    <h2 id="caderno-ou-app">Caderno ou aplicativo?</h2>
-    <p class="lead-secundario">Não existe resposta certa — existe a que você vai usar todo dia. As opções mais comuns no Japão:</p>
-    <div style="overflow-x:auto">
-      <table class="data-table kk-tabela-opcoes">
-        <thead>
-          <tr><th>Opção</th><th>Custo</th><th>Bom pra</th><th>Atenção</th></tr>
-        </thead>
+      <h2 id="caderno-ou-app">Caderno ou aplicativo?</h2>
+      <p class="kk-lead">Não existe resposta certa — existe a que você vai usar todo dia. As opções mais comuns no Japão:</p>
+      <table class="kk-tabela kk-tabela--opcoes">
+        <thead><tr><th>Opção</th><th>Custo</th><th>Bom pra</th><th>Atenção</th></tr></thead>
         <tbody>
-          <tr><td>Caderno de loja de ¥100 (Daiso, Seria)</td><td>¥110</td><td>Começar sem gastar quase nada</td><td>Todo em japonês; as categorias prontas podem não bater com as suas</td></tr>
-          <tr><td>予算生活の家計簿 (Fujin no Tomo)</td><td>¥1.485 (edição 2027)</td><td>O método original, com orçamento anual</td><td>Todo em japonês e mais trabalhoso</td></tr>
-          <tr><td>Money Forward ME (app)</td><td>Grátis, com plano pago</td><td>Puxar gastos do banco e do cartão sozinho</td><td>No plano grátis, só 4 contas conectadas (regra desde dez/2022)</td></tr>
-          <tr><td>Zaim (app)</td><td>Grátis, com plano pago</td><td>Registrar recibos (レシート) pela câmera</td><td>Interface em japonês</td></tr>
-          <tr><td>O <a href="#planejador">planejador desta página</a></td><td>Grátis</td><td>Fazer o plano em português e imprimir a folha do mês</td><td>Não registra os gastos do dia a dia</td></tr>
+          <tr><td data-label="Opção">Caderno de loja de ¥100 (Daiso, Seria)</td><td data-label="Custo">¥110</td><td data-label="Bom pra">Começar sem gastar quase nada</td><td data-label="Atenção">Todo em japonês; as categorias prontas podem não bater com as suas</td></tr>
+          <tr><td data-label="Opção">予算生活の家計簿 (Fujin no Tomo)</td><td data-label="Custo">¥1.485 (edição 2027)</td><td data-label="Bom pra">O método original, com orçamento anual</td><td data-label="Atenção">Todo em japonês e mais trabalhoso</td></tr>
+          <tr><td data-label="Opção">Money Forward ME (app)</td><td data-label="Custo">Grátis, com plano pago</td><td data-label="Bom pra">Puxar gastos do banco e do cartão sozinho</td><td data-label="Atenção">No plano grátis, só 4 contas conectadas (regra desde dez/2022)</td></tr>
+          <tr><td data-label="Opção">Zaim (app)</td><td data-label="Custo">Grátis, com plano pago</td><td data-label="Bom pra">Registrar recibos (レシート) pela câmera</td><td data-label="Atenção">Interface em japonês</td></tr>
+          <tr><td data-label="Opção">O <a href="#planejador">planejador desta página</a></td><td data-label="Custo">Grátis</td><td data-label="Bom pra">Planejar, anotar e fechar o mês em português, e imprimir a folha</td><td data-label="Atenção">Os dados ficam só no aparelho onde você anotou</td></tr>
         </tbody>
       </table>
-    </div>
-    <p>O aplicativo resolve a terceira pergunta (quanto estou gastando) sem esforço, mas tira justamente o que faz o kakeibo funcionar: o momento de parar e anotar. Um meio-termo que funciona bem é deixar o app registrar e fazer a revisão da semana à mão, na folha impressa.</p>
-    <p style="font-size:.85rem;color:var(--color-text-muted);">Preços e regras dos aplicativos conferidos em outubro de 2026. Eles mudam; confira no site oficial antes de assinar.</p>
+      <p>O aplicativo resolve a terceira pergunta (quanto estou gastando) sem esforço, mas tira justamente o que faz o kakeibo funcionar: o momento de parar e anotar. Um meio-termo que funciona bem é deixar o app registrar e fazer a revisão da semana à mão, na folha impressa.</p>
+      <p class="kk-pequeno">Preços e regras dos aplicativos conferidos em outubro de 2026. Eles mudam; confira no site oficial antes de assinar.</p>
+    </section>
 
-    <h2 id="glossario">Como ler um kakeibo japonês</h2>
-    <p class="lead-secundario">Os termos que aparecem em quase todo caderno ou app de kakeibo vendido no Japão:</p>
-    <div style="overflow-x:auto">
-      <table class="data-table kk-glossario">
-        <thead>
-          <tr><th>Termo</th><th>Leitura</th><th>Significado</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>収入</td><td>shūnyū</td><td>Renda, o que entra</td></tr>
-          <tr><td>支出</td><td>shishutsu</td><td>Gasto, o que sai</td></tr>
-          <tr><td>予算</td><td>yosan</td><td>Orçamento</td></tr>
-          <tr><td>固定費</td><td>koteihi</td><td>Gastos fixos (aluguel, celular, seguro)</td></tr>
-          <tr><td>変動費</td><td>hendōhi</td><td>Gastos variáveis (mercado, lazer)</td></tr>
-          <tr><td>食費</td><td>shokuhi</td><td>Comida</td></tr>
-          <tr><td>日用品費</td><td>nichiyōhinhi</td><td>Produtos de casa e higiene</td></tr>
-          <tr><td>水道光熱費</td><td>suidō kōnetsuhi</td><td>Água, luz e gás</td></tr>
-          <tr><td>通信費</td><td>tsūshinhi</td><td>Celular e internet</td></tr>
-          <tr><td>交通費</td><td>kōtsūhi</td><td>Transporte</td></tr>
-          <tr><td>交際費</td><td>kōsaihi</td><td>Encontros, almoços, presentes</td></tr>
-          <tr><td>医療費</td><td>iryōhi</td><td>Saúde</td></tr>
-          <tr><td>特別費</td><td>tokubetsuhi</td><td>Gastos especiais ou anuais</td></tr>
-          <tr><td>貯金</td><td>chokin</td><td>Poupança</td></tr>
-          <tr><td>残高</td><td>zandaka</td><td>Saldo</td></tr>
-          <tr><td>繰越</td><td>kurikoshi</td><td>Saldo que passa pro mês seguinte</td></tr>
-          <tr><td>赤字 / 黒字</td><td>akaji / kuroji</td><td>No vermelho / no azul</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- 7. GLOSSARIO -->
+    <section class="kk-sec" aria-labelledby="glossario">
+      <div class="kk-sec-head kk-sec-head--linha">
+        <div>
+          <p class="kk-kicker">Glossário</p>
+          <h2 id="glossario">Como ler um kakeibo japonês</h2>
+          <p>Os termos que aparecem em quase todo caderno ou app de kakeibo vendido no Japão.</p>
+        </div>
+        <div class="kk-busca" id="kkBuscaBox" hidden>
+          <label for="kkBusca" class="kk-sr">Buscar no glossário</label>
+          <svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg><input type="search" id="kkBusca" placeholder="Buscar termo, leitura ou significado">
+        </div>
+      </div>
+      <dl class="kk-gloss" id="kkGloss">
+        <div><dt>収入<span>shūnyū</span></dt><dd>Renda, o que entra</dd></div>
+        <div><dt>支出<span>shishutsu</span></dt><dd>Gasto, o que sai</dd></div>
+        <div><dt>予算<span>yosan</span></dt><dd>Orçamento</dd></div>
+        <div><dt>固定費<span>koteihi</span></dt><dd>Gastos fixos (aluguel, celular, seguro)</dd></div>
+        <div><dt>変動費<span>hendōhi</span></dt><dd>Gastos variáveis (mercado, lazer)</dd></div>
+        <div><dt>食費<span>shokuhi</span></dt><dd>Comida</dd></div>
+        <div><dt>日用品費<span>nichiyōhinhi</span></dt><dd>Produtos de casa e higiene</dd></div>
+        <div><dt>水道光熱費<span>suidō kōnetsuhi</span></dt><dd>Água, luz e gás</dd></div>
+        <div><dt>通信費<span>tsūshinhi</span></dt><dd>Celular e internet</dd></div>
+        <div><dt>交通費<span>kōtsūhi</span></dt><dd>Transporte</dd></div>
+        <div><dt>交際費<span>kōsaihi</span></dt><dd>Encontros, almoços, presentes</dd></div>
+        <div><dt>医療費<span>iryōhi</span></dt><dd>Saúde</dd></div>
+        <div><dt>特別費<span>tokubetsuhi</span></dt><dd>Gastos especiais ou anuais</dd></div>
+        <div><dt>貯金<span>chokin</span></dt><dd>Poupança</dd></div>
+        <div><dt>残高<span>zandaka</span></dt><dd>Saldo</dd></div>
+        <div><dt>繰越<span>kurikoshi</span></dt><dd>Saldo que passa pro mês seguinte</dd></div>
+        <div><dt>赤字 / 黒字<span>akaji / kuroji</span></dt><dd>No vermelho / no azul</dd></div>
+      </dl>
+      <p class="kk-gloss-vazio" id="kkGlossVazio" hidden>Nenhum termo encontrado.</p>
+    </section>
 
-    <h2 id="faq">Perguntas frequentes</h2>
-    <div style="max-width:820px">
-      <details class="faq-item" open><summary>O kakeibo funciona com salário que muda todo mês?</summary><div class="faq-answer">Funciona. Planeje com o mês mais fraco dos últimos meses, sem contar hora extra. O que vier a mais vai direto pra poupança ou pros gastos anuais — assim um mês com pouco 残業 não quebra o plano.</div></details>
-      <details class="faq-item"><summary>Quanto eu devo guardar por mês?</summary><div class="faq-answer">O método não fixa uma porcentagem. O que ele pede é decidir o valor antes de gastar. Comece com um valor que você consiga cumprir por três meses seguidos e aumente depois — uma meta realista que você cumpre ensina mais do que uma meta alta que você abandona.</div></details>
-      <details class="faq-item"><summary>Preciso escrever à mão?</summary><div class="faq-answer">Não é obrigatório. Escrever ajuda a perceber cada gasto, mas o essencial é registrar e revisar toda semana. Muita gente usa um aplicativo pra anotar e faz a revisão semanal no papel.</div></details>
-      <details class="faq-item"><summary>Onde comprar um kakeibo no Japão?</summary><div class="faq-answer">Lojas de ¥100 como Daiso e Seria vendem modelos simples por ¥110. Livrarias e papelarias têm os mais completos, principalmente a partir de outubro, quando saem as edições do ano seguinte. Você também pode imprimir a folha do planejador desta página, em português.</div></details>
-      <details class="faq-item"><summary>Qual a diferença entre o kakeibo e a regra 50/30/20?</summary><div class="faq-answer">A regra 50/30/20 divide a renda em porcentagens fixas: 50% necessidades, 30% desejos, 20% poupança. O kakeibo não impõe porcentagens — você decide quanto guardar, acompanha os gastos por categoria e revê o plano no fim de cada mês.</div></details>
-      <details class="faq-item"><summary>Os dados do planejador ficam salvos em algum lugar?</summary><div class="faq-answer">Só no seu navegador, neste aparelho. Nada é enviado pro site. Se você limpar os dados do navegador ou abrir em outro aparelho, os valores não aparecem.</div></details>
-    </div>
+    <!-- 8. FAQ -->
+    <section class="kk-sec" aria-labelledby="faq">
+      <div class="kk-sec-head"><p class="kk-kicker">Dúvidas</p><h2 id="faq">Perguntas frequentes</h2></div>
+      <div class="kk-faq">
+        <details class="faq-item" open><summary>O kakeibo funciona com salário que muda todo mês?</summary><div class="faq-answer">Funciona. Planeje com o mês mais fraco dos últimos meses, sem contar hora extra. O que vier a mais vai direto pra poupança ou pros gastos anuais — assim um mês com pouco 残業 não quebra o plano.</div></details>
+        <details class="faq-item"><summary>Quanto eu devo guardar por mês?</summary><div class="faq-answer">O método não fixa uma porcentagem. O que ele pede é decidir o valor antes de gastar. Comece com um valor que você consiga cumprir por três meses seguidos e aumente depois — uma meta realista que você cumpre ensina mais do que uma meta alta que você abandona.</div></details>
+        <details class="faq-item"><summary>Preciso escrever à mão?</summary><div class="faq-answer">Não é obrigatório. Escrever ajuda a perceber cada gasto, mas o essencial é registrar e revisar toda semana. Muita gente usa um aplicativo pra anotar e faz a revisão semanal no papel.</div></details>
+        <details class="faq-item"><summary>Onde comprar um kakeibo no Japão?</summary><div class="faq-answer">Lojas de ¥100 como Daiso e Seria vendem modelos simples por ¥110. Livrarias e papelarias têm os mais completos, principalmente a partir de outubro, quando saem as edições do ano seguinte. Você também pode imprimir a folha do planejador desta página, em português.</div></details>
+        <details class="faq-item"><summary>Qual a diferença entre o kakeibo e a regra 50/30/20?</summary><div class="faq-answer">A regra 50/30/20 divide a renda em porcentagens fixas: 50% necessidades, 30% desejos, 20% poupança. O kakeibo não impõe porcentagens — você decide quanto guardar, acompanha os gastos por categoria e revê o plano no fim de cada mês.</div></details>
+        <details class="faq-item"><summary>Os dados do planejador ficam salvos em algum lugar?</summary><div class="faq-answer">Só no seu navegador, neste aparelho. Nada é enviado pro site. Se você limpar os dados do navegador ou abrir em outro aparelho, os valores não aparecem.</div></details>
+      </div>
+    </section>
 
-    <h2 id="continue">Continue por aqui</h2>
-    <ul>
-      <li><a href="meu-salario-no-japao.html">Quanto sobra do seu salário no Japão</a> — pra descobrir o líquido antes de montar o plano.</li>
-      <li><a href="entenda-seu-holerite-japao.html">Holerite japonês campo por campo</a> — onde achar o 差引支給額.</li>
-      <li><a href="imposto-residencial-juminzei.html">Imposto residencial (jūminzei)</a> — o desconto que começa em junho do segundo ano.</li>
-      <li><a href="remessa-japao-brasil.html">Comparador de remessa Japão-Brasil</a> — pra mandar a parte da família pagando menos.</li>
-      <li><a href="furusato-nozei.html">Furusato Nozei</a> — um gasto anual que volta como desconto de imposto.</li>
-    </ul>
+    <!-- 9. FONTES E AUTORIA -->
+    <section class="kk-sec kk-fim-pagina" aria-labelledby="continue">
+      <div class="kk-fim-grid">
+        <div>
+          <h2 id="continue">Continue por aqui</h2>
+          <ul class="kk-links">
+            <li><a href="meu-salario-no-japao.html">Quanto sobra do seu salário no Japão</a><span>pra descobrir o líquido antes de montar o plano</span></li>
+            <li><a href="entenda-seu-holerite-japao.html">Holerite japonês campo por campo</a><span>onde achar o 差引支給額</span></li>
+            <li><a href="imposto-residencial-juminzei.html">Imposto residencial (jūminzei)</a><span>o desconto que começa em junho do segundo ano</span></li>
+            <li><a href="remessa-japao-brasil.html">Comparador de remessa Japão-Brasil</a><span>pra mandar a parte da família pagando menos</span></li>
+            <li><a href="furusato-nozei.html">Furusato Nozei</a><span>um gasto anual que volta como desconto de imposto</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2 id="fontes">Fontes</h2>
+          <ul class="kk-fontes">
+            <li><a href="https://www.maruzenjunkudo.co.jp/products/9784829211120" target="_blank" rel="noopener nofollow">予算生活の家計簿 2027年版 — 婦人之友社 (ficha do livro na Maruzen Junkudo)</a>: história de Hani Motoko e do kakeibo de 1904, data de lançamento e preço da edição 2027.</li>
+            <li><a href="https://www.stat.go.jp/data/kakei/" target="_blank" rel="noopener nofollow">家計調査 — 総務省統計局</a>: Pesquisa de Orçamento Familiar do governo japonês.</li>
+            <li><a href="https://www.jili.or.jp/lifeplan/houseeconomy/941.html" target="_blank" rel="noopener nofollow">生命保険文化センター — resumo do 家計調査 2025</a>: gasto médio mensal de quem mora sozinho e trabalha.</li>
+            <li><a href="https://support.me.moneyforward.com/hc/ja/articles/11112036463001" target="_blank" rel="noopener nofollow">マネーフォワード ME — aviso oficial</a>: limite de 4 contas conectadas no plano grátis, desde 7 de dezembro de 2022.</li>
+          </ul>
+          <p class="kk-pequeno">Esta página é informativa e não substitui aconselhamento financeiro profissional. O planejador faz uma conta simples com os valores que você informa.</p>
+        </div>
+      </div>
 
-    <h2 id="fontes">Fontes</h2>
-    <ul>
-      <li><a href="https://www.maruzenjunkudo.co.jp/products/9784829211120" target="_blank" rel="noopener nofollow">予算生活の家計簿 2027年版 — 婦人之友社 (ficha do livro na Maruzen Junkudo)</a>: história de Hani Motoko e do kakeibo de 1904, data de lançamento e preço da edição 2027.</li>
-      <li><a href="https://www.stat.go.jp/data/kakei/" target="_blank" rel="noopener nofollow">家計調査 — 総務省統計局</a>: Pesquisa de Orçamento Familiar do governo japonês.</li>
-      <li><a href="https://www.jili.or.jp/lifeplan/houseeconomy/941.html" target="_blank" rel="noopener nofollow">生命保険文化センター — resumo do 家計調査 2025</a>: gasto médio mensal de quem mora sozinho e trabalha.</li>
-      <li><a href="https://support.me.moneyforward.com/hc/ja/articles/11112036463001" target="_blank" rel="noopener nofollow">マネーフォワード ME — aviso oficial</a>: limite de 4 contas conectadas no plano grátis, desde 7 de dezembro de 2022.</li>
-    </ul>
-    <p style="font-size:.9rem;color:var(--color-text-muted);">Esta página é informativa e não substitui aconselhamento financeiro profissional. O planejador faz uma conta simples com os valores que você informa.</p>
-
-  <div class="author-box">
-    <svg class="avatar avatar-ilustrado" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de Lian Alves">
+      <div class="author-box">
+        <svg class="avatar avatar-ilustrado" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de Lian Alves">
       <circle cx="32" cy="32" r="32" fill="#e8f7f0"/>
       <circle cx="32" cy="16.5" r="6.2" fill="#2a1e18"/>
       <path d="M14 56c0-9.4 8.1-15 18-15s18 5.6 18 15v8H14z" fill="#0e7c55"/>
@@ -679,10 +1250,11 @@
       <circle cx="36.8" cy="30.8" r="1.5" fill="#2a1e18"/>
       <path d="M29.6 37.6c1.6 1.1 3.2 1.1 4.8 0" stroke="#8a5a4a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
     </svg>
-    <div class="meta">
-      <p><strong>Escrito por Lian Alves</strong>, criadora do Finanças no Japão e do Calcula Japão. <a href="sobre.html">Conheça a metodologia e a experiência por trás deste conteúdo →</a></p>
-    </div>
-  </div>
+        <div class="meta">
+          <p><strong>Escrito por Lian Alves</strong>, criadora do Finanças no Japão e do Calcula Japão. <a href="sobre.html">Conheça a metodologia e a experiência por trás deste conteúdo →</a></p>
+        </div>
+      </div>
+    </section>
   </div>
 </main>
 
@@ -752,205 +1324,464 @@
 </footer>
 
 <div class="kk-folha" id="kkFolha" aria-hidden="true">
-  <p class="kk-folha-titulo">Meu kakeibo — mês de ______________</p>
-  <p class="kk-folha-sub">De um dia de pagamento até o próximo: ____/____ a ____/____ · financasnojapao.com/kakeibo-japao.html</p>
+  <div class="kf-topo">
+    <div class="kf-marca">
+      <span class="kf-kanji">家計簿</span>
+      <div>
+        <p class="kf-titulo">Meu kakeibo</p>
+        <p class="kf-sub" id="kfPeriodo">do pagamento de ____/____ até ____/____</p>
+      </div>
+    </div>
+    <div class="kf-mes"><span>mês</span><b id="kfMes"></b><span class="kf-carimbo">済</span></div>
+  </div>
 
-  <p class="kk-folha-h">1 e 2 · O plano do dia do pagamento</p>
-  <table>
-    <tbody id="kkFolhaPlano"></tbody>
-  </table>
+  <div class="kf-plano">
+    <div class="kf-cartao">
+      <p class="kf-h"><span class="kf-n">1</span>Quanto eu tenho <span class="kf-n kf-n--2">2</span>Quanto vou guardar</p>
+      <div class="kf-linha"><span>Entra no mês</span><i></i><b id="kfEntra"></b></div>
+      <div class="kf-linha kf-linha--verde"><span>Poupança — sai primeiro!</span><i></i><b id="kfPoupanca"></b></div>
+      <div class="kf-linha"><span>Remessa pro Brasil</span><i></i><b id="kfRemessa"></b></div>
+      <div class="kf-linha"><span>Gastos fixos</span><i></i><b id="kfFixos"></b></div>
+      <div class="kf-linha"><span>Gastos anuais ÷ 12</span><i></i><b id="kfAnuais"></b></div>
+      <p class="kf-obj" id="kfObjetivo"></p>
+    </div>
+    <div class="kf-lado">
+      <div class="kf-pill kf-pill--mes"><span>Pra gastar no mês</span><b id="kfLivre"></b></div>
+      <div class="kf-pill kf-pill--semana"><span>Limite por semana</span><b id="kfSemana"></b></div>
+      <div class="kf-cofre">
+        <p>Pinte uma bolinha a cada <b id="kfDot"></b> guardados</p>
+        <div class="kf-dots"><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span><span class="kf-dot"></span></div>
+      </div>
+    </div>
+  </div>
 
-  <p class="kk-folha-h">3 · Quanto estou gastando (anote por semana)</p>
-  <table class="kk-folha-semanas">
+  <p class="kf-h"><span class="kf-n">3</span>Quanto estou gastando <em>anote no mesmo dia, some no fim de semana</em></p>
+  <div class="kf-cats">
+    <div class="kf-cat kf-cat--nec"><span class="kf-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h3l2.6 12.2h11l2-8.7H6.3"/></svg></span><span><b>Necessidades</b><i>mercado, farmácia, casa</i></span></div>
+    <div class="kf-cat kf-cat--des"><span class="kf-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span><span><b>Desejos</b><i>konbini, comer fora</i></span></div>
+    <div class="kf-cat kf-cat--cul"><span class="kf-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5C5.5 4 9 4 12 6c3-2 6.5-2 9-.5V19c-2.5-1.5-6-1.5-9 .5-3-2-6.5-2-9-.5z"/><line x1="12" y1="6" x2="12" y2="19.5"/></svg></span><span><b>Cultura</b><i>livros, cursos, passeios</i></span></div>
+    <div class="kf-cat kf-cat--ext"><span class="kf-ic"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></svg></span><span><b>Extras</b><i>imprevistos</i></span></div>
+  </div>
+  <table class="kf-tabela">
     <thead>
-      <tr><th style="width:16%">Semana</th><th>Necessidades</th><th>Desejos</th><th>Cultura</th><th>Extras</th><th style="width:14%">Total</th></tr>
+      <tr><th class="kf-th-sem">Semana</th><th class="kf-th--nec"><span class="kf-ic kf-ic--p"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h3l2.6 12.2h11l2-8.7H6.3"/></svg></span>Necessidades</th><th class="kf-th--des"><span class="kf-ic kf-ic--p"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span>Desejos</th><th class="kf-th--cul"><span class="kf-ic kf-ic--p"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5C5.5 4 9 4 12 6c3-2 6.5-2 9-.5V19c-2.5-1.5-6-1.5-9 .5-3-2-6.5-2-9-.5z"/><line x1="12" y1="6" x2="12" y2="19.5"/></svg></span>Cultura</th><th class="kf-th--ext"><span class="kf-ic kf-ic--p"><svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></svg></span>Extras</th><th>Total</th><th>Limite</th><th class="kf-th-ok">Ok?</th></tr>
     </thead>
-    <tbody>
-      <tr><td>1 · ___/___</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>2 · ___/___</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>3 · ___/___</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>4 · ___/___</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>5 · ___/___</td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr class="destaque"><td>Total do mês</td><td></td><td></td><td></td><td></td><td></td></tr>
-    </tbody>
+    <tbody id="kfSemanas"></tbody>
   </table>
 
-  <p class="kk-folha-h">4 · Como posso melhorar? (no fim do mês)</p>
-  <table class="kk-folha-perguntas">
-    <tbody>
-      <tr><td style="width:42%">Quanto guardei de verdade?</td><td></td></tr>
-      <tr><td>Em qual categoria passei do limite? Por quê?</td><td></td></tr>
-      <tr><td>Qual gasto eu não repetiria?</td><td></td></tr>
-      <tr><td>O que muda no plano do mês que vem?</td><td></td></tr>
-    </tbody>
-  </table>
-  <p class="kk-folha-pe">Finanças no Japão · Planejador de Kakeibo · estimativa simples a partir dos valores informados.</p>
+  <p class="kf-h"><span class="kf-n">4</span>Fechamento do mês <em>sem culpa: é pra ajustar o próximo plano</em></p>
+  <div class="kf-pergs">
+    <div class="kf-perg"><p>Quanto entrou?</p><p class="kf-perg-val" id="kfQ1"></p><span class="kf-regua" id="kfQ1r"></span></div>
+    <div class="kf-perg"><p>Quanto eu queria guardar?</p><p class="kf-perg-val" id="kfQ2"></p><span class="kf-regua" id="kfQ2r"></span></div>
+    <div class="kf-perg"><p>Quanto realmente gastei?</p><p class="kf-perg-val" id="kfQ3"></p><span class="kf-regua" id="kfQ3r"></span></div>
+    <div class="kf-perg"><p>O que posso melhorar no próximo mês?</p><p class="kf-perg-txt" id="kfQ4"></p><span class="kf-regua"></span><span class="kf-regua"></span></div>
+  </div>
+
+  <div class="kf-pe">
+    <span>Finanças no Japão · financasnojapao.com/kakeibo-japao.html</span>
+    <span>Planeje no dia do pagamento · anote todo dia · revise toda semana</span>
+  </div>
 </div>
 
 <script>
-function compartilharPagina(btn){
-  var url = window.location.origin + window.location.pathname;
-  var texto = '📒 *Kakeibo: o método japonês de controlar gastos*, explicado pra quem recebe salário no Japão — com planejador grátis em português pra imprimir 👇\n' + url;
-  if (navigator.share) {
-    navigator.share({ title: 'Kakeibo no Japão', text: texto }).catch(function(){});
-    return;
-  }
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(texto).then(function(){
-      var s = btn.querySelector('span');
-      if (!s) return;
-      var o = s.getAttribute('data-o') || s.textContent;
-      s.setAttribute('data-o', o);
-      s.textContent = 'Link copiado!';
-      setTimeout(function(){ s.textContent = o; }, 1800);
-    }).catch(function(){
-      window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
-    });
-  } else {
-    window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
-  }
-}
-
 (function(){
-  var CHAVE = 'fnj-kakeibo-v1';
-  var SEMANAS = 4.3;
-  var CAMPOS = ['kkLiquido','kkOutras','kkPoupanca','kkRemessa','kkAluguel','kkContas','kkCelular','kkOutrosFixos','kkPassagem','kkCarro','kkMoradia','kkOutrosAnuais'];
-  var EXEMPLO = { kkLiquido:225000, kkOutras:0, kkPoupanca:30000, kkRemessa:30000, kkAluguel:55000, kkContas:13000, kkCelular:8000, kkOutrosFixos:0, kkPassagem:240000, kkCarro:120000, kkMoradia:0, kkOutrosAnuais:0 };
-  var CORES = { poupanca:'#00854f', remessa:'#5c6169', fixos:'#16181d', anuais:'#b9b4ad', livre:'#00c47a' };
+  'use strict';
+  var CHAVE = 'fnj-kakeibo-v2';
+  var NUMS = ['kkLiquido','kkOutras','kkPoupanca','kkRemessa','kkMoradia','kkContas','kkCelular','kkTransporte','kkSeguros','kkOutrosFixos','kkCarro','kkViagem','kkRenovacao','kkPresentes','kkOutrosAnuais'];
+  var FIXOS = ['kkMoradia','kkContas','kkCelular','kkTransporte','kkSeguros','kkOutrosFixos'];
+  var ANUAIS = ['kkCarro','kkViagem','kkRenovacao','kkPresentes','kkOutrosAnuais'];
+  var PASSOS = ['Quanto entra','Quanto guardar','Gastos fixos','Gastos anuais'];
+  var CATS = [
+    { n:1, nome:'Necessidades', cls:'kk-bg1', cor:'#00854f' },
+    { n:2, nome:'Desejos', cls:'kk-bg2', cor:'#c98a1a' },
+    { n:3, nome:'Cultura e crescimento', cls:'kk-bg3', cor:'#3a3f47' },
+    { n:4, nome:'Extras', cls:'kk-bg4', cor:'#d2453f' }
+  ];
+  var ICONES = { 1:'<svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h3l2.6 12.2h11l2-8.7H6.3"/></svg>', 2:'<svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg>', 3:'<svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5C5.5 4 9 4 12 6c3-2 6.5-2 9-.5V19c-2.5-1.5-6-1.5-9 .5-3-2-6.5-2-9-.5z"/><line x1="12" y1="6" x2="12" y2="19.5"/></svg>', 4:'<svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></svg>', del:'<svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 7 20 7"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></svg>' };
+  var EXEMPLO = { kkLiquido:225000, kkPoupanca:30000, kkRemessa:30000, kkMoradia:55000, kkContas:13000, kkCelular:8000, kkCarro:120000, kkViagem:240000, kkObjetivo:'Juntar pra passagem de dezembro' };
 
-  function el(id){ return document.getElementById(id); }
-  function ler(id){ var n = parseInt(String(el(id).value).replace(/[^\d]/g,''), 10); return isNaN(n) ? 0 : n; }
+  function $(id){ return document.getElementById(id); }
   function yen(v){ return '¥' + Math.round(v).toLocaleString('ja-JP'); }
-  function formatarCampo(input){
-    var d = String(input.value).replace(/[^\d]/g,'');
-    input.value = d ? parseInt(d,10).toLocaleString('ja-JP') : '';
+  function sinal(v){ return v < 0 ? '− ' + yen(-v) : yen(v); }
+  function digitos(s){ var n = parseInt(String(s || '').replace(/[^\d]/g, ''), 10); return isNaN(n) ? 0 : n; }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function iso(d){ return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function lerData(s){ var p = String(s || '').split('-'); if (p.length !== 3) return null; var d = new Date(+p[0], +p[1] - 1, +p[2]); return isNaN(d) ? null : d; }
+  function ddmm(d){ return pad(d.getDate()) + '/' + pad(d.getMonth() + 1); }
+  function somaDias(d, n){ var x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); return x; }
+  function maisUmMes(d){
+    var dia = d.getDate(), alvo = new Date(d.getFullYear(), d.getMonth() + 1, 1);
+    var ultimo = new Date(alvo.getFullYear(), alvo.getMonth() + 1, 0).getDate();
+    return new Date(alvo.getFullYear(), alvo.getMonth(), Math.min(dia, ultimo));
   }
+  function hoje(){ var t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
+  function pagamentoPadrao(){ var t = hoje(); return t.getDate() >= 25 ? new Date(t.getFullYear(), t.getMonth(), 25) : new Date(t.getFullYear(), t.getMonth() - 1, 25); }
 
-  function calcular(){
-    var v = {};
-    CAMPOS.forEach(function(id){ v[id] = ler(id); });
-    var entra = v.kkLiquido + v.kkOutras;
-    var fixos = v.kkAluguel + v.kkContas + v.kkCelular + v.kkOutrosFixos;
-    var anuaisMes = Math.ceil((v.kkPassagem + v.kkCarro + v.kkMoradia + v.kkOutrosAnuais) / 12);
-    var destino = v.kkPoupanca + v.kkRemessa + fixos + anuaisMes;
-    var livre = entra - destino;
-    var semana = livre > 0 ? Math.floor(livre / SEMANAS / 100) * 100 : 0;
-    return { v:v, entra:entra, fixos:fixos, anuaisMes:anuaisMes, destino:destino, livre:livre, semana:semana };
-  }
-
-  function salvar(){
+  /* ---------- estado ---------- */
+  var S = { plano:{}, passo:1, pronto:false, gastos:[], nota:'', aba:1, semana:0 };
+  function salvar(){ try { localStorage.setItem(CHAVE, JSON.stringify(S)); } catch(e){} }
+  function carregar(){
     try {
-      var dados = {};
-      CAMPOS.forEach(function(id){ dados[id] = ler(id); });
-      localStorage.setItem(CHAVE, JSON.stringify(dados));
+      var s = JSON.parse(localStorage.getItem(CHAVE) || 'null');
+      if (s && s.plano) { S = Object.assign(S, s); return; }
+      var v1 = JSON.parse(localStorage.getItem('fnj-kakeibo-v1') || 'null');
+      if (v1) {
+        var mapa = { kkLiquido:'kkLiquido', kkOutras:'kkOutras', kkPoupanca:'kkPoupanca', kkRemessa:'kkRemessa', kkAluguel:'kkMoradia', kkContas:'kkContas', kkCelular:'kkCelular', kkOutrosFixos:'kkOutrosFixos', kkPassagem:'kkViagem', kkCarro:'kkCarro', kkMoradia:'kkRenovacao', kkOutrosAnuais:'kkOutrosAnuais' };
+        Object.keys(mapa).forEach(function(k){ if (v1[k]) S.plano[mapa[k]] = v1[k]; });
+      }
     } catch(e){}
   }
 
-  function restaurar(){
-    try {
-      var dados = JSON.parse(localStorage.getItem(CHAVE) || 'null');
-      if (!dados) return;
-      CAMPOS.forEach(function(id){ if (dados[id]) el(id).value = Number(dados[id]).toLocaleString('ja-JP'); });
-    } catch(e){}
+  /* ---------- calculo ---------- */
+  function periodo(){
+    var ini = lerData(S.plano.kkPagamento) || pagamentoPadrao();
+    var fim = maisUmMes(ini);
+    var dias = Math.round((fim - ini) / 864e5);
+    return { ini:ini, fim:fim, dias:dias, nSem:Math.ceil(dias / 7) };
+  }
+  function calc(){
+    var p = S.plano, v = function(k){ return +p[k] || 0; };
+    var entra = v('kkLiquido') + v('kkOutras');
+    var fixos = FIXOS.reduce(function(a,k){ return a + v(k); }, 0);
+    var anuaisAno = ANUAIS.reduce(function(a,k){ return a + v(k); }, 0);
+    var anuaisMes = Math.ceil(anuaisAno / 12);
+    var comprometido = fixos + v('kkRemessa');
+    var reservado = v('kkPoupanca') + anuaisMes;
+    var livre = entra - comprometido - reservado;
+    var per = periodo();
+    var semanasMedia = per.dias / 7;
+    var semana = livre > 0 ? Math.floor(livre / semanasMedia / 100) * 100 : 0;
+    var gasto = S.gastos.reduce(function(a,g){ return a + g.valor; }, 0);
+    return { entra:entra, fixos:fixos, anuaisMes:anuaisMes, comprometido:comprometido, reservado:reservado, livre:livre, semana:semana, semanasMedia:semanasMedia, per:per, poupanca:v('kkPoupanca'), remessa:v('kkRemessa'), gasto:gasto };
+  }
+  function semanaDe(dataIso, per){
+    var d = lerData(dataIso); if (!d) return 1;
+    var i = Math.floor((d - per.ini) / 864e5 / 7) + 1;
+    return Math.max(1, Math.min(per.nSem, i));
+  }
+  function intervalo(i, per){
+    var a = somaDias(per.ini, (i - 1) * 7), b = somaDias(per.ini, i * 7 - 1), ultimo = somaDias(per.fim, -1);
+    if (b > ultimo) b = ultimo;
+    return { a:a, b:b };
   }
 
-  function desenhar(){
-    var r = calcular();
-    var temRenda = r.entra > 0;
-    el('kkResultado').hidden = !temRenda;
-    el('kkVazio').hidden = temRenda;
-    if (!temRenda) { preencherFolha(r); return; }
+  /* ---------- campos ---------- */
+  function formatar(input){
+    var n = digitos(input.value);
+    input.value = n ? n.toLocaleString('ja-JP') : '';
+  }
+  function plano2campos(){
+    NUMS.forEach(function(id){ var n = +S.plano[id] || 0; $(id).value = n ? n.toLocaleString('ja-JP') : ''; });
+    $('kkPagamento').value = S.plano.kkPagamento || iso(pagamentoPadrao());
+    $('kkObjetivo').value = S.plano.kkObjetivo || '';
+    atualizarAnual();
+  }
+  function atualizarAnual(){ $('kkAnualMes').textContent = yen(calc().anuaisMes); }
+  NUMS.forEach(function(id){
+    $(id).addEventListener('input', function(){ formatar(this); S.plano[id] = digitos(this.value); this.removeAttribute('aria-invalid'); limparErro(); atualizarAnual(); salvar(); if (S.pronto) renderTudo(); });
+  });
+  $('kkPagamento').addEventListener('change', function(){ S.plano.kkPagamento = this.value; salvar(); renderTudo(); });
+  $('kkObjetivo').addEventListener('input', function(){ S.plano.kkObjetivo = this.value; salvar(); });
 
-    el('kkTotalEntra').textContent = yen(r.entra);
-    el('kkTotalDestino').textContent = '− ' + yen(r.destino);
-    el('kkLivre').textContent = r.livre < 0 ? '− ' + yen(-r.livre) : yen(r.livre);
+  /* ---------- assistente ---------- */
+  function limparErro(){ var e = $('kkPasso1Erro'); if (e) e.remove(); }
+  function mostrarPasso(n, focar){
+    S.passo = n;
+    var sets = document.querySelectorAll('.kk-passo');
+    for (var i = 0; i < sets.length; i++) sets[i].classList.toggle('ativo', +sets[i].getAttribute('data-passo') === n);
+    $('kkProgFill').style.width = (n * 25) + '%';
+    document.querySelector('.kk-prog-bar').setAttribute('aria-valuenow', n);
+    $('kkProgTxt').textContent = 'Etapa ' + n + ' de 4 · ' + PASSOS[n - 1];
+    var lis = $('kkPassos').children;
+    for (var j = 0; j < lis.length; j++) { lis[j].classList.toggle('ativo', j === n - 1); lis[j].classList.toggle('feito', j < n - 1); }
+    $('kkVoltar').hidden = n === 1;
+    $('kkProximo').innerHTML = n === 4 ? 'Ver meu plano <svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>' : 'Próximo <svg class="kk-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>';
+    if (focar) { var lg = document.querySelector('.kk-passo.ativo legend'); if (lg) lg.focus(); }
+    salvar();
+  }
+  $('kkProximo').addEventListener('click', function(){
+    if (S.passo === 1 && !(+S.plano.kkLiquido > 0)) {
+      var inp = $('kkLiquido'); inp.setAttribute('aria-invalid', 'true');
+      if (!$('kkPasso1Erro')) { var p = document.createElement('p'); p.id = 'kkPasso1Erro'; p.className = 'kk-add-erro'; p.setAttribute('role','alert'); p.textContent = 'Informe o salário líquido pra continuar.'; inp.closest('.kk-campo').appendChild(p); }
+      inp.focus(); return;
+    }
+    if (!S.plano.kkPagamento) S.plano.kkPagamento = $('kkPagamento').value || iso(pagamentoPadrao());
+    if (S.passo < 4) { mostrarPasso(S.passo + 1, true); return; }
+    S.pronto = true; salvar(); mostrarResultado(true);
+  });
+  $('kkVoltar').addEventListener('click', function(){ if (S.passo > 1) mostrarPasso(S.passo - 1, true); });
+  $('kkEditar').addEventListener('click', function(){ $('kkRes').hidden = true; $('kkWiz').hidden = false; mostrarPasso(1, true); });
+  $('kkExemplo').addEventListener('click', function(){
+    var obj = S.plano.kkObjetivo, pg = S.plano.kkPagamento;
+    S.plano = {}; Object.keys(EXEMPLO).forEach(function(k){ S.plano[k] = EXEMPLO[k]; });
+    S.plano.kkPagamento = pg || iso(pagamentoPadrao());
+    plano2campos(); S.pronto = true; salvar(); mostrarResultado(true);
+  });
 
-    var box = el('kkSemanaBox');
-    el('kkSemana').textContent = yen(r.semana);
-    box.classList.toggle('negativo', r.livre <= 0);
-    el('kkAlerta').hidden = r.livre >= 0;
-    el('kkFalta').textContent = yen(-r.livre);
-
+  /* ---------- resultado ---------- */
+  function mostrarResultado(focar){
+    $('kkWiz').hidden = true; $('kkRes').hidden = false;
+    renderResultado();
+    if (focar) $('kkRes').focus();
+  }
+  function renderResultado(){
+    var r = calc();
+    $('kkLivre').textContent = sinal(r.livre);
+    $('kkSemana').textContent = yen(r.semana);
+    $('kkSemanaNota').textContent = 'média de ' + r.semanasMedia.toLocaleString('pt-BR', { maximumFractionDigits:1 }) + ' semanas até o próximo pagamento';
+    $('kkRenda').textContent = yen(r.entra);
+    $('kkComprometido').textContent = yen(r.comprometido);
+    $('kkReservado').textContent = yen(r.reservado);
+    var st = $('kkStatus');
+    var big = document.querySelector('.kk-big--mes');
+    big.classList.toggle('neg', r.livre < 0);
+    if (r.livre < 0) { st.className = 'kk-status kk-status--neg'; st.textContent = 'Plano acima da renda'; }
+    else if (r.livre < r.entra * 0.1) { st.className = 'kk-status kk-status--apertado'; st.textContent = 'Plano apertado: pouca margem'; }
+    else { st.className = 'kk-status kk-status--ok'; st.textContent = 'Plano equilibrado'; }
+    $('kkAlerta').hidden = r.livre >= 0;
+    $('kkFalta').textContent = yen(-r.livre);
     var partes = [
-      { nome:'Poupança', valor:r.v.kkPoupanca, cor:CORES.poupanca },
-      { nome:'Remessa', valor:r.v.kkRemessa, cor:CORES.remessa },
-      { nome:'Fixos', valor:r.fixos, cor:CORES.fixos },
-      { nome:'Anuais ÷ 12', valor:r.anuaisMes, cor:CORES.anuais },
-      { nome:'Pra gastar', valor:Math.max(r.livre,0), cor:CORES.livre }
+      { nome:'Poupança', valor:r.poupanca, cor:'#00854f' },
+      { nome:'Remessa', valor:r.remessa, cor:'#8d939b' },
+      { nome:'Fixos', valor:r.fixos, cor:'#3a3f47' },
+      { nome:'Anuais ÷ 12', valor:r.anuaisMes, cor:'#c9c3ba' },
+      { nome:'Pode gastar', valor:Math.max(r.livre, 0), cor:'#00a866' }
     ];
-    var base = Math.max(r.entra, r.destino);
-    var barra = el('kkBarra'), legenda = el('kkLegenda');
-    barra.innerHTML = ''; legenda.innerHTML = '';
-    var descricao = [];
+    var base = Math.max(r.entra, r.comprometido + r.reservado) || 1;
+    var barra = $('kkBarra'), leg = $('kkLegenda'), desc = [];
+    barra.innerHTML = ''; leg.innerHTML = '';
     partes.forEach(function(p){
       if (p.valor <= 0) return;
-      var pct = p.valor / base * 100;
-      var s = document.createElement('span');
-      s.style.width = pct + '%';
-      s.style.background = p.cor;
-      s.title = p.nome + ': ' + yen(p.valor);
-      barra.appendChild(s);
+      var s = document.createElement('span'); s.style.width = (p.valor / base * 100) + '%'; s.style.background = p.cor; barra.appendChild(s);
       var li = document.createElement('li');
-      li.innerHTML = '<i style="background:' + p.cor + '"></i>' + p.nome + ' <b>' + yen(p.valor) + '</b> · ' + Math.round(p.valor / r.entra * 100) + '%';
-      legenda.appendChild(li);
-      descricao.push(p.nome + ' ' + yen(p.valor));
+      li.innerHTML = '<i style="background:' + p.cor + '"></i>' + p.nome + ' <b>' + yen(p.valor) + '</b>';
+      leg.appendChild(li); desc.push(p.nome + ' ' + yen(p.valor));
     });
-    barra.setAttribute('aria-label', 'Divisão da renda do mês: ' + descricao.join(', '));
-
-    preencherFolha(r);
+    barra.setAttribute('aria-label', 'Divisão da renda do mês: ' + desc.join(', '));
   }
 
-  function preencherFolha(r){
-    var vazio = r.entra <= 0;
-    var y = function(v, menos){ return vazio ? '¥ ____________' : (menos ? '− ' : '') + yen(v); };
-    var linhas = vazio ? [
-      ['Entra no mês (líquido + outras entradas)', y()],
-      ['Poupança — decidida antes de gastar', y()],
-      ['Remessa pro Brasil', y()],
-      ['Gastos fixos (aluguel, contas, celular, outros)', y()],
-      ['Gastos anuais ÷ 12 (separar numa conta à parte)', y()],
-      ['Pra gastar no mês', y()],
-      ['Limite por semana', y()]
-    ] : [
-      ['Entra no mês (líquido + outras entradas)', yen(r.entra)],
-      ['Poupança — decidida antes de gastar', '− ' + yen(r.v.kkPoupanca)],
-      ['Remessa pro Brasil', '− ' + yen(r.v.kkRemessa)],
-      ['Gastos fixos (aluguel, contas, celular, outros)', '− ' + yen(r.fixos)],
-      ['Gastos anuais ÷ 12 (separar numa conta à parte)', '− ' + yen(r.anuaisMes)],
-      ['Pra gastar no mês', (r.livre < 0 ? '− ' + yen(-r.livre) : yen(r.livre))],
-      ['Limite por semana', yen(r.semana)]
-    ];
-    var corpo = el('kkFolhaPlano');
-    corpo.innerHTML = '';
-    linhas.forEach(function(l, i){
-      var tr = document.createElement('tr');
-      if (i >= 5) tr.className = 'destaque';
-      var a = document.createElement('td'); a.textContent = l[0];
-      var b = document.createElement('td'); b.className = 'num'; b.textContent = l[1];
-      tr.appendChild(a); tr.appendChild(b); corpo.appendChild(tr);
+  /* ---------- abas ---------- */
+  var abas = [$('kkTab1'), $('kkTab2'), $('kkTab3')];
+  function selecionarAba(n, focar){
+    S.aba = n;
+    abas.forEach(function(t, i){
+      var on = i === n - 1;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      $('kkPainel' + (i + 1)).hidden = !on;
+    });
+    if (focar) abas[n - 1].focus();
+    renderTudo(); salvar();
+  }
+  abas.forEach(function(t, i){
+    t.addEventListener('click', function(){ selecionarAba(i + 1); });
+    t.addEventListener('keydown', function(e){
+      var n = null;
+      if (e.key === 'ArrowRight') n = i === 2 ? 1 : i + 2;
+      else if (e.key === 'ArrowLeft') n = i === 0 ? 3 : i;
+      else if (e.key === 'Home') n = 1; else if (e.key === 'End') n = 3;
+      if (n) { e.preventDefault(); selecionarAba(n, true); }
+    });
+  });
+  document.querySelectorAll('[data-ir]').forEach(function(b){ b.addEventListener('click', function(){ selecionarAba(+b.getAttribute('data-ir'), true); }); });
+  $('kkIrMes').addEventListener('click', function(){ selecionarAba(2, true); document.getElementById('kkApp').scrollIntoView({ behavior:'smooth', block:'start' }); });
+
+  /* ---------- acompanhar ---------- */
+  function totaisPorSemana(per){
+    var t = []; for (var i = 0; i <= per.nSem; i++) t.push({ total:0, cat:{1:0,2:0,3:0,4:0} });
+    S.gastos.forEach(function(g){ var w = semanaDe(g.data, per); t[w].total += g.valor; t[w].cat[g.cat] += g.valor; });
+    return t;
+  }
+  function pctClasse(pct){ return pct > 100 ? 'passou' : pct > 80 ? 'alto' : ''; }
+  function renderMes(){
+    var r = calc(), per = r.per;
+    $('kkMesVazio').hidden = S.pronto; $('kkMesConteudo').hidden = !S.pronto;
+    if (!S.pronto) return;
+    if (!S.semana || S.semana > per.nSem) {
+      var h = hoje(); S.semana = (h >= per.ini && h < per.fim) ? semanaDe(iso(h), per) : 1;
+    }
+    var tw = totaisPorSemana(per);
+    // resumo do mes
+    $('kkMesGasto').textContent = yen(r.gasto);
+    $('kkMesPlan').textContent = yen(Math.max(r.livre, 0));
+    var pm = r.livre > 0 ? r.gasto / r.livre * 100 : (r.gasto > 0 ? 101 : 0);
+    var mb = $('kkMesBarra'); mb.style.width = Math.min(pm, 100) + '%'; mb.className = pctClasse(pm);
+    var resta = r.livre - r.gasto, mr = $('kkMesResta');
+    mr.textContent = resta >= 0 ? 'Restam ' + yen(resta) + ' até o próximo pagamento' : 'O mês passou ' + yen(-resta) + ' do planejado';
+    mr.classList.toggle('neg', resta < 0);
+    // categorias do mes
+    var cm = $('kkCatsMes'); cm.innerHTML = '';
+    CATS.forEach(function(c){
+      var tot = 0; S.gastos.forEach(function(g){ if (g.cat === c.n) tot += g.valor; });
+      var d = document.createElement('div'); d.className = 'kk-catm';
+      d.innerHTML = '<span class="kk-catm-ic ' + c.cls + '">' + ICONES[c.n] + '</span><span class="kk-catm-nome">' + c.nome + '</span><b>' + yen(tot) + '</b><small>' + (r.gasto ? Math.round(tot / r.gasto * 100) : 0) + '% do gasto do mês</small>';
+      cm.appendChild(d);
+    });
+    // semanas
+    var box = $('kkSemanas'); box.innerHTML = '';
+    var h2 = hoje();
+    for (var i = 1; i <= per.nSem; i++) {
+      var iv = intervalo(i, per), b = document.createElement('button');
+      b.type = 'button'; b.className = 'kk-sem-btn'; b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', i === S.semana ? 'true' : 'false'); b.tabIndex = i === S.semana ? 0 : -1;
+      if (h2 >= iv.a && h2 <= iv.b) b.classList.add('hoje');
+      b.innerHTML = '<b>Semana ' + i + '</b><span>' + ddmm(iv.a) + '–' + ddmm(iv.b) + '</span><em>' + yen(tw[i].total) + '</em>';
+      (function(n){
+        b.addEventListener('click', function(){ S.semana = n; salvar(); renderMes(); });
+        b.addEventListener('keydown', function(e){
+          var k = null;
+          if (e.key === 'ArrowRight') k = n === per.nSem ? 1 : n + 1;
+          if (e.key === 'ArrowLeft') k = n === 1 ? per.nSem : n - 1;
+          if (k) { e.preventDefault(); S.semana = k; salvar(); renderMes(); box.children[k - 1].focus(); }
+        });
+      })(i);
+      box.appendChild(b);
+    }
+    // semana selecionada
+    var iv2 = intervalo(S.semana, per), gs = tw[S.semana].total;
+    $('kkSemTit').textContent = 'Semana ' + S.semana;
+    $('kkSemDatas').textContent = ddmm(iv2.a) + ' a ' + ddmm(iv2.b);
+    $('kkSemGasto').textContent = yen(gs);
+    $('kkSemLimite').textContent = yen(r.semana);
+    var ps = r.semana > 0 ? gs / r.semana * 100 : (gs > 0 ? 101 : 0);
+    var sb = $('kkSemBarra'); sb.style.width = Math.min(ps, 100) + '%'; sb.className = pctClasse(ps);
+    var rs = r.semana - gs, sr = $('kkSemResta');
+    sr.textContent = rs >= 0 ? 'Restam ' + yen(rs) + ' nesta semana' : 'Passou ' + yen(-rs) + ' do limite. Tudo bem: compense nas próximas semanas.';
+    sr.classList.toggle('neg', rs < 0);
+    // formulario
+    var fd = $('kkGData');
+    fd.min = iso(per.ini); fd.max = iso(somaDias(per.fim, -1));
+    var dSel = (h2 >= iv2.a && h2 <= iv2.b) ? h2 : iv2.a;
+    if (!fd.value || lerData(fd.value) < iv2.a || lerData(fd.value) > iv2.b) fd.value = iso(dSel);
+    // lista
+    var ul = $('kkLista'); ul.innerHTML = '';
+    var daSemana = S.gastos.filter(function(g){ return semanaDe(g.data, per) === S.semana; }).sort(function(a,b){ return a.data < b.data ? -1 : a.data > b.data ? 1 : 0; });
+    daSemana.forEach(function(g){
+      var c = CATS[g.cat - 1], li = document.createElement('li'), d = lerData(g.data);
+      li.innerHTML = '<span class="kk-lista-ic ' + c.cls + '">' + ICONES[g.cat] + '</span><span class="kk-lista-desc"><b></b><span>' + (d ? ddmm(d) : '') + ' · ' + c.nome + '</span></span><span class="kk-lista-val">' + yen(g.valor) + '</span><button type="button" class="kk-lista-del">' + ICONES.del + '</button>';
+      li.querySelector('b').textContent = g.desc;
+      var del = li.querySelector('.kk-lista-del');
+      del.setAttribute('aria-label', 'Apagar gasto: ' + g.desc + ', ' + yen(g.valor));
+      del.addEventListener('click', function(){ S.gastos = S.gastos.filter(function(x){ return x.id !== g.id; }); salvar(); renderTudo(); $('kkGDesc').focus(); });
+      ul.appendChild(li);
+    });
+    $('kkListaVazia').hidden = daSemana.length > 0;
+  }
+  $('kkGValor').addEventListener('input', function(){ formatar(this); });
+  $('kkAdd').addEventListener('submit', function(e){
+    e.preventDefault();
+    var per = periodo(), erro = $('kkAddErro');
+    var data = $('kkGData').value, desc = $('kkGDesc').value.trim(), valor = digitos($('kkGValor').value);
+    var catEl = document.querySelector('input[name="kkGCat"]:checked'), cat = catEl ? +catEl.value : 1;
+    var d = lerData(data), msg = '';
+    if (!desc) msg = 'Escreva uma descrição curta, como “mercado”.';
+    else if (!valor) msg = 'Informe o valor do gasto.';
+    else if (!d || d < per.ini || d >= per.fim) msg = 'A data precisa estar entre ' + ddmm(per.ini) + ' e ' + ddmm(somaDias(per.fim, -1)) + '.';
+    if (msg) { erro.textContent = msg; erro.hidden = false; return; }
+    erro.hidden = true;
+    S.gastos.push({ id:Date.now().toString(36) + Math.random().toString(36).slice(2,6), data:data, desc:desc.slice(0,60), valor:valor, cat:cat });
+    S.semana = semanaDe(data, per);
+    $('kkGDesc').value = ''; $('kkGValor').value = '';
+    salvar(); renderTudo(); $('kkGDesc').focus();
+  });
+
+  /* ---------- fechar ---------- */
+  function renderFim(){
+    var r = calc();
+    $('kkF1').textContent = yen(r.entra);
+    $('kkF2').textContent = yen(r.poupanca);
+    $('kkF2Obj').textContent = S.plano.kkObjetivo ? 'Objetivo: ' + S.plano.kkObjetivo : 'meta de poupança do mês';
+    $('kkF3').textContent = yen(r.gasto);
+    var n = $('kkF3Nota'), dif = r.livre - r.gasto;
+    if (!S.gastos.length) { n.textContent = 'nenhum gasto anotado ainda'; n.className = ''; }
+    else if (dif >= 0) { n.textContent = 'Sobrou ' + yen(dif) + ' do planejado'; n.className = 'ok'; }
+    else { n.textContent = 'Passou ' + yen(-dif) + ' do planejado'; n.className = 'neg'; }
+    if (document.activeElement !== $('kkNota')) $('kkNota').value = S.nota || '';
+    $('kkNotaCont').textContent = (S.nota || '').length;
+  }
+  $('kkNota').addEventListener('input', function(){ S.nota = this.value; $('kkNotaCont').textContent = this.value.length; salvar(); });
+
+  /* ---------- acoes ---------- */
+  var acaoPendente = null;
+  function pedirConfirmacao(texto, botao, acao){
+    acaoPendente = acao;
+    $('kkConfirmaTxt').textContent = texto; $('kkConfirmaSim').textContent = botao;
+    $('kkConfirma').hidden = false; $('kkConfirmaSim').focus();
+  }
+  function fecharConfirmacao(volta){ $('kkConfirma').hidden = true; acaoPendente = null; if (volta) volta.focus(); }
+  $('kkConfirmaSim').addEventListener('click', function(){ var a = acaoPendente; fecharConfirmacao(); if (a) a(); });
+  $('kkConfirmaNao').addEventListener('click', function(){ fecharConfirmacao($('kkLimpar')); });
+  $('kkConfirma').addEventListener('keydown', function(e){ if (e.key === 'Escape') fecharConfirmacao($('kkLimpar')); });
+  $('kkNovoMes').addEventListener('click', function(){
+    pedirConfirmacao('Começar um novo mês? Os gastos e a anotação deste mês serão apagados. O plano continua, com a data de pagamento avançada um mês.', 'Começar novo mês', function(){
+      var per = periodo(); S.plano.kkPagamento = iso(per.fim); S.gastos = []; S.nota = ''; S.semana = 0;
+      plano2campos(); salvar(); selecionarAba(S.pronto ? 2 : 1, true);
+    });
+  });
+  $('kkLimpar').addEventListener('click', function(){
+    pedirConfirmacao('Apagar todos os dados do kakeibo deste aparelho? Plano, gastos e anotações. Não dá pra desfazer.', 'Apagar tudo', function(){
+      S = { plano:{}, passo:1, pronto:false, gastos:[], nota:'', aba:1, semana:0 };
+      try { localStorage.removeItem(CHAVE); localStorage.removeItem('fnj-kakeibo-v1'); } catch(e){}
+      plano2campos(); $('kkRes').hidden = true; $('kkWiz').hidden = false; mostrarPasso(1); selecionarAba(1, true);
+    });
+  });
+  $('kkImprimir').addEventListener('click', function(){ preencherFolha(); window.print(); });
+  window.addEventListener('beforeprint', preencherFolha);
+
+  /* ---------- folha A4 ---------- */
+  function preencherFolha(){
+    var r = calc(), per = r.per, vazio = !S.pronto || r.entra <= 0;
+    var ult = somaDias(per.fim, -1);
+    $('kfPeriodo').textContent = 'do pagamento de ' + ddmm(per.ini) + ' até ' + ddmm(ult);
+    $('kfMes').textContent = vazio ? '' : per.ini.toLocaleDateString('pt-BR', { month:'long', year:'numeric' });
+    function p(id, v, menos){ $(id).textContent = vazio ? '¥ ________' : (menos && v > 0 ? '− ' : '') + yen(v); }
+    p('kfEntra', r.entra); p('kfPoupanca', r.poupanca, true); p('kfRemessa', r.remessa, true); p('kfFixos', r.fixos, true); p('kfAnuais', r.anuaisMes, true);
+    $('kfObjetivo').textContent = S.plano.kkObjetivo ? 'Objetivo do mês: ' + S.plano.kkObjetivo : '';
+    $('kfLivre').textContent = vazio ? '¥ ________' : sinal(r.livre);
+    $('kfSemana').textContent = vazio ? '¥ ________' : yen(r.semana);
+    var passo = r.poupanca > 0 ? Math.round(r.poupanca / 10) : 0;
+    $('kfDot').textContent = passo && !vazio ? yen(passo) : '¥ ____';
+    var tw = totaisPorSemana(per), tb = $('kfSemanas'), html = '', tot = { 1:0, 2:0, 3:0, 4:0 }, totG = 0;
+    for (var i = 1; i <= Math.max(per.nSem, 4); i++) {
+      var iv = i <= per.nSem ? intervalo(i, per) : null, w = tw[i] || { total:0, cat:{1:0,2:0,3:0,4:0} };
+      var cel = function(v){ return '<td class="kf-v">' + (v ? yen(v) : '') + '</td>'; };
+      var ok = w.total && !vazio ? (w.total <= r.semana ? '✓' : '') : '';
+      html += '<tr><td class="kf-sem"><b>' + i + '</b><span>' + (iv ? ddmm(iv.a) : '___/___') + '</span></td>' + cel(w.cat[1]) + cel(w.cat[2]) + cel(w.cat[3]) + cel(w.cat[4]) + cel(w.total) + '<td class="kf-lim">' + (vazio ? '' : yen(r.semana)) + '</td><td class="kf-ok"><span class="kf-box">' + ok + '</span></td></tr>';
+      [1,2,3,4].forEach(function(c){ tot[c] += w.cat[c]; }); totG += w.total;
+    }
+    var celT = function(v){ return '<td class="kf-v">' + (v ? yen(v) : '') + '</td>'; };
+    html += '<tr class="kf-total"><td class="kf-sem"><b>Mês</b></td>' + celT(tot[1]) + celT(tot[2]) + celT(tot[3]) + celT(tot[4]) + celT(totG) + '<td class="kf-lim">' + (vazio ? '' : sinal(r.livre)) + '</td><td class="kf-ok"><span class="kf-box">' + (totG && !vazio && totG <= r.livre ? '✓' : '') + '</span></td></tr>';
+    tb.innerHTML = html;
+    $('kfQ1').textContent = vazio ? '' : yen(r.entra);
+    $('kfQ2').textContent = vazio ? '' : yen(r.poupanca);
+    $('kfQ3').textContent = S.gastos.length ? yen(r.gasto) : '';
+    $('kfQ1r').hidden = !vazio; $('kfQ2r').hidden = !vazio; $('kfQ3r').hidden = !!S.gastos.length;
+    $('kfQ4').textContent = S.nota || '';
+  }
+
+  /* ---------- glossario ---------- */
+  var busca = $('kkBusca');
+  if (busca) {
+    $('kkBuscaBox').hidden = false;
+    var norm = function(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
+    busca.addEventListener('input', function(){
+      var q = norm(this.value.trim()), itens = $('kkGloss').children, vis = 0;
+      for (var i = 0; i < itens.length; i++) { var m = !q || norm(itens[i].textContent).indexOf(q) > -1; itens[i].hidden = !m; if (m) vis++; }
+      $('kkGlossVazio').hidden = vis > 0;
     });
   }
 
-  CAMPOS.forEach(function(id){
-    var input = el(id);
-    input.addEventListener('input', function(){ desenhar(); salvar(); });
-    input.addEventListener('blur', function(){ formatarCampo(input); });
-  });
-
-  el('kkExemplo').addEventListener('click', function(){
-    CAMPOS.forEach(function(id){ el(id).value = EXEMPLO[id] ? EXEMPLO[id].toLocaleString('ja-JP') : ''; });
-    desenhar(); salvar();
-  });
-  el('kkLimpar').addEventListener('click', function(){
-    CAMPOS.forEach(function(id){ el(id).value = ''; });
-    desenhar();
-    try { localStorage.removeItem(CHAVE); } catch(e){}
-    el('kkLiquido').focus();
-  });
-  el('kkImprimir').addEventListener('click', function(){ preencherFolha(calcular()); window.print(); });
-
-  restaurar();
-  desenhar();
+  /* ---------- inicio ---------- */
+  function renderTudo(){
+    if (S.pronto && !$('kkRes').hidden) renderResultado();
+    if (S.aba === 2) renderMes();
+    if (S.aba === 3) renderFim();
+  }
+  $('kkApp').classList.add('kk-js');
+  carregar();
+  plano2campos();
+  if (S.pronto) mostrarResultado(false); else mostrarPasso(S.passo || 1);
+  selecionarAba(S.aba || 1);
 })();
 </script>
 <script src="main.js?v=2026-08-13b"></script>
