@@ -444,3 +444,56 @@ Em ordem de valor, nenhuma urgente:
 
 Está no aviso do topo desta seção, com os seis casos. **Antes de afirmar que
 algo falta, abra o arquivo.**
+
+
+---
+
+## Nota de 26 de outubro de 2026 — página de eleições e um arquivo solto
+
+### A página de eleições virou "como justificar"
+
+`eleicoes-brasil-2026-japao-nagoia/index.html` foi criada em 29/09 como página de
+serviço para o dia da votação. Com as eleições encerradas (1º turno 4/10, 2º
+turno 25/10), ela foi redirecionada para a pergunta que passou a ter busca:
+**não votou, e agora?** O conteúdo de votação virou registro histórico, com aviso
+explicando — nada foi apagado. Mesmo endereço, para não perder a autoridade.
+
+**Decisão deliberada: não publicar o resultado da eleição.** As fontes
+consultadas divergiam sobre o resultado do 2º turno, e resultado eleitoral está
+fora do tema do site. Se a Lilly pedir isso de novo, o ângulo que funciona é
+consequência prática para quem mora aqui, não apuração.
+
+Tudo o que entrou vem da página de justificativa eleitoral do TSE: prazos de
+3/12/2026 e 8/1/2027, a regra do título ZZ valer só em eleição presidencial, a
+exigência de comprovante depois do dia, e a exceção do passaporte do artigo 7º,
+§4º para residente no exterior. **O prazo do 1º turno vence em 3 de dezembro** —
+depois disso a página precisa de nova revisão, e o aviso da home deve sair
+depois de 8 de janeiro de 2027.
+
+### `img/kakeibo-folha-exemplo.webp` — não conectar como está
+
+Arquivo de 480x679, 30 KB, criado em 09/10 às 14:28, **nunca referenciado em
+nenhum commit**. É uma prévia bonita da folha do kakeibo, com a marca e o
+endereço da página no rodapé.
+
+**Mas está desatualizado.** A página foi redesenhada às 15:35, depois da imagem,
+e o bloco 4 mudou: a imagem mostra "Como posso melhorar?" com quatro perguntas
+que não existem mais; a folha de hoje tem "Fechamento do mês" com outras quatro.
+O resto bate.
+
+Tentei regenerar renderizando a folha no navegador. Dá para revelar o desenho
+injetando as regras do `@media print` como CSS normal — funciona e confirma o
+layout. Mas **as linhas das semanas são geradas por `preencherFolha()`, que vive
+dentro de um closure e não é alcançável de fora**, então a captura sai com a
+tabela vazia. Não vale forçar.
+
+Cuidado de privacidade que apareceu nisso: o navegador dela tem o plano real
+salvo em `localStorage` (`fnj-kakeibo-v2`). A folha só é preenchida ao clicar em
+imprimir, então ela estava vazia — mas **qualquer tentativa futura de capturar a
+folha precisa conferir que não há números reais dela na imagem** antes de
+publicar.
+
+Conclusão: a página não precisa da prévia, porque tem a ferramenta ao vivo, que
+vale mais que foto de ferramenta. O arquivo ficou no repositório, sem uso. Se um
+dia quiser prévia de verdade, o caminho é a Lilly clicar em Imprimir numa janela
+anônima, com valores de exemplo, e salvar a folha.
