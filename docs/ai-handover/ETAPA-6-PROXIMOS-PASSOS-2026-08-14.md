@@ -497,3 +497,64 @@ Conclusão: a página não precisa da prévia, porque tem a ferramenta ao vivo, 
 vale mais que foto de ferramenta. O arquivo ficou no repositório, sem uso. Se um
 dia quiser prévia de verdade, o caminho é a Lilly clicar em Imprimir numa janela
 anônima, com valores de exemplo, e salvar a folha.
+
+---
+
+## Nota de 26 de outubro de 2026 (fim do dia) — nenmatsu chōsei e o bug da dedução
+
+### O que ficou pronto
+
+`nenmatsu-chosei-2026.html` publicada e **indexação já solicitada** no Search
+Console (deu erro do Google na primeira tentativa, funcionou na segunda — se
+isso acontecer de novo, é só dispensar o aviso e clicar outra vez).
+
+O ângulo mudou durante a pesquisa, e vale saber por quê: eu tinha vendido à
+Lilly a faixa de ¥1.230.000–¥1.360.000 do dependente como centro da página.
+Ao conferir as fontes, a **dedução especial por cônjuge já cobria essa faixa
+em 2025**, então para cônjuge o ganho é quase nulo. O centro virou a dedução
+básica (¥1.040.000 para renda total até ¥4.890.000), que é universal, e a
+faixa do dependente ficou como seção principal, mas limitada a filhos e outros
+parentes. Avisei a ela da mudança.
+
+Também corrigi **dois números meus** que tinham saído errados do PDF do NTA:
+o piso de ¥740.000 vale até ¥2.200.000 (não ¥1.900.000), e o teto de
+¥1.040.000 vale até ¥4.890.000 de renda total (eu tinha lido ¥1.320.000).
+Causa: a extração do PDF embaralhou as colunas de 2025 e 2026. **A lição é
+reutilizável — as páginas Tax Answer do NTA em HTML saem com as tabelas
+limpas, o PDF não.** Use `taxanswer/shotoku/NNNN.htm`, não o PDF. Os códigos
+usados: 1199 (básica), 1410 (trabalho), 1180 (dependentes), 1177 (parente de
+19 a 22), 1195 (cônjuge), mais `users/gensen/nencho/index/kyuyosyotokusya.htm`.
+
+### O bug da `deducaoTrabalho` — corrigido, mas leia por quê
+
+Estava em `dependentes-no-brasil`, `furusato-nozei` e
+`imposto-residencial-juminzei`. A função tinha o piso novo (¥740.000) mas
+mantinha o teto velho (¥1.625.000) **e** a faixa de 40% que valia até 2024.
+Resultado: a dedução **caía** de ¥740.000 para ¥550.400 quando o salário
+passava de ¥1.625.000 — diminuía conforme a renda subia.
+
+Efeito, só entre ¥1.625.000 e ¥2.200.000: imposto residencial até ¥19.000
+acima do real, e limite do Furusato até ¥4.000 acima (a margem de segurança
+de 10% da página absorvia parte). Acima de ¥2.200.000, nada errado.
+
+> **A lição:** quando um valor de tabela fiscal é atualizado, conferir a
+> **faixa inteira**, não só o número. O piso foi atualizado numa sessão
+> anterior e as fronteiras ficaram para trás, sem ninguém notar por meses.
+
+### Pendências, em ordem de prioridade
+
+1. **`meu-salario-no-japao.html` e a tabela de dezembro.** Essa página não tem
+   o bug acima — ela não usa a `deducaoTrabalho`, calcula pelo desconto mensal
+   na fonte. Mas o NTA registra que a tabela do desconto mensal **muda a partir
+   de 1º de dezembro de 2026**. Eu não abri a tabela nova, então não sei o
+   tamanho da diferença. **Conferir antes de dezembro.**
+2. **Lembrete do AdSense para 5 de novembro.** Continua sem existir. Não
+   consigo criar tarefa agendada nesta sessão; a Lilly precisa adicionar na
+   barra lateral, em "Scheduled".
+3. **Imposto residencial e a reforma de 2026.** A página nova declara
+   explicitamente que não afirma nada sobre o jūminzei, porque eu não conferi
+   se as deduções dele mudaram. Se alguém for conferir, essa é a lacuna
+   assumida — e a página precisa ser atualizada junto.
+4. Seguem abertos os itens das notas anteriores: os 9 títulos e 7 descrições
+   longos, a mudança de outubro ausente no pilar (conteúdo fiscal, precisa de
+   revisão dela) e a unificação dos padrões de hero.
