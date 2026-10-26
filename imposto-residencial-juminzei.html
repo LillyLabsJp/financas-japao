@@ -641,8 +641,9 @@
   // mesma base de calculo usada na calculadora do Furusato Nozei,
   // pra que as duas paginas nunca se contradigam
   function deducaoTrabalho(renda){
-    if (renda <= 1625000) return 740000;   // piso de 2026 (era 550.000 ate 2024)
-    if (renda <= 1800000) return renda * 0.4 - 100000;
+    // Tabela de 2026 (NTA No.1410): o piso de 740.000 vale ate 2.200.000 de
+    // receita, e a faixa de 40% deixou de existir. Era 650.000 ate 1.900.000.
+    if (renda <= 2200000) return 740000;
     if (renda <= 3600000) return renda * 0.3 + 80000;
     if (renda <= 6600000) return renda * 0.2 + 440000;
     if (renda <= 8500000) return renda * 0.1 + 1100000;

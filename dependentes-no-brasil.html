@@ -664,8 +664,9 @@
 (function(){
   // mesma base das outras calculadoras do site
   function deducaoTrabalho(r){
-    if (r <= 1625000) return 740000;   // piso de 2026 (era 550.000 ate 2024)
-    if (r <= 1800000) return r * 0.4 - 100000;
+    // Tabela de 2026 (NTA No.1410): o piso de 740.000 vale ate 2.200.000 de
+    // receita, e a faixa de 40% deixou de existir. Era 650.000 ate 1.900.000.
+    if (r <= 2200000) return 740000;
     if (r <= 3600000) return r * 0.3 + 80000;
     if (r <= 6600000) return r * 0.2 + 440000;
     if (r <= 8500000) return r * 0.1 + 1100000;
