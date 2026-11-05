@@ -1,6 +1,6 @@
 {
   "ano": 2026,
-  "vigencia": "Válido para folhas de pagamento de janeiro a novembro de 2026. Em dezembro/2026 há um ajuste extra no imposto de renda por causa de uma reforma tributária que só vale a partir do ano-calendário 2026 e é aplicada no acerto de fim de ano (nenmatsu chousei) — não muda o valor retido mensalmente até novembro.",
+  "vigencia": "Válido para a tabela de retenção mensal de janeiro a dezembro de 2026. Em 1º de dezembro de 2026 passam a valer as novas deduções para o ajuste anual (nenmatsu chōsei) e os novos requisitos de dependentes podem afetar os pagamentos de dezembro, mas a nova tabela de retenção mensal só é usada para salários devidos a partir de 1º de janeiro de 2027. Esta ferramenta não calcula o ajuste anual.",
   "premissa": "Estimativa de referência para Tóquio (Kyōkai Kenpo). Alíquotas de seguro-saúde variam por prefeitura.",
   "shakai_hoken": {
     "kosei_nenkin": {
